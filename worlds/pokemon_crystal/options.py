@@ -197,19 +197,21 @@ class RequireItemfinder(Choice):
     option_hard_required = 2
 
 
-class ItemPoolFill(Choice)"
+class ItemPoolFill(Choice):
     """
     Changes how non-progression items are put into the pool.
 
     Vanilla: item pool filled similarly to vanilla.
     Balanced: all filler items uniformly randomized.
-    Inverted: item pool fill weights are inverted.
+    Youngster: item pool filled with items reflecting that of a young trainer.
+    Cooltrainer: item pool filled with items reflecting that of a cooltrainer.
     """
     display_name = "Item Pool Fill"
     default = 0
     option_vanilla = 0
     option_balanced = 1
-    option_inverted = 2
+    option_youngster = 2
+    option_cooltrainer = 3
 
 class Route32Condition(Choice):
     """
