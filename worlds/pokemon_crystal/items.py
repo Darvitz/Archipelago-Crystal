@@ -68,7 +68,7 @@ def get_random_filler_item(random: Random, world: "PokemonCrystalWorld"):
     
     mode = get_fill_one(world)
         
-    print("DEBUG: current_fill_mode is", mode)
+  #  print("DEBUG: current_fill_mode is", mode)
     
     if mode == "balanced":
         weighted_pool = [["RARE_CANDY", "ETHER", "ELIXER", "MAX_ETHER", "MAX_ELIXER", "MYSTERYBERRY", "WATER_STONE",
