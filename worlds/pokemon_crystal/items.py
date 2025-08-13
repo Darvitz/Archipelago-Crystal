@@ -1,6 +1,7 @@
 from random import Random
 from typing import TYPE_CHECKING
 
+from . import options
 from BaseClasses import Item, ItemClassification
 from .data import data
 from .options import Shopsanity, ItemPoolFill
@@ -49,49 +50,67 @@ def item_const_name_to_id(const_name):
     if ids:
         return ids[0]
     return 0
-
-
-def get_random_filler_item(random: Random):
+    
+def get_fill_one(world: "PokemonCrystalWorld"):
     if world.options.item_pool_fill == ItemPoolFill.option_balanced:
-        weighted_pool = [["RARE_CANDY"] * 1, ["ETHER", "ELIXER", "MAX_ETHER", "MAX_ELIXER", "MYSTERYBERRY"] * 1,
-                         ["WATER_STONE", "FIRE_STONE", "THUNDERSTONE", "LEAF_STONE", "SUN_STONE", "MOON_STONE"] * 1,
-                         ["ESCAPE_ROPE"] * 1, ["NUGGET", "STAR_PIECE", "STARDUST", "PEARL", "BIG_PEARL"] * 1,
-                         ["POKE_BALL", "GREAT_BALL", "ULTRA_BALL"] * 1,
-                         ["POTION", "SUPER_POTION", "ENERGY_ROOT", "ENERGYPOWDER"] * 1,
-                         ["HYPER_POTION", "FULL_RESTORE"] * 1, ["REPEL", "SUPER_REPEL", "MAX_REPEL"] * 1,
-                         ["REVIVE", "REVIVAL_HERB"] * 1 + ["MAX_REVIVE"] * 1,
-                         ["HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", "IRON"] * 1,
-                         ["GUARD_SPEC", "DIRE_HIT", "X_ATTACK", "X_DEFEND", "X_SPEED", "X_SPECIAL"] * 1,
-                         ["HEAL_POWDER", "BURN_HEAL", "PARLYZ_HEAL", "ICE_HEAL", "ANTIDOTE", "AWAKENING", "FULL_HEAL"] * 1]
-        group = random.choice(weighted_pool)
-        return random.choice(group)
-    # weights are roughly based on vanilla occurrence
-    elif world.options.item_pool_fill == ItemPoolFill.option_inverted:
-        weighted_pool = [["RARE_CANDY"] * 11, ["ETHER", "ELIXER", "MAX_ETHER", "MAX_ELIXER", "MYSTERYBERRY"] * 9,
-                         ["WATER_STONE", "FIRE_STONE", "THUNDERSTONE", "LEAF_STONE", "SUN_STONE", "MOON_STONE"] * 12,
-                         ["ESCAPE_ROPE"] * 11, ["NUGGET", "STAR_PIECE", "STARDUST", "PEARL", "BIG_PEARL"] * 12,
-                         ["POKE_BALL", "GREAT_BALL", "ULTRA_BALL"] * 2,
-                         ["POTION", "SUPER_POTION", "ENERGY_ROOT", "ENERGYPOWDER"] * 2,
-                         ["HYPER_POTION", "FULL_RESTORE"] * 12, ["REPEL", "SUPER_REPEL", "MAX_REPEL"] * 11,
-                         ["REVIVE", "REVIVAL_HERB"] * 10 + ["MAX_REVIVE"] * 12,
-                         ["HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", "IRON"] * 9,
-                         ["GUARD_SPEC", "DIRE_HIT", "X_ATTACK", "X_DEFEND", "X_SPEED", "X_SPECIAL"] * 12,
-                         ["HEAL_POWDER", "BURN_HEAL", "PARLYZ_HEAL", "ICE_HEAL", "ANTIDOTE", "AWAKENING", "FULL_HEAL"] * 9]
-        group = random.choice(weighted_pool)
-        return random.choice(group)
-    else
+        return "balanced"
+    elif world.options.item_pool_fill == ItemPoolFill.option_youngster:
+        return "youngster"
+    elif world.options.item_pool_fill == ItemPoolFill.option_vanilla:
+        return "vanilla"
+    elif world.options.item_pool_fill == ItemPoolFill.option_cooltrainer:
+        return "cooltrainer"
+    else:
+        return "oops"
+    
+
+def get_random_filler_item(random: Random, world: "PokemonCrystalWorld"):
+    
+    mode = get_fill_one(world)
+        
+    print("DEBUG: current_fill_mode is", mode)
+    
+    if mode == "balanced":
+        weighted_pool = [["RARE_CANDY", "ETHER", "ELIXER", "MAX_ETHER", "MAX_ELIXER", "MYSTERYBERRY", "WATER_STONE",
+                        "FIRE_STONE", "THUNDERSTONE", "LEAF_STONE", "SUN_STONE", "MOON_STONE", "ESCAPE_ROPE", "NUGGET", 
+                        "STAR_PIECE", "STARDUST", "PEARL", "BIG_PEARL", "POKE_BALL", "GREAT_BALL", "ULTRA_BALL", "POTION", 
+                        "SUPER_POTION", "ENERGY_ROOT", "ENERGYPOWDER", "HYPER_POTION", "FULL_RESTORE", "REPEL", "SUPER_REPEL", 
+                        "MAX_REPEL", "REVIVE", "REVIVAL_HERB", "MAX_REVIVE", "HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", 
+                        "IRON", "GUARD_SPEC", "DIRE_HIT", "X_ATTACK", "X_DEFEND", "X_SPEED", "X_SPECIAL", "HEAL_POWDER", "BURN_HEAL", 
+                        "PARLYZ_HEAL", "ICE_HEAL", "ANTIDOTE", "AWAKENING", "FULL_HEAL"] * 1]
+    elif mode == "youngster":
+        weighted_pool = [["RARE_CANDY", "ESCAPE_ROPE"] * 11, ["ETHER", "ELIXER", "MAX_ETHER", "MAX_ELIXER", "MYSTERYBERRY"] * 9,
+                        ["WATER_STONE", "FIRE_STONE", "THUNDERSTONE", "LEAF_STONE", "SUN_STONE", "MOON_STONE"] * 2,
+                        ["GREAT_BALL"] * 1, ["POTION", "POKE_BALL", "REPEL"] * 12, ["SUPER_POTION", "ENERGY_ROOT", "ENERGYPOWDER", "SUPER_REPEL"] * 2,
+                        ["HYPER_POTION", "FULL_RESTORE"] * 1, ["MAX_REPEL"] * 1,
+                        ["REVIVE", "REVIVAL_HERB"] * 5 + ["MAX_REVIVE"] * 1,
+                        ["HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", "IRON"] * 1,
+                        ["HEAL_POWDER", "BURN_HEAL", "PARLYZ_HEAL", "ICE_HEAL", "ANTIDOTE", "AWAKENING", "FULL_HEAL"] * 2]
+    elif mode == "cooltrainer":
+        weighted_pool = [["RARE_CANDY", "ESCAPE_ROPE"] * 11, ["MAX_ETHER", "MAX_ELIXER", "MYSTERYBERRY"] * 9,
+                        ["WATER_STONE", "FIRE_STONE", "THUNDERSTONE", "LEAF_STONE", "SUN_STONE", "MOON_STONE"] * 5,
+                        ["SUPER_POTION", "ENERGY_ROOT", "ENERGYPOWDER", "SUPER_REPEL"] * 1, ["NUGGET", "STAR_PIECE", "STARDUST", "PEARL", "BIG_PEARL"] * 5,
+                        ["GUARD_SPEC", "DIRE_HIT", "X_ATTACK", "X_DEFEND", "X_SPEED", "X_SPECIAL"] * 10,
+                        ["HYPER_POTION", "FULL_RESTORE", "MAX_REPEL"] * 10, ["REVIVE", "REVIVAL_HERB"] * 5 + ["MAX_REVIVE"] * 10,
+                        ["HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", "IRON"] * 10,
+                        ["HEAL_POWDER", "BURN_HEAL", "PARLYZ_HEAL", "ICE_HEAL", "ANTIDOTE", "AWAKENING", "FULL_HEAL"] * 2]
+    elif mode == "vanilla":
+        # weights are roughly based on vanilla occurrence
         weighted_pool = [["RARE_CANDY"] * 3, ["ETHER", "ELIXER", "MAX_ETHER", "MAX_ELIXER", "MYSTERYBERRY"] * 5,
-                         ["WATER_STONE", "FIRE_STONE", "THUNDERSTONE", "LEAF_STONE", "SUN_STONE", "MOON_STONE"] * 2,
-                         ["ESCAPE_ROPE"] * 3, ["NUGGET", "STAR_PIECE", "STARDUST", "PEARL", "BIG_PEARL"] * 2,
-                         ["POKE_BALL", "GREAT_BALL", "ULTRA_BALL"] * 5,
-                         ["POTION", "SUPER_POTION", "ENERGY_ROOT", "ENERGYPOWDER"] * 12,
-                         ["HYPER_POTION", "FULL_RESTORE"] * 2, ["REPEL", "SUPER_REPEL", "MAX_REPEL"] * 3,
-                         ["REVIVE", "REVIVAL_HERB"] * 4 + ["MAX_REVIVE"] * 2,
-                         ["HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", "IRON"] * 5,
-                         ["GUARD_SPEC", "DIRE_HIT", "X_ATTACK", "X_DEFEND", "X_SPEED", "X_SPECIAL"] * 2,
-                         ["HEAL_POWDER", "BURN_HEAL", "PARLYZ_HEAL", "ICE_HEAL", "ANTIDOTE", "AWAKENING", "FULL_HEAL"] * 5]
-        group = random.choice(weighted_pool)
-        return random.choice(group)
+                        ["WATER_STONE", "FIRE_STONE", "THUNDERSTONE", "LEAF_STONE", "SUN_STONE", "MOON_STONE"] * 2,
+                        ["ESCAPE_ROPE"] * 3, ["NUGGET", "STAR_PIECE", "STARDUST", "PEARL", "BIG_PEARL"] * 2,
+                        ["POKE_BALL", "GREAT_BALL", "ULTRA_BALL"] * 5,
+                        ["POTION", "SUPER_POTION", "ENERGY_ROOT", "ENERGYPOWDER"] * 12,
+                        ["HYPER_POTION", "FULL_RESTORE"] * 2, ["REPEL", "SUPER_REPEL", "MAX_REPEL"] * 3,
+                        ["REVIVE", "REVIVAL_HERB"] * 4 + ["MAX_REVIVE"] * 2,
+                        ["HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", "IRON"] * 5,
+                        ["GUARD_SPEC", "DIRE_HIT", "X_ATTACK", "X_DEFEND", "X_SPEED", "X_SPECIAL"] * 2,
+                        ["HEAL_POWDER", "BURN_HEAL", "PARLYZ_HEAL", "ICE_HEAL", "ANTIDOTE", "AWAKENING", "FULL_HEAL"] * 5]
+    else:
+        # oops
+        weighted_pool = [["NUGGET"] * 100]
+    group = random.choice(weighted_pool)
+    return random.choice(group)
 
 
 def get_random_ball(random: Random):
