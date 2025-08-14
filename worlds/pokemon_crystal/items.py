@@ -64,7 +64,7 @@ def get_fill_one(world: "PokemonCrystalWorld"):
         return "oops"
     
 
-def get_random_filler_item(random: Random, world: "PokemonCrystalWorld"):
+def get_random_filler_item(world: "PokemonCrystalWorld"):
     
     mode = get_fill_one(world)
         
