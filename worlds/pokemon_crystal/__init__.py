@@ -680,7 +680,7 @@ class PokemonCrystalWorld(World):
         return self.create_item_by_code(self.item_name_to_id[name])
 
     def get_filler_item_name(self) -> str:
-        item = get_random_filler_item(self.random, self)
+        item = get_random_filler_item(self)
         return item_const_name_to_label(item)
 
     def create_item_by_const_name(self, item_const: str) -> PokemonCrystalItem:
