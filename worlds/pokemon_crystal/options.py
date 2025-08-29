@@ -9,11 +9,17 @@ class Goal(Choice):
     """
     Elite Four: Defeat the Champion and enter the Hall of Fame
     Red: Defeat Red at Mt. Silver
+    Gold Rush: Collect 50 Nuggets (look at all those chickens)
+    TM and HM Hunt: Collect all 50 TMs and 7 HMs (Thanks B&W)
+    DexCount: Reach the Final Catch on your Dexcount Sanity setting    
     """
     display_name = "Goal"
     default = 0
     option_elite_four = 0
     option_red = 1
+    option_gold_rush = 2
+    option_tm_hm_hunt = 3
+    option_dexcount = 4
 
 
 class JohtoOnly(Choice):
