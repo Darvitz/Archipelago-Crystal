@@ -402,9 +402,23 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     # Goal
     if world.options.goal == Goal.option_red:
         world.multiworld.completion_condition[world.player] = lambda state: state.has("EVENT_BEAT_RED", world.player)
-    else:
+    elif world.options.goal == Goal.option_elite_four:
         world.multiworld.completion_condition[world.player] = lambda state: state.has(
             "EVENT_BEAT_ELITE_FOUR", world.player)
+    elif world.options.goal == Goal.option_gold_rush:
+        world.multiworld.complestion_condition[world.player] = lambda state: state.has(
+            "NUGGET", world.player, 50)
+    elif world.options.goal == Goal.option_tm_hm_hunt:
+        tm_items = get_items_by_tag(all_items, "TM")
+        hm_items = get_items_by_tag(all_items, "HM")
+        required_items = tm_items + hm_items
+
+        def tm_hm_complete(state):
+            return all(state.has(item, world.player) for item in rquired_items)
+
+        world.multiworld.completion_condition[world.player] = tm_hm_complete
+    else:
+        world.multiworld.completion_condition[world.player] = lambda state: state.has(" ", world.player)
 
     # Free Fly
     set_rule(get_entrance("Fly"), can_fly)
