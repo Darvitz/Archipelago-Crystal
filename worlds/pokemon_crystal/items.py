@@ -49,6 +49,10 @@ def item_const_name_to_id(const_name):
     if ids:
         return ids[0]
     return 0
+    
+
+def get_items_by_tag(all_items, tag: str):
+    return [name for name, data in all_items.items() if tag in data.get("tags", [])]
 
 
 def get_random_filler_item(random: Random):
