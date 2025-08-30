@@ -258,8 +258,17 @@ class PokemonCrystalClient(BizHawkClient):
 
         if ctx.slot_data["goal"] == Goal.option_elite_four:
             self.goal_flag = data.event_flags["EVENT_BEAT_ELITE_FOUR"]
-        else:
+        elif ctx.slot_data["goal"] == Goal.option_red:
             self.goal_flag = data.event_flags["EVENT_BEAT_RED"]
+        elif ctx.slot_data["goal"] == Goal.option_gold_rush:
+            self.goal_flag = None
+            self.required_item = "NUGGET"
+            self.required_count = 50
+        elif ctx.slot_data["goal"] == Goal.option_tm_hm_hunt:
+            self.goal_flag = None
+            self.required_items = get_items_by_tag(all_items, "TM") + get_items_by_tag(all_items, "HM")
+        else: 
+            self.goal_flag = data.event_flags[" "]
 
         try:
 
