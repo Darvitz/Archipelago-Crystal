@@ -292,6 +292,31 @@ class PokemonCrystalWorld(World):
                 ["RED_APRICORN", "GRN_APRICORN", "BLU_APRICORN", "YLW_APRICORN", "PNK_APRICORN", "BLK_APRICORN",
                  "WHT_APRICORN"])
 
+        if self.options.goal == Goal.option_tm_hm_hunt:
+            required_items = get_items_by_tag(all_items, "TM") + get_items_by_tag(all_items, "HM")
+
+            for item_name in required_items:
+                # Count how many times the item already appears in the pool
+                present_count = sum(1 for i in pool if i.name == item_name)
+
+                if present_count < 1:
+                    # Ensure at least one copy exists
+                    pool.append(self.create_item(item_name))
+
+        if self.options.goal == Goal.option_gold_rush:
+            required_count = 50
+            total_needed = required_count + 10  # add buffer
+
+            item_name = "NUGGET"
+
+            # Count how many Nuggets are already in the pool
+            present_count = sum(1 for i in pool if i.name == item_name)
+
+            # Top up to the required total
+            while present_count < total_needed:
+                pool.append(self.create_item(item_name))
+                present_count += 1
+
         trap_names, trap_weights = zip(
             ("Phone Trap", self.options.phone_trap_weight.value),
             ("Sleep Trap", self.options.sleep_trap_weight.value),
