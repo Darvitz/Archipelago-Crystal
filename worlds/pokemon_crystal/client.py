@@ -7,7 +7,7 @@ from BaseClasses import ItemClassification
 from NetUtils import ClientStatus
 from worlds._bizhawk.client import BizHawkClient
 from .data import data, APWORLD_VERSION, POKEDEX_OFFSET, POKEDEX_COUNT_OFFSET, FLY_UNLOCK_OFFSET
-from .items import item_const_name_to_id
+from .items import item_const_name_to_id, get_items_by_tag
 from .options import Goal, ProvideShopHints
 
 if TYPE_CHECKING:
