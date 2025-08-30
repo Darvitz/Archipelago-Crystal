@@ -11,6 +11,7 @@ from .options import Goal, JohtoOnly, Route32Condition, UndergroundsRequirePower
     Route44AccessRequirement, RandomizeBadges, RadioTowerRequirement, PokemonCrystalOptions, Shopsanity, FlyCheese
 from .pokemon import add_hm_compatibility
 from .utils import evolution_in_logic, evolution_location_name, get_fly_regions, get_mart_slot_location_name
+from .items import get_items_by_tag
 
 if TYPE_CHECKING:
     from . import PokemonCrystalWorld
@@ -406,7 +407,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         world.multiworld.completion_condition[world.player] = lambda state: state.has(
             "EVENT_BEAT_ELITE_FOUR", world.player)
     elif world.options.goal == Goal.option_gold_rush:
-        world.multiworld.complestion_condition[world.player] = lambda state: state.has(
+        world.multiworld.completion_condition[world.player] = lambda state: state.has(
             "NUGGET", world.player, 50)
     elif world.options.goal == Goal.option_tm_hm_hunt:
         tm_items = get_items_by_tag(all_items, "TM")
@@ -414,7 +415,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         required_items = tm_items + hm_items
 
         def tm_hm_complete(state):
-            return all(state.has(item, world.player) for item in rquired_items)
+            return all(state.has(item, world.player) for item in required_items)
 
         world.multiworld.completion_condition[world.player] = tm_hm_complete
     else:
