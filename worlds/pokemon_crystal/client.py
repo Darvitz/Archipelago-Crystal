@@ -271,12 +271,13 @@ class PokemonCrystalClient(BizHawkClient):
         if ctx.slot_data["goal"] == Goal.option_elite_four:
             self.goal_flag = data.event_flags["EVENT_BEAT_ELITE_FOUR"]
         elif ctx.slot_data["goal"] == Goal.option_all_rivals:
-            self.goal_flag = data.event_flags["EVENT_ITEM_FROM_RIVAL_1", "EVENT_ITEM_FROM_RIVAL_2", "EVENT_ITEM_FROM_RIVAL_3", 
-                                                "EVENT_ITEM_FROM_RIVAL_4", "EVENT_ITEM_FROM_RIVAL_5", "EVENT_ITEM_FROM_RIVAL_6"]
-        elif ctx.slot_data["goal"] == Goal.option_grandpa:
-            self.goal_flag = data.event_flags["EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA", "EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA",
-                                                "EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA", "EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA",
-                                                "EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA"]
+            self.goal_flag = data.event_flags["EVENT_RIVAL_AZALEA_TOWN", "EVENT_RIVAL_BURNED_TOWER", "EVENT_RIVAL_CHERRYGROVE_CITY", 
+                                                "EVENT_RIVAL_GOLDENROD_UNDERGROUND", "EVENT_RIVAL_VICTORY_ROAD", "EVENT_BEAT_RIVAL_IN_MT_MOON"]
+        elif ctx.slot_data["goal"] == Goal.option_all_gyms:
+            self.goal_flag = data.event_flags["EVENT_BEAT_FALKNER", "EVENT_BEAT_BLUE", "EVENT_BEAT_BUGSY", "EVENT_BEAT_WHITNEY", 
+                                                "EVENT_BEAT_PRYCE", "EVENT_BEAT_JASMINE", "EVENT_BEAT_BROCK", "EVENT_BEAT_SABRINA",
+                                                "EVENT_BEAT_BLAINE", "EVENT_BEAT_LTSURGE", "EVENT_BEAT_CLAIR", "EVENT_BEAT_ERIKA",
+                                                "EVENT_BEAT_MISTY", "EVENT_BEAT_CHUCK", "EVENT_BEAT_MORTY", "EVENT_BEAT_JANINE"]
         else:
             self.goal_flag = data.event_flags["EVENT_BEAT_RED"]
 
