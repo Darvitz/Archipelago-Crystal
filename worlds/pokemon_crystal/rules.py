@@ -119,6 +119,15 @@ class PokemonCrystalLogic:
             "blue": "EVENT_BEAT_BLUE"
         }
 
+        self.rival_events = {
+            "azalea": "EVENT_RIVAL_AZALEA_TOWN",
+            "cherrygrove": "EVENT_RIVAL_CHERRYGROVE_CITY",
+            "burned": "EVENT_RIVAL_BURNED_TOWER",
+            "underground": "EVENT_RIVAL_GOLDENROD_UNDERGROUND",
+            "victory": "EVENT_RIVAL_VICTORY_ROAD",
+            "moon": "EVENT_BEAT_RIVAL_IN_MT_MOON"
+        }
+
         if world.options.hm_badge_requirements != HMBadgeRequirements.option_no_badges:
             if "Cut" not in world.options.remove_badge_requirement:
                 if world.options.hm_badge_requirements == HMBadgeRequirements.option_vanilla:
@@ -218,6 +227,9 @@ class PokemonCrystalLogic:
 
     def has_beaten_n_gyms(self, state: CollectionState, n: int):
         return state.has_from_list_unique(self.gym_events.values(), self.player, n)
+
+    def has_beaten_rival_n_times(self, state: CollectionState, n: int):
+        return state.has_from_list_unique(self.rival_events.values(), self.player, n)
 
     def has_n_pokemon(self, state: CollectionState, n: int):
         return state.has_from_list_unique(self.all_pokemon, self.player, n)
@@ -414,6 +426,14 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     # Goal
     if world.options.goal == Goal.option_red:
         world.multiworld.completion_condition[world.player] = lambda state: state.has("EVENT_BEAT_RED", world.player)
+    elif world.options.goal == Goal.option_all_rivals and world.options.johto_only == JohtoOnly.option_off:
+        world.multiworld.completion_condition[world.player] = lambda state: self.has_beaten_rival_n_times(state, 6)
+    elif world.options.goal == Goal.option_all_rivals and not world.options.johto_only == JohtoOnly.option_off:
+        world.multiworld.completion_condition[world.player] = lambda state: self.has_beaten_rival_n_times(state, 5)
+    elif world.options.goal == Goal.option_all_gyms and world.options.johto_only == JohtoOnly.option_off:
+        world.multiworld.completion_condition[world.player] = lambda state: self.has_beaten_n_gyms(state, 16)
+    elif world.options.goal == Goal.option_all_gyms and not world.options.johto_only == JohtoOnly.option_off:
+        world.multiworld.completion_condition[world.player] = lambda state: self.has_beaten_n_gyms(state, 8)
     else:
         world.multiworld.completion_condition[world.player] = lambda state: state.has(
             "EVENT_BEAT_ELITE_FOUR", world.player)
