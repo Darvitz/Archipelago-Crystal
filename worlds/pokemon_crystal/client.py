@@ -8,7 +8,7 @@ from NetUtils import ClientStatus
 from worlds._bizhawk.client import BizHawkClient
 from .data import data, APWORLD_VERSION, POKEDEX_OFFSET, POKEDEX_COUNT_OFFSET, FLY_UNLOCK_OFFSET
 from .items import item_const_name_to_id
-from .options import Goal, ProvideShopHints
+from .options import Goal, ProvideShopHints, JohtoOnly
 
 if TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
@@ -271,13 +271,55 @@ class PokemonCrystalClient(BizHawkClient):
         if ctx.slot_data["goal"] == Goal.option_elite_four:
             self.goal_flag = data.event_flags["EVENT_BEAT_ELITE_FOUR"]
         elif ctx.slot_data["goal"] == Goal.option_all_rivals:
-            self.goal_flag = data.event_flags["EVENT_RIVAL_AZALEA_TOWN", "EVENT_RIVAL_BURNED_TOWER", "EVENT_RIVAL_CHERRYGROVE_CITY", 
-                                                "EVENT_RIVAL_GOLDENROD_UNDERGROUND", "EVENT_RIVAL_VICTORY_ROAD", "EVENT_BEAT_RIVAL_IN_MT_MOON"]
+            if ctx.slot_data.get("johto_only") == JohtoOnly.option_off:
+                self.goal_flags = [
+                    data.event_flags["EVENT_RIVAL_AZALEA_TOWN"],
+                    data.event_flags["EVENT_RIVAL_BURNED_TOWER"],
+                    data.event_flags["EVENT_RIVAL_CHERRYGROVE_CITY"],
+                    data.event_flags["EVENT_RIVAL_GOLDENROD_UNDERGROUND"],
+                    data.event_flags["EVENT_RIVAL_VICTORY_ROAD"],
+                    data.event_flags["EVENT_BEAT_RIVAL_IN_MT_MOON"],
+                ]
+            else:  # Johto-only
+                self.goal_flags = [
+                    data.event_flags["EVENT_RIVAL_AZALEA_TOWN"],
+                    data.event_flags["EVENT_RIVAL_BURNED_TOWER"],
+                    data.event_flags["EVENT_RIVAL_CHERRYGROVE_CITY"],
+                    data.event_flags["EVENT_RIVAL_GOLDENROD_UNDERGROUND"],
+                    data.event_flags["EVENT_RIVAL_VICTORY_ROAD"],
+                ]
+
         elif ctx.slot_data["goal"] == Goal.option_all_gyms:
-            self.goal_flag = data.event_flags["EVENT_BEAT_FALKNER", "EVENT_BEAT_BLUE", "EVENT_BEAT_BUGSY", "EVENT_BEAT_WHITNEY", 
-                                                "EVENT_BEAT_PRYCE", "EVENT_BEAT_JASMINE", "EVENT_BEAT_BROCK", "EVENT_BEAT_SABRINA",
-                                                "EVENT_BEAT_BLAINE", "EVENT_BEAT_LTSURGE", "EVENT_BEAT_CLAIR", "EVENT_BEAT_ERIKA",
-                                                "EVENT_BEAT_MISTY", "EVENT_BEAT_CHUCK", "EVENT_BEAT_MORTY", "EVENT_BEAT_JANINE"]
+            if ctx.slot_data.get("johto_only") == JohtoOnly.option_off:
+                self.goal_flags = [
+                    data.event_flags["EVENT_BEAT_FALKNER"],
+                    data.event_flags["EVENT_BEAT_BUGSY"],
+                    data.event_flags["EVENT_BEAT_WHITNEY"],
+                    data.event_flags["EVENT_BEAT_MORTY"],
+                    data.event_flags["EVENT_BEAT_CHUCK"],
+                    data.event_flags["EVENT_BEAT_JASMINE"],
+                    data.event_flags["EVENT_BEAT_PRYCE"],
+                    data.event_flags["EVENT_BEAT_CLAIR"],
+                    data.event_flags["EVENT_BEAT_BROCK"],
+                    data.event_flags["EVENT_BEAT_MISTY"],
+                    data.event_flags["EVENT_BEAT_LTSURGE"],
+                    data.event_flags["EVENT_BEAT_ERIKA"],
+                    data.event_flags["EVENT_BEAT_JANINE"],
+                    data.event_flags["EVENT_BEAT_SABRINA"],
+                    data.event_flags["EVENT_BEAT_BLAINE"],
+                    data.event_flags["EVENT_BEAT_BLUE"],
+                ]
+            else:  # Johto-only
+                self.goal_flags = [
+                    data.event_flags["EVENT_BEAT_FALKNER"],
+                    data.event_flags["EVENT_BEAT_BUGSY"],
+                    data.event_flags["EVENT_BEAT_WHITNEY"],
+                    data.event_flags["EVENT_BEAT_MORTY"],
+                    data.event_flags["EVENT_BEAT_CHUCK"],
+                    data.event_flags["EVENT_BEAT_JASMINE"],
+                    data.event_flags["EVENT_BEAT_PRYCE"],
+                    data.event_flags["EVENT_BEAT_CLAIR"],
+                ]
         else:
             self.goal_flag = data.event_flags["EVENT_BEAT_RED"]
 
