@@ -12,6 +12,7 @@ class Goal(Choice):
     Red: Defeat Red at Mt. Silver
     All Rivals: Win all Rival Battles
     All Gyms: Defeat all Gyms
+    Defeat Team Rocket: Reclaim the airwaves from Team Rocket by clearing the Radio Tower in Goldenrod City
     """
     display_name = "Goal"
     default = 0
@@ -19,8 +20,8 @@ class Goal(Choice):
     option_red = 1
     option_all_rivals = 2
     option_all_gyms = 3
-    #option_diploma = 4
-    #option_defeat_team_rocket = 5
+    option_defeat_team_rocket = 4
+    #option_diploma = 5
     #option_gramps = 6
 
 class JohtoOnly(Choice):
