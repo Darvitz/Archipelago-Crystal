@@ -320,6 +320,9 @@ class PokemonCrystalClient(BizHawkClient):
                     data.event_flags["EVENT_BEAT_PRYCE"],
                     data.event_flags["EVENT_BEAT_CLAIR"],
                 ]
+
+        elif ctx.slot_date["goal"] == Goal.option_defeat_team_rocket:
+            self.goal_flag = data.event_flags["EVENT_CLEARED_RADIO_TOWER"]
         else:
             self.goal_flag = data.event_flags["EVENT_BEAT_RED"]
 
