@@ -1135,7 +1135,7 @@ eusin_call:
       <player>?
 
 the_player_parable:
-  called: withheld
+  caller: withheld
   script:
     - |
       Picture this,
