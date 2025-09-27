@@ -166,7 +166,48 @@ def template_call_remote(location: Location, world):
     # split into lines with cont
     location_cmd = split_location(location.name.upper())
 
-    game_name = location.item.game.upper()
+    POKEMON_REGIONS = {
+        "POKEMON RED": "KANTO",
+        "POKEMON BLUE": "KANTO",
+        "POKEMON YELLOW": "KANTO",
+        "POKEMON GOLD": "JOHTO",
+        "POKEMON SILVER": "JOHTO",
+        "POKEMON CRYSTAL": "JOHTO",
+        "POKEMON RUBY": "HOENN",
+        "POKEMON SAPPHIRE": "HOENN",
+        "POKEMON EMERALD": "HOENN",
+        "POKEMON FIRE RED": "KANTO",
+        "POKEMON LEAF GREEN": "KANTO",
+        "POKEMON DIAMOND": "SINNOH",
+        "POKEMON PEARL": "SINNOH",
+        "POKEMON PLATINUM": "SINNOH",
+        "POKEMON HEART GOLD": "JOHTO",
+        "POKEMON SOUL SILVER": "JOHTO",
+        "POKEMON BLACK": "UNOVA",
+        "POKEMON WHITE": "UNOVA",
+        "POKEMON BLACK 2": "UNOVA",
+        "POKEMON WHITE 2": "UNOVA",
+        "POKEMON X": "KALOS",
+        "POKEMON Y": "KALOS",
+        "POKEMON OMEGA RUBY": "HOENN",
+        "POKEMON ALPHA SAPPHIRE": "HOENN",
+        "POKEMON SUN": "ALOLA",
+        "POKEMON MOON": "ALOLA",
+        "POKEMON ULTRA SUN": "ALOLA",
+        "POKEMON ULTRA MOON": "ALOLA",
+        "POKEMON SWORD": "GALAR",
+        "POKEMON SHIELD": "GALAR",
+        "POKEMON SCARLET": "PALDEA",
+        "POKEMON VIOLET": "PALDEA",
+    }
+
+    raw_game_name = location.item.game.upper()
+
+    if raw_game_name in POKEMON_REGIONS:
+        game_name = POKEMON_REGIONS[raw_game_name]
+    else:
+        game_name = raw_game_name
+        
     game_name = (game_name[:15] + "…") if len(game_name) > 16 else game_name
 
     player_name = world.multiworld.player_name[player].upper()
