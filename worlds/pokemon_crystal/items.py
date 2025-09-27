@@ -89,9 +89,9 @@ def get_random_filler_item(world: "PokemonCrystalWorld"):
                          ["GUARD_SPEC", "DIRE_HIT", "X_ATTACK", "X_DEFEND", "X_SPEED", "X_SPECIAL"] * 10,
                          ["HYPER_POTION", "FULL_RESTORE", "MAX_REPEL"] * 10,
                          ["REVIVE", "REVIVAL_HERB"] * 5 + ["MAX_REVIVE"] * 10,
-                         ["HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", "IRON"] * 10]
-                      #   ["TWISTEDSPON", "MYSTIC_WATER", "LEFTOVERS", "CHARCOAL", "BRIGHTPOWDER", "MAGNET",
-                       #  "SCOPE_LENS", "DRAGON_FANG", "NEVERMELTICE", "SMOKE_BALL"] * 2]
+                         ["HP_UP", "PP_UP", "PROTEIN", "CARBOS", "CALCIUM", "IRON"] * 10,
+                         ["TWISTEDSPOON", "MYSTIC_WATER", "LEFTOVERS", "CHARCOAL", "BRIGHTPOWDER", "MAGNET",
+                         "SCOPE_LENS", "DRAGON_FANG", "NEVERMELTICE", "SMOKE_BALL"] * 2]
     elif world.options.item_pool_fill == ItemPoolFill.option_vanilla:
         # weights are roughly based on vanilla occurrence
         weighted_pool = [["RARE_CANDY"] * 3, ["ETHER", "ELIXER", "MAX_ETHER", "MAX_ELIXER", "MYSTERYBERRY"] * 5,
