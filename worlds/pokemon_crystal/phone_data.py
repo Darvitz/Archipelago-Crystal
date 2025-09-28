@@ -172,7 +172,9 @@ def template_call_remote(location: Location, world):
         "POKEMON EMERALD": "HOENN",
         "POKEMON FIRERED AND LEAFGREEN": "KANTO",
         "POKEMON PLATINUM": "SINNOH",
-        "POKEMON BLACK AND WHITE": "UNOVA"
+        "POKEMON BLACK AND WHITE": "UNOVA",
+        "VOLTORB FLIP": "THE GAME CORNER",
+        "POKEMON PINBALL": "KANTO GAME CORNER"
     }
 
     raw_game_name = location.item.game.upper()
