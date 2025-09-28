@@ -1681,6 +1681,7 @@ class ExcludePostGoalLocations(DefaultOnToggle):
     """
     Excludes locations which require becoming champion when goal is becoming champion
     """
+    display_name = "Exclude Post Goal Locations"
 
 
 class PokemonCrystalDeathLink(DeathLink):
