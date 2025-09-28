@@ -9,8 +9,26 @@ from .maps import FLASH_MAP_GROUPS
 class EnhancedOptionSet(OptionSet):
 
     def __init__(self, value):
-        if isinstance(value, list) and "_All" in value:
-            value = [k for k in self.valid_keys if not k.startswith("_")]
+        if isinstance(value, list):
+            normalized = []
+            for v in value:
+                if isinstance(v, str):
+                    v_norm = v.strip().lower()
+                    if v_norm == "_all":
+                        normalized.append("_All")
+                    elif v_norm == "_random":
+                        normalized.append("_Random")
+                    else:
+                        normalized.append(v)
+                else:
+                    normalized.append(v)
+            value = normalized
+
+            if "_All" in value:
+                value = [k for k in self.valid_keys if not k.startswith("_")]
+            elif "_Random" in value:
+                import random
+                value = [random.choice([k for k in self.valid_keys if not k.startswith("_")])]
         super().__init__(value)
 
     def __init_subclass__(cls, **kwargs):
