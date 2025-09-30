@@ -299,6 +299,10 @@ class PokemonCrystalWorld(World):
         if Shopsanity.blue_card in self.options.shopsanity.value:
             add_items.extend(["BLUE_CARD_PT"] * 5)
 
+        if Shopsanity.game_corners not in self.options.shopsanity.value:
+            add_items.extend(
+                ["TM_14", "TM_15", "TM_25", "TM_32", "TM_38"])
+
         if Shopsanity.apricorns in self.options.shopsanity.value and not self.options.randomize_berry_trees:
             add_items.extend(
                 ["RED_APRICORN", "GRN_APRICORN", "BLU_APRICORN", "YLW_APRICORN", "PNK_APRICORN", "BLK_APRICORN",
