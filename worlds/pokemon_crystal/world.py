@@ -316,7 +316,7 @@ class PokemonCrystalWorld(World):
             add_items.extend(["AERO_TILE"] * 16)
             add_items.extend(["HO_OH_TILE"] * 16)
 
-        add_items.extend(["TM_9", "TWISTEDSPOON", "THICK_CLUB", "LUCKY_EGG", "BRIGHTPOWDER", "STICK", "LUCKY_PUNCH",
+        add_items.extend(["TM_9", "TWISTEDSPOON", "THICK_CLUB", "BRIGHTPOWDER", "STICK", "LUCKY_PUNCH",
                           "LIGHT_BALL", "METAL_POWDER"])
 
         trap_names, trap_weights = zip(
