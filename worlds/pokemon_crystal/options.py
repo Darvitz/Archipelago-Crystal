@@ -255,6 +255,13 @@ class ItemPoolFill(Choice):
     option_shuckle = 4
 
 
+class AddMissingUsefulItems(Toggle):
+    """
+    Adds useful items which are unobtainable to the pool, these replace filler
+    """
+    display_name = "Add Missing Useful Items"
+
+
 class Route32Condition(Choice):
     """
     Sets the condition required to pass between the north and south parts of Route 32
@@ -1985,6 +1992,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     randomize_hidden_items: RandomizeHiddenItems
     require_itemfinder: RequireItemfinder
     item_pool_fill: ItemPoolFill
+    add_missing_useful_items: AddMissingUsefulItems
     route_32_condition: Route32Condition
     dark_areas: DarkAreas
     victory_road_access: VictoryRoadAccess
@@ -2161,6 +2169,7 @@ OPTION_GROUPS = [
          RequireItemfinder,
          RemoteItems,
          ItemPoolFill,
+         AddMissingUsefulItems,
          ExcludePostGoalLocations,
          Grasssanity]
     ),

@@ -249,8 +249,6 @@ class PokemonCrystalWorld(World):
 
     def create_items(self) -> None:
 
-        if self.is_universal_tracker: return
-
         item_locations = [
             location
             for location in self.multiworld.get_locations(self.player)
@@ -299,12 +297,6 @@ class PokemonCrystalWorld(World):
         if Shopsanity.blue_card in self.options.shopsanity.value:
             add_items.extend(["BLUE_CARD_PT"] * 5)
 
-        if Shopsanity.game_corners not in self.options.shopsanity.value:
-            add_items.extend(["TM_14", "TM_15", "TM_25", "TM_32", "TM_38"])
-
-        if self.options.johto_only != JohtoOnly.option_off:
-            add_items.extend(["TM_3", "TM_6", "TM_7", "TM_17", "TM_19", "TM_29", "TM_42", "TM_47"])
-
         if Shopsanity.apricorns in self.options.shopsanity.value and not self.options.randomize_berry_trees:
             add_items.extend(
                 ["RED_APRICORN", "GRN_APRICORN", "BLU_APRICORN", "YLW_APRICORN", "PNK_APRICORN", "BLK_APRICORN",
@@ -316,8 +308,15 @@ class PokemonCrystalWorld(World):
             add_items.extend(["AERO_TILE"] * 16)
             add_items.extend(["HO_OH_TILE"] * 16)
 
-        add_items.extend(["TM_9", "TWISTEDSPOON", "THICK_CLUB", "BRIGHTPOWDER", "STICK", "LUCKY_PUNCH",
-                          "LIGHT_BALL", "METAL_POWDER"])
+        if self.options.add_missing_useful_items:
+            add_items.extend(["TM_9", "TWISTEDSPOON", "THICK_CLUB", "BRIGHTPOWDER", "STICK", "LUCKY_PUNCH",
+                              "LIGHT_BALL", "METAL_POWDER"])
+
+            if Shopsanity.game_corners not in self.options.shopsanity.value:
+                add_items.extend(["TM_14", "TM_15", "TM_25", "TM_32", "TM_38"])
+
+            if self.options.johto_only != JohtoOnly.option_off:
+                add_items.extend(["TM_3", "TM_6", "TM_7", "TM_17", "TM_19", "TM_29", "TM_42", "TM_47"])
 
         trap_names, trap_weights = zip(
             ("Phone Trap", self.options.phone_trap_weight.value),
@@ -569,6 +568,7 @@ class PokemonCrystalWorld(World):
             "randomize_bug_catching_contest",
             "randomize_phone_call_items",
             "progressive_rods",
+            "add_missing_useful_items",
         )
         slot_data["apworld_version"] = self.apworld_version
         slot_data["tea_north"] = 1 if "North" in self.options.saffron_gatehouse_tea.value else 0
