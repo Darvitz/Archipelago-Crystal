@@ -10,19 +10,7 @@ class EnhancedOptionSet(OptionSet):
 
     def __init__(self, value):
         if isinstance(value, list):
-            normalized = []
-            for v in value:
-                if isinstance(v, str):
-                    v_norm = v.strip().lower()
-                    if v_norm == "_all":
-                        normalized.append("_All")
-                    elif v_norm == "_random":
-                        normalized.append("_Random")
-                    else:
-                        normalized.append(v)
-                else:
-                    normalized.append(v)
-            value = normalized
+            value = [x.title() if x.title() in ('_All', '_Random') else x for x in value]
 
             if "_All" in value:
                 value = [k for k in self.valid_keys if not k.startswith("_")]
