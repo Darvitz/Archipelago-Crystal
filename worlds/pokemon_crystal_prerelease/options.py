@@ -1120,10 +1120,10 @@ class LearnsetTypeBias(NamedRange):
     """
     This option will have an effect only if Randomize Learnset option is enabled.
 
-    Percent chance of each move in a Pokemon's learnset to match its type.
-    Default value is vanilla (-1). This means there will be no bias.
-    The lowest possible type matching value is 0. There will be no STAB moves in a Pokemon's learnset
-    If set to 100 all moves that a Pokemon will learn by leveling up will match one of its types
+    Percent chance of each move in a Pokemon's learnset to match one of its types.
+    Default value is none (-1). This means there will be no bias.
+    The lowest possible type matching value is 0. This means there will be no STAB moves in a Pokemon's learnset.
+    If set to 100 all moves that a Pokemon will learn by leveling up will match one of its types.
     """
     display_name = "Move Learnset Type Bias"
     default = -1
@@ -1152,7 +1152,7 @@ class RandomizeMoves(OptionSet):
     """
     display_name = "Randomize Moves"
     default = {}
-    
+
     power_restricted = "Power Restricted"
     power_full = "Power Full"
     pp_restricted = "PP Restricted"
