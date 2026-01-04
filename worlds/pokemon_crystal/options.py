@@ -38,6 +38,7 @@ class Goal(Choice):
     Unown Hunt: Catch all 26 Unown forms that are attached to signs across the region(s) and show the completed Unown dex
      to the scientist in Ruins of Alph. In order to encounter the Unown you'll need to solve their corresponding tile puzzle.
      Each puzzle requires 16 pieces which must be found first.
+    Defeat Gyms: Prove yourself by defeating all the Gyms. (16 Total or 8 if Johto Only)
     """
     display_name = "Goal"
     default = 0
@@ -47,6 +48,7 @@ class Goal(Choice):
     option_rival = 3
     option_defeat_team_rocket = 4
     option_unown_hunt = 5
+    option_defeat_gyms = 6
 
 
 class JohtoOnly(Choice):
