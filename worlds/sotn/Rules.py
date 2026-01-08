@@ -411,6 +411,10 @@ def set_rules(world: MultiWorld, player: int, options: SOTNOptions) -> None:
         location = world.get_location(ABREV_TO_LOCATION["RNO0_Meal ticket_9"], player)
         add_rule(location, lambda state: state.has("Jewel of open", player))
 
+    if "RNO0_Heart refresh_11" in EXTENSIONS[extension]:
+        location = world.get_location(ABREV_TO_LOCATION["RNO0_Heart refresh_11"], player)
+        add_rule(location, lambda state: sotn_has_dracula(state, player))
+
     # RNO1 - Reverse Outer Wall
     loc_pool = []
     for loc in ["RNO1_Shotel_1", "RNO1_Hammer_2"]:
