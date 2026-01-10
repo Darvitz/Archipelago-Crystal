@@ -17,6 +17,7 @@ locations = {
             "entities": [0x3162, 0x3768],
             "as_relic": {"y": 0x0075},
             "vanilla_item": "Heart Vessel",
+            "tag": "Colosseum",
         },
     "Colosseum First Part - Bottom Left Room":
         {
@@ -4738,6 +4739,11 @@ for k, v in locations.items():
             ZONE_LOCATIONS[zone].append({k: v})
         else:
             ZONE_LOCATIONS[zone] = [{k: v}]
+
+    for tag in v["tag"]:
+        if tag not in LOCATION_GROUPS:
+            LOCATION_GROUPS[tag] = set()
+        LOCATION_GROUPS[tag].add(location)
 
     zone = ZONE_TO_NAME[v["zones"][0]]
     if "vanilla_item" in v:
