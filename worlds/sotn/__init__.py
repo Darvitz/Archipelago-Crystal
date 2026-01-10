@@ -6,8 +6,8 @@ from worlds.AutoWorld import WebWorld, World
 from BaseClasses import Tutorial, MultiWorld, ItemClassification, Item
 from Options import AssembleOptions
 
-from .Items import SotnItem, items, relic_table, item_id_to_name
-from .Locations import locations, SotnLocation
+from .Items import SotnItem, items, relic_table, item_id_to_name, ITEM_GROUPS
+from .Locations import locations, SotnLocation, LOCATION_GROUPS
 from .Regions import create_regions, create_regions_no_logic
 from .Rules import set_rules, set_no_logic_rules
 from .Options import SOTNOptions, sotn_option_groups
@@ -71,6 +71,8 @@ class SotnWorld(World):
 
     item_name_to_id: ClassVar[Dict[str, int]] = {name: data["id"] for name, data in items.items()}
     location_name_to_id: ClassVar[Dict[str, int]] = {name: data["ap_id"] for name, data in locations.items()}
+    item_name_groups = ITEM_GROUPS  # item_groups
+    location_name_groups = LOCATION_GROUPS  # location groups
 
     def __init__(self, world: MultiWorld, player: int):
         super().__init__(world, player)
