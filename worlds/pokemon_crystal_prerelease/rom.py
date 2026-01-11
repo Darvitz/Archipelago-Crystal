@@ -11,7 +11,7 @@ from Generate import roll_settings
 from settings import get_settings
 from worlds.Files import APProcedurePatch, APTokenMixin, APPatchExtension
 from .data import data, MiscOption, EncounterType, FishingRodType, TreeRarity, MapPalette, PaletteData
-from .item_data import POKEDEX_COUNT_OFFSET, POKEDEX_OFFSET, GRASS_OFFSET, FLAG_ITEM_OFFSET
+from .item_data import POKEDEX_COUNT_OFFSET, POKEDEX_OFFSET, GRASS_OFFSET
 from .items import item_const_name_to_id
 from .maps import FLASH_MAP_GROUPS
 from .mart_data import BETTER_MART_MARTS
@@ -994,32 +994,32 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
     for item in world.multiworld.precollected_items[world.player]:
         start_inventory[item.name] += 1
 
-    free_fly_write = [0, 0, 0, 0]
-
     for item, quantity in start_inventory.items():
         if quantity == 0:
             quantity = 1
         while quantity:
-            item_code = world.item_name_to_id[item]
-            if "Fly Unlock" in data.items[item_code].tags:
-                fly_id = item_code - FLAG_ITEM_OFFSET
-                free_fly_write[fly_id // 8] |= (1 << (fly_id % 8))
-            if item_code > 255:
-                quantity = 0
-                continue
+            item = world.create_item(item)
+            if item.flag_index is not None:
+                item_code = item_const_name_to_id("FLAG_ITEM")
+                flag_index = item.flag_index
+            else:
+                item_code = item.code
+                flag_index = 0
+
             if quantity > 99:
-                write_bytes([item_code, 99], start_inventory_address)
+                write_bytes([item_code, 99, flag_index], start_inventory_address)
                 quantity -= 99
             else:
-                write_bytes([item_code, quantity], start_inventory_address)
+                write_bytes([item_code, quantity, flag_index], start_inventory_address)
                 quantity = 0
-            start_inventory_address += 2
+
+            start_inventory_address += 3
 
     if world.options.free_fly_location.value in (FreeFlyLocation.option_free_fly,
                                                  FreeFlyLocation.option_free_fly_and_map_card):
+        free_fly_write = [0, 0, 0, 0]
         free_fly_write[world.free_fly_location.id // 8] |= (1 << (world.free_fly_location.id % 8))
-
-    write_bytes(free_fly_write, data.rom_addresses["AP_Setting_FreeFly"])
+        write_bytes(free_fly_write, data.rom_addresses["AP_Setting_FreeFly"])
 
     if world.options.free_fly_location.value in (FreeFlyLocation.option_free_fly_and_map_card,
                                                  FreeFlyLocation.option_map_card):
