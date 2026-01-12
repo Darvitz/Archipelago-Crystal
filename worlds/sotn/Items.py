@@ -35,7 +35,8 @@ items = {
             "id": 4,
             "type": "WEAPON1",
             "address": 0x09798e,
-            "classification": ItemClassification.useful
+            "classification": ItemClassification.useful,
+            "tag": "Weapon",
         },
     "Leather shield":
         {
@@ -2031,3 +2032,9 @@ armor = {k: v for k, v in items.items() if v["type"] == "ARMOR"}
 helmet = {k: v for k, v in items.items() if v["type"] == "HELMET"}
 cloak = {k: v for k, v in items.items() if v["type"] == "CLOAK"}
 accessory = {k: v for k, v in items.items() if v["type"] == "ACCESSORY"}
+
+ITEM_GROUPS: dict[str, set[str]] = {
+    "Power up": {
+        "Life Vessel"
+    }
+}
