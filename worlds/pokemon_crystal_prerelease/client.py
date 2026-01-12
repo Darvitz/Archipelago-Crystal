@@ -313,7 +313,7 @@ class PokemonCrystalClient(BizHawkClient):
 
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
 
-        if ctx.server is None or ctx.server.socket.closed or ctx.slot_data is None:
+        if ctx.server is None or not ctx.server.socket.open or ctx.server.socket.closed or ctx.slot_data is None:
             return
 
         pokedex_seen_key = f"pokemon_crystal_seen_pokemon_{ctx.team}_{ctx.slot}"
