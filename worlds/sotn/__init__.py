@@ -4,7 +4,10 @@ from typing import ClassVar, Dict, Tuple, Any, List
 import settings, typing, os
 from worlds.AutoWorld import WebWorld, World
 from BaseClasses import Tutorial, MultiWorld, ItemClassification, Item
-from Options import AssembleOptions
+from dataclasses import dataclass
+from collections.abc import Mapping
+
+import orjson
 
 from .Items import SotnItem, items, relic_table, item_id_to_name, ITEM_GROUPS
 from .Locations import locations, SotnLocation, LOCATION_GROUPS
@@ -53,6 +56,11 @@ class SotnWeb(WebWorld):
     tutorials = [setup]
     option_groups = sotn_option_groups
 
+@dataclass(frozen=True)
+class ManifestData:
+    game: str
+    world_version: str
+    sotn_version: str | None
 
 class SotnWorld(World):
     """
@@ -66,9 +74,8 @@ class SotnWorld(World):
     options_dataclass = SOTNOptions
     options: SOTNOptions
     data_version: ClassVar[int] = 1
-    required_client_version: Tuple[int, int, int] = (0, 4, 5)
     extra_add = ["Duplicator", "Crissaegrim", "Ring of varda", "Mablung sword", "Masamune", "Marsil", "Yasutsuna"]
-
+    manifest: ManifestData
     item_name_to_id: ClassVar[Dict[str, int]] = {name: data["id"] for name, data in items.items()}
     location_name_to_id: ClassVar[Dict[str, int]] = {name: data["ap_id"] for name, data in locations.items()}
     item_name_groups = ITEM_GROUPS  # item_groups
@@ -76,6 +83,18 @@ class SotnWorld(World):
 
     def __init__(self, world: MultiWorld, player: int):
         super().__init__(world, player)
+
+
+    def load_manifest() -> list[Any] | Mapping[str, Any]:
+        return orjson.loads(pkgutil.get_data(__name__, "archipelago.json").decode('utf-8-sig'))
+
+    manifest_json = load_manifest()
+
+    manifest = ManifestData(
+        game=manifest_json["game"],
+        world_version=manifest_json["world_version"],
+        sotn_version=manifest_json.get("sotn_version", manifest_json["world_version"])
+    )
 
     @classmethod
     def stage_assert_generate(cls, _multiworld: MultiWorld) -> None:
