@@ -35,8 +35,7 @@ items = {
             "id": 4,
             "type": "WEAPON1",
             "address": 0x09798e,
-            "classification": ItemClassification.useful,
-            "tag": "Weapon",
+            "classification": ItemClassification.useful
         },
     "Leather shield":
         {

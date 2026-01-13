@@ -17,7 +17,6 @@ locations = {
             "entities": [0x3162, 0x3768],
             "as_relic": {"y": 0x0075},
             "vanilla_item": "Heart Vessel",
-            "tag": "Colosseum",
         },
     "Colosseum First Part - Bottom Left Room":
         {
