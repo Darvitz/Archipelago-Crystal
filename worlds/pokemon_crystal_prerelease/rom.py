@@ -11,14 +11,15 @@ from Generate import roll_settings
 from settings import get_settings
 from worlds.Files import APProcedurePatch, APTokenMixin, APPatchExtension
 from .data import data, MiscOption, EncounterType, FishingRodType, TreeRarity, MapPalette, PaletteData
-from .item_data import POKEDEX_COUNT_OFFSET, POKEDEX_OFFSET, FLY_UNLOCK_OFFSET, GRASS_OFFSET
+from .item_data import POKEDEX_COUNT_OFFSET, POKEDEX_OFFSET, GRASS_OFFSET, FLAG_ITEM_OFFSET
 from .items import item_const_name_to_id
 from .maps import FLASH_MAP_GROUPS
 from .mart_data import BETTER_MART_MARTS
 from .options import UndergroundsRequirePower, RequireItemfinder, Goal, Route2Access, Route42Access, \
     BlackthornDarkCaveAccess, NationalParkAccess, Route3Access, EncounterSlotDistribution, KantoAccessRequirement, \
     FreeFlyLocation, HMBadgeRequirements, ShopsanityPrices, WildEncounterMethodsRequired, FlyCheese, Shopsanity, \
-    RequireFlash, FieldMoveMenuOrder, RedGyaradosAccess, TrainerPalette, PokemonCrystalOptions
+    RequireFlash, FieldMoveMenuOrder, RedGyaradosAccess, TrainerPalette, PokemonCrystalOptions, RandomizeBadges, \
+    RandomizePokegear
 from .pokemon_data import ALL_UNOWN
 from .utils import convert_to_ingame_text, write_appp_tokens, write_rom_bytes, replace_map_tiles
 
@@ -290,25 +291,26 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
 
         if not world.options.remote_items and location.item and location.item.player == world.player:
             item_id = location.item.code
-            if item_id >= FLY_UNLOCK_OFFSET:
-                write_item(item_const_name_to_id("FLY_UNLOCK"), location_addresses)
+            if location.item.flag_index is not None:
+                write_item(item_const_name_to_id("FLAG_ITEM"), location_addresses)
 
                 if location.address >= GRASS_OFFSET:
                     if hasattr(location, "original_grass_flag"):
                         grass_address = location.original_grass_flag
                     else:
                         grass_address = location.address
-                    event_id = 0xF000 + (grass_address - GRASS_OFFSET)
+                    address = (data.rom_addresses["AP_Setting_FlagItems_Table_Grass"]
+                               + (grass_address - GRASS_OFFSET))
                 elif location.address > POKEDEX_COUNT_OFFSET:
-                    event_id = 0xFE00 + (location.address - POKEDEX_COUNT_OFFSET) - 1
+                    address = (data.rom_addresses["AP_Setting_FlagItems_Table_Dexcountsanity"]
+                               + (location.address - POKEDEX_COUNT_OFFSET) - 1)
                 elif location.address > POKEDEX_OFFSET:
-                    event_id = 0xFF00 + (location.address - POKEDEX_OFFSET) - 1
+                    address = (data.rom_addresses["AP_Setting_FlagItems_Table_Dexsanity"]
+                               + (location.address - POKEDEX_OFFSET) - 1)
                 else:
-                    event_id = location.address
+                    address = data.rom_addresses["AP_Setting_FlagItems_Table_Events"] + location.address
 
-                fly_id = item_id - FLY_UNLOCK_OFFSET
-                write_bytes(event_id.to_bytes(2, "little"),
-                            data.rom_addresses["AP_Setting_FlyUnlockTable"] + (fly_id * 3))
+                write_bytes([location.item.flag_index], address)
             else:
                 write_item(item_id, location_addresses)
         else:
@@ -992,32 +994,32 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
     for item in world.multiworld.precollected_items[world.player]:
         start_inventory[item.name] += 1
 
-    free_fly_write = [0, 0, 0, 0]
-
     for item, quantity in start_inventory.items():
         if quantity == 0:
             quantity = 1
         while quantity:
-            item_code = world.item_name_to_id[item]
-            if item_code >= FLY_UNLOCK_OFFSET:
-                fly_id = item_code - FLY_UNLOCK_OFFSET
-                free_fly_write[fly_id // 8] |= (1 << (fly_id % 8))
-            if item_code > 255:
-                quantity = 0
-                continue
+            item = world.create_item(item)
+            if item.flag_index is not None:
+                item_code = item_const_name_to_id("FLAG_ITEM")
+                flag_index = item.flag_index
+            else:
+                item_code = item.code
+                flag_index = 0
+
             if quantity > 99:
-                write_bytes([item_code, 99], start_inventory_address)
+                write_bytes([item_code, 99, flag_index], start_inventory_address)
                 quantity -= 99
             else:
-                write_bytes([item_code, quantity], start_inventory_address)
+                write_bytes([item_code, quantity, flag_index], start_inventory_address)
                 quantity = 0
-            start_inventory_address += 2
+
+            start_inventory_address += 3
 
     if world.options.free_fly_location.value in (FreeFlyLocation.option_free_fly,
                                                  FreeFlyLocation.option_free_fly_and_map_card):
+        free_fly_write = [0, 0, 0, 0]
         free_fly_write[world.free_fly_location.id // 8] |= (1 << (world.free_fly_location.id % 8))
-
-    write_bytes(free_fly_write, data.rom_addresses["AP_Setting_FreeFly"])
+        write_bytes(free_fly_write, data.rom_addresses["AP_Setting_FreeFly"])
 
     if world.options.free_fly_location.value in (FreeFlyLocation.option_free_fly_and_map_card,
                                                  FreeFlyLocation.option_map_card):
@@ -1285,6 +1287,21 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
     if world.options.all_pokemon_seen:
         write_bytes([1], data.rom_addresses["AP_Setting_AllPokemonSeen_1"] + 1)
         write_bytes([1], data.rom_addresses["AP_Setting_AllPokemonSeen_2"] + 1)
+
+    if world.options.randomize_badges == RandomizeBadges.option_vanilla:
+
+        for location in [loc for loc in data.locations.values() if "Badge" in loc.tags]:
+            event = location.flag
+            item_flag = data.items[location.default_item].flag_index
+
+            write_bytes([item_flag], data.rom_addresses["AP_Setting_FlagItems_Table_Events"] + event)
+    if world.options.randomize_pokegear == RandomizePokegear.option_false:
+
+        for location in [loc for loc in data.locations.values() if "Pokegear" in loc.tags]:
+            event = location.flag
+            item_flag = data.items[location.default_item].flag_index
+
+            write_bytes([item_flag], data.rom_addresses["AP_Setting_FlagItems_Table_Events"] + event)
 
     write_customizable_options(world.options, write_bytes, must_write_option)
 
