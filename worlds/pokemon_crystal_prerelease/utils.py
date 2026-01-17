@@ -531,7 +531,7 @@ def convert_to_ingame_text(text: str, string_terminator: bool = False) -> list[i
     current_char = 0
     ingame_string = []
     while current_char < len(text):
-        if text[current_char] == "'" and current_char < len(text) and text[current_char + 1] in apostrophe_specials:
+        if text[current_char] == "'" and current_char < len(text) - 1 and text[current_char + 1] in apostrophe_specials:
             current_char += 1
             ingame_string.append(apostrophe_specials[text[current_char]])
         else:

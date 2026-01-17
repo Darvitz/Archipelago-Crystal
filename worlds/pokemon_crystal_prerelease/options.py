@@ -1736,6 +1736,17 @@ class ParalysisTrapWeight(Range):
     range_end = 100
 
 
+class TutorialTrapWeight(Range):
+    """
+       Trap that triggers the catch tutorial
+       Specifies the weight at which traps become Tutorial Traps
+       """
+    display_name = "Tutorial Trap Weight"
+    default = 0
+    range_start = 0
+    range_end = 100
+
+
 class TrapLink(Toggle):
     """
     Games that support traplink will all receive similar traps when a matching trap is sent from another traplink game
@@ -2166,6 +2177,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     burn_trap_weight: BurnTrapWeight
     freeze_trap_weight: FreezeTrapWeight
     paralysis_trap_weight: ParalysisTrapWeight
+    tutorial_trap_weight: TutorialTrapWeight
     remote_items: RemoteItems
     game_options: GameOptions
     field_move_menu_order: FieldMoveMenuOrder
@@ -2340,6 +2352,7 @@ OPTION_GROUPS = [
          BurnTrapWeight,
          FreezeTrapWeight,
          ParalysisTrapWeight,
+         TutorialTrapWeight,
          TrapLink]
     ),
     OptionGroup(
