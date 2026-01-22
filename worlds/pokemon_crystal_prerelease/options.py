@@ -27,6 +27,14 @@ class EnhancedOptionSet(OptionSet):
         cls._valid_keys = frozenset(set(cls.valid_keys) | {"_Random", "_All"})
 
 
+class PokemonSet(OptionSet):
+    def __init_subclass__(cls, **kwargs):
+        cls.__doc__ = cls.__doc__ + "You can use _Legendaries or _Non-Legendaries as shortcuts."
+
+    valid_keys = sorted(pokemon.friendly_name for pokemon in data.pokemon.values()) + ["_Legendaries",
+                                                                                       "_Non-Legendaries"]
+
+
 class Goal(Choice):
     """
     Elite Four: Defeat the Champion and enter the Hall of Fame
@@ -863,15 +871,13 @@ class RandomizeStarters(Choice):
     option_base_stat_mode = 4
 
 
-class StarterBlocklist(OptionSet):
+class StarterBlocklist(PokemonSet):
     """
     These Pokemon will not be chosen as starter Pokemon
     Does nothing if starter Pokemon are not randomized
-    You can use "_Legendaries" as a shortcut for all legendary Pokemon
     Blocklists are best effort, other constraints may cause them to be ignored
     """
     display_name = "Starter Blocklist"
-    valid_keys = sorted(pokemon.friendly_name for pokemon in data.pokemon.values()) + ["_Legendaries"]
 
 
 class StarterBST(NamedRange):
@@ -906,16 +912,14 @@ class RandomizeWilds(Choice):
     option_catch_em_all = 4
 
 
-class WildEncounterBlocklist(OptionSet):
+class WildEncounterBlocklist(PokemonSet):
     """
     These Pokemon will not appear in the wild
     Does nothing if wild Pokemon are not randomized
-    You can use "_Legendaries" as a shortcut for all legendary Pokemon
     Blocklists are best effort, other constraints may cause them to be ignored
     This setting does not affect the bug catching contest.
     """
     display_name = "Wild Encounter Blocklist"
-    valid_keys = sorted(pokemon.friendly_name for pokemon in data.pokemon.values()) + ["_Legendaries"]
 
 
 class EncounterGrouping(Choice):
@@ -989,15 +993,13 @@ class RandomizeStaticPokemon(Toggle):
     display_name = "Randomize Static Pokemon"
 
 
-class StaticBlocklist(OptionSet):
+class StaticBlocklist(PokemonSet):
     """
     These Pokemon will not appear as static overworld encounters, gift eggs or gift Pokemon
     Does nothing if static Pokemon are not randomized
-    You can use "_Legendaries" as a shortcut for all legendary Pokemon
     Blocklists are best effort, other constraints may cause them to be ignored
     """
     display_name = "Static Blocklist"
-    valid_keys = sorted(pokemon.friendly_name for pokemon in data.pokemon.values()) + ["_Legendaries"]
 
 
 class RandomizeTrades(Choice):
@@ -1023,15 +1025,13 @@ class RandomizeTrainerParties(Choice):
     option_completely_random = 2
 
 
-class TrainerPartyBlocklist(OptionSet):
+class TrainerPartyBlocklist(PokemonSet):
     """
     These Pokemon will not appear in enemy trainer parties
     Does nothing if trainer parties are not randomized
-    You can use "_Legendaries" as a shortcut for all legendary Pokemon
     Blocklists are best effort, other constraints may cause them to be ignored
     """
     display_name = "Trainer Party Blocklist"
-    valid_keys = sorted(pokemon.friendly_name for pokemon in data.pokemon.values()) + ["_Legendaries"]
 
 
 class LevelScaling(Choice):
@@ -1375,14 +1375,12 @@ class ConvergentEvolution(Choice):
     option_allow = 1
 
 
-class EvolutionBlocklist(OptionSet):
+class EvolutionBlocklist(PokemonSet):
     """
     No Pokemon will evolve into these Pokemon. Does nothing if evolution is not randomized.
-    You can use "_Legendaries" as a shortcut for all legendary Pokemon.
     Blocklists are best effort, other constraints may cause them to be ignored.
     """
     display_name = "Evolution Blocklist"
-    valid_keys = sorted(pokemon.friendly_name for pokemon in data.pokemon.values()) + ["_Legendaries"]
 
 
 class RandomizeBreeding(Choice):
@@ -1402,14 +1400,12 @@ class RandomizeBreeding(Choice):
     option_completely_random = 4
 
 
-class BreedingBlocklist(OptionSet):
+class BreedingBlocklist(PokemonSet):
     """
     No Pokemon will produce eggs containing these Pokemon.
-    You can use "_Legendaries" as a shortcut for all legendary Pokemon.
     Blocklists are best effort, other constraints may cause them to be ignored.
     """
     display_name = "Breeding Blocklist"
-    valid_keys = sorted(pokemon.friendly_name for pokemon in data.pokemon.values()) + ["_Legendaries"]
 
 
 class RandomizePalettes(Choice):

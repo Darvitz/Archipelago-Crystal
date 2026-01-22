@@ -15,6 +15,12 @@ from ..Files import APTokenTypes
 if TYPE_CHECKING:
     from .world import PokemonCrystalWorld
 
+LEGENDARY_POKEMON = {"Articuno", "Zapdos", "Moltres", "Mewtwo", "Mew", "Entei", "Raikou", "Suicune", "Celebi",
+                     "Lugia", "Ho-Oh"}
+
+NON_LEGENDARY_POKEMON = {pokemon.friendly_name for pokemon in data.pokemon.values() if
+                         pokemon.friendly_name not in LEGENDARY_POKEMON}
+
 
 def adjust_options(world: "PokemonCrystalWorld"):
     __adjust_meta_options(world)
@@ -354,8 +360,10 @@ def pokemon_convert_friendly_to_ids(world: "PokemonCrystalWorld", pokemon: Itera
     pokemon = set(pokemon)
     if "_Legendaries" in pokemon:
         pokemon.discard("_Legendaries")
-        pokemon.update({"Articuno", "Zapdos", "Moltres", "Mewtwo", "Mew", "Entei", "Raikou", "Suicune", "Celebi",
-                        "Lugia", "Ho-Oh"})
+        pokemon.update(LEGENDARY_POKEMON)
+    elif "_Non-Legendaries" in pokemon:
+        pokemon.discard("_Non-Legendaries")
+        pokemon.update(NON_LEGENDARY_POKEMON)
 
     pokemon_ids = {pokemon_id for pokemon_id, pokemon_data in world.generated_pokemon.items() if
                    pokemon_data.friendly_name in pokemon}
