@@ -1185,7 +1185,7 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
         for i in range(4):
             write_bytes([1], data.rom_addresses[f"AP_Setting_MetronomeOnly_{i + 1}"] + 1)
 
-    if world.options.randomize_fly_unlocks:
+    if world.options.randomize_fly_unlocks or world.options.remote_items:
         write_bytes([1], data.rom_addresses["AP_Setting_FlyUnlocksShuffled"] + 2)
 
     if world.options.enforce_wild_encounter_methods_logic:

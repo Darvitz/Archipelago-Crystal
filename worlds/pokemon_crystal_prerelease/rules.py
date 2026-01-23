@@ -511,7 +511,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
     # Fly Unlocks
 
-    if world.options.randomize_fly_unlocks:
+    if world.options.randomize_fly_unlocks or world.options.remote_items:
         for fly_region in get_fly_regions(world):
             set_rule(get_entrance(f"REGION_FLY -> {fly_region.exit_region}"),
                      lambda state, fly_unlock=f"Fly {fly_region.name}": state.has(fly_unlock, world.player))
@@ -1287,10 +1287,12 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     has_route_44_access = world.logic.has_route_44_access()
 
     set_rule(get_entrance("REGION_MAHOGANY_TOWN -> REGION_ROUTE_44"), has_route_44_access)
-    if not world.options.randomize_fly_unlocks and world.options.fly_cheese == FlyCheese.option_in_logic:
+    if (not (
+            world.options.randomize_fly_unlocks and world.options.remote_items)
+            and world.options.fly_cheese == FlyCheese.option_in_logic):
         set_rule(get_entrance("REGION_ROUTE_44 -> REGION_MAHOGANY_TOWN"),
                  lambda state: has_route_44_access(state) or can_fly(state))
-    elif (not world.options.randomize_fly_unlocks
+    elif (not (world.options.randomize_fly_unlocks and world.options.remote_items)
           and world.options.fly_cheese == FlyCheese.option_out_of_logic and world.is_universal_tracker):
         set_rule(get_entrance("REGION_ROUTE_44 -> REGION_MAHOGANY_TOWN"),
                  lambda state: has_route_44_access(state) or (
@@ -1667,9 +1669,11 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
             set_rule(get_entrance("REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE -> REGION_DIGLETTS_CAVE"),
                      can_flash_kanto)
 
-        if not world.options.randomize_fly_unlocks and world.options.fly_cheese == FlyCheese.option_in_logic:
+        if (not (
+                world.options.randomize_fly_unlocks and world.options.remote_items)
+                and world.options.fly_cheese == FlyCheese.option_in_logic):
             digletts_cave_rule = lambda state: has_expn(state) or can_fly(state)
-        elif (not world.options.randomize_fly_unlocks
+        elif (not (world.options.randomize_fly_unlocks and world.options.remote_items)
               and world.options.fly_cheese == FlyCheese.option_out_of_logic and world.is_universal_tracker):
             digletts_cave_rule = lambda state: has_expn(state) or (
                     state.has(PokemonCrystalGlitchedToken.TOKEN_NAME, world.player) and can_fly(state))
@@ -1997,6 +2001,8 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
 
 def verify_hm_accessibility(world: "PokemonCrystalWorld") -> None:
+    if world.options.field_moves_always_usable: return
+
     logic = world.logic
 
     def can_use_hm(state: CollectionState, hm: str) -> bool:

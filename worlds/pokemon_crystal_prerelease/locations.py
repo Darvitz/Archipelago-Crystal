@@ -262,7 +262,7 @@ def create_locations(world: "PokemonCrystalWorld", regions: dict[str, Region]) -
                     new_location.price = item.price
                     region.locations.append(new_location)
 
-    if world.options.randomize_fly_unlocks:
+    if world.options.randomize_fly_unlocks or world.options.remote_items:
 
         for fly_region in get_fly_regions(world):
             parent_region = regions[data.regions[fly_region.unlock_region].name]
