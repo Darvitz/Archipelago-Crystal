@@ -882,6 +882,10 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
             write_bytes([1], data.rom_addresses["AP_Misc_UnLuckyEgg"] + 1)
             write_bytes(convert_to_ingame_text("?"), data.rom_addresses["AP_Misc_LuckyEggDesc"] + 7)
 
+        if MiscOption.LostInFuchsia.value in world.generated_misc.selected:
+            replace_map_tiles(patch, "FuchsiaCity", 2, 15, [0x07])
+            replace_map_tiles(patch, "FuchsiaCity", 10, 15, [0x5C])
+
     if world.options.randomize_music:
         for map_name, map_music in world.generated_music.maps.items():
             music_address = data.rom_addresses["AP_Music_" + map_name]

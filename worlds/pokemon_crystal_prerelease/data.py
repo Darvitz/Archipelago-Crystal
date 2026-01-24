@@ -256,6 +256,7 @@ class MiscOption(IntEnum):
     VermilionGym = auto()
     UnLuckyEgg = auto()
     DontFuckleWithShuckle = auto()
+    LostInFuchsia = auto()
 
 
 @dataclass(frozen=True)
