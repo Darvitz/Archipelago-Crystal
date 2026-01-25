@@ -1847,6 +1847,29 @@ class TMBlocklist(OptionSet):
     display_name = "TM Blocklist"
     valid_keys = sorted(move.name.title() for id, move in data.moves.items() if id not in ("NO_MOVE", "STRUGGLE"))
 
+class ModerniseMovesGeneration(NamedRange):
+    """
+    Selects the generation to update moves to.
+    This affects power, PP and accuracy only and is applied before any randomization.
+    """
+    display_name = "Modernise Moves"
+    default = 0
+    range_start = 3
+    range_end = 9
+    special_range_names = {
+        "off": 0
+    }
+
+class ModerniseMovesType(Choice):
+    """
+    Selects whether generational buffs, nerfs or both are applied to moves.
+    Only has an effect if a generation is selected to modernise moves to.
+    """
+    display_name = "Modernise Moves Type"
+    default = 0
+    option_buffs_and_nerfs = 0
+    option_buffs_only = 1
+    option_nerfs_only = 2
 
 class FlyLocationBlocklist(OptionSet):
     """
@@ -2255,6 +2278,8 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     randomize_item_values: RandomizeItemValues
     minimum_item_value: MinimumItemValue
     maximum_item_value: MaximumItemValue
+    modernise_moves_generation: ModerniseMovesGeneration
+    modernise_moves_type: ModerniseMovesType
 
 
 OPTION_GROUPS = [
@@ -2372,7 +2397,9 @@ OPTION_GROUPS = [
          TMCompatibility,
          ReusableTMs,
          MoveBlocklist,
-         TMBlocklist]
+         TMBlocklist,
+         ModerniseMovesGeneration,
+         ModerniseMovesType]
     ),
     OptionGroup(
         "Trainers",

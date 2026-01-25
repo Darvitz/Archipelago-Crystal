@@ -3,7 +3,8 @@ from dataclasses import replace
 from typing import TYPE_CHECKING
 
 from .data import data as crystal_data, LearnsetData, TMHMData, MoveCategory, TypeMatchup
-from .options import RandomizeLearnsets, PhysicalSpecialSplit, RandomizeTypeChart, RandomizeMoves
+from .move_data import MODERN_MOVE_CHANGES
+from .options import RandomizeLearnsets, PhysicalSpecialSplit, RandomizeTypeChart, RandomizeMoves, ModerniseMovesType
 
 if TYPE_CHECKING:
     from .world import PokemonCrystalWorld
@@ -322,6 +323,27 @@ def randomize_type_chart(world: "PokemonCrystalWorld"):
         world.generated_types[type_id] = replace(type_data,
                                                  matchups={matchup_type: matchup_pool.pop() for matchup_type in
                                                            type_data.matchups.keys()})
+
+
+def modernise_moves(world: "PokemonCrystalWorld"):
+    if not world.options.modernise_moves_generation: return
+
+    generation = world.options.modernise_moves_generation.value
+    apply_buffs = world.options.modernise_moves_type != ModerniseMovesType.option_nerfs_only
+    apply_nerfs = world.options.modernise_moves_type != ModerniseMovesType.option_buffs_only
+
+    move_changes = sorted((change for change in MODERN_MOVE_CHANGES if change.generation >= generation
+                           and ((apply_buffs and change.is_buff) or (apply_nerfs and change.is_nerf))),
+                          key=lambda change: change.generation)
+
+    for change in move_changes:
+        move = world.generated_moves[change.move_name]
+
+        world.generated_moves[change.move_name] = (
+            replace(move,
+                    power=change.power if change.power is not None else move.power,
+                    accuracy=change.accuracy if change.accuracy is not None else move.accuracy,
+                    pp=change.pp if change.pp is not None else move.pp))
 
 
 def moves_convert_friendly_to_ids(world: "PokemonCrystalWorld", moves: Iterable[str]) -> set[str]:

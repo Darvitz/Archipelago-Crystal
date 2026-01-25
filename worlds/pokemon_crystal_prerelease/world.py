@@ -22,7 +22,7 @@ from .level_scaling import perform_level_scaling
 from .locations import create_locations, PokemonCrystalLocation, create_location_label_to_id_map, LOCATION_GROUPS
 from .misc import randomize_mischief, get_misc_spoiler_log
 from .moves import randomize_tms, randomize_move_values, randomize_move_types, cap_hm_move_power, randomize_type_chart, \
-    LOGIC_MOVES
+    LOGIC_MOVES, modernise_moves
 from .music import randomize_music
 from .options import PokemonCrystalOptions, JohtoOnly, RandomizeBadges, HMBadgeRequirements, FreeFlyLocation, \
     EliteFourRequirement, MtSilverRequirement, RedRequirement, \
@@ -421,6 +421,7 @@ class PokemonCrystalWorld(World):
         if self.is_universal_tracker: return
 
         verify_hm_accessibility(self)
+        modernise_moves(self)
         randomize_move_values(self)
         cap_hm_move_power(self)
         randomize_music(self)
