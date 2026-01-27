@@ -1191,6 +1191,14 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
     set_rule(get_entrance("REGION_ROUTE_42:CENTER -> REGION_ROUTE_42:CENTERFRUIT"), can_cut)
 
+    west_to_headbutt = get_entrance("REGION_ROUTE_42:WEST -> REGION_ROUTE_42:HEADBUTT")
+    set_rule(west_to_headbutt, lambda state: state.can_reach_region("REGION_ROUTE_42:CENTERFRUIT", world.player))
+    world.multiworld.register_indirect_condition(world.get_region("REGION_ROUTE_42:CENTERFRUIT"), west_to_headbutt)
+
+    center_to_headbutt = get_entrance("REGION_ROUTE_42:CENTERFRUIT -> REGION_ROUTE_42:HEADBUTT")
+    set_rule(center_to_headbutt, lambda state: state.can_reach_region("REGION_ROUTE_42:WEST", world.player))
+    world.multiworld.register_indirect_condition(world.get_region("REGION_ROUTE_42:WEST"), center_to_headbutt)
+
     set_rule(get_location("EVENT_SAW_SUICUNE_ON_ROUTE_42"),
              lambda state: state.has("EVENT_RELEASED_THE_BEASTS", world.player))
 
