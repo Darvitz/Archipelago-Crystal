@@ -801,6 +801,19 @@ class RandomizeBerryTrees(Toggle):
     display_name = "Randomize Berry Trees"
 
 
+class RandomizePokedex(Choice):
+    """
+    Sets whether the Pokedex is shuffled into the pool
+
+    The Pokedex is required for Dexsanity, Dexcountsanity, trades and Pokemon request locations.
+    """
+    display_name = "Randomize Pokedex"
+    default = 0
+    option_vanilla = 0
+    option_start_with = 1
+    option_randomize = 2
+
+
 class RandomizePokemonRequests(Choice):
     """
     Shuffles the items given by Bill's Grandpa after showing him specific Pokemon into the pool, as well as the reward
@@ -2199,6 +2212,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     shopsanity_x_items: ShopsanityXItems
     randomize_pokegear: RandomizePokegear
     randomize_berry_trees: RandomizeBerryTrees
+    randomize_pokedex: RandomizePokedex
     randomize_pokemon_requests: RandomizePokemonRequests
     randomize_phone_call_items: RandomizePhoneCalls
     randomize_fly_unlocks: RandomizeFlyUnlocks
@@ -2337,6 +2351,7 @@ OPTION_GROUPS = [
          RandomizePokegear,
          RandomizeHiddenItems,
          RandomizeBerryTrees,
+         RandomizePokedex,
          RandomizePokemonRequests,
          RandomizeFlyUnlocks,
          RandomizeBugCatchingContest,

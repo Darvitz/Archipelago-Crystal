@@ -27,7 +27,7 @@ from .music import randomize_music
 from .options import PokemonCrystalOptions, JohtoOnly, RandomizeBadges, HMBadgeRequirements, FreeFlyLocation, \
     EliteFourRequirement, MtSilverRequirement, RedRequirement, \
     Route44AccessRequirement, RadioTowerRequirement, RequireItemfinder, \
-    OPTION_GROUPS, RandomizeFlyUnlocks, Shopsanity, Grasssanity, Goal
+    OPTION_GROUPS, RandomizeFlyUnlocks, Shopsanity, Grasssanity, Goal, RandomizePokedex
 from .phone import generate_phone_traps
 from .phone_data import PhoneScript
 from .pokemon import randomize_pokemon_data, randomize_starters, fill_wild_encounter_locations, fill_trade_locations, \
@@ -376,6 +376,13 @@ class PokemonCrystalWorld(World):
             self.itempool = [
                 item if item.name not in ("Old Rod", "Good Rod", "Super Rod") else self.create_item_by_const_name(
                     "PROG_ROD") for item in self.itempool]
+
+        if self.options.randomize_pokedex == RandomizePokedex.option_start_with:
+            self.itempool = [
+                item if item.name != "Pokedex" else self.create_item_by_const_name(get_random_filler_item(self)) for
+                item in self.itempool]
+
+            self.push_precollected(self.create_item_by_const_name("POKEDEX"))
 
         x_items_to_remove = place_x_items(self)
         if x_items_to_remove:
