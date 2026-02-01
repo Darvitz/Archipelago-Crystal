@@ -3,7 +3,7 @@ from dataclasses import replace
 from typing import TYPE_CHECKING
 
 from BaseClasses import ItemClassification
-from .data import data as crystal_data, LogicalAccess, EncounterType, MiscOption
+from .data import data as crystal_data, LogicalAccess, EncounterType, MiscOption, EncounterMon
 from .evolution import get_random_pokemon_evolution
 from .items import get_random_filler_item
 from .moves import get_tmhm_compatibility, randomize_learnset, moves_convert_friendly_to_ids
@@ -282,7 +282,7 @@ def fill_wild_encounter_locations(world: "PokemonCrystalWorld"):
 
                 if not source_region:  continue
                 target_region = None
-                target_encounters = None
+                target_encounters: list[EncounterMon] = []
                 while not target_encounters:
                     if not early_wild_regions: break
                     target_region = early_wild_regions.pop()

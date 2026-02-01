@@ -475,6 +475,17 @@ class SSAquaAccess(Choice):
     option_lighthouse_and_ticket = 1
 
 
+class Route30Access(Choice):
+    """
+    Sets the requirement to end the Pokemon battle on Route 30
+    - Mr. Pokemon: Visit Mr. Pokemon in his house
+    - Mystery Egg: Return the Mystery Egg to Professor Elm
+    """
+    display_name = "Route 30 Access"
+    default = 0
+    option_mr_pokemon = 0
+    option_mystery_egg = 1
+
 class Route30Battle(Choice):
     """
     Sets which directions the battle on Route 30 blocks
@@ -2185,6 +2196,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     mount_mortar_access: MountMortarAccess
     route_12_access: Route12Access
     ss_aqua_access: SSAquaAccess
+    route_30_access: Route30Access
     route_30_battle: Route30Battle
     johto_trainersanity: JohtoTrainersanity
     kanto_trainersanity: KantoTrainersanity

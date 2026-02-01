@@ -10,7 +10,7 @@ from .options import Goal, JohtoOnly, Route32Condition, UndergroundsRequirePower
     BlackthornDarkCaveAccess, NationalParkAccess, KantoAccessRequirement, Route3Access, BreedingMethodsRequired, \
     MtSilverRequirement, FreeFlyLocation, HMBadgeRequirements, EliteFourRequirement, RedRequirement, \
     Route44AccessRequirement, RandomizeBadges, RadioTowerRequirement, PokemonCrystalOptions, Shopsanity, FlyCheese, \
-    RequireFlash, RequireItemfinder, Route42Access, RedGyaradosAccess, RandomizePhoneCalls
+    RequireFlash, RequireItemfinder, Route42Access, RedGyaradosAccess, RandomizePhoneCalls, Route30Access
 from .pokemon import add_hm_compatibility, get_chamber_event_for_unown
 from .pokemon_data import ALL_UNOWN
 from .utils import get_fly_regions, get_mart_slot_location_name
@@ -524,10 +524,10 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                      lambda state, fly_unlock=f"Fly {fly_region.name}": state.has(fly_unlock, world.player))
 
     # New Bark Town
-    # set_rule(get_entrance("REGION_NEW_BARK_TOWN -> REGION_ROUTE_29"),
-    #          lambda state: state.has("EVENT_GOT_A_POKEMON_FROM_ELM", world.player))
 
     set_rule(get_entrance("REGION_NEW_BARK_TOWN -> REGION_ROUTE_27:WEST"), can_surf)
+
+    set_rule(get_location("EVENT_GAVE_MYSTERY_EGG_TO_ELM"), lambda state: state.has("Mystery Egg", world.player))
 
     set_rule(get_location("Elm's Lab - Everstone from Elm"),
              lambda state: state.has("EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE", world.player))
@@ -544,16 +544,23 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     set_rule(get_location("Route 29 - Pink Bow from Tuscany"), lambda state: world.logic.has_badge(state, "zephyr"))
 
     # Route 30
-
-    route_30_rule = lambda state: state.has("EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON", world.player) or can_cut(
-        state)
+    if world.options.route_30_access == Route30Access.option_mr_pokemon:
+        route_30_rule = lambda state: (state.has("EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON", world.player)
+                                       or can_cut(state))
+    else:
+        route_30_rule = lambda state: state.has("EVENT_GAVE_MYSTERY_EGG_TO_ELM", world.player) or can_cut(state)
 
     if world.options.route_30_battle:
         set_rule(get_entrance("REGION_ROUTE_30:NORTHWEST -> REGION_ROUTE_30"), route_30_rule)
 
     set_rule(get_entrance("REGION_ROUTE_30 -> REGION_ROUTE_30:NORTHWEST"), route_30_rule)
+    if world.options.route_30_access == Route30Access.option_mr_pokemon:
+        route_30_unblock = "EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON"
+    else:
+        route_30_unblock = "EVENT_GAVE_MYSTERY_EGG_TO_ELM"
+
     set_rule(get_entrance("REGION_ROUTE_30 -> REGION_ROUTE_30:POST_MYSTERY_EGG"),
-             lambda state: state.has("EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON", world.player))
+             lambda state: state.has(route_30_unblock, world.player))
 
     set_rule(get_location("Route 30 - Exp Share from Mr Pokemon"), lambda state: state.has("Red Scale", world.player))
 

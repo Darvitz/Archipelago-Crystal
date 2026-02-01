@@ -23,7 +23,7 @@ from .options import UndergroundsRequirePower, RequireItemfinder, Goal, Route2Ac
     BlackthornDarkCaveAccess, NationalParkAccess, Route3Access, EncounterSlotDistribution, KantoAccessRequirement, \
     FreeFlyLocation, HMBadgeRequirements, ShopsanityPrices, WildEncounterMethodsRequired, FlyCheese, Shopsanity, \
     RequireFlash, FieldMoveMenuOrder, RedGyaradosAccess, TrainerPalette, PokemonCrystalOptions, RandomizeBadges, \
-    RandomizePokegear, BreedingMethodsRequired, RandomizePokedex
+    RandomizePokegear, BreedingMethodsRequired, RandomizePokedex, Route30Access
 from .pokemon_data import ALL_UNOWN
 from .utils import convert_to_ingame_text, rom_offset_to_address, write_appp_tokens, write_rom_bytes, replace_map_tiles
 
@@ -1356,6 +1356,11 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
             write_bytes([0], data.rom_addresses["AP_Setting_BreedingAllowed"] + 1)
         elif world.options.breeding_methods_required == BreedingMethodsRequired.option_with_ditto:
             write_bytes([0], data.rom_addresses["AP_Setting_BreedingAllowed"] + 1)
+
+    write_bytes([world.options.route_30_access == Route30Access.option_mr_pokemon],
+                data.rom_addresses["AP_Setting_Route30Access_MrPokemon"] + 1)
+    write_bytes([world.options.route_30_access == Route30Access.option_mystery_egg],
+                data.rom_addresses["AP_Setting_Route30Access_ElmsLab"] + 1)
 
     write_customizable_options(world.options, write_bytes, must_write_option, world_data)
 
