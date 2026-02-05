@@ -27,7 +27,7 @@ from .music import randomize_music
 from .options import PokemonCrystalOptions, JohtoOnly, RandomizeBadges, HMBadgeRequirements, FreeFlyLocation, \
     EliteFourRequirement, MtSilverRequirement, RedRequirement, \
     Route44AccessRequirement, RadioTowerRequirement, RequireItemfinder, \
-    OPTION_GROUPS, RandomizeFlyUnlocks, Shopsanity, Grasssanity, Goal, RandomizePokedex
+    OPTION_GROUPS, RandomizeFlyUnlocks, Shopsanity, Grasssanity, Goal, RandomizePokedex, BreedingMethodsRequired
 from .phone import generate_phone_traps
 from .phone_data import PhoneScript
 from .pokemon import randomize_pokemon_data, randomize_starters, fill_wild_encounter_locations, fill_trade_locations, \
@@ -675,6 +675,23 @@ class PokemonCrystalWorld(World):
         slot_data["evomethod_level"] = 1 if "Level" in self.options.evolution_methods_required else 0
         slot_data["evomethod_tyrogue"] = 1 if "Level Tyrogue" in self.options.evolution_methods_required else 0
         slot_data["evomethod_useitem"] = 1 if "Use Item" in self.options.evolution_methods_required else 0
+
+        if self.options.breeding_methods_required == BreedingMethodsRequired.option_any:
+            if self.options.enforce_breeding_methods_logic:
+                breeding_method = 0
+            else:
+                breeding_method = 1
+        elif self.options.breeding_methods_required == BreedingMethodsRequired.option_with_ditto:
+            if self.options.enforce_breeding_methods_logic:
+                breeding_method = 2
+            else:
+                breeding_method = 3
+        else:
+            if self.options.enforce_breeding_methods_logic:
+                breeding_method = 4
+            else:
+                breeding_method = 5
+        slot_data["breeding_method"] = breeding_method
 
         if not self.options.randomize_hidden_items:
             if not self.options.require_itemfinder:
