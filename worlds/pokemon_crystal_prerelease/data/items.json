@@ -1767,6 +1767,16 @@
       "Traps - Move"
     ]
   },
+  "WHIRLPOOL_TRAP": {
+    "name": "Whirlpool Trap",
+    "classification": "TRAP",
+    "price": 0,
+    "tags": [
+      "Trap",
+      "Traps",
+      "Traps - Move"
+    ]
+  },
   "BLUE_CARD_PT": {
     "name": "Blue Card Point",
     "classification": "PROGRESSION",

@@ -1847,6 +1847,19 @@ class TeleportTrapWeight(Range):
     range_end = 100
 
 
+class WhirlpoolTrapWeight(Range):
+    """
+    Trap that triggers Whirlpool
+
+    In the overworld, this spins you around for a short duration
+    In battle, you are trapped in a Whirlpool for 99 turns
+    """
+    display_name = "Whirlpool Trap Weight"
+    default = 0
+    range_start = 0
+    range_end = 100
+
+
 class TrapLink(Toggle):
     """
     Games that support traplink will all receive similar traps when a matching trap is sent from another traplink game
@@ -2337,6 +2350,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     paralysis_trap_weight: ParalysisTrapWeight
     tutorial_trap_weight: TutorialTrapWeight
     teleport_trap_weight: TeleportTrapWeight
+    whirlpool_trap_weight: WhirlpoolTrapWeight
     remote_items: RemoteItems
     game_options: GameOptions
     field_move_menu_order: FieldMoveMenuOrder
@@ -2527,6 +2541,7 @@ OPTION_GROUPS = [
          ParalysisTrapWeight,
          TutorialTrapWeight,
          TeleportTrapWeight,
+         WhirlpoolTrapWeight,
          TrapLink]
     ),
     OptionGroup(
