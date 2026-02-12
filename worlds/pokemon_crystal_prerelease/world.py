@@ -434,7 +434,7 @@ class PokemonCrystalWorld(World):
 
         self.auth = self.random.randbytes(16)
 
-        if self.options.remote_items:
+        if self.options.remote_items and not self.options.randomize_fly_unlocks:
             fly_locations = [loc for loc in self.get_locations() if "fly" in loc.tags]
             for loc in fly_locations:
                 loc.place_locked_item(self.create_item_by_code(loc.default_item_code))
