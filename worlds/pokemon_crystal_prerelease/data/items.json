@@ -1017,7 +1017,7 @@
       "KeyItem"
     ]
   },
-  "PROG_ROD": {
+  "PROGRESSIVE_ROD": {
     "name": "Progressive Rod",
     "classification": "PROGRESSION",
     "price": 0,
@@ -1804,6 +1804,16 @@
       "Trap",
       "Traps",
       "Traps - Move"
+    ]
+  },
+  "METRONOME_TRAP": {
+    "name": "Metronome Trap",
+    "classification": "TRAP",
+    "price": 0,
+    "tags": [
+      "Trap",
+      "Traps",
+      "Trap - Move"
     ]
   },
   "BLUE_CARD_PT": {

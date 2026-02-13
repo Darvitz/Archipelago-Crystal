@@ -287,7 +287,7 @@ class PokemonCrystalWorld(World):
                 self.create_item_by_code(loc.default_item_code) for loc in item_locations if "Badge" in loc.tags)
             item_locations = [location for location in item_locations if "Badge" not in location.tags]
 
-        if self.options.remote_items:
+        if self.options.remote_items and not self.options.randomize_fly_unlocks:
             item_locations = [location for location in item_locations if "fly" not in location.tags]
         elif (self.options.randomize_fly_unlocks == RandomizeFlyUnlocks.option_exclude_silver_cave
               and self.options.johto_only.value != JohtoOnly.option_on):
@@ -319,7 +319,7 @@ class PokemonCrystalWorld(World):
 
         if self.options.johto_only:
             if self.options.progressive_rods:
-                add_items.append("PROG_ROD")
+                add_items.append("PROGRESSIVE_ROD")
             else:
                 add_items.append("SUPER_ROD")
 
@@ -375,7 +375,7 @@ class PokemonCrystalWorld(World):
         if self.options.progressive_rods:
             self.itempool = [
                 item if item.name not in ("Old Rod", "Good Rod", "Super Rod") else self.create_item_by_const_name(
-                    "PROG_ROD") for item in self.itempool]
+                    "PROGRESSIVE_ROD") for item in self.itempool]
 
         if self.options.randomize_pokedex == RandomizePokedex.option_start_with:
             self.itempool = [
