@@ -2082,10 +2082,7 @@ def verify_hm_accessibility(world: "PokemonCrystalWorld") -> None:
             if not can_use_hm(state, hm_to_verify):
 
                 if last_hm == hm_to_verify:
-                    if not can_use_hm(state, hm_to_verify):
-                        unverified_hms.append(hms_to_verify.pop(0))
-                    else:
-                        hms_to_verify.pop(0)
+                    unverified_hms.append(hms_to_verify.pop(0))
                     continue
 
                 last_hm = hm_to_verify
