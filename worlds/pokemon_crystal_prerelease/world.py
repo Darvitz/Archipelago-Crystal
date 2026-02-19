@@ -605,6 +605,7 @@ class PokemonCrystalWorld(World):
             "route_30_access",
             "south_kanto_access",
             "south_kanto_condition",
+            "remote_items",
         )
         slot_data["apworld_version"] = self.apworld_version
         slot_data["tea_north"] = 1 if "North" in self.options.saffron_gatehouse_tea.value else 0
