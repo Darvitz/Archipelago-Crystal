@@ -1073,12 +1073,14 @@ class BoostTrainerPokemonLevels(Choice):
     Boost levels of every trainer's Pokemon. There are 2 different boost modes:
     Percentage Boost: Increases every trainer Pokemon's level by the boost percentage.
     Set Min Level: Trainer Pokemon will be the specified level or higher.
+    Set Max Level: Trainer Pokemon will be the specified level or lower.
     """
     display_name = "Boost Trainer Pokemon Levels"
     default = 0
     option_vanilla = 0
     option_percentage_boost = 1
     option_set_min_level = 2
+    option_set_max_level = 3
 
 
 class TrainerLevelBoostValue(Range):
@@ -1090,9 +1092,9 @@ class TrainerLevelBoostValue(Range):
     Set Min Level: Trainer Pokemon will never be lower than this level
     """
     display_name = "Trainer Level Boost Value"
-    default = 1
+    default = 100
     range_start = 1
-    range_end = 100
+    range_end = 200
 
 
 class RandomizeLearnsets(Choice):
