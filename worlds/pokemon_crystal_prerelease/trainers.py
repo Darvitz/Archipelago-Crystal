@@ -112,10 +112,14 @@ def boost_trainer_pokemon(world: "PokemonCrystalWorld"):
         for trainer_mon in trainer_data.pokemon:
             new_level = trainer_mon.level
             if world.options.boost_trainers == BoostTrainerPokemonLevels.option_percentage_boost:
-                new_level = int(trainer_mon.level * (1 + world.options.trainer_level_boost / 100))
+                new_level = int(trainer_mon.level * (world.options.trainer_level_boost / 100))
                 if new_level > 100: new_level = 100
+                elif new_level < 1: new_level = 1
             elif world.options.boost_trainers == BoostTrainerPokemonLevels.option_set_min_level:
                 if new_level < world.options.trainer_level_boost:
+                    new_level = world.options.trainer_level_boost
+            elif world.options.boost_trainers == BoostTrainerPokemonLevels.option_set_max_level:
+                if new_level > world.options.trainer_level_boost:
                     new_level = world.options.trainer_level_boost
             new_party.append(replace(trainer_mon, level=new_level))
         world.generated_trainers[trainer_name] = replace(
