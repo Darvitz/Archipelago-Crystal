@@ -190,8 +190,8 @@ def randomize_wild_pokemon(world: "PokemonCrystalWorld"):
                     wild.pokemon == "UNOWN" for wild in wilds): 
                 wilds = [replace(wild, pokemon="RATTATA") for wild in wilds]
                 world.generated_wild[region_key] = wilds
-            elif not world.is_universal_tracker and world.options.goal.value == Goal.option_true_scholar and
-                    any(wild.pokemon == "UNOWN" for wild in wilds):
+            elif not world.is_universal_tracker and world.options.goal.value == Goal.option_true_scholar and any(
+                    wild.pokemon == "UNOWN" for wild in wilds):
                 wilds = [replace(wild, pokemon="RATTATA") for wild in wilds]
                 world.generated_wild[region_key] = wilds
 
