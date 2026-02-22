@@ -1780,7 +1780,7 @@ class TrapWeights(OptionCounter):
     - Tutorial Traps trigger the catch tutorial
     - Teleport Traps use the move Teleport (both in battle and out of battle)
     - Whirlpool Traps spin you around in the overworld or trap you in Whirlpool for 99 turns in battle
-    - Ice Traps make the overworld slippery for 20-40 steps
+    - Ice Traps make the overworld slippery for 40-60 steps
     - Explosion Traps faint a party member in the overworld or use Explosion in battle
     - Sandstorm Traps slow you in the overworld for 20-40 steps or activate Sandstorm for 99 turns in battle
     - Metronome Traps trigger a random other move trap in the overworld or use Metronome in battle
