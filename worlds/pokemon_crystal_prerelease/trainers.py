@@ -118,6 +118,7 @@ def boost_trainer_pokemon(world: "PokemonCrystalWorld"):
             elif world.options.boost_trainers == BoostTrainerPokemonLevels.option_set_min_level:
                 if new_level < world.options.trainer_level_boost:
                     new_level = world.options.trainer_level_boost
+                if new_level > 100: new_level = 100
             elif world.options.boost_trainers == BoostTrainerPokemonLevels.option_set_max_level:
                 if new_level > world.options.trainer_level_boost:
                     new_level = world.options.trainer_level_boost
