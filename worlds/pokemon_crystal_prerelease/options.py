@@ -23,6 +23,7 @@ class EnhancedOptionSet(OptionSet):
                 value = [k for k in self.valid_keys if not k.startswith("_")]
 
             if "_Random" in value:
+                value.remove("_Random")
                 value += [k for k in sorted(self.valid_keys) if not k.startswith("_") and random.getrandbits(1)]
 
         super().__init__(set(value))
