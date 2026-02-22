@@ -2389,6 +2389,7 @@ OPTION_GROUPS = [
     OptionGroup(
         "HMs",
         [HMCompatibility,
+         HMCompatibilityOverride,
          HMBadgeRequirements,
          RemoveBadgeRequirement,
          RequireFlash,
