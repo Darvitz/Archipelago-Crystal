@@ -2350,6 +2350,7 @@ OPTION_GROUPS = [
          Route12Access,
          MagnetTrainAccess,
          SSAquaAccess,
+         Route30Access,
          Route30Battle,
          SouthKantoAccess,
          SouthKantoCondition]
