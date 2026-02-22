@@ -202,6 +202,33 @@ TRAP_NAME_TO_ID = {item_name: item_id for item_id, item_name in TRAP_ID_TO_NAME.
 SIGN_ID_TO_NAME = {sign.id: sign.name for sign in data.unown_signs.values()}
 NUM_UNOWN = len(ALL_UNOWN)
 
+SYNC_EVENT_FLAGS = [
+    "EVENT_BEAT_FALKNER",
+    "EVENT_BEAT_BUGSY",
+    "EVENT_BEAT_WHITNEY",
+    "EVENT_BEAT_MORTY",
+    "EVENT_BEAT_JASMINE",
+    "EVENT_BEAT_CHUCK",
+    "EVENT_BEAT_PRYCE",
+    "EVENT_BEAT_CLAIR",
+    "EVENT_BEAT_BROCK",
+    "EVENT_BEAT_MISTY",
+    "EVENT_BEAT_LTSURGE",
+    "EVENT_BEAT_ERIKA",
+    "EVENT_BEAT_JANINE",
+    "EVENT_BEAT_SABRINA",
+    "EVENT_BEAT_BLAINE",
+    "EVENT_BEAT_BLUE",
+
+    "EVENT_CLEARED_SLOWPOKE_WELL",
+    "EVENT_HERDED_FARFETCHD",
+    "EVENT_RESTORED_POWER_TO_KANTO",
+    "EVENT_JASMINE_RETURNED_TO_GYM",
+    "EVENT_CLEARED_ROCKET_HIDEOUT",
+    "EVENT_CLEARED_RADIO_TOWER",
+]
+
+SYNC_EVENTS_FLAG_MAP = {data.event_flags[event]: event for event in SYNC_EVENT_FLAGS}
 
 class PokemonCrystalClient(BizHawkClient):
     game = data.manifest.game
@@ -230,6 +257,8 @@ class PokemonCrystalClient(BizHawkClient):
     local_seen_signs: set[str]
     local_unown_dex: list[int]
     remote_unown_dex: list[int]
+    local_sync_events: dict[str, bool]
+    remote_sync_events: int
     has_tracker_slot: bool
 
     def initialize_client(self) -> None:
@@ -255,6 +284,8 @@ class PokemonCrystalClient(BizHawkClient):
         self.local_seen_signs = set()
         self.local_unown_dex = list()
         self.remote_unown_dex = list()
+        self.local_sync_events = dict()
+        self.remote_sync_events = 0
         self.has_tracker_slot = False
 
     async def validate_rom(self, ctx: "BizHawkClientContext") -> bool:
@@ -464,6 +495,7 @@ class PokemonCrystalClient(BizHawkClient):
                 pokedex_caught_key] if pokedex_caught_key in ctx.stored_data else None
             local_caught_pokemon = set(remote_caught_pokemon) if remote_caught_pokemon else set()
             local_hints = {flag_name: False for flag_name in HINT_FLAGS.keys()}
+            local_sync_events = {flag_name: False for flag_name in SYNC_EVENT_FLAGS}
             local_trades_completed = set()
 
             has_pokedex = status_flags_bytes[0] & 1
@@ -500,6 +532,9 @@ class PokemonCrystalClient(BizHawkClient):
 
                         if location_id in HINT_FLAG_MAP:
                             local_hints[HINT_FLAG_MAP[location_id]] = True
+
+                        if location_id in SYNC_EVENT_FLAGS:
+                            local_sync_events[SYNC_EVENTS_FLAG_MAP[location_id]] = True
 
             for byte_i, byte in enumerate(pokedex_caught_bytes):
                 for i in range(8):
@@ -705,6 +740,21 @@ class PokemonCrystalClient(BizHawkClient):
                 }])
                 self.local_found_key_items = local_found_key_items
 
+            if local_sync_events != self.local_sync_events and ctx.items_handling & 0b010:
+                event_bitfield = 0
+                for i, flag_name in enumerate(SYNC_EVENT_FLAGS):
+                    if local_sync_events[flag_name]:
+                        event_bitfield |= 1 << i
+
+                await ctx.send_msgs([{
+                    "cmd": "Set",
+                    "key": f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}",
+                    "default": 0,
+                    "want_reply": True,
+                    "operations": [{"operation": "or", "value": event_bitfield}],
+                }])
+                self.local_sync_events = local_sync_events
+
             provide_shop_hints = ctx.slot_data["provide_shop_hints"]
             if provide_shop_hints != ProvideShopHints.option_off:
                 hints_locations = []
@@ -817,6 +867,29 @@ class PokemonCrystalClient(BizHawkClient):
                      (data.ram_addresses["wArchipelagoPokedexCaught"], pokedex_caught_bytes, "WRAM"),
                      (data.ram_addresses["wUnownDex"], unown_dex_bytes, "WRAM")]
                 )
+
+                synced_event_bytes = bytearray(flag_bytes)
+
+                for index, event in enumerate(SYNC_EVENT_FLAGS):
+                    if self.remote_sync_events | (1 << index):
+                        event_id = data.event_flags[event]
+                        event_mask = (1 << (event_id % 8))
+                        event_byte = event_id // 8
+
+                        synced_event_bytes[event_byte] &= event_mask
+
+                sync_event_writes = []
+                sync_event_guards = []
+
+                base_event_address = data.ram_addresses["wEventFlags"]
+
+                for byte_index, byte in enumerate(synced_event_bytes):
+                    if flag_bytes[byte_index] != byte:
+                        sync_event_writes.append((base_event_address + byte_index, byte, "WRAM"))
+                        sync_event_guards.append((base_event_address + byte_index, flag_bytes[byte_index], "WRAM"))
+
+                if sync_event_writes:
+                    await bizhawk.guarded_write(ctx.bizhawk_ctx, sync_event_writes, sync_event_guards)
 
         except bizhawk.RequestFailedError:
             # Exit handler and return to main loop to reconnect
@@ -932,6 +1005,9 @@ class PokemonCrystalClient(BizHawkClient):
                 if f"pokemon_crystal_unowns_{ctx.team}_{ctx.slot}" in args["keys"]:
                     remote_unown_dex = args["keys"][f"pokemon_crystal_unowns_{ctx.team}_{ctx.slot}"]
                     self.remote_unown_dex = remote_unown_dex if remote_unown_dex else list()
+                if f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}" in args["keys"]:
+                    remote_sync_events = args["keys"][f"pokeon_crystal_sync_events_{ctx.team}_{ctx.slot}"]
+                    self.remote_sync_events = remote_sync_events if remote_sync_events else 0
 
         elif cmd == "SetReply":
             if args["key"] == f"pokemon_crystal_caught_pokemon_{ctx.team}_{ctx.slot}":
@@ -940,3 +1016,5 @@ class PokemonCrystalClient(BizHawkClient):
                 self.remote_seen_pokemon = set(args["value"])
             elif args["key"] == f"pokemon_crystal_unowns_{ctx.team}_{ctx.slot}":
                 self.remote_unown_dex = args["value"]
+            elif args["key"] == f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}":
+                self.remote_sync_events = args["value"]
