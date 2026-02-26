@@ -770,7 +770,7 @@ class PokemonCrystalWorld(World):
     def write_spoiler(self, spoiler_handle) -> None:
         spoiler_handle.write(f"\nPokemon Crystal ({self.player_name}):\n")
 
-        if self.options.goal == Goal.option_diploma:
+        if self.options.goal == Goal.option_diploma or self.options.goal == Goal.option_true_scholar:
             available_pokemon = len(self.logic.available_pokemon)
             spoiler_handle.write(f"Diploma requirement: {available_pokemon} species\n")
 
