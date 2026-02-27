@@ -5390,7 +5390,9 @@
       "ITEM_FROM_PICNICKER_HOPE",
       "ITEM_FROM_PICNICKER_SHARON"
     ],
-    "events": [],
+    "events": [
+      "EVENT_BEAT_PICNICKER_SHARON"
+    ],
     "signs": [
       "Route4MtMoonSquare"
     ]
