@@ -1620,3 +1620,26 @@ l_plus_ratio:
       learn logic +
       pay ROCKET toll +
       infinite fake EXP
+      
+question:
+  caller: withheld
+  script:
+    - |
+      Hey <player>,
+      i have a question
+    - |
+      ...       
+    - |
+      ...      
+    - |
+      ...     
+    - |
+      ...    
+    - |
+      ...   
+    - |
+      ...  
+    - |
+      ... 
+    - |
+      ...
