@@ -9,7 +9,7 @@ from .options import FreeFlyLocation, Route32Condition, JohtoOnly, RandomizeBadg
     MtSilverRequirement, HMBadgeRequirements, RedGyaradosAccess, EarlyFly, RadioTowerRequirement, \
     BreedingMethodsRequired, Shopsanity, KantoTrainersanity, JohtoTrainersanity, RandomizePokemonRequests, \
     RandomizeTypes, RandomizeEvolution, RandomizeTrades, TradesRequired, MagnetTrainAccess, \
-    Dexsanity, EncounterGrouping
+    Dexsanity, EncounterGrouping, SouthKantoAccess
 from ..Files import APTokenTypes
 
 if TYPE_CHECKING:
@@ -403,8 +403,10 @@ def _starting_town_valid(world: "PokemonCrystalWorld", starting_town: StartingTo
                 or "Union Cave" not in world.options.dark_areas or immediate_dexsanity)
 
     if starting_town.name in ("Pallet Town", "Viridian City", "Pewter City"):
+        west_kanto_escapable = (world.options.randomize_pokegear or not world.options.lock_kanto_gyms
+                                or world.options.south_kanto_access != SouthKantoAccess.option_route_21)
         return (immediate_hiddens or world.options.route_3_access == Route3Access.option_vanilla or kanto_shopsanity
-                or world.options.randomize_berry_trees or immediate_dexsanity)
+                or world.options.randomize_berry_trees or immediate_dexsanity) and west_kanto_escapable
 
     if starting_town.name == "Rock Tunnel":
         return full_kanto_trainersanity or immediate_dexsanity or ("Rock Tunnel" not in world.options.dark_areas.value)
