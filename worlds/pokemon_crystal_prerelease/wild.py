@@ -60,8 +60,6 @@ def randomize_wild_pokemon(world: "PokemonCrystalWorld"):
             logical_pokemon_pool.extend(world.random.choice(evo_line) for evo_line in evo_lines)
         elif world.options.randomize_wilds.option_catch_em_all:
             logical_pokemon_pool.extend(world.generated_pokemon.keys())
-            if world.options.goal == Goal.option_unown_hunt:
-                logical_pokemon_pool = [poke for poke in logical_pokemon_pool if poke != "UNOWN"]
 
         if world.options.randomize_pokemon_requests == RandomizePokemonRequests.option_items:
             logical_pokemon_pool.extend(world.generated_request_pokemon)
@@ -83,6 +81,10 @@ def randomize_wild_pokemon(world: "PokemonCrystalWorld"):
 
         if world.options.randomize_pokemon_requests == RandomizePokemonRequests.option_items:
             logical_pokemon_pool.extend(world.generated_request_pokemon)
+
+        if world.options.goal == Goal.option_unown_hunt:
+            logical_pokemon_pool = [pokemon_id for pokemon_id in logical_pokemon_pool if
+                                    pokemon_id != "UNOWN"]
 
         if len(logical_pokemon_pool) > required_logical_pokemon:
             world.random.shuffle(logical_pokemon_pool)
