@@ -929,6 +929,9 @@ class PokemonCrystalClient(BizHawkClient):
             elif ctx.last_death_link > self.last_death_link and not death_link_status[0][0]:
                 await bizhawk.write(ctx.bizhawk_ctx, [(data.ram_addresses["wArchipelagoDeathLink"], [2], "WRAM")])
                 self.last_death_link = ctx.last_death_link
+            elif ctx.last_death_link > self.last_death_link and death_link_status[0][0] == 2:
+                # drop deathlinks if we have one queued
+                self.last_death_link = ctx.last_death_link
 
         elif "DeathLink" in ctx.tags:
             await ctx.update_death_link(False)
