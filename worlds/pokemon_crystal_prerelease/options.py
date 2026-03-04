@@ -1079,6 +1079,7 @@ class BoostTrainerPokemonLevels(Choice):
     default = 0
     option_vanilla = 0
     option_percentage_boost = 1
+    option_percentage_decrease = 4
     option_set_min_level = 2
     option_set_max_level = 3
 
@@ -1093,9 +1094,9 @@ class TrainerLevelBoostValue(Range):
     Set Max Level: Trainer Pokemon will never be higher than this level
     """
     display_name = "Trainer Level Boost Value"
-    default = 100
+    default = 1
     range_start = 1
-    range_end = 200
+    range_end = 100
 
 
 class RandomizeLearnsets(Choice):
