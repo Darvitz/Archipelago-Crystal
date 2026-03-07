@@ -1255,7 +1255,7 @@ class RandomizeMoves(OptionSet):
     accuracy = "Accuracy"
     type = "Type"
 
-    valid_keys = [power_restricted, pp_restricted, pp_full, accuracy, type]
+    valid_keys = [power_restricted, power_full, pp_restricted, pp_full, accuracy, type]
 
 
 class RandomizeTypeChart(Choice):
