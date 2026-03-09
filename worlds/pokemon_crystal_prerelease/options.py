@@ -8,6 +8,7 @@ from schema import Schema, And, Optional, Use, Or
 from BaseClasses import PlandoOptions, ItemClassification
 from Options import Toggle, Choice, DefaultOnToggle, Range, PerGameCommonOptions, NamedRange, OptionSet, \
     StartInventoryPool, OptionDict, Visibility, DeathLink, OptionGroup, OptionList, FreeText, OptionError, OptionCounter
+from Utils import is_iterable_except_str
 from .data import data, MapPalette, MiscOption
 from .maps import FLASH_MAP_GROUPS
 from .pokemon_data import LEGENDARY_POKEMON, NON_LEGENDARY_POKEMON
@@ -1257,6 +1258,35 @@ class RandomizeMoves(OptionSet):
 
     valid_keys = [power_restricted, power_full, pp_restricted, pp_full, accuracy, type]
 
+    @classmethod
+    def from_any(cls, data: Any):
+        key_map = {k.replace(" ", "_").lower(): k for k in cls.valid_keys}
+        if isinstance(data, dict):
+            return cls([key_map.get(k, k) for k, v in data.items() if v])
+        if is_iterable_except_str(data):
+            return cls([key_map.get(item, item) for item in data])
+        return cls.from_text(str(data))
+
+    @classmethod
+    def from_text(cls, text: str):
+        if text in ("vanilla", "0"):
+            return cls([])
+        elif text in ("restricted", "1"):
+            return cls(["Power Restricted", "PP Restricted"])
+        elif text in ("full_exclude_accuracy", "2"):
+            return cls(["Power Full", "PP Full"])
+        elif text in ("full", "3"):
+            return cls(["Power Full", "PP Full", "Accuracy"])
+        return super().from_text(text)
+
+
+class RandomizeMoveTypes(Toggle):
+    """
+    Randomizes each move's Type
+    """
+    display_name = "Randomize Move Types"
+    visibility = Visibility.none
+
 
 class RandomizeTypeChart(Choice):
     """
@@ -2299,6 +2329,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     metronome_only: MetronomeOnly
     learnset_type_bias: LearnsetTypeBias
     randomize_moves: RandomizeMoves
+    randomize_move_types: RandomizeMoveTypes
     randomize_type_chart: RandomizeTypeChart
     physical_special_split: PhysicalSpecialSplit
     randomize_tm_moves: RandomizeTMMoves
