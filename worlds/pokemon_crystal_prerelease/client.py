@@ -140,6 +140,13 @@ TRACKER_ROCKET_TRAP_EVENTS = [
 
 ROCKET_TRAP_EVENT_FLAG_MAP = {data.event_flags[event]: event for event in TRACKER_ROCKET_TRAP_EVENTS}
 
+TRACKER_SEEN_MART_FLAGS = [
+    "EVENT_SEEN_MART_BLUE_CARD",
+    "EVENT_SEEN_MART_KURTS_BALLS",
+]
+
+SEEN_MART_FLAG_MAP = {data.event_flags[event]: event for event in TRACKER_SEEN_MART_FLAGS}
+
 TRACKER_KEY_ITEM_FLAGS = [
     "EVENT_ZEPHYR_BADGE_FROM_FALKNER",
     "EVENT_HIVE_BADGE_FROM_BUGSY",
@@ -241,6 +248,7 @@ class PokemonCrystalClient(BizHawkClient):
     local_set_events_2: dict[str, bool]
     local_set_static_events: dict[str, bool]
     local_set_rocket_trap_events: dict[str, bool]
+    local_set_seen_mart_events: dict[str, bool]
     local_found_key_items: dict[str, bool]
     local_seen_pokemon: set[int]
     local_caught_pokemon: set[int]
@@ -269,6 +277,7 @@ class PokemonCrystalClient(BizHawkClient):
         self.local_set_events_2 = dict()
         self.local_set_static_events = dict()
         self.local_set_rocket_trap_events = dict()
+        self.local_set_seen_mart_events = dict()
         self.local_found_key_items = dict()
         self.local_seen_pokemon = set()
         self.local_caught_pokemon = set()
@@ -495,6 +504,7 @@ class PokemonCrystalClient(BizHawkClient):
             local_set_events_2 = {flag_name: False for flag_name in TRACKER_EVENT_FLAGS_2}
             local_set_static_events = {flag_name: False for flag_name in TRACKER_STATIC_EVENT_FLAGS}
             local_set_rocket_trap_events = {flag_name: False for flag_name in TRACKER_ROCKET_TRAP_EVENTS}
+            local_set_seen_mart_events = {flag_name: False for flag_name in TRACKER_SEEN_MART_FLAGS}
             local_found_key_items = {flag_name: False for flag_name in TRACKER_KEY_ITEM_FLAGS}
             remote_seen_pokemon = ctx.stored_data[pokedex_seen_key] if pokedex_seen_key in ctx.stored_data else None
             local_seen_pokemon = set(remote_seen_pokemon) if remote_seen_pokemon else set()
@@ -533,6 +543,9 @@ class PokemonCrystalClient(BizHawkClient):
 
                         if location_id in ROCKET_TRAP_EVENT_FLAG_MAP:
                             local_set_rocket_trap_events[ROCKET_TRAP_EVENT_FLAG_MAP[location_id]] = True
+
+                        if location_id in SEEN_MART_FLAG_MAP:
+                            local_set_seen_mart_events[SEEN_MART_FLAG_MAP[location_id]] = True
 
                         if location_id in KEY_ITEM_FLAG_MAP:
                             local_found_key_items[KEY_ITEM_FLAG_MAP[location_id]] = True
@@ -731,6 +744,21 @@ class PokemonCrystalClient(BizHawkClient):
                     "operations": [{"operation": "or", "value": event_bitfield}],
                 }])
                 self.local_set_rocket_trap_events = local_set_rocket_trap_events
+
+            if local_set_seen_mart_events != self.local_set_seen_mart_events and ctx.slot is not None:
+                event_bitfield = 0
+                for i, flag_name in enumerate(TRACKER_SEEN_MART_FLAGS):
+                    if local_set_seen_mart_events[flag_name]:
+                        event_bitfield |= 1 << i
+
+                await ctx.send_msgs([{
+                    "cmd": "Set",
+                    "key": f"pokemon_crystal_seen_marts_{ctx.team}_{ctx.slot}",
+                    "default": 0,
+                    "want_reply": False,
+                    "operations": [{"operation": "or", "value": event_bitfield}],
+                }])
+                self.local_set_seen_mart_events = local_set_seen_mart_events
 
             if local_found_key_items != self.local_found_key_items:
                 key_bitfield = 0
