@@ -1472,6 +1472,12 @@ class RandomizeBaseStats(Choice):
     option_keep_bst = 1
     option_completely_random = 2
 
+class BaseStatsMultiplesOfFive(Toggle):
+    """
+    When randomizing base stats, aim to make the new base stats multiples of 5.
+    When using Keep BST, any remainder will be added to one stat.
+    """
+    display_name = "Make Random Base Stats Multiples of 5"
 
 class RandomizeTypes(Choice):
     """
@@ -2353,6 +2359,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     hm_power_cap: HMPowerCap
     field_moves_always_usable: FieldMovesAlwaysUsable
     randomize_base_stats: RandomizeBaseStats
+    base_stats_multiples_of_five: BaseStatsMultiplesOfFive
     randomize_types: RandomizeTypes
     shared_primary_type: SharedPrimaryType
     randomize_evolution: RandomizeEvolution
@@ -2506,6 +2513,7 @@ OPTION_GROUPS = [
          RandomizeStaticPokemon,
          StaticBlocklist,
          RandomizeBaseStats,
+         BaseStatsMultiplesOfFive,
          RandomizeTypes,
          SharedPrimaryType,
          RandomizeEvolution,
