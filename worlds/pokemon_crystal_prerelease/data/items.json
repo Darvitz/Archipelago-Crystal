@@ -1017,6 +1017,15 @@
       "KeyItem"
     ]
   },
+  "EGG_TICKET": {
+    "name": "Egg Ticket",
+    "classification": "FILLER",
+    "price": 0,
+    "tags": [
+      "Key Items",
+      "KeyItem"
+    ]
+  },
   "PROGRESSIVE_ROD": {
     "name": "Progressive Rod",
     "classification": "PROGRESSION",
