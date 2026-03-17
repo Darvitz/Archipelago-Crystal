@@ -1139,6 +1139,46 @@ class LevelScaling(Choice):
     option_spheres_and_distance = 2
 
 
+class LevelCurve(Choice):
+    """
+    When level scaling is enabled, use a custom level curve instead of deriving levels from vanilla data.
+    The curve distributes levels from min to max across all scaled levels (trainers, statics, and wild encounters).
+
+    - Vanilla: Use vanilla levels as the basis for scaling (original behaviour).
+    - Linear: Levels increase at a constant rate from min to max.
+    - Sqrt: Levels rise quickly early then taper off. Harder early game, compressed late game.
+    - Quadratic: Levels stay low early then rise steeply. Easier early game, rapid late-game growth.
+    - S Curve: Slow start, fast middle, slow finish.
+    """
+    display_name = "Level Curve"
+    default = 0
+    option_vanilla = 0
+    option_linear = 1
+    option_sqrt = 2
+    option_quadratic = 3
+    option_s_curve = 4
+
+
+class LevelCurveMinLevel(Range):
+    """
+    The starting level for the custom level curve. Only used when Level Curve is not Off.
+    """
+    display_name = "Level Curve Min Level"
+    default = 5
+    range_start = 1
+    range_end = 100
+
+
+class LevelCurveMaxLevel(Range):
+    """
+    The ending level for the custom level curve. Only used when Level Curve is not Off.
+    """
+    display_name = "Level Curve Max Level"
+    default = 60
+    range_start = 1
+    range_end = 100
+
+
 class LockKantoGyms(Choice):
     """
     Logically lock entering all Kanto gyms and Mt. Moon behind access to a high level Pokemon, included locations:
@@ -2338,6 +2378,9 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     randomize_static_pokemon: RandomizeStaticPokemon
     static_blocklist: StaticBlocklist
     level_scaling: LevelScaling
+    level_curve: LevelCurve
+    level_curve_min_level: LevelCurveMinLevel
+    level_curve_max_level: LevelCurveMaxLevel
     lock_kanto_gyms: LockKantoGyms
     randomize_trades: RandomizeTrades
     randomize_trainer_parties: RandomizeTrainerParties
@@ -2592,6 +2635,9 @@ OPTION_GROUPS = [
         "Quality of Life",
         [GameOptions,
          LevelScaling,
+         LevelCurve,
+         LevelCurveMinLevel,
+         LevelCurveMaxLevel,
          LockKantoGyms,
          AllPokemonSeen,
          StartingMoney,

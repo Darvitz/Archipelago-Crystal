@@ -6,7 +6,7 @@ from .data import data, RegionData, EncounterMon, StaticPokemon, LogicalAccess, 
     TreeRarity, EncounterType
 from .items import PokemonCrystalItem
 from .locations import PokemonCrystalLocation
-from .options import FreeFlyLocation, JohtoOnly, BlackthornDarkCaveAccess, Goal, FlyCheese, Route42Access
+from .options import FreeFlyLocation, JohtoOnly, BlackthornDarkCaveAccess, Goal, FlyCheese, Route42Access, LevelCurve
 from .utils import get_fly_regions, should_include_region
 
 if TYPE_CHECKING:
@@ -70,6 +70,26 @@ LOGIC_EXCLUDE_STATICS = [
 
 E4_LOCKED = list(set(CHAMPION_LOCKED + KANTO_LOCKED))
 REMATCHES = list(set(MAP_LOCKED + ROCKETHQ_LOCKED + RADIO_LOCKED + E4_LOCKED + KANTO_LOCKED))
+
+
+def _generate_curve_levels(n: int, min_level: int, max_level: int, shape: int) -> list[int]:
+    if n == 0:
+        return []
+    if n == 1:
+        return [min_level]
+    lo, hi = min(min_level, max_level), max(min_level, max_level)
+    span = hi - lo
+    levels = []
+    for i in range(n):
+        t = i / (n - 1)
+        if shape == LevelCurve.option_sqrt:
+            t = t ** 0.5
+        elif shape == LevelCurve.option_quadratic:
+            t = t ** 2
+        elif shape == LevelCurve.option_s_curve:
+            t = t * t * (3 - 2 * t)  # smoothstep
+        levels.append(round(lo + span * t))
+    return levels
 
 
 def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
@@ -353,14 +373,24 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
     if world.options.level_scaling and not world.is_universal_tracker:
         trainer_name_level_list.sort(key=lambda i: i[1])
         world.trainer_name_list = [i[0] for i in trainer_name_level_list]
-        world.trainer_level_list = [i[1] for i in trainer_name_level_list]
         static_name_level_list.sort(key=lambda i: i[1])
         world.static_name_list = [i[0] for i in static_name_level_list]
-        world.static_level_list = [i[1] for i in static_name_level_list]
         wild_name_level_list.sort(key=lambda i: max(i[1]))
         world.encounter_region_name_list = [i[0] for i in wild_name_level_list]
-        world.encounter_region_levels_list = [j for i in wild_name_level_list for j in i[1]]
-        world.encounter_region_levels_list.sort()
+        flat_wild_levels = [j for i in wild_name_level_list for j in i[1]]
+        flat_wild_levels.sort()
+
+        if world.options.level_curve != LevelCurve.option_vanilla:
+            min_level = world.options.level_curve_min_level.value
+            max_level = world.options.level_curve_max_level.value
+            shape = world.options.level_curve.value
+            world.trainer_level_list = _generate_curve_levels(len(trainer_name_level_list), min_level, max_level, shape)
+            world.static_level_list = _generate_curve_levels(len(static_name_level_list), min_level, max_level, shape)
+            world.encounter_region_levels_list = _generate_curve_levels(len(flat_wild_levels), min_level, max_level, shape)
+        else:
+            world.trainer_level_list = [i[1] for i in trainer_name_level_list]
+            world.static_level_list = [i[1] for i in static_name_level_list]
+            world.encounter_region_levels_list = flat_wild_levels
     return regions
 
 
