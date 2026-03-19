@@ -1144,7 +1144,7 @@ class LevelCurve(Choice):
     When level scaling is enabled, use a custom level curve instead of deriving levels from vanilla data.
     The curve distributes levels from min to max across all scaled levels (trainers, statics, and wild encounters).
 
-    - Vanilla: Use vanilla levels as the basis for scaling (original behaviour).
+    - Vanilla: Use vanilla levels as the basis for scaling.
     - Linear: Levels increase at a constant rate from min to max.
     - Sqrt: Levels rise quickly early then taper off. Harder early game, compressed late game.
     - Quadratic: Levels stay low early then rise steeply. Easier early game, rapid late-game growth.
@@ -1193,7 +1193,7 @@ class LockKantoGyms(Choice):
 
     You can still enter gyms and Mt. Moon without access to any of these.
 
-    NOTE: It's not recommended to use this option with Level Scaling, as the Gym and wild Pokemon levels will be scaled
+    NOTE: This option is automatically disabled when Level Scaling is enabled.
     """
     display_name = "Lock Kanto Gyms"
     option_off = 0

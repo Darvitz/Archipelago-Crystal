@@ -9,7 +9,7 @@ from .options import FreeFlyLocation, Route32Condition, JohtoOnly, RandomizeBadg
     MtSilverRequirement, HMBadgeRequirements, RedGyaradosAccess, EarlyFly, RadioTowerRequirement, \
     BreedingMethodsRequired, Shopsanity, KantoTrainersanity, JohtoTrainersanity, RandomizePokemonRequests, \
     RandomizeTypes, RandomizeEvolution, RandomizeTrades, TradesRequired, MagnetTrainAccess, \
-    Dexsanity, EncounterGrouping, SouthKantoAccess
+    Dexsanity, EncounterGrouping, SouthKantoAccess, LevelScaling, LockKantoGyms
 from ..Files import APTokenTypes
 
 if TYPE_CHECKING:
@@ -37,6 +37,7 @@ def __adjust_option_problems(world: "PokemonCrystalWorld"):
     __adjust_options_traps(world)
     __adjust_options_mischief_bounds(world)
     __adjust_options_backwards_compat(world)
+    __adjust_options_level_scaling(world)
 
 
 def __adjust_options_radio_tower_and_route_44(world: "PokemonCrystalWorld"):
@@ -338,6 +339,16 @@ def __adjust_options_backwards_compat(world: "PokemonCrystalWorld"):
 
     if world.options.randomize_move_types:
         world.options.randomize_moves.value.add("Type")
+
+
+def __adjust_options_level_scaling(world: "PokemonCrystalWorld"):
+    if (world.options.level_scaling != LevelScaling.option_off
+            and world.options.lock_kanto_gyms != LockKantoGyms.option_off):
+        world.options.lock_kanto_gyms.value = LockKantoGyms.option_off
+        logging.warning(
+            "Pokemon Crystal: Lock Kanto Gyms is incompatible with Level Scaling. "
+            "Disabling Lock Kanto Gyms for player %s.",
+            world.player_name)
 
 
 def should_include_region(region: RegionData, world: "PokemonCrystalWorld"):
