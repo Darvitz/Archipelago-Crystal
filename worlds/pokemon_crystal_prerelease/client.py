@@ -379,10 +379,11 @@ class PokemonCrystalClient(BizHawkClient):
         pokedex_seen_key = f"pokemon_crystal_seen_pokemon_{ctx.team}_{ctx.slot}"
         pokedex_caught_key = f"pokemon_crystal_caught_pokemon_{ctx.team}_{ctx.slot}"
         unown_dex_key = f"pokemon_crystal_unowns_{ctx.team}_{ctx.slot}"
+        sync_events_key = f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}"
 
         if not self.notify_setup_complete:
             if ctx.items_handling & 0b010:
-                ctx.set_notify(pokedex_caught_key, pokedex_seen_key, unown_dex_key)
+                ctx.set_notify(pokedex_caught_key, pokedex_seen_key, unown_dex_key, sync_events_key)
             self.notify_setup_complete = True
 
         if ctx.slot_data["goal"] == Goal.option_elite_four:
@@ -488,7 +489,8 @@ class PokemonCrystalClient(BizHawkClient):
                  (data.ram_addresses["wUnownDex"], NUM_UNOWN, "WRAM"),
                  (data.ram_addresses["wMapGroup"], 2, "WRAM"),
                  (data.ram_addresses["wStatusFlags"], 1, "WRAM"),
-                 (data.ram_addresses["wArchipelagoTrackerSlot"], 1, "WRAM"), ],
+                 (data.ram_addresses["wArchipelagoTrackerSlot"], 1, "WRAM"),
+                 (data.ram_addresses["wGymCount"], 1, "WRAM"), ],
                 [overworld_guard]
             )
 
@@ -504,6 +506,7 @@ class PokemonCrystalClient(BizHawkClient):
             current_map_bytes = read_result[7]
             status_flags_bytes = read_result[8]
             tracker_slot_bytes = read_result[9]
+            current_gym_count = read_result[10][0]
 
             local_checked_locations = set()
             bitflag_locals = {attr_name: {flag: False for flag in flag_list}
@@ -697,7 +700,7 @@ class PokemonCrystalClient(BizHawkClient):
 
                 await ctx.send_msgs([{
                     "cmd": "Set",
-                    "key": f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}",
+                    "key": sync_events_key,
                     "default": 0,
                     "want_reply": True,
                     "operations": [{"operation": "or", "value": event_bitfield}],
@@ -820,12 +823,12 @@ class PokemonCrystalClient(BizHawkClient):
                 synced_event_bytes = bytearray(flag_bytes)
 
                 for index, event in enumerate(SYNC_EVENT_FLAGS):
-                    if self.remote_sync_events | (1 << index):
+                    if self.remote_sync_events & (1 << index):
                         event_id = data.event_flags[event]
                         event_mask = (1 << (event_id % 8))
                         event_byte = event_id // 8
 
-                        synced_event_bytes[event_byte] &= event_mask
+                        synced_event_bytes[event_byte] |= event_mask
 
                 sync_event_writes = []
                 sync_event_guards = []
@@ -836,6 +839,15 @@ class PokemonCrystalClient(BizHawkClient):
                     if flag_bytes[byte_index] != byte:
                         sync_event_writes.append((base_event_address + byte_index, byte, "WRAM"))
                         sync_event_guards.append((base_event_address + byte_index, flag_bytes[byte_index], "WRAM"))
+
+                gym_count = 0
+                for event in SYNC_EVENT_FLAGS[:16]:
+                    event_id = data.event_flags[event]
+                    if synced_event_bytes[event_id // 8] & (1 << (event_id % 8)):
+                        gym_count += 1
+                if gym_count != current_gym_count:
+                    sync_event_writes.append((data.ram_addresses["wGymCount"], [gym_count], "WRAM"))
+                    sync_event_guards.append((data.ram_addresses["wGymCount"], [current_gym_count], "WRAM"))
 
                 if sync_event_writes:
                     await bizhawk.guarded_write(ctx.bizhawk_ctx, sync_event_writes, sync_event_guards)
@@ -958,7 +970,7 @@ class PokemonCrystalClient(BizHawkClient):
                     remote_unown_dex = args["keys"][f"pokemon_crystal_unowns_{ctx.team}_{ctx.slot}"]
                     self.remote_unown_dex = remote_unown_dex if remote_unown_dex else list()
                 if f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}" in args["keys"]:
-                    remote_sync_events = args["keys"][f"pokeon_crystal_sync_events_{ctx.team}_{ctx.slot}"]
+                    remote_sync_events = args["keys"][f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}"]
                     self.remote_sync_events = remote_sync_events if remote_sync_events else 0
 
         elif cmd == "SetReply":
