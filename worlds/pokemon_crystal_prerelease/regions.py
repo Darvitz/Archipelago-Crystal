@@ -283,23 +283,21 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
                         "Static Pokemon", ItemClassification.filler, None, world.player))
                     new_region.locations.append(scaling_event)
 
-                min_level = 100
                 # Create a new list of all the Trainer Pokemon and their levels
                 for trainer in region_data.trainers:
                     if exclude_scaling(trainer.name):
                         continue
+                    min_level = 100
                     for pokemon in trainer.pokemon:
                         min_level = min(min_level, pokemon.level)
                     # We grab the level and add it to our custom list.
                     trainer_name_level_list.append((trainer.name, min_level))
                     world.trainer_name_level_dict[trainer.name] = min_level
 
-                min_level = 100
                 # Now we do the same for statics.
                 for static_id in region_data.statics:
                     static = world.generated_static[static_id]
-                    min_level = min(min_level, static.level)
-                    static_name_level_list.append((static.name, min_level))
+                    static_name_level_list.append((static.name, static.level))
 
             if world.options.grasssanity and region_name in data.grass_tiles:
                 grass_region = Region(f"{region_name}:GRASS", world.player, world.multiworld)
