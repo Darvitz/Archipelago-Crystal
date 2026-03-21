@@ -435,10 +435,11 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
         write_bytes([1], data.rom_addresses["AP_Setting_ApricornShopsanityEnabled"] + 2)
 
     for mart, mart_data in data.marts.items():
-        for item in mart_data.items:
-            item_id = item_const_name_to_id(item.item)
-            price = world.generated_item_values.get(item_id, item.price)
-            write_bytes(price.to_bytes(2, "little"), item.address + 1)
+        if mart_data.category in ("Johto Marts", "Kanto Marts"):
+            for item in mart_data.items:
+                item_id = item_const_name_to_id(item.item)
+                price = world.generated_item_values.get(item_id, item.price)
+                write_bytes(price.to_bytes(2, "little"), item.address + 1)
 
     if world.options.shopsanity:
 
