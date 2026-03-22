@@ -382,9 +382,10 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
             min_level = world.options.level_curve_min_level.value
             max_level = world.options.level_curve_max_level.value
             shape = world.options.level_curve.value
+            wild_static_max = max(min_level, round(max_level * 2 / 3))
             world.trainer_level_list = _generate_curve_levels(len(trainer_name_level_list), min_level, max_level, shape)
-            world.static_level_list = _generate_curve_levels(len(static_name_level_list), min_level, max_level, shape)
-            world.encounter_region_levels_list = _generate_curve_levels(len(flat_wild_levels), min_level, max_level, shape)
+            world.static_level_list = _generate_curve_levels(len(static_name_level_list), min_level, wild_static_max, shape)
+            world.encounter_region_levels_list = _generate_curve_levels(len(flat_wild_levels), min_level, wild_static_max, shape)
         else:
             world.trainer_level_list = [i[1] for i in trainer_name_level_list]
             world.static_level_list = [i[1] for i in static_name_level_list]

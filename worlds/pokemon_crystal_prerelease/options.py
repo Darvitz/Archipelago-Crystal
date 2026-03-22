@@ -1173,7 +1173,7 @@ class LevelCurveMaxLevel(Range):
     """
     The ending level for the custom level curve. Only used when Level Curve is not vanilla.
 
-    Red will be scaled so his lowest level matches this value.
+    Red will be scaled so his lowest level matches this value. Wilds and statics will be scaled up to 2/3 of this value.
 
     NOTE: Trainers are scaled based on their lowest level party member, so they can have levels above this value.
     """
