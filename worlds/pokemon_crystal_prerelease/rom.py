@@ -482,6 +482,7 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
                 item_max_shop_price = sphere_max_shop_price
 
                 item_price = world.generated_item_values.get(location.item.code, 0)
+                item_intrinsic_value = item_price
                 location_price = location.price
 
                 if by_item_price:
@@ -505,8 +506,8 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
                     item_min_shop_price = location_price
                     item_max_shop_price = location_price
 
-                if not remote_items and item_min_shop_price < item_price // 2:
-                    item_min_shop_price = item_price // 2
+                if not remote_items and item_min_shop_price < item_intrinsic_value // 2:
+                    item_min_shop_price = item_intrinsic_value // 2
 
                 address = location.rom_addresses[0] + 1
                 shop_price = world.random.randint(item_min_shop_price, item_max_shop_price) \
