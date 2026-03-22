@@ -456,6 +456,7 @@ class PokemonCrystalClient(BizHawkClient):
 
             if num_received_items < len(ctx.items_received) and received_item_is_empty:
                 next_item = ctx.items_received[num_received_items].item
+                original_item = next_item
 
                 writes = []
                 if next_item >= FLAG_ITEM_OFFSET:
@@ -472,7 +473,7 @@ class PokemonCrystalClient(BizHawkClient):
                 )
 
                 await bizhawk.write(ctx.bizhawk_ctx, writes)
-                await self.send_trap_link(ctx, next_item)
+                await self.send_trap_link(ctx, original_item)
             elif self.trap_link_queue and not read_result[0][6]:
                 trap_id = self.trap_link_queue.pop(0) - FLAG_ITEM_OFFSET
                 await bizhawk.write(ctx.bizhawk_ctx, [(data.ram_addresses["wArchipelagoTrapReceived"],
@@ -938,7 +939,7 @@ class PokemonCrystalClient(BizHawkClient):
         super().on_package(ctx, cmd, args)
 
         if cmd == "Bounced":
-            if "tags" not in args: return
+            if "tags" not in args or "data" not in args: return
             source_name = args["data"]["source"]
             if ("TrapLink" in ctx.tags) and ("TrapLink" in args["tags"]) and source_name != ctx.player_names[ctx.slot]:
                 trap_name: str = args["data"]["trap_name"]
