@@ -11,7 +11,6 @@ import yaml
 from BaseClasses import ItemClassification
 from .item_data import GRASS_OFFSET, FLAG_ITEM_OFFSET
 from .mart_data import FRIENDLY_MART_NAMES, MART_CATEGORIES
-from .trainersanity_data import ADHOC_TRAINERSANITY_TRAINERS
 
 
 @dataclass(frozen=True)
@@ -1167,7 +1166,7 @@ def _init() -> None:
 
     adhoc_trainersanity = {}
 
-    adhoc_trainers = [f"ITEM_FROM_{trainer}" for trainer in ADHOC_TRAINERSANITY_TRAINERS]
+    adhoc_trainers = [f"ITEM_FROM_{trainer}" for trainer in data_json["adhoc_trainersanity"]]
 
     for loc_id, loc_data in locations.items():
         if loc_id in adhoc_trainers:

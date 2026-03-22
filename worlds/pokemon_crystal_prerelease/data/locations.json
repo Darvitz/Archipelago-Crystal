@@ -10398,6 +10398,18 @@
       "AP_NPC_ViridianCity_TM_DREAM_EATER"
     ]
   },
+  "ITEM_FROM_CAL_3": {
+    "label": "Viridian City - Item from Cal in Trainer House",
+    "flag": "EVENT_ITEM_FROM_CAL_3",
+    "type": "giveitem",
+    "tags": [
+      "Trainersanity"
+    ],
+    "default_item": "NO_ITEM",
+    "scripts": [
+      "AP_NPC_TrainerHouseB1F_Cal_NO_ITEM"
+    ]
+  },
   "EARTH_BADGE_FROM_BLUE": {
     "label": "Viridian Gym - Earth Badge from Blue",
     "flag": "EVENT_EARTH_BADGE_FROM_BLUE",

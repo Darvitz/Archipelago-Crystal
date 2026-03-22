@@ -6966,7 +6966,12 @@
     "exits": [
       "REGION_TRAINER_HOUSE_1F"
     ],
-    "locations": [],
+    "trainers": [
+      "CAL_3"
+    ],
+    "locations": [
+      "ITEM_FROM_CAL_3"
+    ],
     "events": []
   },
   "REGION_UNDERGROUND_PATH": {
