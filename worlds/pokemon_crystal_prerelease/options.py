@@ -2300,6 +2300,52 @@ class PokemonCrystalDeathLink(DeathLink):
     __doc__ = DeathLink.__doc__ + "\n\n    In Pokemon Crystal, whiting out sends a death and receiving a death causes you to white out.\n\n    Being seen by a trainer when spinner heck or hell is enabled will send a deathlink."
 
 
+class EntranceRandomization(EnhancedOptionSet):
+    """
+    Selects which entrance types are included in the entrance randomization pool.
+    Any combination of types can be selected. Leave empty to disable entrance randomization.
+
+    Types:
+    - gym: Gym entrances
+    - cave: Cave and dungeon entrances (e.g. Dark Cave, Mt. Mortar, Ice Path, Rock Tunnel)
+    - building: Generic indoor buildings (houses, labs, etc.)
+    - pokecenter: Pokémon Center entrances
+    - mart: Poké Mart entrances
+    - gate: Route gates and border crossings
+    - interior: Sub-areas within a location (e.g. cave floor transitions, interior rooms)
+
+    Use _All to include all entrance types.
+    """
+    display_name = "Entrance Randomization"
+    valid_keys = ["gym", "cave", "building", "pokecenter", "mart", "gate", "interior", "_All"]
+    default = []
+
+
+class EntranceRandomizationCoupled(DefaultOnToggle):
+    """
+    If enabled, entrance randomization is coupled: if door A leads to location B, then
+    the exit of location B leads back to door A. Recommended for navigation.
+    If disabled, exits are randomized independently (uncoupled).
+    """
+    display_name = "Coupled Entrance Randomization"
+
+
+class EntranceRandomizationGrouping(Choice):
+    """
+    Controls which entrance types can connect to which other entrance types.
+
+    Any: Any selected entrance can connect to any other selected entrance.
+    By Type: Entrances only connect to others of the same type
+             (e.g. gyms only shuffle with gyms, caves with caves).
+    By Area: Johto entrances only shuffle within Johto, Kanto entrances within Kanto.
+    """
+    display_name = "Entrance Randomization Grouping"
+    option_any = 0
+    option_by_type = 1
+    option_by_area = 2
+    default = 0
+
+
 @dataclass
 class PokemonCrystalOptions(PerGameCommonOptions):
     goal: Goal
@@ -2469,6 +2515,9 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     maximum_item_value: MaximumItemValue
     modernise_moves_generation: ModerniseMovesGeneration
     modernise_moves_type: ModerniseMovesType
+    entrance_randomization: EntranceRandomization
+    entrance_randomization_coupled: EntranceRandomizationCoupled
+    entrance_randomization_grouping: EntranceRandomizationGrouping
 
 
 OPTION_GROUPS = [
@@ -2476,7 +2525,10 @@ OPTION_GROUPS = [
         "Map",
         [RandomizeStartingTown,
          StartingTownBlocklist,
-         JohtoOnly]
+         JohtoOnly,
+         EntranceRandomization,
+         EntranceRandomizationCoupled,
+         EntranceRandomizationGrouping]
     ),
     OptionGroup(
         "Roadblocks",

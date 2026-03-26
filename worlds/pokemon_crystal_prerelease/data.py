@@ -753,6 +753,28 @@ class PokemonCrystalData:
     bug_contest_encounters: Sequence[BugContestEncounter]
     palettes: Sequence[PaletteData]
     unown_signs: Mapping[str, UnownSignData]
+    entrance_connections: Mapping[str, "EntranceConnection"]
+    map_constants: Mapping[str, tuple[int, int]]      # MAP_CONST → (group, map_id)
+
+
+@dataclass(frozen=True)
+class EntranceWarp:
+    map_name: str
+    warp_index: int   # 1-based, matches AP_Warp_<Map>_<N> label
+
+
+@dataclass(frozen=True)
+class EntranceConnection:
+    name: str
+    exit_region: str
+    entrance_region: str
+    exit_warps: tuple[EntranceWarp, ...]
+    arrival_map: str       # CamelCase map filename
+    arrival_map_const: str # MAP_CONST key for map_constants lookup
+    arrival_warp_id: int
+    entrance_type: str     # gym / cave / building / pokecenter / mart / gate / interior
+    area: str              # johto / kanto
+    one_way: bool
 
 
 def load_json_data(data_name: str) -> list[Any] | Mapping[str, Any]:
@@ -1262,6 +1284,29 @@ def _init() -> None:
     ]
 
     global data
+    entrance_data_json = load_json_data("entrance_data.json")
+    entrance_connections: dict[str, EntranceConnection] = {}
+    for c in entrance_data_json["connections"]:
+        exit_warps = tuple(
+            EntranceWarp(w["map"], w["index"]) for w in c["exit_warps"]
+        )
+        entrance_connections[c["name"]] = EntranceConnection(
+            name=c["name"],
+            exit_region=c["exit_region"],
+            entrance_region=c["entrance_region"],
+            exit_warps=exit_warps,
+            arrival_map=c["arrival_map"],
+            arrival_map_const=c.get("arrival_map_const", ""),
+            arrival_warp_id=c["arrival_warp_id"],
+            entrance_type=c["type"],
+            area=c["area"],
+            one_way=c.get("one_way", False),
+        )
+
+    map_constants: dict[str, tuple[int, int]] = {
+        name: tuple(pair) for name, pair in data_json["map_constants"].items()
+    }
+
     data = PokemonCrystalData(
         manifest=manifest,
         rom_version=data_json["rom_version"],
@@ -1297,6 +1342,8 @@ def _init() -> None:
         bug_contest_encounters=bug_contest_encounters,
         palettes=palettes,
         unown_signs=unown_signs,
+        entrance_connections=entrance_connections,
+        map_constants=map_constants,
     )
 
 

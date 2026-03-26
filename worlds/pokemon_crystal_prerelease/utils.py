@@ -21,6 +21,7 @@ def adjust_options(world: "PokemonCrystalWorld"):
 
 
 def __adjust_option_problems(world: "PokemonCrystalWorld"):
+    __adjust_options_entrance_randomization(world)
     __adjust_options_radio_tower_and_route_44(world)
     __adjust_options_victory_road_badges(world)
     __adjust_options_johto_only(world)
@@ -38,6 +39,15 @@ def __adjust_option_problems(world: "PokemonCrystalWorld"):
     __adjust_options_mischief_bounds(world)
     __adjust_options_backwards_compat(world)
     __adjust_options_level_scaling(world)
+
+
+def __adjust_options_entrance_randomization(world: "PokemonCrystalWorld"):
+    if (world.options.entrance_randomization
+            and world.options.randomize_badges.value != RandomizeBadges.option_completely_random):
+        world.options.randomize_badges.value = RandomizeBadges.option_completely_random
+        logging.warning(
+            f"Pokemon Crystal: Entrance Randomization requires completely random badges. "
+            f"Changing Randomize Badges to completely random for player {world.player} ({world.player_name}).")
 
 
 def __adjust_options_radio_tower_and_route_44(world: "PokemonCrystalWorld"):

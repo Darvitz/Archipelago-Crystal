@@ -243,12 +243,10 @@
       "REGION_BLACKTHORN_GYM_2F"
     ],
     "trainers": [
-      "COOLTRAINERM_PAUL",
-      "COOLTRAINERM_MIKE"
+      "COOLTRAINERM_PAUL"
     ],
     "locations": [
-      "ITEM_FROM_COOLTRAINERM_PAUL",
-      "ITEM_FROM_COOLTRAINERM_MIKE"
+      "ITEM_FROM_COOLTRAINERM_PAUL"
     ],
     "events": [],
     "signs": [
@@ -256,18 +254,67 @@
       "BlackthornGymStatueRight"
     ]
   },
-  "REGION_BLACKTHORN_GYM_1F:STRENGTH": {
+  "REGION_BLACKTHORN_GYM_1F:MIDDLE": {
+    "johto": true,
+    "exits": [
+      "REGION_BLACKTHORN_GYM_2F",
+      "REGION_BLACKTHORN_GYM_1F:LOLA"
+    ],
+    "trainers": [
+      "COOLTRAINERM_MIKE"
+    ],
+    "locations": [
+      "ITEM_FROM_COOLTRAINERM_MIKE"
+    ],
+    "events": []
+  },
+  "REGION_BLACKTHORN_GYM_1F:LOLA": {
+    "johto": true,
+    "exits": [
+      "REGION_BLACKTHORN_GYM_1F:CLAIR"
+    ],
+    "trainers": [
+      "COOLTRAINERF_LOLA"
+    ],
+    "locations": [
+      "ITEM_FROM_COOLTRAINERF_LOLA"
+    ],
+    "events": []
+  },
+  "REGION_BLACKTHORN_GYM_1F:HOLE_1": {
+    "johto": true,
+    "exits": [
+      "REGION_BLACKTHORN_GYM_1F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_BLACKTHORN_GYM_1F:HOLE_2": {
+    "johto": true,
+    "exits": [
+      "REGION_BLACKTHORN_GYM_1F:MIDDLE"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_BLACKTHORN_GYM_1F:HOLE_3": {
+    "johto": true,
+    "exits": [
+      "REGION_BLACKTHORN_GYM_1F:MIDDLE"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_BLACKTHORN_GYM_1F:CLAIR": {
     "johto": true,
     "exits": [],
+    "trainers": [
+      "LEADER_CLAIR"
+    ],
     "locations": [
       "TM24_DRAGONBREATH_GYM",
       "RISING_BADGE_FROM_CLAIR_GYM",
-      "ITEM_FROM_CLAIR",
-      "ITEM_FROM_COOLTRAINERF_LOLA"
-    ],
-    "trainers": [
-      "COOLTRAINERF_LOLA",
-      "LEADER_CLAIR"
+      "ITEM_FROM_CLAIR"
     ],
     "events": [
       "EVENT_BEAT_CLAIR",
@@ -278,7 +325,10 @@
     "johto": true,
     "exits": [
       "REGION_BLACKTHORN_GYM_1F",
-      "REGION_BLACKTHORN_GYM_1F:STRENGTH"
+      "REGION_BLACKTHORN_GYM_1F:MIDDLE",
+      "REGION_BLACKTHORN_GYM_1F:HOLE_1",
+      "REGION_BLACKTHORN_GYM_1F:HOLE_2",
+      "REGION_BLACKTHORN_GYM_1F:HOLE_3"
     ],
     "trainers": [
       "COOLTRAINERM_CODY",
@@ -288,7 +338,10 @@
       "ITEM_FROM_COOLTRAINERM_CODY",
       "ITEM_FROM_COOLTRAINERF_FRAN"
     ],
-    "events": []
+    "events": [
+      "EVENT_BOULDER_IN_BLACKTHORN_GYM_1",
+      "EVENT_BOULDER_IN_BLACKTHORN_GYM_2"
+    ]
   },
   "REGION_BLACKTHORN_MART": {
     "johto": true,
@@ -1374,10 +1427,16 @@
   },
   "REGION_ECRUTEAK_GYM": {
     "johto": true,
+    "locations": [],
+    "events": [],
     "exits": [
       "REGION_ECRUTEAK_CITY",
-      "REGION_ECRUTEAK_GYM"
-    ],
+      "REGION_ECRUTEAK_GYM:INTERIOR"
+    ]
+  },
+  "REGION_ECRUTEAK_GYM:INTERIOR": {
+    "johto": true,
+    "exits": [],
     "trainers": [
       "SAGE_JEFFREY",
       "SAGE_PING",
@@ -2166,10 +2225,32 @@
     "johto": true,
     "exits": [
       "REGION_ICE_PATH_1F:WEST",
-      "REGION_ICE_PATH_B2F_MAHOGANY_SIDE"
+      "REGION_ICE_PATH_B2F_MAHOGANY_SIDE",
+      "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:HOLE_1",
+      "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:HOLE_2",
+      "REGION_ICE_PATH_B1F:NORTH:STRENGTH"
     ],
     "locations": [],
-    "events": [],
+    "events": [
+      "EVENT_BOULDER_IN_ICE_PATH_1A",
+      "EVENT_BOULDER_IN_ICE_PATH_2A"
+    ],
+    "wild_encounters": {
+      "grass": "ICE_PATH_B1F"
+    }
+  },
+  "REGION_ICE_PATH_B1F:NORTH:STRENGTH": {
+    "johto": true,
+    "exits": [
+      "REGION_ICE_PATH_B1F:NORTH",
+      "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:HOLE_3",
+      "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:HOLE_4"
+    ],
+    "locations": [],
+    "events": [
+      "EVENT_BOULDER_IN_ICE_PATH_3A",
+      "EVENT_BOULDER_IN_ICE_PATH_4A"
+    ],
     "wild_encounters": {
       "grass": "ICE_PATH_B1F"
     }
@@ -2218,6 +2299,30 @@
     "wild_encounters": {
       "grass": "ICE_PATH_B2F_MAHOGANY_SIDE"
     }
+  },
+  "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:HOLE_1": {
+    "johto": true,
+    "exits": ["REGION_ICE_PATH_B2F_MAHOGANY_SIDE"],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:HOLE_2": {
+    "johto": true,
+    "exits": ["REGION_ICE_PATH_B2F_MAHOGANY_SIDE"],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:HOLE_3": {
+    "johto": true,
+    "exits": ["REGION_ICE_PATH_B2F_MAHOGANY_SIDE"],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:HOLE_4": {
+    "johto": true,
+    "exits": ["REGION_ICE_PATH_B2F_MAHOGANY_SIDE"],
+    "locations": [],
+    "events": []
   },
   "REGION_ICE_PATH_B2F_MAHOGANY_SIDE:MIDDLE": {
     "johto": true,
@@ -2699,6 +2804,15 @@
       "grass": "MOUNT_MOON"
     }
   },
+  "REGION_MOUNT_MOON:SOUTH": {
+    "johto": false,
+    "exits": [
+      "REGION_MOUNT_MOON_SQUARE",
+      "REGION_MOUNT_MOON"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_MOUNT_MOON_GIFT_SHOP": {
     "johto": false,
     "exits": [
@@ -2714,6 +2828,7 @@
     "johto": false,
     "exits": [
       "REGION_MOUNT_MOON",
+      "REGION_MOUNT_MOON:SOUTH",
       "REGION_MOUNT_MOON_GIFT_SHOP"
     ],
     "locations": [
@@ -4095,11 +4210,20 @@
   "REGION_ROUTE_16": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_17",
       "REGION_CELADON_CITY",
       "REGION_ROUTE_16:CUT",
       "REGION_ROUTE_16_GATE"
     ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_16:WEST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_17",
+      "REGION_ROUTE_16_GATE:WEST"
+    ],
+
     "locations": [],
     "events": []
   },
@@ -4128,7 +4252,7 @@
   "REGION_ROUTE_16_FUCHSIA_SPEECH_HOUSE": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_16"
+      "REGION_ROUTE_16:CUT"
     ],
     "locations": [],
     "events": []
@@ -4136,17 +4260,28 @@
   "REGION_ROUTE_16_GATE": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_16"
+      "REGION_ROUTE_16",
+      "REGION_ROUTE_16_GATE:WEST"
     ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_16_GATE:WEST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_16:WEST",
+      "REGION_ROUTE_16_GATE"
+    ],
+
     "locations": [],
     "events": []
   },
   "REGION_ROUTE_17": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_16",
+      "REGION_ROUTE_16:WEST",
       "REGION_ROUTE_16:SIGN",
-      "REGION_ROUTE_17_ROUTE_18_GATE"
+      "REGION_ROUTE_17_ROUTE_18_GATE:WEST"
     ],
     "trainers": [
       "BIKER_CHARLES",
@@ -4170,9 +4305,19 @@
   "REGION_ROUTE_17_ROUTE_18_GATE": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_17",
-      "REGION_ROUTE_18"
+      "REGION_ROUTE_18",
+      "REGION_ROUTE_17_ROUTE_18_GATE:WEST"
     ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_17_ROUTE_18_GATE:WEST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_17",
+      "REGION_ROUTE_17_ROUTE_18_GATE"
+    ],
+
     "locations": [],
     "events": []
   },

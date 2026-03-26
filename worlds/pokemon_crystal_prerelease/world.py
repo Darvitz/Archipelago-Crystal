@@ -118,6 +118,7 @@ class PokemonCrystalWorld(World):
     location_name_groups = LOCATION_GROUPS  # location groups
 
     auth: bytes
+    er_pairings: list[tuple[str, str]]
 
     free_fly_location: FlyRegion
     map_card_fly_location: FlyRegion
@@ -212,6 +213,8 @@ class PokemonCrystalWorld(World):
         self.pre_fill_items = []
         self.filler_pool = []
         self.grass_location_mapping = {}
+        self.er_pairings = []
+        self.er_entrances: list[tuple] = []
 
         self.finished_level_scaling = Event()
 
@@ -524,6 +527,69 @@ class PokemonCrystalWorld(World):
 
         perform_level_scaling(multiworld)
 
+    _MAX_ER_ATTEMPTS = 25
+
+    def connect_entrances(self) -> None:
+        if not self.options.entrance_randomization:
+            return
+
+        if self.is_universal_tracker:
+            self._reconnect_ut_entrances()
+            return
+
+        from entrance_rando import randomize_entrances, EntranceRandomizationError, EntranceType
+        from .regions import _build_er_group_lookup
+        coupled = bool(self.options.entrance_randomization_coupled)
+        er_types = self.options.entrance_randomization.value
+        grouping = self.options.entrance_randomization_grouping.value
+        target_group_lookup, preserve_group_order = _build_er_group_lookup(er_types, grouping)
+
+        for attempt in range(self._MAX_ER_ATTEMPTS):
+            try:
+                er_state = randomize_entrances(self, coupled=coupled, target_group_lookup=target_group_lookup,
+                                               preserve_group_order=preserve_group_order)
+                self.logic.guaranteed_hm_access = False
+                self.er_pairings: list[tuple[str, str]] = list(er_state.pairings)
+                return
+            except EntranceRandomizationError as error:
+                if attempt >= self._MAX_ER_ATTEMPTS - 1:
+                    raise EntranceRandomizationError(
+                        f"Pokemon Crystal: Entrance randomization failed for player {self.player} "
+                        f"({self.player_name}) after {self._MAX_ER_ATTEMPTS} attempts. "
+                        f"Final error:\n\n{error}")
+                if attempt > 1:
+                    self.logic.guaranteed_hm_access = True
+                for entrance, vanilla_region in self.er_entrances:
+                    if entrance.connected_region:
+                        entrance.connected_region.entrances.remove(entrance)
+                    entrance.connected_region = vanilla_region
+                    if entrance.randomization_type == EntranceType.TWO_WAY:
+                        parent_region = entrance.parent_region
+                        for parent_entrance in parent_region.entrances:
+                            if parent_entrance.name == entrance.name:
+                                parent_region.entrances.remove(parent_entrance)
+                                break
+                        entrance.connected_region = None
+                        target = parent_region.create_er_target(entrance.name)
+                        target.randomization_group = entrance.randomization_group
+                        target.randomization_type = entrance.randomization_type
+
+        self.logic.guaranteed_hm_access = False
+
+    def _reconnect_ut_entrances(self):
+        """Reconnect ER entrances from slot data for Universal Tracker."""
+        from .data import data
+        pairings = self.ut_slot_data.get("er_pairings", [])
+        if not pairings:
+            return
+        for source_name, target_name in pairings:
+            source = self.multiworld.get_entrance(source_name, self.player)
+            target_conn = data.entrance_connections.get(target_name)
+            if source and target_conn:
+                target_region = self.get_region(target_conn.exit_region)
+                source.connect(target_region)
+        self.er_pairings = [(s, t) for s, t in pairings]
+
     def generate_output(self, output_directory: str) -> None:
         generate_phone_traps(self)
         scale_red_levels(self)
@@ -619,7 +685,12 @@ class PokemonCrystalWorld(World):
             "south_kanto_condition",
             "remote_items",
             "maximum_evolution_level",
+            "entrance_randomization",
+            "entrance_randomization_coupled",
+            "entrance_randomization_grouping",
         )
+
+        slot_data["er_pairings"] = list(self.er_pairings)
         slot_data["apworld_version"] = self.apworld_version
         slot_data["tea_north"] = 1 if "North" in self.options.saffron_gatehouse_tea.value else 0
         slot_data["tea_east"] = 1 if "East" in self.options.saffron_gatehouse_tea.value else 0

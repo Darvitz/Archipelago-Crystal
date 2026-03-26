@@ -2,6 +2,7 @@ import logging
 from typing import TYPE_CHECKING
 
 from BaseClasses import Region, ItemClassification
+from entrance_rando import disconnect_entrance_for_randomization, EntranceType
 from .data import data, RegionData, EncounterMon, StaticPokemon, LogicalAccess, EncounterKey, FishingRodType, \
     TreeRarity, EncounterType
 from .items import PokemonCrystalItem
@@ -70,6 +71,38 @@ LOGIC_EXCLUDE_STATICS = [
 
 E4_LOCKED = list(set(CHAMPION_LOCKED + KANTO_LOCKED))
 REMATCHES = list(set(MAP_LOCKED + ROCKETHQ_LOCKED + RADIO_LOCKED + E4_LOCKED + KANTO_LOCKED))
+
+
+def _build_type_to_group(er_types: set[str]) -> dict[str, int]:
+    """Map each entrance type string to a stable integer group ID."""
+    return {t: i for i, t in enumerate(sorted(er_types))}
+
+
+def _er_group(conn, grouping: int, type_to_group: dict[str, int]) -> int:
+    """Return the randomization_group integer for a given connection."""
+    from .options import EntranceRandomizationGrouping
+    if grouping == EntranceRandomizationGrouping.option_by_area:
+        return 0 if conn.area == "johto" else 1
+    if grouping == EntranceRandomizationGrouping.option_by_type:
+        return type_to_group.get(conn.entrance_type, 0)
+    return 0
+
+
+def _build_er_group_lookup(er_types: set[str], grouping: int) -> tuple[dict[int, list[int]], bool]:
+    """Build the target_group_lookup dict and preserve_group_order flag for randomize_entrances."""
+    from .options import EntranceRandomizationGrouping
+    if grouping == EntranceRandomizationGrouping.option_any:
+        return {0: [0]}, False
+    if grouping == EntranceRandomizationGrouping.option_by_type:
+        type_to_group = _build_type_to_group(er_types)
+        all_groups = sorted(type_to_group.values())
+        # Soft preference: same-type targets are tried first via preserve_group_order,
+        # but cross-type is allowed as a fallback to prevent generation failures caused
+        # by dead-end/non-dead-end ratio imbalance across types.
+        return {g: [g] + [x for x in all_groups if x != g] for g in all_groups}, True
+    if grouping == EntranceRandomizationGrouping.option_by_area:
+        return {0: [0], 1: [1]}, False
+    return {0: [0]}, False
 
 
 def _generate_curve_levels(n: int, min_level: int, max_level: int, shape: int) -> list[int]:
@@ -307,9 +340,20 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
             for region_exit in region_data.exits:
                 connections.append((f"{region_name} -> {region_exit}", region_name, region_exit))
 
+    er_types = world.options.entrance_randomization.value  # frozenset of type strings
+    grouping = world.options.entrance_randomization_grouping.value
+    type_to_group = _build_type_to_group(er_types)
+
     for name, source, dest in connections:
         if should_include_region(data.regions[source], world) and should_include_region(data.regions[dest], world):
-            regions[source].connect(regions[dest], name)
+            entrance = regions[source].connect(regions[dest], name)
+            # Disconnect for ER if this connection is in the randomizable pool
+            conn = data.entrance_connections.get(name)
+            if conn and not conn.one_way and conn.entrance_type in er_types:
+                entrance.randomization_type = EntranceType.TWO_WAY
+                entrance.randomization_group = _er_group(conn, grouping, type_to_group)
+                world.er_entrances.append((entrance, regions[dest]))
+                disconnect_entrance_for_randomization(entrance)
 
     if world.options.skip_elite_four:
         regions["REGION_INDIGO_PLATEAU_POKECENTER_1F"].connect(regions["REGION_LANCES_ROOM"])
@@ -317,6 +361,8 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
     regions["Menu"] = Region("Menu", world.player, world.multiworld)
     if world.options.randomize_starting_town:
         regions["Menu"].connect(regions[world.starting_town.region_id])
+    elif world.options.entrance_randomization:
+        regions["Menu"].connect(regions["REGION_NEW_BARK_TOWN"], "Start Game")
     else:
         regions["Menu"].connect(regions["REGION_PLAYERS_HOUSE_2F"], "Start Game")
 

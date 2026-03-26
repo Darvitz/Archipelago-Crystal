@@ -267,6 +267,41 @@ def write_customizable_options(options: PokemonCrystalOptions,
                 pass
 
 
+def write_entrance_pairings(world: "PokemonCrystalWorld", write_bytes) -> None:
+    """Patch ROM warp destinations to match the ER result."""
+    conns = data.entrance_connections
+    map_consts = data.map_constants
+
+    for source_name, target_name in world.er_pairings:
+        source_conn = conns.get(source_name)
+        if source_conn is None:
+            continue
+
+        # The target_name is the ER target name, which matches the exit it was created from
+        # (e.g. "REGION_AZALEA_GYM -> REGION_AZALEA_TOWN"). To get the correct arrival data,
+        # we need the reverse connection (e.g. "REGION_AZALEA_TOWN -> REGION_AZALEA_GYM"),
+        # which describes how to arrive at the target region.
+        parts = target_name.split(" -> ")
+        reverse_target_name = f"{parts[1]} -> {parts[0]}"
+        target_conn = conns.get(reverse_target_name)
+        if target_conn is None:
+            continue
+
+        arrival_const = target_conn.arrival_map_const
+        if arrival_const not in map_consts:
+            continue
+        new_group, new_map_id = map_consts[arrival_const]
+        new_warp_id = target_conn.arrival_warp_id
+
+        for exit_warp in source_conn.exit_warps:
+            label = f"AP_Warp_{exit_warp.map_name}_{exit_warp.warp_index}"
+            addr = data.rom_addresses.get(label)
+            if addr is None:
+                continue
+            # Patch bytes +2 (warp_id), +3 (group), +4 (map_id)
+            write_bytes([new_warp_id, new_group, new_map_id], addr + 2)
+
+
 def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: PokemonCrystalProcedurePatch) -> None:
     write_bytes = lambda data, address: write_appp_tokens(patch, data, address)
     # The vanilla value of an option evaluates to False
@@ -1208,6 +1243,13 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
         write_bytes([town_id], data.rom_addresses["AP_Setting_RandomStartTown_3"] + 1)
         write_bytes([town_id], data.rom_addresses["AP_Setting_RandomStartTown_4"] + 1)
         write_bytes([town_id], data.rom_addresses["AP_Setting_RandomStartTown_5"] + 1)
+    elif world.options.entrance_randomization:
+        spawn_new_bark = 14
+        write_bytes([spawn_new_bark], data.rom_addresses["AP_Setting_RandomStartTown_1"] + 1)
+        write_bytes([spawn_new_bark], data.rom_addresses["AP_Setting_RandomStartTown_2"] + 1)
+        write_bytes([spawn_new_bark], data.rom_addresses["AP_Setting_RandomStartTown_3"] + 1)
+        write_bytes([spawn_new_bark], data.rom_addresses["AP_Setting_RandomStartTown_4"] + 1)
+        write_bytes([spawn_new_bark], data.rom_addresses["AP_Setting_RandomStartTown_5"] + 1)
 
     if world.options.metronome_only:
         for i in range(4):
@@ -1407,6 +1449,9 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
     write_bytes(world.auth, data.rom_addresses["AP_Seed_Auth"])
     write_bytes(data.manifest.world_version.encode("ascii")[:32], data.rom_addresses["AP_Version"])
     write_bytes(ap_version_text, data.rom_addresses["AP_Version_Text"] + 1)
+
+    if world.er_pairings:
+        write_entrance_pairings(world, write_bytes)
 
     patch.write_file("token_data.bin", patch.get_token_binary())
 
