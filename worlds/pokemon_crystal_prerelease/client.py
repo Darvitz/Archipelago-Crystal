@@ -981,13 +981,13 @@ class PokemonCrystalClient(BizHawkClient):
 
         elif cmd == "SetReply":
             if args["key"] == f"pokemon_crystal_caught_pokemon_{ctx.team}_{ctx.slot}":
-                self.remote_caught_pokemon = set(args["value"])
+                self.remote_caught_pokemon = set(args.get("value", []))
             elif args["key"] == f"pokemon_crystal_seen_pokemon_{ctx.team}_{ctx.slot}":
-                self.remote_seen_pokemon = set(args["value"])
+                self.remote_seen_pokemon = set(args.get("value", []))
             elif args["key"] == f"pokemon_crystal_unowns_{ctx.team}_{ctx.slot}":
-                self.remote_unown_dex = args["value"]
+                self.remote_unown_dex = args.get("value", [])
             elif args["key"] == f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}":
-                self.remote_sync_events = args["value"]
+                self.remote_sync_events = args.get("value", 0)
 
 
 def cmd_headbutt(self: "BizHawkClientCommandProcessor") -> None:
