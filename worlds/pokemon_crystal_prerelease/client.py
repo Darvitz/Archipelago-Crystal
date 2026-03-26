@@ -233,9 +233,56 @@ SYNC_EVENT_FLAGS = [
     "EVENT_JASMINE_RETURNED_TO_GYM",
     "EVENT_CLEARED_ROCKET_HIDEOUT",
     "EVENT_CLEARED_RADIO_TOWER",
+    "EVENT_BLUE_GYM_TRACKER",
+    "EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY",
+    "EVENT_SAW_SUICUNE_ON_ROUTE_42",
+    "EVENT_SAW_SUICUNE_ON_ROUTE_36",
+    "EVENT_RELEASED_THE_BEASTS"
 ]
 
 SYNC_EVENTS_FLAG_MAP = {data.event_flags[event]: event for event in SYNC_EVENT_FLAGS}
+
+
+def detect_sync_events(flag_bytes: bytes) -> dict[str, bool]:
+    """Parse event flag bytes from game RAM into a sync events dict."""
+    local_sync_events = {flag_name: False for flag_name in SYNC_EVENT_FLAGS}
+    for byte_i, byte in enumerate(flag_bytes):
+        for i in range(8):
+            location_id = byte_i * 8 + i
+            if byte & (1 << i):
+                if location_id in SYNC_EVENTS_FLAG_MAP:
+                    local_sync_events[SYNC_EVENTS_FLAG_MAP[location_id]] = True
+    return local_sync_events
+
+
+def encode_sync_bitfield(local_sync_events: dict[str, bool]) -> int:
+    """Convert a sync events dict to a bitfield for server upload."""
+    bitfield = 0
+    for i, flag_name in enumerate(SYNC_EVENT_FLAGS):
+        if local_sync_events[flag_name]:
+            bitfield |= 1 << i
+    return bitfield
+
+
+def apply_remote_sync_events(flag_bytes: bytes, remote_sync_events: int) -> bytearray:
+    """Apply a remote sync events bitfield onto a copy of the event flag bytes."""
+    synced = bytearray(flag_bytes)
+    for index, event in enumerate(SYNC_EVENT_FLAGS):
+        if remote_sync_events & (1 << index):
+            event_id = data.event_flags[event]
+            synced[event_id // 8] |= 1 << (event_id % 8)
+    return synced
+
+
+def compute_gym_count(synced_event_bytes: bytes) -> int:
+    """Count the number of gyms beaten from synced event flag bytes."""
+    gym_count = 0
+    for event in SYNC_EVENT_FLAGS[:16]:
+        event_id = data.event_flags[event]
+        if synced_event_bytes[event_id // 8] & (1 << (event_id % 8)):
+            gym_count += 1
+    return gym_count
+
 
 # (flag_list, flag_map, instance_attr_name, storage_key_suffix)
 BITFLAG_STORAGES = [
@@ -518,7 +565,6 @@ class PokemonCrystalClient(BizHawkClient):
                 pokedex_caught_key] if pokedex_caught_key in ctx.stored_data else None
             local_caught_pokemon = set(remote_caught_pokemon) if remote_caught_pokemon else set()
             local_hints = {flag_name: False for flag_name in HINT_FLAGS.keys()}
-            local_sync_events = {flag_name: False for flag_name in SYNC_EVENT_FLAGS}
             local_trades_completed = set()
 
             has_pokedex = status_flags_bytes[0] & 1
@@ -545,8 +591,8 @@ class PokemonCrystalClient(BizHawkClient):
                         if location_id in HINT_FLAG_MAP:
                             local_hints[HINT_FLAG_MAP[location_id]] = True
 
-                        if location_id in SYNC_EVENT_FLAGS:
-                            local_sync_events[SYNC_EVENTS_FLAG_MAP[location_id]] = True
+
+            local_sync_events = detect_sync_events(flag_bytes)
 
             for byte_i, byte in enumerate(pokedex_caught_bytes):
                 for i in range(8):
@@ -631,7 +677,7 @@ class PokemonCrystalClient(BizHawkClient):
 
             if local_checked_locations != self.local_checked_locations:
                 if "trap_locations" in ctx.slot_data:
-                    for location in local_checked_locations:
+                    for location in local_checked_locations - self.local_checked_locations:
                         if location not in ctx.checked_locations:
                             if str(location) in ctx.slot_data["trap_locations"]:
                                 await self.send_trap_link(ctx, ctx.slot_data["trap_locations"][str(location)])
@@ -694,10 +740,7 @@ class PokemonCrystalClient(BizHawkClient):
                     setattr(self, attr_name, local_dict)
 
             if local_sync_events != self.local_sync_events and ctx.items_handling & 0b010:
-                event_bitfield = 0
-                for i, flag_name in enumerate(SYNC_EVENT_FLAGS):
-                    if local_sync_events[flag_name]:
-                        event_bitfield |= 1 << i
+                event_bitfield = encode_sync_bitfield(local_sync_events)
 
                 await ctx.send_msgs([{
                     "cmd": "Set",
@@ -821,15 +864,7 @@ class PokemonCrystalClient(BizHawkClient):
                      (data.ram_addresses["wUnownDex"], unown_dex_bytes, "WRAM")]
                 )
 
-                synced_event_bytes = bytearray(flag_bytes)
-
-                for index, event in enumerate(SYNC_EVENT_FLAGS):
-                    if self.remote_sync_events & (1 << index):
-                        event_id = data.event_flags[event]
-                        event_mask = (1 << (event_id % 8))
-                        event_byte = event_id // 8
-
-                        synced_event_bytes[event_byte] |= event_mask
+                synced_event_bytes = apply_remote_sync_events(flag_bytes, self.remote_sync_events)
 
                 sync_event_writes = []
                 sync_event_guards = []
@@ -838,14 +873,10 @@ class PokemonCrystalClient(BizHawkClient):
 
                 for byte_index, byte in enumerate(synced_event_bytes):
                     if flag_bytes[byte_index] != byte:
-                        sync_event_writes.append((base_event_address + byte_index, byte, "WRAM"))
-                        sync_event_guards.append((base_event_address + byte_index, flag_bytes[byte_index], "WRAM"))
+                        sync_event_writes.append((base_event_address + byte_index, [byte], "WRAM"))
+                        sync_event_guards.append((base_event_address + byte_index, [flag_bytes[byte_index]], "WRAM"))
 
-                gym_count = 0
-                for event in SYNC_EVENT_FLAGS[:16]:
-                    event_id = data.event_flags[event]
-                    if synced_event_bytes[event_id // 8] & (1 << (event_id % 8)):
-                        gym_count += 1
+                gym_count = compute_gym_count(synced_event_bytes)
                 if gym_count != current_gym_count:
                     sync_event_writes.append((data.ram_addresses["wGymCount"], [gym_count], "WRAM"))
                     sync_event_guards.append((data.ram_addresses["wGymCount"], [current_gym_count], "WRAM"))
@@ -976,13 +1007,13 @@ class PokemonCrystalClient(BizHawkClient):
 
         elif cmd == "SetReply":
             if args["key"] == f"pokemon_crystal_caught_pokemon_{ctx.team}_{ctx.slot}":
-                self.remote_caught_pokemon = set(args["value"])
+                self.remote_caught_pokemon = set(args.get("value", []))
             elif args["key"] == f"pokemon_crystal_seen_pokemon_{ctx.team}_{ctx.slot}":
-                self.remote_seen_pokemon = set(args["value"])
+                self.remote_seen_pokemon = set(args.get("value", []))
             elif args["key"] == f"pokemon_crystal_unowns_{ctx.team}_{ctx.slot}":
-                self.remote_unown_dex = args["value"]
+                self.remote_unown_dex = args.get("value", [])
             elif args["key"] == f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}":
-                self.remote_sync_events = args["value"]
+                self.remote_sync_events = args.get("value", 0)
 
 
 def cmd_headbutt(self: "BizHawkClientCommandProcessor") -> None:
