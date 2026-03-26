@@ -631,7 +631,7 @@ class PokemonCrystalClient(BizHawkClient):
 
             if local_checked_locations != self.local_checked_locations:
                 if "trap_locations" in ctx.slot_data:
-                    for location in local_checked_locations:
+                    for location in local_checked_locations - self.local_checked_locations:
                         if location not in ctx.checked_locations:
                             if str(location) in ctx.slot_data["trap_locations"]:
                                 await self.send_trap_link(ctx, ctx.slot_data["trap_locations"][str(location)])
@@ -838,8 +838,8 @@ class PokemonCrystalClient(BizHawkClient):
 
                 for byte_index, byte in enumerate(synced_event_bytes):
                     if flag_bytes[byte_index] != byte:
-                        sync_event_writes.append((base_event_address + byte_index, byte, "WRAM"))
-                        sync_event_guards.append((base_event_address + byte_index, flag_bytes[byte_index], "WRAM"))
+                        sync_event_writes.append((base_event_address + byte_index, [byte], "WRAM"))
+                        sync_event_guards.append((base_event_address + byte_index, [flag_bytes[byte_index]], "WRAM"))
 
                 gym_count = 0
                 for event in SYNC_EVENT_FLAGS[:16]:
