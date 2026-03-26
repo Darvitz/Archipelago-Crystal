@@ -545,7 +545,7 @@ class PokemonCrystalClient(BizHawkClient):
                         if location_id in HINT_FLAG_MAP:
                             local_hints[HINT_FLAG_MAP[location_id]] = True
 
-                        if location_id in SYNC_EVENT_FLAGS:
+                        if location_id in SYNC_EVENTS_FLAG_MAP:
                             local_sync_events[SYNC_EVENTS_FLAG_MAP[location_id]] = True
 
             for byte_i, byte in enumerate(pokedex_caught_bytes):
