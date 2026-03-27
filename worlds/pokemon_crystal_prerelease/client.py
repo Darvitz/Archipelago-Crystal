@@ -54,7 +54,7 @@ TRACKER_EVENT_FLAGS = [
     "EVENT_BEAT_BLUE",
     "EVENT_FAST_SHIP_FOUND_GIRL",
     "EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON",
-    "EVENT_MET_BILL",
+    "EVENT_BILL_ACTIVATED_TIME_CAPSULE",
 ]
 
 EVENT_FLAG_MAP = {data.event_flags[event]: event for event in TRACKER_EVENT_FLAGS}
@@ -192,11 +192,6 @@ TRAP_LINK_MASK = 0b00001000
 TRAP_LINK_SETTING_ADDR = data.ram_addresses["wArchipelagoOptions"] + 5
 COUNT_ALL_POKEMON = len(data.pokemon)
 
-INVERTED_EVENTS = {
-    "EVENT_MET_BILL"
-}
-
-INVERTED_EVENT_IDS = {data.event_flags[event] for event in INVERTED_EVENTS}
 
 HINT_FLAGS = {f"EVENT_SEEN_{mart_name}": [item.flag for item in mart_data.items if item.flag] for mart_name, mart_data
               in data.marts.items()}
@@ -237,7 +232,9 @@ SYNC_EVENT_FLAGS = [
     "EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY",
     "EVENT_SAW_SUICUNE_ON_ROUTE_42",
     "EVENT_SAW_SUICUNE_ON_ROUTE_36",
-    "EVENT_RELEASED_THE_BEASTS"
+    "EVENT_RELEASED_THE_BEASTS",
+    "EVENT_GAVE_KENYA",
+    "EVENT_BILL_ACTIVATED_TIME_CAPSULE",
 ]
 
 SYNC_EVENTS_FLAG_MAP = {data.event_flags[event]: event for event in SYNC_EVENT_FLAGS}
@@ -584,8 +581,7 @@ class PokemonCrystalClient(BizHawkClient):
                 for i in range(8):
                     location_id = byte_i * 8 + i
                     event_set = byte & (1 << i)
-                    invert_event = location_id in INVERTED_EVENT_IDS
-                    if (not invert_event and event_set != 0) or (invert_event and event_set == 0):
+                    if event_set != 0:
                         if location_id in ctx.server_locations:
                             local_checked_locations.add(location_id)
 
