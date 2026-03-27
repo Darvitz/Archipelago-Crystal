@@ -140,12 +140,50 @@ TRACKER_ROCKET_TRAP_EVENTS = [
 
 ROCKET_TRAP_EVENT_FLAG_MAP = {data.event_flags[event]: event for event in TRACKER_ROCKET_TRAP_EVENTS}
 
-TRACKER_SEEN_MART_FLAGS = [
-    "EVENT_SEEN_MART_BLUE_CARD",
-    "EVENT_SEEN_MART_KURTS_BALLS",
+TRACKER_SEEN_KANTO_MART_FLAGS = [
+    "EVENT_SEEN_MART_VIRIDIAN",
+    "EVENT_SEEN_MART_PEWTER",
+    "EVENT_SEEN_MART_MT_MOON",
+    "EVENT_SEEN_MART_CERULEAN",
+    "EVENT_SEEN_MART_VERMILION",
+    "EVENT_SEEN_MART_LAVENDER",
+    "EVENT_SEEN_MART_SAFFRON",
+    "EVENT_SEEN_MART_CELADON_2F_1",
+    "EVENT_SEEN_MART_CELADON_2F_2",
+    "EVENT_SEEN_MART_CELADON_3F",
+    "EVENT_SEEN_MART_CELADON_4F",
+    "EVENT_SEEN_MART_CELADON_5F_1",
+    "EVENT_SEEN_MART_CELADON_5F_2",
+    "EVENT_SEEN_MART_CELADON_VENDING_MACHINE",
+    "EVENT_SEEN_MART_FUCHSIA",
+    "EVENT_SEEN_MART_INDIGO_PLATEAU",
 ]
 
-SEEN_MART_FLAG_MAP = {data.event_flags[event]: event for event in TRACKER_SEEN_MART_FLAGS}
+TRACKER_SEEN_JOHTO_MART_FLAGS = [
+    "EVENT_SEEN_MART_CHERRYGROVE",
+    "EVENT_SEEN_MART_VIOLET",
+    "EVENT_SEEN_MART_AZALEA",
+    "EVENT_SEEN_MART_KURTS_BALLS",
+    "EVENT_SEEN_MART_CIANWOOD",
+    "EVENT_SEEN_MART_GOLDENROD_2F_1",
+    "EVENT_SEEN_MART_GOLDENROD_2F_2",
+    "EVENT_SEEN_MART_GOLDENROD_3F",
+    "EVENT_SEEN_MART_GOLDENROD_4F",
+    "EVENT_SEEN_MART_GOLDENROD_5F",
+    "EVENT_SEEN_MART_GOLDENROD_VENDING_MACHINE",
+    "EVENT_SEEN_MART_ROOFTOP_SALE",
+    "EVENT_SEEN_MART_UNDERGROUND",
+    "EVENT_SEEN_MART_BARGAIN_SHOP",
+    "EVENT_SEEN_MART_BLUE_CARD",
+    "EVENT_SEEN_MART_OLIVINE",
+    "EVENT_SEEN_MART_ECRUTEAK",
+    "EVENT_SEEN_MART_MAHOGANY_1",
+    "EVENT_SEEN_MART_MAHOGANY_2",
+    "EVENT_SEEN_MART_BLACKTHORN",
+]
+
+SEEN_KANTO_MART_FLAG_MAP = {data.event_flags[event]: event for event in TRACKER_SEEN_KANTO_MART_FLAGS}
+SEEN_JOHTO_MART_FLAG_MAP = {data.event_flags[event]: event for event in TRACKER_SEEN_JOHTO_MART_FLAGS}
 
 TRACKER_KEY_ITEM_FLAGS = [
     "EVENT_ZEPHYR_BADGE_FROM_FALKNER",
@@ -287,7 +325,8 @@ BITFLAG_STORAGES = [
     (TRACKER_EVENT_FLAGS_2, EVENT_FLAG_MAP_2, "local_set_events_2", "events_2"),
     (TRACKER_STATIC_EVENT_FLAGS, STATIC_EVENT_FLAG_MAP, "local_set_static_events", "statics"),
     (TRACKER_ROCKET_TRAP_EVENTS, ROCKET_TRAP_EVENT_FLAG_MAP, "local_set_rocket_trap_events", "rockettraps"),
-    (TRACKER_SEEN_MART_FLAGS, SEEN_MART_FLAG_MAP, "local_set_seen_mart_events", "seen_marts"),
+    (TRACKER_SEEN_KANTO_MART_FLAGS, SEEN_KANTO_MART_FLAG_MAP, "local_set_seen_kanto_mart_events", "seen_kanto_marts"),
+    (TRACKER_SEEN_JOHTO_MART_FLAGS, SEEN_JOHTO_MART_FLAG_MAP, "local_set_seen_johto_mart_events", "seen_johto_marts"),
     (TRACKER_KEY_ITEM_FLAGS, KEY_ITEM_FLAG_MAP, "local_found_key_items", "keys"),
 ]
 
@@ -302,7 +341,8 @@ class PokemonCrystalClient(BizHawkClient):
     local_set_events_2: dict[str, bool]
     local_set_static_events: dict[str, bool]
     local_set_rocket_trap_events: dict[str, bool]
-    local_set_seen_mart_events: dict[str, bool]
+    local_set_seen_kanto_mart_events: dict[str, bool]
+    local_set_seen_johto_mart_events: dict[str, bool]
     local_found_key_items: dict[str, bool]
     local_seen_pokemon: set[int]
     local_caught_pokemon: set[int]
