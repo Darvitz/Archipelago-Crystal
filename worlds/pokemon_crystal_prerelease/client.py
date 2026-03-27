@@ -324,6 +324,8 @@ class PokemonCrystalClient(BizHawkClient):
     remote_unown_dex: list[int]
     local_sync_events: dict[str, bool]
     remote_sync_events: int
+    local_unlocked_unowns: int
+    remote_unlocked_unowns: int
     has_tracker_slot: bool
     commands_enabled: bool
 
@@ -349,6 +351,8 @@ class PokemonCrystalClient(BizHawkClient):
         self.remote_unown_dex = list()
         self.local_sync_events = dict()
         self.remote_sync_events = 0
+        self.local_unlocked_unowns = 0
+        self.remote_unlocked_unowns = 0
         self.has_tracker_slot = False
         self.commands_enabled = False
 
@@ -427,10 +431,12 @@ class PokemonCrystalClient(BizHawkClient):
         pokedex_caught_key = f"pokemon_crystal_caught_pokemon_{ctx.team}_{ctx.slot}"
         unown_dex_key = f"pokemon_crystal_unowns_{ctx.team}_{ctx.slot}"
         sync_events_key = f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}"
+        unlocked_unowns_key = f"pokemon_crystal_unlocked_unowns_{ctx.team}_{ctx.slot}"
 
         if not self.notify_setup_complete:
             if ctx.items_handling & 0b010:
-                ctx.set_notify(pokedex_caught_key, pokedex_seen_key, unown_dex_key, sync_events_key)
+                ctx.set_notify(pokedex_caught_key, pokedex_seen_key, unown_dex_key, sync_events_key,
+                               unlocked_unowns_key)
             self.notify_setup_complete = True
 
         if ctx.slot_data["goal"] == Goal.option_elite_four:
@@ -538,7 +544,8 @@ class PokemonCrystalClient(BizHawkClient):
                  (data.ram_addresses["wMapGroup"], 2, "WRAM"),
                  (data.ram_addresses["wStatusFlags"], 1, "WRAM"),
                  (data.ram_addresses["wArchipelagoTrackerSlot"], 1, "WRAM"),
-                 (data.ram_addresses["wGymCount"], 1, "WRAM"), ],
+                 (data.ram_addresses["wGymCount"], 1, "WRAM"),
+                 (data.ram_addresses["wUnlockedUnowns"], 1, "WRAM"), ],
                 [overworld_guard]
             )
 
@@ -555,6 +562,7 @@ class PokemonCrystalClient(BizHawkClient):
             status_flags_bytes = read_result[8]
             tracker_slot_bytes = read_result[9]
             current_gym_count = read_result[10][0]
+            local_unlocked_unowns = read_result[11][0]
 
             local_checked_locations = set()
             bitflag_locals = {attr_name: {flag: False for flag in flag_list}
@@ -751,6 +759,16 @@ class PokemonCrystalClient(BizHawkClient):
                 }])
                 self.local_sync_events = local_sync_events
 
+            if local_unlocked_unowns != self.local_unlocked_unowns and ctx.items_handling & 0b010:
+                await ctx.send_msgs([{
+                    "cmd": "Set",
+                    "key": unlocked_unowns_key,
+                    "default": 0,
+                    "want_reply": True,
+                    "operations": [{"operation": "or", "value": local_unlocked_unowns}],
+                }])
+                self.local_unlocked_unowns = local_unlocked_unowns
+
             provide_shop_hints = ctx.slot_data["provide_shop_hints"]
             if provide_shop_hints != ProvideShopHints.option_off:
                 hints_locations = []
@@ -881,6 +899,11 @@ class PokemonCrystalClient(BizHawkClient):
                     sync_event_writes.append((data.ram_addresses["wGymCount"], [gym_count], "WRAM"))
                     sync_event_guards.append((data.ram_addresses["wGymCount"], [current_gym_count], "WRAM"))
 
+                merged_unlocked_unowns = self.remote_unlocked_unowns | local_unlocked_unowns
+                if merged_unlocked_unowns != local_unlocked_unowns:
+                    sync_event_writes.append((data.ram_addresses["wUnlockedUnowns"], [merged_unlocked_unowns], "WRAM"))
+                    sync_event_guards.append((data.ram_addresses["wUnlockedUnowns"], [local_unlocked_unowns], "WRAM"))
+
                 if sync_event_writes:
                     await bizhawk.guarded_write(ctx.bizhawk_ctx, sync_event_writes, sync_event_guards)
 
@@ -1004,6 +1027,9 @@ class PokemonCrystalClient(BizHawkClient):
                 if f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}" in args["keys"]:
                     remote_sync_events = args["keys"][f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}"]
                     self.remote_sync_events = remote_sync_events if remote_sync_events else 0
+                if f"pokemon_crystal_unlocked_unowns_{ctx.team}_{ctx.slot}" in args["keys"]:
+                    remote_unlocked_unowns = args["keys"][f"pokemon_crystal_unlocked_unowns_{ctx.team}_{ctx.slot}"]
+                    self.remote_unlocked_unowns = remote_unlocked_unowns if remote_unlocked_unowns else 0
 
         elif cmd == "SetReply":
             if args["key"] == f"pokemon_crystal_caught_pokemon_{ctx.team}_{ctx.slot}":
@@ -1014,6 +1040,8 @@ class PokemonCrystalClient(BizHawkClient):
                 self.remote_unown_dex = args.get("value", [])
             elif args["key"] == f"pokemon_crystal_sync_events_{ctx.team}_{ctx.slot}":
                 self.remote_sync_events = args.get("value", 0)
+            elif args["key"] == f"pokemon_crystal_unlocked_unowns_{ctx.team}_{ctx.slot}":
+                self.remote_unlocked_unowns = args.get("value", 0)
 
 
 def cmd_headbutt(self: "BizHawkClientCommandProcessor") -> None:
