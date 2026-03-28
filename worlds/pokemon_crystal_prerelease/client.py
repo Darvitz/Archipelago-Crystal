@@ -1089,6 +1089,7 @@ def cmd_headbutt(self: "BizHawkClientCommandProcessor") -> None:
     from CommonClient import logger
 
     logger.info("Headbutt Groups:\n\n"
+                "Canyon: Route 44\n"
                 "Town: Azalea Town, Routes 33, 42\n"
                 "Route: Routes 29, 30, 31, 34, 35, 36, 37, 38, 39\n"
                 "Border: Routes 26, 27, 32\n"
@@ -1109,5 +1110,5 @@ def cmd_fishing(self: "BizHawkClientCommandProcessor") -> None:
                 "Silver Cave Outside, Routes 6, 22, 28, 30, 31, 35, 43, 44\n"
                 "Gyarados: Lake of Rage, Fuchsia City\n"
                 "Dratini: Dragon's Den\n"
-                "Dratini_2: Route 45\n"
+                "Dratini_2/Route 45: Route 45\n"
                 "Qwilfish: Routes 12, 13, 32")
