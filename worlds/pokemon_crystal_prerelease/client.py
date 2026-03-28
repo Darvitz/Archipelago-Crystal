@@ -1108,7 +1108,8 @@ def cmd_fishing(self: "BizHawkClientCommandProcessor") -> None:
                 "Routes 9, 10, 24, 25, 42\n"
                 "Pond: Violet City, Ruins of Alph, Ilex Forest, Ecruteak City, Blackthorn City, Viridian City, "
                 "Silver Cave Outside, Routes 6, 22, 28, 30, 31, 35, 43, 44\n"
-                "Gyarados: Lake of Rage, Fuchsia City\n"
-                "Dratini: Dragon's Den\n"
+                "Gyarados/Lake of Rage: Lake of Rage, Fuchsia City\n"
+                "Dratini/Dragon's Den: Dragon's Den\n"
                 "Dratini_2/Route 45: Route 45\n"
-                "Qwilfish: Routes 12, 13, 32")
+                "Qwilfish/Routes 12, 13, 32: Routes 12, 13, 32\n"
+                "Whirl Islands: Whirl Islands (inside)")
