@@ -7081,10 +7081,36 @@
       "grass": "TIN_TOWER_3F"
     }
   },
+  "REGION_TIN_TOWER_4F:STAIR_1": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_4F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_4F:STAIR_2": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_4F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_4F:STAIR_3": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_4F"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_TIN_TOWER_4F": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_5F",
+      "REGION_TIN_TOWER_5F:STAIR_1",
+      "REGION_TIN_TOWER_5F:STAIR_2",
+      "REGION_TIN_TOWER_5F:STAIR_3",
       "REGION_TIN_TOWER_3F"
     ],
     "locations": [
@@ -7098,11 +7124,37 @@
       "grass": "TIN_TOWER_4F"
     }
   },
+  "REGION_TIN_TOWER_5F:STAIR_1": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_5F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_5F:STAIR_2": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_5F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_5F:STAIR_3": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_5F"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_TIN_TOWER_5F": {
     "johto": true,
     "exits": [
       "REGION_TIN_TOWER_6F",
-      "REGION_TIN_TOWER_4F"
+      "REGION_TIN_TOWER_4F:STAIR_1",
+      "REGION_TIN_TOWER_4F:STAIR_2",
+      "REGION_TIN_TOWER_4F:STAIR_3"
     ],
     "locations": [
       "TIN_TOWER_5F_HIDDEN_CARBOS",
@@ -7144,11 +7196,55 @@
       "grass": "TIN_TOWER_7F"
     }
   },
+  "REGION_TIN_TOWER_8F:STAIR_1": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_8F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_8F:STAIR_2": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_8F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_8F:STAIR_3": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_8F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_8F:STAIR_4": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_8F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_8F:STAIR_5": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_8F"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_TIN_TOWER_8F": {
     "johto": true,
     "exits": [
       "REGION_TIN_TOWER_7F",
-      "REGION_TIN_TOWER_9F"
+      "REGION_TIN_TOWER_9F:STAIR_1",
+      "REGION_TIN_TOWER_9F:STAIR_2",
+      "REGION_TIN_TOWER_9F:STAIR_3",
+      "REGION_TIN_TOWER_9F:STAIR_4",
+      "REGION_TIN_TOWER_9F:STAIR_5"
     ],
     "locations": [
       "TIN_TOWER_8F_FULL_RESTORE",
@@ -7160,10 +7256,54 @@
       "grass": "TIN_TOWER_8F"
     }
   },
+  "REGION_TIN_TOWER_9F:STAIR_1": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_9F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_9F:STAIR_2": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_9F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_9F:STAIR_3": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_9F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_9F:STAIR_4": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_9F"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_TIN_TOWER_9F:STAIR_5": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_9F"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_TIN_TOWER_9F": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_8F",
+      "REGION_TIN_TOWER_8F:STAIR_1",
+      "REGION_TIN_TOWER_8F:STAIR_2",
+      "REGION_TIN_TOWER_8F:STAIR_3",
+      "REGION_TIN_TOWER_8F:STAIR_4",
+      "REGION_TIN_TOWER_8F:STAIR_5",
       "REGION_TIN_TOWER_ROOF",
       "REGION_TIN_TOWER_7F"
     ],

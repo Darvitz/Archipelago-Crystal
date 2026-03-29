@@ -11381,21 +11381,13 @@
       "one_way": false
     },
     {
-      "name": "REGION_TIN_TOWER_4F -> REGION_TIN_TOWER_5F",
+      "name": "REGION_TIN_TOWER_4F -> REGION_TIN_TOWER_5F:STAIR_1",
       "exit_region": "REGION_TIN_TOWER_4F",
-      "entrance_region": "REGION_TIN_TOWER_5F",
+      "entrance_region": "REGION_TIN_TOWER_5F:STAIR_1",
       "exit_warps": [
         {
           "map": "TinTower4F",
           "index": 1
-        },
-        {
-          "map": "TinTower4F",
-          "index": 3
-        },
-        {
-          "map": "TinTower4F",
-          "index": 4
         }
       ],
       "arrival_map": "TinTower5F",
@@ -11403,7 +11395,41 @@
       "arrival_warp_id": 2,
       "type": "interior",
       "area": "johto",
-      "one_way": false
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_4F -> REGION_TIN_TOWER_5F:STAIR_2",
+      "exit_region": "REGION_TIN_TOWER_4F",
+      "entrance_region": "REGION_TIN_TOWER_5F:STAIR_2",
+      "exit_warps": [
+        {
+          "map": "TinTower4F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "TinTower5F",
+      "arrival_map_const": "TIN_TOWER_5F",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_4F -> REGION_TIN_TOWER_5F:STAIR_3",
+      "exit_region": "REGION_TIN_TOWER_4F",
+      "entrance_region": "REGION_TIN_TOWER_5F:STAIR_3",
+      "exit_warps": [
+        {
+          "map": "TinTower4F",
+          "index": 4
+        }
+      ],
+      "arrival_map": "TinTower5F",
+      "arrival_map_const": "TIN_TOWER_5F",
+      "arrival_warp_id": 4,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
     },
     {
       "name": "REGION_TIN_TOWER_4F -> REGION_TIN_TOWER_3F",
@@ -11440,21 +11466,13 @@
       "one_way": false
     },
     {
-      "name": "REGION_TIN_TOWER_5F -> REGION_TIN_TOWER_4F",
+      "name": "REGION_TIN_TOWER_5F -> REGION_TIN_TOWER_4F:STAIR_1",
       "exit_region": "REGION_TIN_TOWER_5F",
-      "entrance_region": "REGION_TIN_TOWER_4F",
+      "entrance_region": "REGION_TIN_TOWER_4F:STAIR_1",
       "exit_warps": [
         {
           "map": "TinTower5F",
           "index": 2
-        },
-        {
-          "map": "TinTower5F",
-          "index": 3
-        },
-        {
-          "map": "TinTower5F",
-          "index": 4
         }
       ],
       "arrival_map": "TinTower4F",
@@ -11462,7 +11480,41 @@
       "arrival_warp_id": 1,
       "type": "interior",
       "area": "johto",
-      "one_way": false
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_5F -> REGION_TIN_TOWER_4F:STAIR_2",
+      "exit_region": "REGION_TIN_TOWER_5F",
+      "entrance_region": "REGION_TIN_TOWER_4F:STAIR_2",
+      "exit_warps": [
+        {
+          "map": "TinTower5F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "TinTower4F",
+      "arrival_map_const": "TIN_TOWER_4F",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_5F -> REGION_TIN_TOWER_4F:STAIR_3",
+      "exit_region": "REGION_TIN_TOWER_5F",
+      "entrance_region": "REGION_TIN_TOWER_4F:STAIR_3",
+      "exit_warps": [
+        {
+          "map": "TinTower5F",
+          "index": 4
+        }
+      ],
+      "arrival_map": "TinTower4F",
+      "arrival_map_const": "TIN_TOWER_4F",
+      "arrival_warp_id": 4,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
     },
     {
       "name": "REGION_TIN_TOWER_6F -> REGION_TIN_TOWER_7F",
@@ -11567,29 +11619,13 @@
       "one_way": false
     },
     {
-      "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F",
+      "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_1",
       "exit_region": "REGION_TIN_TOWER_8F",
-      "entrance_region": "REGION_TIN_TOWER_9F",
+      "entrance_region": "REGION_TIN_TOWER_9F:STAIR_1",
       "exit_warps": [
         {
           "map": "TinTower8F",
           "index": 2
-        },
-        {
-          "map": "TinTower8F",
-          "index": 3
-        },
-        {
-          "map": "TinTower8F",
-          "index": 4
-        },
-        {
-          "map": "TinTower8F",
-          "index": 5
-        },
-        {
-          "map": "TinTower8F",
-          "index": 6
         }
       ],
       "arrival_map": "TinTower9F",
@@ -11597,32 +11633,84 @@
       "arrival_warp_id": 1,
       "type": "interior",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
-      "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F",
+      "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_2",
+      "exit_region": "REGION_TIN_TOWER_8F",
+      "entrance_region": "REGION_TIN_TOWER_9F:STAIR_2",
+      "exit_warps": [
+        {
+          "map": "TinTower8F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "TinTower9F",
+      "arrival_map_const": "TIN_TOWER_9F",
+      "arrival_warp_id": 2,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_3",
+      "exit_region": "REGION_TIN_TOWER_8F",
+      "entrance_region": "REGION_TIN_TOWER_9F:STAIR_3",
+      "exit_warps": [
+        {
+          "map": "TinTower8F",
+          "index": 4
+        }
+      ],
+      "arrival_map": "TinTower9F",
+      "arrival_map_const": "TIN_TOWER_9F",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_4",
+      "exit_region": "REGION_TIN_TOWER_8F",
+      "entrance_region": "REGION_TIN_TOWER_9F:STAIR_4",
+      "exit_warps": [
+        {
+          "map": "TinTower8F",
+          "index": 5
+        }
+      ],
+      "arrival_map": "TinTower9F",
+      "arrival_map_const": "TIN_TOWER_9F",
+      "arrival_warp_id": 6,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_5",
+      "exit_region": "REGION_TIN_TOWER_8F",
+      "entrance_region": "REGION_TIN_TOWER_9F:STAIR_5",
+      "exit_warps": [
+        {
+          "map": "TinTower8F",
+          "index": 6
+        }
+      ],
+      "arrival_map": "TinTower9F",
+      "arrival_map_const": "TIN_TOWER_9F",
+      "arrival_warp_id": 7,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_1",
       "exit_region": "REGION_TIN_TOWER_9F",
-      "entrance_region": "REGION_TIN_TOWER_8F",
+      "entrance_region": "REGION_TIN_TOWER_8F:STAIR_1",
       "exit_warps": [
         {
           "map": "TinTower9F",
           "index": 1
-        },
-        {
-          "map": "TinTower9F",
-          "index": 2
-        },
-        {
-          "map": "TinTower9F",
-          "index": 3
-        },
-        {
-          "map": "TinTower9F",
-          "index": 6
-        },
-        {
-          "map": "TinTower9F",
-          "index": 7
         }
       ],
       "arrival_map": "TinTower8F",
@@ -11630,7 +11718,75 @@
       "arrival_warp_id": 2,
       "type": "interior",
       "area": "johto",
-      "one_way": false
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_2",
+      "exit_region": "REGION_TIN_TOWER_9F",
+      "entrance_region": "REGION_TIN_TOWER_8F:STAIR_2",
+      "exit_warps": [
+        {
+          "map": "TinTower9F",
+          "index": 2
+        }
+      ],
+      "arrival_map": "TinTower8F",
+      "arrival_map_const": "TIN_TOWER_8F",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_3",
+      "exit_region": "REGION_TIN_TOWER_9F",
+      "entrance_region": "REGION_TIN_TOWER_8F:STAIR_3",
+      "exit_warps": [
+        {
+          "map": "TinTower9F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "TinTower8F",
+      "arrival_map_const": "TIN_TOWER_8F",
+      "arrival_warp_id": 4,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_4",
+      "exit_region": "REGION_TIN_TOWER_9F",
+      "entrance_region": "REGION_TIN_TOWER_8F:STAIR_4",
+      "exit_warps": [
+        {
+          "map": "TinTower9F",
+          "index": 6
+        }
+      ],
+      "arrival_map": "TinTower8F",
+      "arrival_map_const": "TIN_TOWER_8F",
+      "arrival_warp_id": 5,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_5",
+      "exit_region": "REGION_TIN_TOWER_9F",
+      "entrance_region": "REGION_TIN_TOWER_8F:STAIR_5",
+      "exit_warps": [
+        {
+          "map": "TinTower9F",
+          "index": 7
+        }
+      ],
+      "arrival_map": "TinTower8F",
+      "arrival_map_const": "TIN_TOWER_8F",
+      "arrival_warp_id": 6,
+      "type": "interior",
+      "area": "johto",
+      "one_way": true
     },
     {
       "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_ROOF",
