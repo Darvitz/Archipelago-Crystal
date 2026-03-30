@@ -1115,7 +1115,8 @@
     ],
     "default_item": "TM_24",
     "scripts": [
-      "AP_NPC_DragonsDen_TM24_From_Clair"
+      "AP_NPC_DragonsDen_TM24_From_Clair",
+      "AP_NPC_DragonShrine_TM24_From_Clair"
     ]
   },
   "DRAGONS_DEN_B1F_HIDDEN_MAX_POTION": {

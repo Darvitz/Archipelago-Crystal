@@ -1439,6 +1439,7 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
     write_bytes(ap_version_text, data.rom_addresses["AP_Version_Text"] + 1)
 
     if world.er_pairings:
+        write_bytes([1], data.rom_addresses["AP_Setting_EROn"] + 2)
         write_entrance_pairings(world, write_bytes)
 
     patch.write_file("token_data.bin", patch.get_token_binary())

@@ -535,6 +535,12 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
             return
         set_rule(location, rule)
 
+    def set_static_rule(name: str, rule: CollectionRule):
+        if world.options.level_scaling:
+            set_rule(get_location(name), rule)
+        if world.options.static_pokemon_required:
+            set_rule(get_location(f"Static_{name}_1"), rule)
+
     def hidden():
         return world.options.randomize_hidden_items
 
@@ -918,10 +924,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
     celebi_rule = lambda state: state.has("GS Ball", world.player) and state.has("EVENT_CLEARED_SLOWPOKE_WELL",
                                                                                  world.player)
-    if world.options.level_scaling:
-        set_rule(get_location("Celebi"), celebi_rule)
-    if world.options.static_pokemon_required:
-        set_rule(get_location("Static_Celebi_1"), celebi_rule)
+    set_static_rule("Celebi", celebi_rule)
 
     set_rule(get_location("EVENT_HERDED_FARFETCHD"),
              lambda state: state.has("EVENT_CLEARED_SLOWPOKE_WELL", world.player))
@@ -963,10 +966,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
              lambda state: world.logic.has_badge(state, "plain"))
     set_rule(get_location("Goldenrod City - Post-E4 GS Ball from Trade Corner Receptionist"),
              lambda state: state.has("EVENT_BEAT_ELITE_FOUR", world.player))
-    if world.options.level_scaling:
-        set_rule(get_location("Eevee"), lambda state: state.has("EVENT_MET_BILL", world.player))
-    if world.options.static_pokemon_required:
-        set_rule(get_location("Static_Eevee_1"), lambda state: state.has("EVENT_MET_BILL", world.player))
+    set_static_rule("Eevee", lambda state: state.has("EVENT_MET_BILL", world.player))
 
     if Shopsanity.johto_marts in world.options.shopsanity.value:
         set_rule(get_entrance("REGION_GOLDENROD_DEPT_STORE_ROOF -> REGION_MART_ROOFTOP_SALE"),
@@ -1008,15 +1008,10 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         set_rule(get_entrance("REGION_GOLDENROD_GAME_CORNER -> REGION_MART_GOLDENROD_GAME_CORNER"),
                  lambda state: state.has("Coin Case", world.player))
 
-    if world.options.static_pokemon_required:
-        set_rule(get_location("Static_GoldenrodGameCorner1_1"), lambda state: state.has("Coin Case", world.player))
-        set_rule(get_location("Static_GoldenrodGameCorner2_1"), lambda state: state.has("Coin Case", world.player))
-        set_rule(get_location("Static_GoldenrodGameCorner3_1"), lambda state: state.has("Coin Case", world.player))
-
-    if world.options.level_scaling:
-        set_rule(get_location("GoldenrodGameCorner1"), lambda state: state.has("Coin Case", world.player))
-        set_rule(get_location("GoldenrodGameCorner2"), lambda state: state.has("Coin Case", world.player))
-        set_rule(get_location("GoldenrodGameCorner2"), lambda state: state.has("Coin Case", world.player))
+    coin_case_rule = lambda state: state.has("Coin Case", world.player)
+    set_static_rule("GoldenrodGameCorner1", coin_case_rule)
+    set_static_rule("GoldenrodGameCorner2", coin_case_rule)
+    set_static_rule("GoldenrodGameCorner3", coin_case_rule)
 
     # Radio Tower
     set_rule(get_entrance("REGION_RADIO_TOWER_2F -> REGION_RADIO_TOWER_2F:TAKEOVER"), has_rockets_requirement)
@@ -1110,10 +1105,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     set_rule(get_entrance("REGION_ROUTE_37 -> REGION_ROUTE_36:EAST"), has_squirtbottle)
     set_rule(get_entrance("REGION_ROUTE_37 -> REGION_ROUTE_36:WEST"), has_squirtbottle)
 
-    if world.options.level_scaling:
-        set_rule(get_location("Sudowoodo"), has_squirtbottle)
-    if world.options.static_pokemon_required:
-        set_rule(get_location("Static_Sudowoodo_1"), has_squirtbottle)
+    set_static_rule("Sudowoodo", has_squirtbottle)
 
     # Route 36
     set_rule(get_entrance("REGION_ROUTE_35 -> REGION_ROUTE_36:WEST"), can_cut)
@@ -1153,10 +1145,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
              lambda state: state.has("Rainbow Wing", world.player))
 
     set_rule(get_location("EVENT_FOUGHT_HO_OH"), lambda state: state.has("Rainbow Wing", world.player))
-    if world.options.level_scaling:
-        set_rule(get_location("Ho_Oh"), lambda state: state.has("Rainbow Wing", world.player))
-    if world.options.static_pokemon_required:
-        set_rule(get_location("Static_Ho_Oh_1"), lambda state: state.has("Rainbow Wing", world.player))
+    set_static_rule("Ho_Oh", lambda state: state.has("Rainbow Wing", world.player))
 
     set_rule(get_location("Tin Tower 1F - Rainbow Wing"),
              lambda state: state.has("EVENT_BEAT_ELITE_FOUR", world.player))
@@ -1252,10 +1241,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     set_rule(get_entrance("REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_SE"), can_surf_and_whirlpool)
 
     set_rule(get_location("EVENT_FOUGHT_LUGIA"), lambda state: state.has("Silver Wing", world.player))
-    if world.options.level_scaling:
-        set_rule(get_location("Lugia"), lambda state: state.has("Silver Wing", world.player))
-    if world.options.static_pokemon_required:
-        set_rule(get_location("Static_Lugia_1"), lambda state: state.has("Silver Wing", world.player))
+    set_static_rule("Lugia", lambda state: state.has("Silver Wing", world.player))
 
     # Cianwood
     set_rule(get_entrance("REGION_CIANWOOD_CITY -> REGION_ROUTE_41"), can_surf)
@@ -1487,6 +1473,13 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     set_rule(get_entrance("REGION_DRAGONS_DEN_B1F -> REGION_DRAGONS_DEN_B1F:WATER"), can_surf)
     set_rule(get_entrance("REGION_DRAGONS_DEN_B1F:WATER -> REGION_DRAGONS_DEN_B1F:WHIRLPOOL"), can_surf_and_whirlpool)
 
+    # Dragon Shrine - elder kicks you out if you haven't beaten Clair
+    beaten_clair = lambda state: world.logic.has_beaten_gym(state, "clair")
+    if world.options.vanilla_clair:
+        safe_set_location_rule("Dragon Shrine - Rising Badge from Clair", beaten_clair)
+        safe_set_location_rule("Dragon's Den - TM24 from Clair", beaten_clair)
+    set_static_rule("Dratini", beaten_clair)
+
     # Route 45
     if hidden():
         set_rule(get_location("Route 45 - Hidden Item in Southeast Pond"), can_surf)
@@ -1588,6 +1581,10 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
         set_rule(get_location("EVENT_BEAT_RED"), world.logic.has_red_requirement())
         # set_rule(get_location("RED_1"), has_red_requirement)
+
+        # Beating Red warps you outside Silver Cave Pokemon Center
+        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_3 -> REGION_SILVER_CAVE_OUTSIDE"),
+                 lambda state: state.has("EVENT_BEAT_RED", world.player))
 
         # Route 28
         set_rule(get_location("Route 28 - TM47 from Celebrity in House"), can_cut)
@@ -1732,10 +1729,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
         has_expn = world.logic.has_expn()
         set_rule(get_location("EVENT_FOUGHT_SNORLAX"), has_expn)
-        if world.options.level_scaling:
-            set_rule(get_location("Snorlax"), has_expn)
-        if world.options.static_pokemon_required:
-            set_rule(get_location("Static_Snorlax_1"), has_expn)
+        set_static_rule("Snorlax", has_expn)
 
         set_rule(get_entrance("REGION_VERMILION_CITY -> REGION_ROUTE_11"), has_expn)
         set_rule(get_entrance("REGION_VERMILION_CITY -> REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE"), has_expn)
@@ -1830,18 +1824,10 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                 get_entrance("REGION_CELADON_GAME_CORNER_PRIZE_ROOM -> REGION_MART_CELADON_GAME_CORNER_PRIZE_ROOM"),
                 lambda state: state.has("Coin Case", world.player))
 
-        if world.options.static_pokemon_required:
-            set_rule(get_location("Static_CeladonGameCornerPrizeRoom1_1"),
-                     lambda state: state.has("Coin Case", world.player))
-            set_rule(get_location("Static_CeladonGameCornerPrizeRoom2_1"),
-                     lambda state: state.has("Coin Case", world.player))
-            set_rule(get_location("Static_CeladonGameCornerPrizeRoom3_1"),
-                     lambda state: state.has("Coin Case", world.player))
-
-        if world.options.level_scaling:
-            set_rule(get_location("CeladonGameCornerPrizeRoom1"), lambda state: state.has("Coin Case", world.player))
-            set_rule(get_location("CeladonGameCornerPrizeRoom2"), lambda state: state.has("Coin Case", world.player))
-            set_rule(get_location("CeladonGameCornerPrizeRoom3"), lambda state: state.has("Coin Case", world.player))
+        celadon_coin_case = lambda state: state.has("Coin Case", world.player)
+        set_static_rule("CeladonGameCornerPrizeRoom1", celadon_coin_case)
+        set_static_rule("CeladonGameCornerPrizeRoom2", celadon_coin_case)
+        set_static_rule("CeladonGameCornerPrizeRoom3", celadon_coin_case)
 
         diploma_count = len(world.logic.available_pokemon) if not world.is_universal_tracker else world.ut_slot_data[
             "logically_available_pokemon_count"]

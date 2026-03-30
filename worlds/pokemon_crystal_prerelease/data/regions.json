@@ -1344,7 +1344,8 @@
       "Dratini"
     ],
     "locations": [
-      "RISING_BADGE_FROM_CLAIR_SHRINE"
+      "RISING_BADGE_FROM_CLAIR_SHRINE",
+      "TM24_DRAGONBREATH_SHRINE"
     ],
     "events": [
       "EVENT_RISING_BADGE_FROM_CLAIR"
@@ -1415,8 +1416,7 @@
     "locations": [
       "DRAGONS_DEN_B1F_DRAGON_FANG",
       "DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER",
-      "DRAGONS_DEN_B1F_HIDDEN_REVIVE",
-      "TM24_DRAGONBREATH_SHRINE"
+      "DRAGONS_DEN_B1F_HIDDEN_REVIVE"
     ],
     "events": [],
     "wild_encounters": {
@@ -6830,7 +6830,8 @@
     "johto": false,
     "silver_cave": true,
     "exits": [
-      "REGION_SILVER_CAVE_ROOM_2"
+      "REGION_SILVER_CAVE_ROOM_2",
+      "REGION_SILVER_CAVE_OUTSIDE"
     ],
     "trainers": [],
     "locations": [],
