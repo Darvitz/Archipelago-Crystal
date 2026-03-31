@@ -58,9 +58,10 @@
       "REGION_AZALEA_MART",
       "REGION_KURTS_HOUSE",
       "REGION_AZALEA_GYM",
-      "REGION_SLOWPOKE_WELL_B1F",
+      "REGION_AZALEA_TOWN:WELL",
       "REGION_ILEX_FOREST_AZALEA_GATE",
-      "REGION_ROUTE_33"
+      "REGION_ROUTE_33",
+      "REGION_AZALEA_TOWN:FLY"
     ],
     "trainers": [
       "RIVAL_QUILAVA_AZALEA",
@@ -89,6 +90,22 @@
     "wild_encounters": {
       "headbutt": "Town"
     }
+  },
+  "REGION_AZALEA_TOWN:WELL": {
+    "johto": true,
+    "exits": [
+      "REGION_AZALEA_TOWN",
+      "REGION_SLOWPOKE_WELL_B1F",
+      "REGION_AZALEA_TOWN:FLY"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_AZALEA_TOWN:FLY": {
+    "johto": true,
+    "exits": [],
+    "locations": [],
+    "events": []
   },
   "REGION_BATTLE_TOWER_1F": {
     "johto": true,
@@ -2575,7 +2592,9 @@
     "locations": [
       "KURT_GAVE_YOU_LURE_BALL"
     ],
-    "events": [],
+    "events": [
+      "EVENT_MET_KURT"
+    ],
     "marts": [
       "MART_KURTS_BALLS"
     ]
@@ -6845,7 +6864,7 @@
   "REGION_SLOWPOKE_WELL_B1F": {
     "johto": true,
     "exits": [
-      "REGION_AZALEA_TOWN",
+      "REGION_AZALEA_TOWN:WELL",
       "REGION_SLOWPOKE_WELL_B1F:WEST"
     ],
     "trainers": [

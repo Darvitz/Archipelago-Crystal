@@ -149,23 +149,6 @@
       "one_way": false
     },
     {
-      "name": "REGION_AZALEA_TOWN -> REGION_SLOWPOKE_WELL_B1F",
-      "exit_region": "REGION_AZALEA_TOWN",
-      "entrance_region": "REGION_SLOWPOKE_WELL_B1F",
-      "exit_warps": [
-        {
-          "map": "AzaleaTown",
-          "index": 6
-        }
-      ],
-      "arrival_map": "SlowpokeWellB1F",
-      "arrival_map_const": "SLOWPOKE_WELL_B1F",
-      "arrival_warp_id": 1,
-      "type": "cave",
-      "area": "johto",
-      "one_way": false
-    },
-    {
       "name": "REGION_AZALEA_TOWN -> REGION_ILEX_FOREST_AZALEA_GATE",
       "exit_region": "REGION_AZALEA_TOWN",
       "entrance_region": "REGION_ILEX_FOREST_AZALEA_GATE",
@@ -183,6 +166,23 @@
       "arrival_map_const": "ILEX_FOREST_AZALEA_GATE",
       "arrival_warp_id": 3,
       "type": "gate",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_AZALEA_TOWN:WELL -> REGION_SLOWPOKE_WELL_B1F",
+      "exit_region": "REGION_AZALEA_TOWN:WELL",
+      "entrance_region": "REGION_SLOWPOKE_WELL_B1F",
+      "exit_warps": [
+        {
+          "map": "AzaleaTown",
+          "index": 6
+        }
+      ],
+      "arrival_map": "SlowpokeWellB1F",
+      "arrival_map_const": "SLOWPOKE_WELL_B1F",
+      "arrival_warp_id": 1,
+      "type": "cave",
       "area": "johto",
       "one_way": false
     },
@@ -10994,9 +10994,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SLOWPOKE_WELL_B1F -> REGION_AZALEA_TOWN",
+      "name": "REGION_SLOWPOKE_WELL_B1F -> REGION_AZALEA_TOWN:WELL",
       "exit_region": "REGION_SLOWPOKE_WELL_B1F",
-      "entrance_region": "REGION_AZALEA_TOWN",
+      "entrance_region": "REGION_AZALEA_TOWN:WELL",
       "exit_warps": [
         {
           "map": "SlowpokeWellB1F",

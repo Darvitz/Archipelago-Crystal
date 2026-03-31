@@ -852,6 +852,11 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                                        lambda state: state.has("EVENT_RESTORED_POWER_TO_KANTO", world.player))
 
     # Azalea Town
+    set_rule(get_entrance("REGION_AZALEA_TOWN -> REGION_AZALEA_TOWN:WELL"),
+             lambda state: state.has("EVENT_MET_KURT", world.player))
+    set_rule(get_entrance("REGION_AZALEA_TOWN:WELL -> REGION_AZALEA_TOWN"),
+             lambda state: state.has("EVENT_MET_KURT", world.player))
+
     slowpoke_well_rule = lambda state: can_strength(state) and can_surf(state) and state.has(
         "EVENT_CLEARED_SLOWPOKE_WELL", world.player)
 

@@ -884,7 +884,7 @@ def _init() -> None:
                   exclude_vanilla_start=True),
         FlyRegion(16, "Violet City", "VIOLET", "REGION_VIOLET_CITY", "REGION_VIOLET_CITY", True,
                   exclude_vanilla_start=True),
-        FlyRegion(18, "Azalea Town", "AZALEA", "REGION_AZALEA_TOWN", "REGION_AZALEA_TOWN", True),
+        FlyRegion(18, "Azalea Town", "AZALEA", "REGION_AZALEA_TOWN:FLY", "REGION_AZALEA_TOWN", True),
         FlyRegion(19, "Cianwood City", "CIANWOOD", "REGION_CIANWOOD_CITY", "REGION_CIANWOOD_CITY", True),
         FlyRegion(20, "Goldenrod City", "GOLDENROD", "REGION_GOLDENROD_CITY", "REGION_GOLDENROD_CITY", True),
         FlyRegion(21, "Olivine City", "OLIVINE", "REGION_OLIVINE_CITY", "REGION_OLIVINE_CITY", True),
