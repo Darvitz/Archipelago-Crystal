@@ -7760,9 +7760,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_2:SOUTHEAST -> REGION_ROUTE_2_GATE",
-      "exit_region": "REGION_ROUTE_2:SOUTHEAST",
-      "entrance_region": "REGION_ROUTE_2_GATE",
+      "name": "REGION_ROUTE_2:NORTH_GATE -> REGION_ROUTE_2_GATE:NORTH_GATE",
+      "exit_region": "REGION_ROUTE_2:NORTH_GATE",
+      "entrance_region": "REGION_ROUTE_2_GATE:NORTH_GATE",
       "exit_warps": [
         {
           "map": "Route2",
@@ -7771,10 +7771,6 @@
         {
           "map": "Route2",
           "index": 4
-        },
-        {
-          "map": "Route2",
-          "index": 2
         }
       ],
       "arrival_map": "Route2Gate",
@@ -7785,9 +7781,47 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_2_GATE -> REGION_ROUTE_2:SOUTHEAST",
-      "exit_region": "REGION_ROUTE_2_GATE",
-      "entrance_region": "REGION_ROUTE_2:SOUTHEAST",
+      "name": "REGION_ROUTE_2:SOUTH_GATE -> REGION_ROUTE_2_GATE:SOUTH_GATE",
+      "exit_region": "REGION_ROUTE_2:SOUTH_GATE",
+      "entrance_region": "REGION_ROUTE_2_GATE:SOUTH_GATE",
+      "exit_warps": [
+        {
+          "map": "Route2",
+          "index": 2
+        }
+      ],
+      "arrival_map": "Route2Gate",
+      "arrival_map_const": "ROUTE_2_GATE",
+      "arrival_warp_id": 3,
+      "type": "gate",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_2_GATE:NORTH_GATE -> REGION_ROUTE_2:NORTH_GATE",
+      "exit_region": "REGION_ROUTE_2_GATE:NORTH_GATE",
+      "entrance_region": "REGION_ROUTE_2:NORTH_GATE",
+      "exit_warps": [
+        {
+          "map": "Route2Gate",
+          "index": 1
+        },
+        {
+          "map": "Route2Gate",
+          "index": 2
+        }
+      ],
+      "arrival_map": "Route2",
+      "arrival_map_const": "ROUTE_2",
+      "arrival_warp_id": 3,
+      "type": "gate",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_2_GATE:SOUTH_GATE -> REGION_ROUTE_2:SOUTH_GATE",
+      "exit_region": "REGION_ROUTE_2_GATE:SOUTH_GATE",
+      "entrance_region": "REGION_ROUTE_2:SOUTH_GATE",
       "exit_warps": [
         {
           "map": "Route2Gate",
@@ -7796,14 +7830,6 @@
         {
           "map": "Route2Gate",
           "index": 4
-        },
-        {
-          "map": "Route2Gate",
-          "index": 1
-        },
-        {
-          "map": "Route2Gate",
-          "index": 2
         }
       ],
       "arrival_map": "Route2",

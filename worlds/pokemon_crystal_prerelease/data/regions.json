@@ -4696,10 +4696,29 @@
       "Route2DiglettsCave"
     ]
   },
+  "REGION_ROUTE_2:NORTH_GATE": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_2:SOUTHEAST",
+      "REGION_ROUTE_2_GATE:NORTH_GATE"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_2:SOUTH_GATE": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_2:SOUTHEAST",
+      "REGION_ROUTE_2_GATE:SOUTH_GATE"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_ROUTE_2:SOUTHEAST": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_2_GATE",
+      "REGION_ROUTE_2:NORTH_GATE",
+      "REGION_ROUTE_2:SOUTH_GATE",
       "REGION_ROUTE_2:NORTHEAST",
       "REGION_ROUTE_2:WEST"
     ],
@@ -4708,10 +4727,29 @@
     ],
     "events": []
   },
+  "REGION_ROUTE_2_GATE:NORTH_GATE": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_2_GATE",
+      "REGION_ROUTE_2:NORTH_GATE"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_2_GATE:SOUTH_GATE": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_2_GATE",
+      "REGION_ROUTE_2:SOUTH_GATE"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_ROUTE_2_GATE": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_2:SOUTHEAST"
+      "REGION_ROUTE_2_GATE:NORTH_GATE",
+      "REGION_ROUTE_2_GATE:SOUTH_GATE"
     ],
     "locations": [],
     "events": []
