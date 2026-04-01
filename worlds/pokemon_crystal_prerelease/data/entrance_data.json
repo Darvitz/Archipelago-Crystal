@@ -11050,6 +11050,57 @@
       "one_way": false
     },
     {
+      "name": "REGION_SPROUT_TOWER_1F:STAIR_1 -> REGION_SPROUT_TOWER_2F:STAIR_1",
+      "exit_region": "REGION_SPROUT_TOWER_1F:STAIR_1",
+      "entrance_region": "REGION_SPROUT_TOWER_2F:STAIR_1",
+      "exit_warps": [
+        {
+          "map": "SproutTower1F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "SproutTower2F",
+      "arrival_map_const": "SPROUT_TOWER_2F",
+      "arrival_warp_id": 1,
+      "type": "interior",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_SPROUT_TOWER_1F:STAIR_2 -> REGION_SPROUT_TOWER_2F:STAIR_2",
+      "exit_region": "REGION_SPROUT_TOWER_1F:STAIR_2",
+      "entrance_region": "REGION_SPROUT_TOWER_2F:STAIR_2",
+      "exit_warps": [
+        {
+          "map": "SproutTower1F",
+          "index": 4
+        }
+      ],
+      "arrival_map": "SproutTower2F",
+      "arrival_map_const": "SPROUT_TOWER_2F",
+      "arrival_warp_id": 2,
+      "type": "interior",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_SPROUT_TOWER_1F:STAIR_3 -> REGION_SPROUT_TOWER_2F:STAIR_3",
+      "exit_region": "REGION_SPROUT_TOWER_1F:STAIR_3",
+      "entrance_region": "REGION_SPROUT_TOWER_2F:STAIR_3",
+      "exit_warps": [
+        {
+          "map": "SproutTower1F",
+          "index": 5
+        }
+      ],
+      "arrival_map": "SproutTower2F",
+      "arrival_map_const": "SPROUT_TOWER_2F",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "johto",
+      "one_way": false
+    },
+    {
       "name": "REGION_SPROUT_TOWER_1F -> REGION_VIOLET_CITY",
       "exit_region": "REGION_SPROUT_TOWER_1F",
       "entrance_region": "REGION_VIOLET_CITY",
@@ -11071,43 +11122,44 @@
       "one_way": false
     },
     {
-      "name": "REGION_SPROUT_TOWER_1F -> REGION_SPROUT_TOWER_2F",
-      "exit_region": "REGION_SPROUT_TOWER_1F",
-      "entrance_region": "REGION_SPROUT_TOWER_2F",
+      "name": "REGION_SPROUT_TOWER_2F:STAIR_1 -> REGION_SPROUT_TOWER_1F:STAIR_1",
+      "exit_region": "REGION_SPROUT_TOWER_2F:STAIR_1",
+      "entrance_region": "REGION_SPROUT_TOWER_1F:STAIR_1",
       "exit_warps": [
         {
-          "map": "SproutTower1F",
-          "index": 3
-        },
-        {
-          "map": "SproutTower1F",
-          "index": 4
-        },
-        {
-          "map": "SproutTower1F",
-          "index": 5
+          "map": "SproutTower2F",
+          "index": 1
         }
       ],
-      "arrival_map": "SproutTower2F",
-      "arrival_map_const": "SPROUT_TOWER_2F",
-      "arrival_warp_id": 1,
+      "arrival_map": "SproutTower1F",
+      "arrival_map_const": "SPROUT_TOWER_1F",
+      "arrival_warp_id": 3,
       "type": "interior",
       "area": "johto",
       "one_way": false
     },
     {
-      "name": "REGION_SPROUT_TOWER_2F -> REGION_SPROUT_TOWER_1F",
-      "exit_region": "REGION_SPROUT_TOWER_2F",
-      "entrance_region": "REGION_SPROUT_TOWER_1F",
+      "name": "REGION_SPROUT_TOWER_2F:STAIR_2 -> REGION_SPROUT_TOWER_1F:STAIR_2",
+      "exit_region": "REGION_SPROUT_TOWER_2F:STAIR_2",
+      "entrance_region": "REGION_SPROUT_TOWER_1F:STAIR_2",
       "exit_warps": [
         {
           "map": "SproutTower2F",
-          "index": 1
-        },
-        {
-          "map": "SproutTower2F",
           "index": 2
-        },
+        }
+      ],
+      "arrival_map": "SproutTower1F",
+      "arrival_map_const": "SPROUT_TOWER_1F",
+      "arrival_warp_id": 4,
+      "type": "interior",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_SPROUT_TOWER_2F:STAIR_3 -> REGION_SPROUT_TOWER_1F:STAIR_3",
+      "exit_region": "REGION_SPROUT_TOWER_2F:STAIR_3",
+      "entrance_region": "REGION_SPROUT_TOWER_1F:STAIR_3",
+      "exit_warps": [
         {
           "map": "SproutTower2F",
           "index": 3
@@ -11115,7 +11167,7 @@
       ],
       "arrival_map": "SproutTower1F",
       "arrival_map_const": "SPROUT_TOWER_1F",
-      "arrival_warp_id": 3,
+      "arrival_warp_id": 5,
       "type": "interior",
       "area": "johto",
       "one_way": false

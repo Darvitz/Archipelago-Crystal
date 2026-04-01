@@ -6965,11 +6965,40 @@
     "locations": [],
     "events": []
   },
+  "REGION_SPROUT_TOWER_1F:STAIR_1": {
+    "johto": true,
+    "exits": [
+      "REGION_SPROUT_TOWER_1F",
+      "REGION_SPROUT_TOWER_2F:STAIR_1"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_SPROUT_TOWER_1F:STAIR_2": {
+    "johto": true,
+    "exits": [
+      "REGION_SPROUT_TOWER_1F",
+      "REGION_SPROUT_TOWER_2F:STAIR_2"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_SPROUT_TOWER_1F:STAIR_3": {
+    "johto": true,
+    "exits": [
+      "REGION_SPROUT_TOWER_1F",
+      "REGION_SPROUT_TOWER_2F:STAIR_3"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_SPROUT_TOWER_1F": {
     "johto": true,
     "exits": [
       "REGION_VIOLET_CITY",
-      "REGION_SPROUT_TOWER_2F"
+      "REGION_SPROUT_TOWER_1F:STAIR_1",
+      "REGION_SPROUT_TOWER_1F:STAIR_2",
+      "REGION_SPROUT_TOWER_1F:STAIR_3"
     ],
     "trainers": [
       "SAGE_CHOW"
@@ -6980,10 +7009,39 @@
     ],
     "events": []
   },
+  "REGION_SPROUT_TOWER_2F:STAIR_1": {
+    "johto": true,
+    "exits": [
+      "REGION_SPROUT_TOWER_2F",
+      "REGION_SPROUT_TOWER_1F:STAIR_1"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_SPROUT_TOWER_2F:STAIR_2": {
+    "johto": true,
+    "exits": [
+      "REGION_SPROUT_TOWER_2F",
+      "REGION_SPROUT_TOWER_1F:STAIR_2"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_SPROUT_TOWER_2F:STAIR_3": {
+    "johto": true,
+    "exits": [
+      "REGION_SPROUT_TOWER_2F",
+      "REGION_SPROUT_TOWER_1F:STAIR_3"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_SPROUT_TOWER_2F": {
     "johto": true,
     "exits": [
-      "REGION_SPROUT_TOWER_1F",
+      "REGION_SPROUT_TOWER_2F:STAIR_1",
+      "REGION_SPROUT_TOWER_2F:STAIR_2",
+      "REGION_SPROUT_TOWER_2F:STAIR_3",
       "REGION_SPROUT_TOWER_3F"
     ],
     "trainers": [
