@@ -9091,6 +9091,44 @@
       "one_way": false
     },
     {
+      "name": "REGION_ROUTE_43:NORTH -> REGION_ROUTE_43_GATE:NORTH",
+      "exit_region": "REGION_ROUTE_43:NORTH",
+      "entrance_region": "REGION_ROUTE_43_GATE:NORTH",
+      "exit_warps": [
+        {
+          "map": "Route43",
+          "index": 4
+        },
+        {
+          "map": "Route43",
+          "index": 5
+        }
+      ],
+      "arrival_map": "Route43Gate",
+      "arrival_map_const": "ROUTE_43_GATE",
+      "arrival_warp_id": 1,
+      "type": "gate",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_43:SOUTH -> REGION_ROUTE_43_GATE:SOUTH",
+      "exit_region": "REGION_ROUTE_43:SOUTH",
+      "entrance_region": "REGION_ROUTE_43_GATE:SOUTH",
+      "exit_warps": [
+        {
+          "map": "Route43",
+          "index": 3
+        }
+      ],
+      "arrival_map": "Route43Gate",
+      "arrival_map_const": "ROUTE_43_GATE",
+      "arrival_warp_id": 3,
+      "type": "gate",
+      "area": "johto",
+      "one_way": false
+    },
+    {
       "name": "REGION_ROUTE_43 -> REGION_ROUTE_43_MAHOGANY_GATE",
       "exit_region": "REGION_ROUTE_43",
       "entrance_region": "REGION_ROUTE_43_MAHOGANY_GATE",
@@ -9112,43 +9150,10 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_43 -> REGION_ROUTE_43_GATE",
-      "exit_region": "REGION_ROUTE_43",
-      "entrance_region": "REGION_ROUTE_43_GATE",
+      "name": "REGION_ROUTE_43_GATE:NORTH -> REGION_ROUTE_43:NORTH",
+      "exit_region": "REGION_ROUTE_43_GATE:NORTH",
+      "entrance_region": "REGION_ROUTE_43:NORTH",
       "exit_warps": [
-        {
-          "map": "Route43",
-          "index": 4
-        },
-        {
-          "map": "Route43",
-          "index": 5
-        },
-        {
-          "map": "Route43",
-          "index": 3
-        }
-      ],
-      "arrival_map": "Route43Gate",
-      "arrival_map_const": "ROUTE_43_GATE",
-      "arrival_warp_id": 1,
-      "type": "gate",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_ROUTE_43_GATE -> REGION_ROUTE_43",
-      "exit_region": "REGION_ROUTE_43_GATE",
-      "entrance_region": "REGION_ROUTE_43",
-      "exit_warps": [
-        {
-          "map": "Route43Gate",
-          "index": 3
-        },
-        {
-          "map": "Route43Gate",
-          "index": 4
-        },
         {
           "map": "Route43Gate",
           "index": 1
@@ -9156,6 +9161,27 @@
         {
           "map": "Route43Gate",
           "index": 2
+        }
+      ],
+      "arrival_map": "Route43",
+      "arrival_map_const": "ROUTE_43",
+      "arrival_warp_id": 4,
+      "type": "gate",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_43_GATE:SOUTH -> REGION_ROUTE_43:SOUTH",
+      "exit_region": "REGION_ROUTE_43_GATE:SOUTH",
+      "entrance_region": "REGION_ROUTE_43:SOUTH",
+      "exit_warps": [
+        {
+          "map": "Route43Gate",
+          "index": 3
+        },
+        {
+          "map": "Route43Gate",
+          "index": 4
         }
       ],
       "arrival_map": "Route43",
