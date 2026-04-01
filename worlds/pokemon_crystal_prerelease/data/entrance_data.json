@@ -13542,6 +13542,10 @@
       "exit_warps": [
         {
           "map": "CeladonDeptStore1F",
+          "index": 4
+        },
+        {
+          "map": "CeladonDeptStore1F",
           "index": 4,
           "label": "AP_ElevFloor_CeladonDeptStore_1F",
           "addr_offset": 4
@@ -13578,6 +13582,10 @@
       "exit_region": "REGION_CELADON_DEPT_STORE_2F",
       "entrance_region": "REGION_CELADON_DEPT_STORE_ELEVATOR:2F",
       "exit_warps": [
+        {
+          "map": "CeladonDeptStore2F",
+          "index": 3
+        },
         {
           "map": "CeladonDeptStore2F",
           "index": 3,
@@ -13618,6 +13626,10 @@
       "exit_warps": [
         {
           "map": "CeladonDeptStore3F",
+          "index": 3
+        },
+        {
+          "map": "CeladonDeptStore3F",
           "index": 3,
           "label": "AP_ElevFloor_CeladonDeptStore_3F",
           "addr_offset": 4
@@ -13654,6 +13666,10 @@
       "exit_region": "REGION_CELADON_DEPT_STORE_4F",
       "entrance_region": "REGION_CELADON_DEPT_STORE_ELEVATOR:4F",
       "exit_warps": [
+        {
+          "map": "CeladonDeptStore4F",
+          "index": 3
+        },
         {
           "map": "CeladonDeptStore4F",
           "index": 3,
@@ -13694,6 +13710,10 @@
       "exit_warps": [
         {
           "map": "CeladonDeptStore5F",
+          "index": 3
+        },
+        {
+          "map": "CeladonDeptStore5F",
           "index": 3,
           "label": "AP_ElevFloor_CeladonDeptStore_5F",
           "addr_offset": 4
@@ -13730,6 +13750,10 @@
       "exit_region": "REGION_CELADON_DEPT_STORE_6F",
       "entrance_region": "REGION_CELADON_DEPT_STORE_ELEVATOR:6F",
       "exit_warps": [
+        {
+          "map": "CeladonDeptStore6F",
+          "index": 2
+        },
         {
           "map": "CeladonDeptStore6F",
           "index": 2,
@@ -13770,6 +13794,10 @@
       "exit_warps": [
         {
           "map": "GoldenrodDeptStore1F",
+          "index": 4
+        },
+        {
+          "map": "GoldenrodDeptStore1F",
           "index": 4,
           "label": "AP_ElevFloor_GoldenrodDeptStore_1F",
           "addr_offset": 4
@@ -13806,6 +13834,10 @@
       "exit_region": "REGION_GOLDENROD_DEPT_STORE_2F",
       "entrance_region": "REGION_GOLDENROD_DEPT_STORE_ELEVATOR:2F",
       "exit_warps": [
+        {
+          "map": "GoldenrodDeptStore2F",
+          "index": 3
+        },
         {
           "map": "GoldenrodDeptStore2F",
           "index": 3,
@@ -13846,6 +13878,10 @@
       "exit_warps": [
         {
           "map": "GoldenrodDeptStore3F",
+          "index": 3
+        },
+        {
+          "map": "GoldenrodDeptStore3F",
           "index": 3,
           "label": "AP_ElevFloor_GoldenrodDeptStore_3F",
           "addr_offset": 4
@@ -13882,6 +13918,10 @@
       "exit_region": "REGION_GOLDENROD_DEPT_STORE_4F",
       "entrance_region": "REGION_GOLDENROD_DEPT_STORE_ELEVATOR:4F",
       "exit_warps": [
+        {
+          "map": "GoldenrodDeptStore4F",
+          "index": 3
+        },
         {
           "map": "GoldenrodDeptStore4F",
           "index": 3,
@@ -13922,6 +13962,10 @@
       "exit_warps": [
         {
           "map": "GoldenrodDeptStore5F",
+          "index": 3
+        },
+        {
+          "map": "GoldenrodDeptStore5F",
           "index": 3,
           "label": "AP_ElevFloor_GoldenrodDeptStore_5F",
           "addr_offset": 4
@@ -13960,6 +14004,10 @@
       "exit_warps": [
         {
           "map": "GoldenrodDeptStore6F",
+          "index": 2
+        },
+        {
+          "map": "GoldenrodDeptStore6F",
           "index": 2,
           "label": "AP_ElevFloor_GoldenrodDeptStore_6F",
           "addr_offset": 4
@@ -13996,6 +14044,14 @@
       "exit_region": "REGION_GOLDENROD_DEPT_STORE_B1F",
       "entrance_region": "REGION_GOLDENROD_DEPT_STORE_ELEVATOR:B1F",
       "exit_warps": [
+        {
+          "map": "GoldenrodDeptStoreB1F",
+          "index": 2
+        },
+        {
+          "map": "GoldenrodDeptStoreB1F",
+          "index": 3
+        },
         {
           "map": "GoldenrodDeptStoreB1F",
           "index": 2,

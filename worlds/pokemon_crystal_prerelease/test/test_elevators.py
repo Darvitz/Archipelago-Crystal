@@ -66,16 +66,21 @@ class ElevatorConnectionStructureTest(PokemonCrystalTestBase):
     """Verify elevator connections in entrance_data have the correct format."""
     auto_construct = False
 
-    def test_forward_patches_entry_map(self):
-        """Forward (Floor -> Elevator:NF) should patch elevfloor entry map at offset 4."""
+    def test_forward_patches_floor_warp_and_entry_map(self):
+        """Forward (Floor -> Elevator:NF) should patch the floor warp_event and elevfloor entry map (offset 4)."""
         for name, conn in data.entrance_connections.items():
             if conn.entrance_type != "elevator" or "ELEVATOR:" not in conn.entrance_region:
                 continue
-            self.assertEqual(len(conn.exit_warps), 1, f"{name}: expected 1 exit_warp")
-            self.assertEqual(conn.exit_warps[0].addr_offset, 4, f"{name}: addr_offset should be 4")
+            regular_warps = [ew for ew in conn.exit_warps if ew.label is None]
+            elev_warps = [ew for ew in conn.exit_warps if ew.label is not None]
+            self.assertGreaterEqual(len(regular_warps), 1, f"{name}: expected at least 1 regular warp")
+            for ew in regular_warps:
+                self.assertEqual(ew.addr_offset, 2, f"{name}: regular warp addr_offset should be 2")
+            self.assertEqual(len(elev_warps), 1, f"{name}: expected 1 elevfloor warp")
+            self.assertEqual(elev_warps[0].addr_offset, 4, f"{name}: elevfloor addr_offset should be 4")
 
     def test_reverse_patches_exit_map(self):
-        """Reverse (Elevator:NF -> Floor) should patch elevfloor exit map at offset 1."""
+        """Reverse (Elevator:NF -> Floor) should patch elevfloor exit map (offset 1)."""
         for name, conn in data.entrance_connections.items():
             if conn.entrance_type != "elevator" or "ELEVATOR:" not in conn.exit_region:
                 continue
@@ -91,14 +96,14 @@ class ElevatorConnectionStructureTest(PokemonCrystalTestBase):
             self.assertIn(conn.arrival_map, elevator_rooms,
                           f"{name}: arrival should be elevator room, got {conn.arrival_map}")
 
-    def test_both_directions_share_label(self):
+    def test_forward_and_reverse_share_label(self):
         """Forward and reverse for the same floor should patch the same AP_ElevFloor label."""
         labels_by_floor: dict[str, set[str]] = {}
         for conn in data.entrance_connections.values():
             if conn.entrance_type != "elevator":
                 continue
             for ew in conn.exit_warps:
-                if ew.label:
+                if ew.label and ew.label.startswith("AP_ElevFloor_"):
                     labels_by_floor.setdefault(ew.label, set()).add(conn.name)
         for label, conn_names in labels_by_floor.items():
             self.assertEqual(len(conn_names), 2,
