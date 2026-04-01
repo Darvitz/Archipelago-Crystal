@@ -11379,7 +11379,7 @@
       "arrival_warp_id": 2,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_4F -> REGION_TIN_TOWER_5F:STAIR_2",
@@ -11396,7 +11396,7 @@
       "arrival_warp_id": 3,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_4F -> REGION_TIN_TOWER_5F:STAIR_3",
@@ -11413,7 +11413,7 @@
       "arrival_warp_id": 4,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_4F -> REGION_TIN_TOWER_3F",
@@ -11464,7 +11464,7 @@
       "arrival_warp_id": 1,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_5F -> REGION_TIN_TOWER_4F:STAIR_2",
@@ -11481,7 +11481,7 @@
       "arrival_warp_id": 3,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_5F -> REGION_TIN_TOWER_4F:STAIR_3",
@@ -11498,7 +11498,7 @@
       "arrival_warp_id": 4,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_6F -> REGION_TIN_TOWER_7F",
@@ -11617,7 +11617,7 @@
       "arrival_warp_id": 1,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_2",
@@ -11634,7 +11634,7 @@
       "arrival_warp_id": 2,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_3",
@@ -11651,7 +11651,7 @@
       "arrival_warp_id": 3,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_4",
@@ -11668,7 +11668,7 @@
       "arrival_warp_id": 6,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_8F -> REGION_TIN_TOWER_9F:STAIR_5",
@@ -11685,7 +11685,7 @@
       "arrival_warp_id": 7,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_1",
@@ -11702,7 +11702,7 @@
       "arrival_warp_id": 2,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_2",
@@ -11719,7 +11719,7 @@
       "arrival_warp_id": 3,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_3",
@@ -11736,7 +11736,7 @@
       "arrival_warp_id": 4,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_4",
@@ -11753,7 +11753,7 @@
       "arrival_warp_id": 5,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_8F:STAIR_5",
@@ -11770,7 +11770,7 @@
       "arrival_warp_id": 6,
       "type": "interior",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_TIN_TOWER_9F -> REGION_TIN_TOWER_ROOF",

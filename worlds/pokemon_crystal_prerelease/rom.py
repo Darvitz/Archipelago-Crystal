@@ -3,7 +3,7 @@ import logging
 import os
 import random
 from collections import defaultdict
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Sequence, Mapping
 from typing import TYPE_CHECKING
 
 import bsdiff4
@@ -12,7 +12,7 @@ from Generate import roll_settings
 from settings import get_settings
 from worlds.Files import APProcedurePatch, APTokenMixin, APPatchExtension
 from .data import data, MiscOption, EncounterType, EncounterKey, FishingRodType, TreeRarity, MapPalette, PaletteData, \
-    LocationData, EvolutionType
+    LocationData, EvolutionType, EntranceConnection
 from .evolution import get_pokemon_evolutions
 from .item_data import POKEDEX_COUNT_OFFSET, POKEDEX_OFFSET, GRASS_OFFSET
 from .items import item_const_name_to_id
@@ -266,10 +266,30 @@ def write_customizable_options(options: PokemonCrystalOptions,
                 pass
 
 
+def _build_reverse_conn_lookup(conns: Mapping[str, EntranceConnection]) -> dict[str, str]:
+    conn_names = set(conns.keys())
+    lookup: dict[str, str] = {}
+    for name, conn in conns.items():
+        exact = f"{conn.entrance_region} -> {conn.exit_region}"
+        if exact in conn_names:
+            lookup[name] = exact
+            continue
+
+        dst = conn.entrance_region
+        src_base = conn.exit_region.split(":")[0]
+        if ":" in dst:
+            dst_base = dst.split(":")[0]
+            suffix = dst[len(dst_base):]  # includes the leading ":"
+            candidate = f"{dst_base} -> {src_base}{suffix}"
+            if candidate in conn_names:
+                lookup[name] = candidate
+    return lookup
+
+
 def write_entrance_pairings(world: "PokemonCrystalWorld", write_bytes) -> None:
-    """Patch ROM warp destinations to match the ER result."""
     conns = data.entrance_connections
     map_consts = data.map_constants
+    reverse_lookup = _build_reverse_conn_lookup(conns)
 
     for source_name, target_name in world.er_pairings:
         source_conn = conns.get(source_name)
@@ -280,9 +300,8 @@ def write_entrance_pairings(world: "PokemonCrystalWorld", write_bytes) -> None:
             original_conn_name = target_name.removesuffix(" (one-way target)")
             target_conn = conns.get(original_conn_name)
         else:
-            parts = target_name.split(" -> ")
-            reverse_target_name = f"{parts[1]} -> {parts[0]}"
-            target_conn = conns.get(reverse_target_name)
+            reverse_target_name = reverse_lookup.get(target_name)
+            target_conn = conns.get(reverse_target_name) if reverse_target_name else None
         if target_conn is None:
             continue
 
@@ -1438,6 +1457,8 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
     if world.er_pairings:
         write_bytes([1], data.rom_addresses["AP_Setting_EROn"] + 2)
         write_entrance_pairings(world, write_bytes)
+        er_lines = [f"{src} => {tgt}" for src, tgt in world.er_pairings]
+        patch.write_file("er_pairings.txt", "\n".join(er_lines).encode("utf-8"))
 
     patch.write_file("token_data.bin", patch.get_token_binary())
 
