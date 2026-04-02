@@ -5958,31 +5958,13 @@
     "locations": [],
     "events": []
   },
-  "REGION_ROUTE_43:NORTH": {
-    "johto": true,
-    "exits": [
-      "REGION_ROUTE_43",
-      "REGION_ROUTE_43_GATE:NORTH"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_ROUTE_43:SOUTH": {
-    "johto": true,
-    "exits": [
-      "REGION_ROUTE_43",
-      "REGION_ROUTE_43_GATE:SOUTH"
-    ],
-    "locations": [],
-    "events": []
-  },
   "REGION_ROUTE_43": {
     "johto": true,
     "exits": [
       "REGION_LAKE_OF_RAGE",
       "REGION_ROUTE_43_MAHOGANY_GATE",
-      "REGION_ROUTE_43:NORTH",
-      "REGION_ROUTE_43:SOUTH",
+      "REGION_ROUTE_43_GATE:NORTH",
+      "REGION_ROUTE_43_GATE:SOUTH",
       "REGION_ROUTE_43:FRUITTREE"
     ],
     "trainers": [
@@ -6038,7 +6020,7 @@
     "johto": true,
     "exits": [
       "REGION_ROUTE_43_GATE",
-      "REGION_ROUTE_43:NORTH"
+      "REGION_ROUTE_43"
     ],
     "locations": [],
     "events": []
@@ -6047,7 +6029,7 @@
     "johto": true,
     "exits": [
       "REGION_ROUTE_43_GATE",
-      "REGION_ROUTE_43:SOUTH"
+      "REGION_ROUTE_43"
     ],
     "locations": [],
     "events": []
