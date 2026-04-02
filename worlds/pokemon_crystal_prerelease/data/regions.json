@@ -7044,40 +7044,12 @@
     "locations": [],
     "events": []
   },
-  "REGION_SPROUT_TOWER_1F:STAIR_1": {
+  "REGION_SPROUT_TOWER_1F:OUTER": {
     "johto": true,
     "exits": [
       "REGION_SPROUT_TOWER_1F",
-      "REGION_SPROUT_TOWER_2F:STAIR_1"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_SPROUT_TOWER_1F:STAIR_2": {
-    "johto": true,
-    "exits": [
-      "REGION_SPROUT_TOWER_1F",
-      "REGION_SPROUT_TOWER_2F:STAIR_2"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_SPROUT_TOWER_1F:STAIR_3": {
-    "johto": true,
-    "exits": [
-      "REGION_SPROUT_TOWER_1F",
-      "REGION_SPROUT_TOWER_2F:STAIR_3"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_SPROUT_TOWER_1F": {
-    "johto": true,
-    "exits": [
-      "REGION_VIOLET_CITY",
-      "REGION_SPROUT_TOWER_1F:STAIR_1",
-      "REGION_SPROUT_TOWER_1F:STAIR_2",
-      "REGION_SPROUT_TOWER_1F:STAIR_3"
+      "REGION_SPROUT_TOWER_2F:OUTER",
+      "REGION_SPROUT_TOWER_2F"
     ],
     "trainers": [
       "SAGE_CHOW"
@@ -7088,49 +7060,47 @@
     ],
     "events": []
   },
-  "REGION_SPROUT_TOWER_2F:STAIR_1": {
+  "REGION_SPROUT_TOWER_1F": {
     "johto": true,
     "exits": [
+      "REGION_VIOLET_CITY",
       "REGION_SPROUT_TOWER_2F",
-      "REGION_SPROUT_TOWER_1F:STAIR_1"
+      "REGION_SPROUT_TOWER_1F:OUTER"
     ],
     "locations": [],
     "events": []
   },
-  "REGION_SPROUT_TOWER_2F:STAIR_2": {
+  "REGION_SPROUT_TOWER_2F:OUTER": {
     "johto": true,
     "exits": [
       "REGION_SPROUT_TOWER_2F",
-      "REGION_SPROUT_TOWER_1F:STAIR_2"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_SPROUT_TOWER_2F:STAIR_3": {
-    "johto": true,
-    "exits": [
-      "REGION_SPROUT_TOWER_2F",
-      "REGION_SPROUT_TOWER_1F:STAIR_3"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_SPROUT_TOWER_2F": {
-    "johto": true,
-    "exits": [
-      "REGION_SPROUT_TOWER_2F:STAIR_1",
-      "REGION_SPROUT_TOWER_2F:STAIR_2",
-      "REGION_SPROUT_TOWER_2F:STAIR_3",
+      "REGION_SPROUT_TOWER_1F:OUTER",
       "REGION_SPROUT_TOWER_3F"
     ],
     "trainers": [
-      "SAGE_NICO",
       "SAGE_EDMOND"
     ],
     "locations": [
       "SPROUT_TOWER_2F_X_ACCURACY",
-      "ITEM_FROM_SAGE_NICO",
       "ITEM_FROM_SAGE_EDMOND"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "SPROUT_TOWER_2F"
+    }
+  },
+  "REGION_SPROUT_TOWER_2F": {
+    "johto": true,
+    "exits": [
+      "REGION_SPROUT_TOWER_1F",
+      "REGION_SPROUT_TOWER_1F:OUTER",
+      "REGION_SPROUT_TOWER_2F:OUTER"
+    ],
+    "trainers": [
+      "SAGE_NICO"
+    ],
+    "locations": [
+      "ITEM_FROM_SAGE_NICO"
     ],
     "events": [],
     "wild_encounters": {
@@ -7140,7 +7110,7 @@
   "REGION_SPROUT_TOWER_3F": {
     "johto": true,
     "exits": [
-      "REGION_SPROUT_TOWER_2F"
+      "REGION_SPROUT_TOWER_2F:OUTER"
     ],
     "trainers": [
       "SAGE_JIN",

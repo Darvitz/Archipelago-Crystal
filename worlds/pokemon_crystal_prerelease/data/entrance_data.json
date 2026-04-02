@@ -11276,26 +11276,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SPROUT_TOWER_1F:STAIR_1 -> REGION_SPROUT_TOWER_2F:STAIR_1",
-      "exit_region": "REGION_SPROUT_TOWER_1F:STAIR_1",
-      "entrance_region": "REGION_SPROUT_TOWER_2F:STAIR_1",
-      "exit_warps": [
-        {
-          "map": "SproutTower1F",
-          "index": 3
-        }
-      ],
-      "arrival_map": "SproutTower2F",
-      "arrival_map_const": "SPROUT_TOWER_2F",
-      "arrival_warp_id": 1,
-      "type": "interior",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_SPROUT_TOWER_1F:STAIR_2 -> REGION_SPROUT_TOWER_2F:STAIR_2",
-      "exit_region": "REGION_SPROUT_TOWER_1F:STAIR_2",
-      "entrance_region": "REGION_SPROUT_TOWER_2F:STAIR_2",
+      "name": "REGION_SPROUT_TOWER_1F:OUTER -> REGION_SPROUT_TOWER_2F:OUTER",
+      "exit_region": "REGION_SPROUT_TOWER_1F:OUTER",
+      "entrance_region": "REGION_SPROUT_TOWER_2F:OUTER",
       "exit_warps": [
         {
           "map": "SproutTower1F",
@@ -11310,9 +11293,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SPROUT_TOWER_1F:STAIR_3 -> REGION_SPROUT_TOWER_2F:STAIR_3",
-      "exit_region": "REGION_SPROUT_TOWER_1F:STAIR_3",
-      "entrance_region": "REGION_SPROUT_TOWER_2F:STAIR_3",
+      "name": "REGION_SPROUT_TOWER_1F:OUTER -> REGION_SPROUT_TOWER_2F",
+      "exit_region": "REGION_SPROUT_TOWER_1F:OUTER",
+      "entrance_region": "REGION_SPROUT_TOWER_2F",
       "exit_warps": [
         {
           "map": "SproutTower1F",
@@ -11322,6 +11305,23 @@
       "arrival_map": "SproutTower2F",
       "arrival_map_const": "SPROUT_TOWER_2F",
       "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_SPROUT_TOWER_1F -> REGION_SPROUT_TOWER_2F",
+      "exit_region": "REGION_SPROUT_TOWER_1F",
+      "entrance_region": "REGION_SPROUT_TOWER_2F",
+      "exit_warps": [
+        {
+          "map": "SproutTower1F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "SproutTower2F",
+      "arrival_map_const": "SPROUT_TOWER_2F",
+      "arrival_warp_id": 1,
       "type": "interior",
       "area": "johto",
       "one_way": false
@@ -11348,26 +11348,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SPROUT_TOWER_2F:STAIR_1 -> REGION_SPROUT_TOWER_1F:STAIR_1",
-      "exit_region": "REGION_SPROUT_TOWER_2F:STAIR_1",
-      "entrance_region": "REGION_SPROUT_TOWER_1F:STAIR_1",
-      "exit_warps": [
-        {
-          "map": "SproutTower2F",
-          "index": 1
-        }
-      ],
-      "arrival_map": "SproutTower1F",
-      "arrival_map_const": "SPROUT_TOWER_1F",
-      "arrival_warp_id": 3,
-      "type": "interior",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_SPROUT_TOWER_2F:STAIR_2 -> REGION_SPROUT_TOWER_1F:STAIR_2",
-      "exit_region": "REGION_SPROUT_TOWER_2F:STAIR_2",
-      "entrance_region": "REGION_SPROUT_TOWER_1F:STAIR_2",
+      "name": "REGION_SPROUT_TOWER_2F:OUTER -> REGION_SPROUT_TOWER_1F:OUTER",
+      "exit_region": "REGION_SPROUT_TOWER_2F:OUTER",
+      "entrance_region": "REGION_SPROUT_TOWER_1F:OUTER",
       "exit_warps": [
         {
           "map": "SproutTower2F",
@@ -11382,9 +11365,26 @@
       "one_way": false
     },
     {
-      "name": "REGION_SPROUT_TOWER_2F:STAIR_3 -> REGION_SPROUT_TOWER_1F:STAIR_3",
-      "exit_region": "REGION_SPROUT_TOWER_2F:STAIR_3",
-      "entrance_region": "REGION_SPROUT_TOWER_1F:STAIR_3",
+      "name": "REGION_SPROUT_TOWER_2F -> REGION_SPROUT_TOWER_1F",
+      "exit_region": "REGION_SPROUT_TOWER_2F",
+      "entrance_region": "REGION_SPROUT_TOWER_1F",
+      "exit_warps": [
+        {
+          "map": "SproutTower2F",
+          "index": 1
+        }
+      ],
+      "arrival_map": "SproutTower1F",
+      "arrival_map_const": "SPROUT_TOWER_1F",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_SPROUT_TOWER_2F -> REGION_SPROUT_TOWER_1F:OUTER",
+      "exit_region": "REGION_SPROUT_TOWER_2F",
+      "entrance_region": "REGION_SPROUT_TOWER_1F:OUTER",
       "exit_warps": [
         {
           "map": "SproutTower2F",
@@ -11399,8 +11399,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_SPROUT_TOWER_2F -> REGION_SPROUT_TOWER_3F",
-      "exit_region": "REGION_SPROUT_TOWER_2F",
+      "name": "REGION_SPROUT_TOWER_2F:OUTER -> REGION_SPROUT_TOWER_3F",
+      "exit_region": "REGION_SPROUT_TOWER_2F:OUTER",
       "entrance_region": "REGION_SPROUT_TOWER_3F",
       "exit_warps": [
         {
@@ -11416,9 +11416,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SPROUT_TOWER_3F -> REGION_SPROUT_TOWER_2F",
+      "name": "REGION_SPROUT_TOWER_3F -> REGION_SPROUT_TOWER_2F:OUTER",
       "exit_region": "REGION_SPROUT_TOWER_3F",
-      "entrance_region": "REGION_SPROUT_TOWER_2F",
+      "entrance_region": "REGION_SPROUT_TOWER_2F:OUTER",
       "exit_warps": [
         {
           "map": "SproutTower3F",
