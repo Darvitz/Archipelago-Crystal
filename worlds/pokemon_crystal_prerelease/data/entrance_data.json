@@ -3888,16 +3888,12 @@
       "exit_warps": [
         {
           "map": "GoldenrodUnderground",
-          "index": 4
-        },
-        {
-          "map": "GoldenrodUnderground",
-          "index": 5
+          "index": 3
         }
       ],
       "arrival_map": "GoldenrodUnderground",
       "arrival_map_const": "GOLDENROD_UNDERGROUND",
-      "arrival_warp_id": 3,
+      "arrival_warp_id": 4,
       "type": "interior",
       "area": "johto",
       "one_way": false
@@ -3909,12 +3905,16 @@
       "exit_warps": [
         {
           "map": "GoldenrodUnderground",
-          "index": 3
+          "index": 4
+        },
+        {
+          "map": "GoldenrodUnderground",
+          "index": 5
         }
       ],
       "arrival_map": "GoldenrodUnderground",
       "arrival_map_const": "GOLDENROD_UNDERGROUND",
-      "arrival_warp_id": 4,
+      "arrival_warp_id": 3,
       "type": "interior",
       "area": "johto",
       "one_way": false
@@ -7692,9 +7692,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_2:NORTH_GATE -> REGION_ROUTE_2_GATE:NORTH_GATE",
-      "exit_region": "REGION_ROUTE_2:NORTH_GATE",
-      "entrance_region": "REGION_ROUTE_2_GATE:NORTH_GATE",
+      "name": "REGION_ROUTE_2:CENTEREAST -> REGION_ROUTE_2_GATE",
+      "exit_region": "REGION_ROUTE_2:CENTEREAST",
+      "entrance_region": "REGION_ROUTE_2_GATE",
       "exit_warps": [
         {
           "map": "Route2",
@@ -7713,9 +7713,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_2:SOUTH_GATE -> REGION_ROUTE_2_GATE:SOUTH_GATE",
-      "exit_region": "REGION_ROUTE_2:SOUTH_GATE",
-      "entrance_region": "REGION_ROUTE_2_GATE:SOUTH_GATE",
+      "name": "REGION_ROUTE_2:SOUTHEAST -> REGION_ROUTE_2_GATE",
+      "exit_region": "REGION_ROUTE_2:SOUTHEAST",
+      "entrance_region": "REGION_ROUTE_2_GATE",
       "exit_warps": [
         {
           "map": "Route2",
@@ -7730,9 +7730,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_2_GATE:NORTH_GATE -> REGION_ROUTE_2:NORTH_GATE",
-      "exit_region": "REGION_ROUTE_2_GATE:NORTH_GATE",
-      "entrance_region": "REGION_ROUTE_2:NORTH_GATE",
+      "name": "REGION_ROUTE_2_GATE -> REGION_ROUTE_2:CENTEREAST",
+      "exit_region": "REGION_ROUTE_2_GATE",
+      "entrance_region": "REGION_ROUTE_2:CENTEREAST",
       "exit_warps": [
         {
           "map": "Route2Gate",
@@ -7751,9 +7751,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_2_GATE:SOUTH_GATE -> REGION_ROUTE_2:SOUTH_GATE",
-      "exit_region": "REGION_ROUTE_2_GATE:SOUTH_GATE",
-      "entrance_region": "REGION_ROUTE_2:SOUTH_GATE",
+      "name": "REGION_ROUTE_2_GATE -> REGION_ROUTE_2:SOUTHEAST",
+      "exit_region": "REGION_ROUTE_2_GATE",
+      "entrance_region": "REGION_ROUTE_2:SOUTHEAST",
       "exit_warps": [
         {
           "map": "Route2Gate",
