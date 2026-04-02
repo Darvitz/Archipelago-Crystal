@@ -411,9 +411,6 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
             regions["REGION_DIGLETTS_CAVE"].connect(regions["REGION_VERMILION_CITY:FLY"])
             regions["REGION_ROUTE_11"].connect(regions["REGION_VERMILION_CITY:FLY"])
 
-    if world.options.johto_only == JohtoOnly.option_off and world.options.east_west_underground:
-        regions["REGION_ROUTE_7"].connect(regions["REGION_ROUTE_8"])
-        regions["REGION_ROUTE_8"].connect(regions["REGION_ROUTE_7"])
 
     if world.options.blackthorn_dark_cave_access == BlackthornDarkCaveAccess.option_waterfall:
         regions["REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST"].connect(

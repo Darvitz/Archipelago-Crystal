@@ -5593,74 +5593,6 @@
       "one_way": false
     },
     {
-      "name": "REGION_NATIONAL_PARK -> REGION_ROUTE_36_NATIONAL_PARK_GATE",
-      "exit_region": "REGION_NATIONAL_PARK",
-      "entrance_region": "REGION_ROUTE_36_NATIONAL_PARK_GATE",
-      "exit_warps": [
-        {
-          "map": "NationalPark",
-          "index": 1
-        }
-      ],
-      "arrival_map": "Route36NationalParkGate",
-      "arrival_map_const": "ROUTE_36_NATIONAL_PARK_GATE",
-      "arrival_warp_id": 1,
-      "type": "gate",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_NATIONAL_PARK:CONTEST -> REGION_ROUTE_36_NATIONAL_PARK_GATE",
-      "exit_region": "REGION_NATIONAL_PARK:CONTEST",
-      "entrance_region": "REGION_ROUTE_36_NATIONAL_PARK_GATE",
-      "exit_warps": [
-        {
-          "map": "NationalPark",
-          "index": 2
-        }
-      ],
-      "arrival_map": "Route36NationalParkGate",
-      "arrival_map_const": "ROUTE_36_NATIONAL_PARK_GATE",
-      "arrival_warp_id": 2,
-      "type": "gate",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_NATIONAL_PARK -> REGION_ROUTE_35_NATIONAL_PARK_GATE:BIKE",
-      "exit_region": "REGION_NATIONAL_PARK",
-      "entrance_region": "REGION_ROUTE_35_NATIONAL_PARK_GATE:BIKE",
-      "exit_warps": [
-        {
-          "map": "NationalPark",
-          "index": 3
-        }
-      ],
-      "arrival_map": "Route35NationalParkGate",
-      "arrival_map_const": "ROUTE_35_NATIONAL_PARK_GATE",
-      "arrival_warp_id": 1,
-      "type": "gate",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_NATIONAL_PARK:CONTEST -> REGION_ROUTE_35_NATIONAL_PARK_GATE",
-      "exit_region": "REGION_NATIONAL_PARK:CONTEST",
-      "entrance_region": "REGION_ROUTE_35_NATIONAL_PARK_GATE",
-      "exit_warps": [
-        {
-          "map": "NationalPark",
-          "index": 4
-        }
-      ],
-      "arrival_map": "Route35NationalParkGate",
-      "arrival_map_const": "ROUTE_35_NATIONAL_PARK_GATE",
-      "arrival_warp_id": 2,
-      "type": "gate",
-      "area": "johto",
-      "one_way": true
-    },
-    {
       "name": "REGION_NEW_BARK_TOWN -> REGION_ELMS_LAB",
       "exit_region": "REGION_NEW_BARK_TOWN",
       "entrance_region": "REGION_ELMS_LAB",
@@ -8663,40 +8595,6 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_35_NATIONAL_PARK_GATE:BIKE -> REGION_NATIONAL_PARK",
-      "exit_region": "REGION_ROUTE_35_NATIONAL_PARK_GATE:BIKE",
-      "entrance_region": "REGION_NATIONAL_PARK",
-      "exit_warps": [
-        {
-          "map": "Route35NationalParkGate",
-          "index": 1
-        }
-      ],
-      "arrival_map": "NationalPark",
-      "arrival_map_const": "NATIONAL_PARK",
-      "arrival_warp_id": 3,
-      "type": "gate",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_ROUTE_35_NATIONAL_PARK_GATE:BIKE -> REGION_NATIONAL_PARK:CONTEST",
-      "exit_region": "REGION_ROUTE_35_NATIONAL_PARK_GATE:BIKE",
-      "entrance_region": "REGION_NATIONAL_PARK:CONTEST",
-      "exit_warps": [
-        {
-          "map": "Route35NationalParkGate",
-          "index": 2
-        }
-      ],
-      "arrival_map": "NationalPark",
-      "arrival_map_const": "NATIONAL_PARK",
-      "arrival_warp_id": 4,
-      "type": "gate",
-      "area": "johto",
-      "one_way": true
-    },
-    {
       "name": "REGION_ROUTE_36:EAST -> REGION_ROUTE_36_RUINS_OF_ALPH_GATE",
       "exit_region": "REGION_ROUTE_36:EAST",
       "entrance_region": "REGION_ROUTE_36_RUINS_OF_ALPH_GATE",
@@ -8734,40 +8632,6 @@
       "arrival_map": "Route36NationalParkGate",
       "arrival_map_const": "ROUTE_36_NATIONAL_PARK_GATE",
       "arrival_warp_id": 3,
-      "type": "gate",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_ROUTE_36_NATIONAL_PARK_GATE -> REGION_NATIONAL_PARK",
-      "exit_region": "REGION_ROUTE_36_NATIONAL_PARK_GATE",
-      "entrance_region": "REGION_NATIONAL_PARK",
-      "exit_warps": [
-        {
-          "map": "Route36NationalParkGate",
-          "index": 1
-        }
-      ],
-      "arrival_map": "NationalPark",
-      "arrival_map_const": "NATIONAL_PARK",
-      "arrival_warp_id": 1,
-      "type": "gate",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_ROUTE_36_NATIONAL_PARK_GATE -> REGION_NATIONAL_PARK:CONTEST",
-      "exit_region": "REGION_ROUTE_36_NATIONAL_PARK_GATE",
-      "entrance_region": "REGION_NATIONAL_PARK:CONTEST",
-      "exit_warps": [
-        {
-          "map": "Route36NationalParkGate",
-          "index": 2
-        }
-      ],
-      "arrival_map": "NationalPark",
-      "arrival_map_const": "NATIONAL_PARK",
-      "arrival_warp_id": 2,
       "type": "gate",
       "area": "johto",
       "one_way": false
@@ -9718,6 +9582,116 @@
       "one_way": false
     },
     {
+      "name": "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE -> REGION_ROUTE_7",
+      "exit_region": "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "entrance_region": "REGION_ROUTE_7",
+      "exit_warps": [
+        {
+          "map": "Route7UndergroundPathEntrance",
+          "index": 1
+        },
+        {
+          "map": "Route7UndergroundPathEntrance",
+          "index": 2
+        }
+      ],
+      "arrival_map": "Route7",
+      "arrival_map_const": "ROUTE_7",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE -> REGION_EAST_WEST_UNDERGROUND",
+      "exit_region": "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "entrance_region": "REGION_EAST_WEST_UNDERGROUND",
+      "exit_warps": [
+        {
+          "map": "Route7UndergroundPathEntrance",
+          "index": 3
+        }
+      ],
+      "arrival_map": "EastWestUnderground",
+      "arrival_map_const": "EAST_WEST_UNDERGROUND",
+      "arrival_warp_id": 1,
+      "type": "interior",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE -> REGION_ROUTE_8",
+      "exit_region": "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE",
+      "entrance_region": "REGION_ROUTE_8",
+      "exit_warps": [
+        {
+          "map": "Route8UndergroundPathEntrance",
+          "index": 1
+        },
+        {
+          "map": "Route8UndergroundPathEntrance",
+          "index": 2
+        }
+      ],
+      "arrival_map": "Route8",
+      "arrival_map_const": "ROUTE_8",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE -> REGION_EAST_WEST_UNDERGROUND",
+      "exit_region": "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE",
+      "entrance_region": "REGION_EAST_WEST_UNDERGROUND",
+      "exit_warps": [
+        {
+          "map": "Route8UndergroundPathEntrance",
+          "index": 3
+        }
+      ],
+      "arrival_map": "EastWestUnderground",
+      "arrival_map_const": "EAST_WEST_UNDERGROUND",
+      "arrival_warp_id": 2,
+      "type": "interior",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_EAST_WEST_UNDERGROUND -> REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "exit_region": "REGION_EAST_WEST_UNDERGROUND",
+      "entrance_region": "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "exit_warps": [
+        {
+          "map": "EastWestUnderground",
+          "index": 1
+        }
+      ],
+      "arrival_map": "Route7UndergroundPathEntrance",
+      "arrival_map_const": "ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_EAST_WEST_UNDERGROUND -> REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE",
+      "exit_region": "REGION_EAST_WEST_UNDERGROUND",
+      "entrance_region": "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE",
+      "exit_warps": [
+        {
+          "map": "EastWestUnderground",
+          "index": 2
+        }
+      ],
+      "arrival_map": "Route8UndergroundPathEntrance",
+      "arrival_map_const": "ROUTE_8_UNDERGROUND_PATH_ENTRANCE",
+      "arrival_warp_id": 3,
+      "type": "interior",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
       "name": "REGION_ROUTE_7 -> REGION_ROUTE_7_SAFFRON_GATE",
       "exit_region": "REGION_ROUTE_7",
       "entrance_region": "REGION_ROUTE_7_SAFFRON_GATE",
@@ -9735,6 +9709,23 @@
       "arrival_map_const": "ROUTE_7_SAFFRON_GATE",
       "arrival_warp_id": 1,
       "type": "gate",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_7 -> REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "exit_region": "REGION_ROUTE_7",
+      "entrance_region": "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "exit_warps": [
+        {
+          "map": "Route7",
+          "index": 3
+        }
+      ],
+      "arrival_map": "Route7UndergroundPathEntrance",
+      "arrival_map_const": "ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "arrival_warp_id": 1,
+      "type": "interior",
       "area": "kanto",
       "one_way": false
     },
@@ -9798,6 +9789,23 @@
       "arrival_map_const": "ROUTE_8_SAFFRON_GATE",
       "arrival_warp_id": 3,
       "type": "gate",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_8 -> REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE",
+      "exit_region": "REGION_ROUTE_8",
+      "entrance_region": "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE",
+      "exit_warps": [
+        {
+          "map": "Route8",
+          "index": 3
+        }
+      ],
+      "arrival_map": "Route8UndergroundPathEntrance",
+      "arrival_map_const": "ROUTE_8_UNDERGROUND_PATH_ENTRANCE",
+      "arrival_warp_id": 1,
+      "type": "interior",
       "area": "kanto",
       "one_way": false
     },

@@ -1807,10 +1807,10 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                 and world.options.undergrounds_require_power.value in (
                         UndergroundsRequirePower.option_east_west,
                         UndergroundsRequirePower.option_both)):
-            set_rule(get_entrance("REGION_ROUTE_7 -> REGION_ROUTE_8"),
+            set_rule(get_entrance("REGION_ROUTE_7 -> REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE"),
                      lambda state: state.has("EVENT_RESTORED_POWER_TO_KANTO", world.player))
 
-            set_rule(get_entrance("REGION_ROUTE_8 -> REGION_ROUTE_7"),
+            set_rule(get_entrance("REGION_ROUTE_8 -> REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE"),
                      lambda state: state.has("EVENT_RESTORED_POWER_TO_KANTO", world.player))
 
         # Route 8

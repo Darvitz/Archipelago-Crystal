@@ -6432,11 +6432,42 @@
     "locations": [],
     "events": []
   },
+  "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE": {
+    "johto": false,
+    "east_west_underground": true,
+    "exits": [
+      "REGION_ROUTE_7",
+      "REGION_EAST_WEST_UNDERGROUND"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE": {
+    "johto": false,
+    "east_west_underground": true,
+    "exits": [
+      "REGION_ROUTE_8",
+      "REGION_EAST_WEST_UNDERGROUND"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_EAST_WEST_UNDERGROUND": {
+    "johto": false,
+    "east_west_underground": true,
+    "exits": [
+      "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE",
+      "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_ROUTE_7": {
     "johto": false,
     "exits": [
       "REGION_CELADON_CITY",
-      "REGION_ROUTE_7_SAFFRON_GATE"
+      "REGION_ROUTE_7_SAFFRON_GATE",
+      "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE"
     ],
     "locations": [],
     "events": [],
@@ -6461,7 +6492,8 @@
     "exits": [
       "REGION_LAVENDER_TOWN",
       "REGION_ROUTE_8_SAFFRON_GATE",
-      "REGION_ROUTE_8:CUT"
+      "REGION_ROUTE_8:CUT",
+      "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE"
     ],
     "trainers": [
       "BIKER_DWAYNE",

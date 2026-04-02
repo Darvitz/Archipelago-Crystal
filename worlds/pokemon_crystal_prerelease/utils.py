@@ -363,6 +363,8 @@ def __adjust_options_level_scaling(world: "PokemonCrystalWorld"):
 
 def should_include_region(region: RegionData, world: "PokemonCrystalWorld"):
     # check if region should be included
+    if region.east_west_underground and not world.options.east_west_underground:
+        return False
     return (region.johto
             or world.options.johto_only.value == JohtoOnly.option_off
             or (region.silver_cave and world.options.johto_only == JohtoOnly.option_include_silver_cave)) and (

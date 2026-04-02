@@ -564,6 +564,7 @@ class RegionData:
     johto: bool
     elite_4: bool
     silver_cave: bool
+    east_west_underground: bool
     exits: list[str]
     trainers: list[TrainerData]
     statics: list[EncounterKey]
@@ -967,6 +968,7 @@ def _init() -> None:
             johto=region_json["johto"],
             elite_4=region_json.get("elite_4", False),
             silver_cave=region_json.get("silver_cave", False),
+            east_west_underground=region_json.get("east_west_underground", False),
             exits=[region_exit for region_exit in region_json["exits"]],
             statics=[EncounterKey(EncounterType.Static, static) for static in region_json.get("statics", [])],
             trainers=[trainers[trainer] for trainer in region_json.get("trainers", [])],
