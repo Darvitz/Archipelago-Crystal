@@ -1322,29 +1322,10 @@
       "fishing": "Lake"
     }
   },
-  "REGION_DAY_CARE:FRONT_DOOR": {
-    "johto": true,
-    "exits": [
-      "REGION_DAY_CARE",
-      "REGION_ROUTE_34:FRONT_DOOR"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_DAY_CARE:YARD_DOOR": {
-    "johto": true,
-    "exits": [
-      "REGION_DAY_CARE",
-      "REGION_ROUTE_34:DAY_CARE_YARD",
-      "REGION_ROUTE_34:YARD_DOOR"
-    ],
-    "locations": [],
-    "events": []
-  },
   "REGION_ROUTE_34:DAY_CARE_YARD": {
     "johto": true,
     "exits": [
-      "REGION_DAY_CARE:YARD_DOOR"
+      "REGION_DAY_CARE"
     ],
     "locations": [],
     "events": []
@@ -1352,8 +1333,8 @@
   "REGION_DAY_CARE": {
     "johto": true,
     "exits": [
-      "REGION_DAY_CARE:FRONT_DOOR",
-      "REGION_DAY_CARE:YARD_DOOR"
+      "REGION_ROUTE_34",
+      "REGION_ROUTE_34:DAY_CARE_YARD"
     ],
     "locations": [],
     "events": []
@@ -5378,31 +5359,13 @@
       "headbutt": "Town"
     }
   },
-  "REGION_ROUTE_34:FRONT_DOOR": {
-    "johto": true,
-    "exits": [
-      "REGION_ROUTE_34",
-      "REGION_DAY_CARE:FRONT_DOOR"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_ROUTE_34:YARD_DOOR": {
-    "johto": true,
-    "exits": [
-      "REGION_ROUTE_34:DAY_CARE_YARD",
-      "REGION_DAY_CARE:YARD_DOOR"
-    ],
-    "locations": [],
-    "events": []
-  },
   "REGION_ROUTE_34": {
     "johto": true,
     "exits": [
       "REGION_GOLDENROD_CITY",
       "REGION_ROUTE_34_ILEX_FOREST_GATE",
       "REGION_ROUTE_34:WATER",
-      "REGION_ROUTE_34:FRONT_DOOR"
+      "REGION_DAY_CARE"
     ],
     "trainers": [
       "CAMPER_TODD",

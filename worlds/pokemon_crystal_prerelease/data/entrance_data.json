@@ -2326,51 +2326,26 @@
       "one_way": true
     },
     {
-      "name": "REGION_DAY_CARE:FRONT_DOOR -> REGION_ROUTE_34:FRONT_DOOR",
-      "exit_region": "REGION_DAY_CARE:FRONT_DOOR",
-      "entrance_region": "REGION_ROUTE_34:FRONT_DOOR",
+      "name": "REGION_ROUTE_34:DAY_CARE_YARD -> REGION_DAY_CARE",
+      "exit_region": "REGION_ROUTE_34:DAY_CARE_YARD",
+      "entrance_region": "REGION_DAY_CARE",
       "exit_warps": [
         {
-          "map": "DayCare",
-          "index": 1
-        },
-        {
-          "map": "DayCare",
-          "index": 2
+          "map": "Route34",
+          "index": 5
         }
       ],
-      "arrival_map": "Route34",
-      "arrival_map_const": "ROUTE_34",
+      "arrival_map": "DayCare",
+      "arrival_map_const": "DAY_CARE",
       "arrival_warp_id": 3,
       "type": "building",
       "area": "johto",
       "one_way": false
     },
     {
-      "name": "REGION_DAY_CARE:YARD_DOOR -> REGION_ROUTE_34:YARD_DOOR",
-      "exit_region": "REGION_DAY_CARE:YARD_DOOR",
-      "entrance_region": "REGION_ROUTE_34:YARD_DOOR",
-      "exit_warps": [
-        {
-          "map": "DayCare",
-          "index": 3
-        },
-        {
-          "map": "DayCare",
-          "index": 4
-        }
-      ],
-      "arrival_map": "Route34",
-      "arrival_map_const": "ROUTE_34",
-      "arrival_warp_id": 5,
-      "type": "building",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_ROUTE_34:FRONT_DOOR -> REGION_DAY_CARE:FRONT_DOOR",
-      "exit_region": "REGION_ROUTE_34:FRONT_DOOR",
-      "entrance_region": "REGION_DAY_CARE:FRONT_DOOR",
+      "name": "REGION_ROUTE_34 -> REGION_DAY_CARE",
+      "exit_region": "REGION_ROUTE_34",
+      "entrance_region": "REGION_DAY_CARE",
       "exit_warps": [
         {
           "map": "Route34",
@@ -2389,18 +2364,43 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_34:YARD_DOOR -> REGION_DAY_CARE:YARD_DOOR",
-      "exit_region": "REGION_ROUTE_34:YARD_DOOR",
-      "entrance_region": "REGION_DAY_CARE:YARD_DOOR",
+      "name": "REGION_DAY_CARE -> REGION_ROUTE_34",
+      "exit_region": "REGION_DAY_CARE",
+      "entrance_region": "REGION_ROUTE_34",
       "exit_warps": [
         {
-          "map": "Route34",
-          "index": 5
+          "map": "DayCare",
+          "index": 1
+        },
+        {
+          "map": "DayCare",
+          "index": 2
         }
       ],
-      "arrival_map": "DayCare",
-      "arrival_map_const": "DAY_CARE",
+      "arrival_map": "Route34",
+      "arrival_map_const": "ROUTE_34",
       "arrival_warp_id": 3,
+      "type": "building",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_DAY_CARE -> REGION_ROUTE_34:DAY_CARE_YARD",
+      "exit_region": "REGION_DAY_CARE",
+      "entrance_region": "REGION_ROUTE_34:DAY_CARE_YARD",
+      "exit_warps": [
+        {
+          "map": "DayCare",
+          "index": 3
+        },
+        {
+          "map": "DayCare",
+          "index": 4
+        }
+      ],
+      "arrival_map": "Route34",
+      "arrival_map_const": "ROUTE_34",
+      "arrival_warp_id": 5,
       "type": "building",
       "area": "johto",
       "one_way": false
