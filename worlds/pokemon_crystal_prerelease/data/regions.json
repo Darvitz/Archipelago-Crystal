@@ -2701,7 +2701,9 @@
     "johto": true,
     "exits": [],
     "locations": [],
-    "events": []
+    "events": [
+      "ENGINE_FLYPOINT_LAKE_OF_RAGE"
+    ]
   },
   "REGION_LAKE_OF_RAGE:CUT": {
     "johto": true,
@@ -7341,36 +7343,12 @@
       "grass": "TIN_TOWER_3F"
     }
   },
-  "REGION_TIN_TOWER_4F:STAIR_1": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_4F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_4F:STAIR_2": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_4F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_4F:STAIR_3": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_4F"
-    ],
-    "locations": [],
-    "events": []
-  },
   "REGION_TIN_TOWER_4F": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_5F:STAIR_1",
-      "REGION_TIN_TOWER_5F:STAIR_2",
-      "REGION_TIN_TOWER_5F:STAIR_3",
+      "REGION_TIN_TOWER_5F:NORTHWEST",
+      "REGION_TIN_TOWER_5F:SOUTHWEST",
+      "REGION_TIN_TOWER_5F:SOUTHEAST",
       "REGION_TIN_TOWER_3F"
     ],
     "locations": [
@@ -7384,26 +7362,29 @@
       "grass": "TIN_TOWER_4F"
     }
   },
-  "REGION_TIN_TOWER_5F:STAIR_1": {
+  "REGION_TIN_TOWER_5F:NORTHWEST": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_5F"
+      "REGION_TIN_TOWER_5F",
+      "REGION_TIN_TOWER_4F"
     ],
     "locations": [],
     "events": []
   },
-  "REGION_TIN_TOWER_5F:STAIR_2": {
+  "REGION_TIN_TOWER_5F:SOUTHWEST": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_5F"
+      "REGION_TIN_TOWER_5F",
+      "REGION_TIN_TOWER_4F"
     ],
     "locations": [],
     "events": []
   },
-  "REGION_TIN_TOWER_5F:STAIR_3": {
+  "REGION_TIN_TOWER_5F:SOUTHEAST": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_5F"
+      "REGION_TIN_TOWER_5F",
+      "REGION_TIN_TOWER_4F"
     ],
     "locations": [],
     "events": []
@@ -7412,9 +7393,9 @@
     "johto": true,
     "exits": [
       "REGION_TIN_TOWER_6F",
-      "REGION_TIN_TOWER_4F:STAIR_1",
-      "REGION_TIN_TOWER_4F:STAIR_2",
-      "REGION_TIN_TOWER_4F:STAIR_3"
+      "REGION_TIN_TOWER_5F:NORTHWEST",
+      "REGION_TIN_TOWER_5F:SOUTHWEST",
+      "REGION_TIN_TOWER_5F:SOUTHEAST"
     ],
     "locations": [
       "TIN_TOWER_5F_HIDDEN_CARBOS",
@@ -7444,9 +7425,8 @@
     "johto": true,
     "exits": [
       "REGION_TIN_TOWER_6F",
-      "REGION_TIN_TOWER_8F",
-      "REGION_TIN_TOWER_7F",
-      "REGION_TIN_TOWER_9F"
+      "REGION_TIN_TOWER_8F:WEST",
+      "REGION_TIN_TOWER_7F:CENTER"
     ],
     "locations": [
       "TIN_TOWER_7F_MAX_REVIVE"
@@ -7456,59 +7436,50 @@
       "grass": "TIN_TOWER_7F"
     }
   },
-  "REGION_TIN_TOWER_8F:STAIR_1": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_8F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_8F:STAIR_2": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_8F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_8F:STAIR_3": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_8F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_8F:STAIR_4": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_8F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_8F:STAIR_5": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_8F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_8F": {
+  "REGION_TIN_TOWER_7F:CENTER": {
     "johto": true,
     "exits": [
       "REGION_TIN_TOWER_7F",
-      "REGION_TIN_TOWER_9F:STAIR_1",
-      "REGION_TIN_TOWER_9F:STAIR_2",
-      "REGION_TIN_TOWER_9F:STAIR_3",
-      "REGION_TIN_TOWER_9F:STAIR_4",
-      "REGION_TIN_TOWER_9F:STAIR_5"
+      "REGION_TIN_TOWER_9F:SOUTH"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_7F"
+    }
+  },
+  "REGION_TIN_TOWER_8F:WEST": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_7F",
+      "REGION_TIN_TOWER_9F:NORTH"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_8F"
+    }
+  },
+  "REGION_TIN_TOWER_8F:NORTH": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_9F:NORTH",
+      "REGION_TIN_TOWER_9F:CENTER"
     ],
     "locations": [
-      "TIN_TOWER_8F_FULL_RESTORE",
-      "TIN_TOWER_8F_MAX_ELIXER",
+      "TIN_TOWER_8F_FULL_RESTORE"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_8F"
+    }
+  },
+  "REGION_TIN_TOWER_8F:SOUTH": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_9F:SOUTH"
+    ],
+    "locations": [
       "TIN_TOWER_8F_NUGGET"
     ],
     "events": [],
@@ -7516,63 +7487,54 @@
       "grass": "TIN_TOWER_8F"
     }
   },
-  "REGION_TIN_TOWER_9F:STAIR_1": {
+  "REGION_TIN_TOWER_8F:CENTER": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_9F"
+      "REGION_TIN_TOWER_9F:SOUTH"
     ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_9F:STAIR_2": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_9F"
+    "locations": [
+      "TIN_TOWER_8F_MAX_ELIXER"
     ],
-    "locations": [],
-    "events": []
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_8F"
+    }
   },
-  "REGION_TIN_TOWER_9F:STAIR_3": {
+  "REGION_TIN_TOWER_9F:NORTH": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_9F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_9F:STAIR_4": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_9F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_9F:STAIR_5": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_9F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_TIN_TOWER_9F": {
-    "johto": true,
-    "exits": [
-      "REGION_TIN_TOWER_8F:STAIR_1",
-      "REGION_TIN_TOWER_8F:STAIR_2",
-      "REGION_TIN_TOWER_8F:STAIR_3",
-      "REGION_TIN_TOWER_8F:STAIR_4",
-      "REGION_TIN_TOWER_8F:STAIR_5",
-      "REGION_TIN_TOWER_ROOF",
-      "REGION_TIN_TOWER_7F"
+      "REGION_TIN_TOWER_8F:WEST",
+      "REGION_TIN_TOWER_8F:NORTH"
     ],
     "locations": [
       "TIN_TOWER_9F_HP_UP"
     ],
-    "events": [
-      "EVENT_FOUGHT_HO_OH"
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_9F"
+    }
+  },
+  "REGION_TIN_TOWER_9F:CENTER": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_8F:NORTH",
+      "REGION_TIN_TOWER_ROOF"
     ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_9F"
+    }
+  },
+  "REGION_TIN_TOWER_9F:SOUTH": {
+    "johto": true,
+    "exits": [
+      "REGION_TIN_TOWER_7F:CENTER",
+      "REGION_TIN_TOWER_8F:SOUTH",
+      "REGION_TIN_TOWER_8F:CENTER"
+    ],
+    "locations": [],
+    "events": [],
     "wild_encounters": {
       "grass": "TIN_TOWER_9F"
     }
@@ -7580,13 +7542,15 @@
   "REGION_TIN_TOWER_ROOF": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_9F"
+      "REGION_TIN_TOWER_9F:CENTER"
     ],
     "statics": [
       "Ho_Oh"
     ],
     "locations": [],
-    "events": []
+    "events": [
+      "EVENT_FOUGHT_HO_OH"
+    ]
   },
   "REGION_TOHJO_FALLS:WEST": {
     "johto": true,
