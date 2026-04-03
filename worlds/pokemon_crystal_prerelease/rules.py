@@ -66,12 +66,26 @@ DARK_AREA_REGIONS: dict[str, list[str]] = {
         "REGION_OLIVINE_LIGHTHOUSE_6F",
     ],
     "Whirl Islands": [
-        "REGION_WHIRL_ISLAND_NW",
-        "REGION_WHIRL_ISLAND_NE",
-        "REGION_WHIRL_ISLAND_SW",
+        "REGION_WHIRL_ISLAND_NW:NORTH",
+        "REGION_WHIRL_ISLAND_NW:SOUTH",
+        "REGION_WHIRL_ISLAND_NE:WEST",
+        "REGION_WHIRL_ISLAND_NE:CENTER",
+        "REGION_WHIRL_ISLAND_NE:SOUTHWEST",
+        "REGION_WHIRL_ISLAND_NE:NORTHWEST",
+        "REGION_WHIRL_ISLAND_SW:NORTHWEST",
+        "REGION_WHIRL_ISLAND_SW:NORTHEAST",
+        "REGION_WHIRL_ISLAND_SW:SOUTHWEST",
+        "REGION_WHIRL_ISLAND_SW:SOUTHEAST",
         "REGION_WHIRL_ISLAND_SE",
-        "REGION_WHIRL_ISLAND_B1F",
-        "REGION_WHIRL_ISLAND_B2F",
+        "REGION_WHIRL_ISLAND_B1F:NORTH",
+        "REGION_WHIRL_ISLAND_B1F:NORTHEAST",
+        "REGION_WHIRL_ISLAND_B1F:SOUTHWEST",
+        "REGION_WHIRL_ISLAND_B1F:SOUTHEAST",
+        "REGION_WHIRL_ISLAND_B1F:LEDGE",
+        "REGION_WHIRL_ISLAND_B2F:NORTH",
+        "REGION_WHIRL_ISLAND_B2F:CENTER",
+        "REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE",
+        "REGION_WHIRL_ISLAND_B2F:SOUTH",
         "REGION_WHIRL_ISLAND_CAVE",
         "REGION_WHIRL_ISLAND_LUGIA_CHAMBER",
     ],
@@ -1250,12 +1264,30 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         set_rule(get_location("Route 40 - Hidden Item in Rock"), can_rock_smash)
 
     # Route 41
-    if hidden():
-        set_rule(get_location("Route 41 - Hidden Item on Southwest Island"), can_surf_and_whirlpool)
-    set_rule(get_entrance("REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_NW"), can_surf_and_whirlpool)
-    set_rule(get_entrance("REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_NE"), can_surf_and_whirlpool)
-    set_rule(get_entrance("REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_SW"), can_surf_and_whirlpool)
-    set_rule(get_entrance("REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_SE"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41 -> REGION_ROUTE_41:NW_ISLAND"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41:NW_ISLAND -> REGION_ROUTE_41"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41 -> REGION_ROUTE_41:NE_ISLAND"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41:NE_ISLAND -> REGION_ROUTE_41"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41 -> REGION_ROUTE_41:SW_ISLAND"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41:SW_ISLAND -> REGION_ROUTE_41"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41 -> REGION_ROUTE_41:SE_ISLAND"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41:SE_ISLAND -> REGION_ROUTE_41"), can_surf_and_whirlpool)
+    set_rule(get_entrance("REGION_ROUTE_41:SE_ISLAND -> REGION_ROUTE_41:SE_ISLAND:ITEM"), can_surf)
+    set_rule(get_entrance("REGION_ROUTE_41:SE_ISLAND:ITEM -> REGION_ROUTE_41:SE_ISLAND"), can_surf)
+
+    # Whirl Islands internal
+    # B1F one-way + strength
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_B1F:SOUTHEAST -> REGION_WHIRL_ISLAND_B1F:SOUTHWEST"), can_strength)
+    # SW surf connections
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_SW:NORTHWEST -> REGION_WHIRL_ISLAND_SW:NORTHEAST"), can_surf)
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_SW:NORTHEAST -> REGION_WHIRL_ISLAND_SW:NORTHWEST"), can_surf)
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_SW:SOUTHWEST -> REGION_WHIRL_ISLAND_SW:SOUTHEAST"), can_surf)
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_SW:SOUTHEAST -> REGION_WHIRL_ISLAND_SW:SOUTHWEST"), can_surf)
+    # B2F connections
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_B2F:NORTH -> REGION_WHIRL_ISLAND_B2F:SOUTH"), can_surf)
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_B2F:SOUTH -> REGION_WHIRL_ISLAND_B2F:NORTH"), can_surf_and_waterfall)
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_B2F:SOUTH -> REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE"), can_surf)
+    set_rule(get_entrance("REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE -> REGION_WHIRL_ISLAND_B2F:SOUTH"), can_surf)
 
     set_rule(get_location("EVENT_FOUGHT_LUGIA"), lambda state: state.has("Silver Wing", world.player))
     set_static_rule("Lugia", lambda state: state.has("Silver Wing", world.player))

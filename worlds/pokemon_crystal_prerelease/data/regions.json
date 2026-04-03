@@ -5859,10 +5859,10 @@
     "exits": [
       "REGION_ROUTE_40:WATER",
       "REGION_CIANWOOD_CITY",
-      "REGION_WHIRL_ISLAND_NW",
-      "REGION_WHIRL_ISLAND_NE",
-      "REGION_WHIRL_ISLAND_SW",
-      "REGION_WHIRL_ISLAND_SE"
+      "REGION_ROUTE_41:NW_ISLAND",
+      "REGION_ROUTE_41:NE_ISLAND",
+      "REGION_ROUTE_41:SW_ISLAND",
+      "REGION_ROUTE_41:SE_ISLAND"
     ],
     "trainers": [
       "SWIMMERF_KAYLEE",
@@ -5877,7 +5877,6 @@
       "SWIMMERM_MATHEW"
     ],
     "locations": [
-      "ROUTE_41_HIDDEN_MAX_ETHER",
       "ITEM_FROM_SWIMMERF_KAYLEE",
       "ITEM_FROM_SWIMMERF_SUSIE",
       "ITEM_FROM_SWIMMERF_DENISE",
@@ -5888,6 +5887,73 @@
       "ITEM_FROM_SWIMMERM_BERKE",
       "ITEM_FROM_SWIMMERM_KIRK",
       "ITEM_FROM_SWIMMERM_MATHEW"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "surfing": "ROUTE_41",
+      "fishing": "Ocean"
+    }
+  },
+  "REGION_ROUTE_41:NW_ISLAND": {
+    "johto": true,
+    "exits": [
+      "REGION_ROUTE_41",
+      "REGION_WHIRL_ISLAND_NW:NORTH"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "surfing": "ROUTE_41",
+      "fishing": "Ocean"
+    }
+  },
+  "REGION_ROUTE_41:NE_ISLAND": {
+    "johto": true,
+    "exits": [
+      "REGION_ROUTE_41",
+      "REGION_WHIRL_ISLAND_NE:WEST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "surfing": "ROUTE_41",
+      "fishing": "Ocean"
+    }
+  },
+  "REGION_ROUTE_41:SW_ISLAND": {
+    "johto": true,
+    "exits": [
+      "REGION_ROUTE_41",
+      "REGION_WHIRL_ISLAND_SW:NORTHWEST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "surfing": "ROUTE_41",
+      "fishing": "Ocean"
+    }
+  },
+  "REGION_ROUTE_41:SE_ISLAND": {
+    "johto": true,
+    "exits": [
+      "REGION_ROUTE_41",
+      "REGION_WHIRL_ISLAND_SE",
+      "REGION_ROUTE_41:SE_ISLAND:ITEM"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "surfing": "ROUTE_41",
+      "fishing": "Ocean"
+    }
+  },
+  "REGION_ROUTE_41:SE_ISLAND:ITEM": {
+    "johto": true,
+    "exits": [
+      "REGION_ROUTE_41:SE_ISLAND"
+    ],
+    "locations": [
+      "ROUTE_41_HIDDEN_MAX_ETHER"
     ],
     "events": [],
     "wild_encounters": {
@@ -8224,24 +8290,19 @@
     "locations": [],
     "events": []
   },
-  "REGION_WHIRL_ISLAND_B1F": {
+  "REGION_WHIRL_ISLAND_B1F:NORTH": {
     "johto": true,
     "exits": [
-      "REGION_WHIRL_ISLAND_NW",
-      "REGION_WHIRL_ISLAND_NE",
-      "REGION_WHIRL_ISLAND_SW",
-      "REGION_WHIRL_ISLAND_SE",
-      "REGION_WHIRL_ISLAND_B2F",
-      "REGION_WHIRL_ISLAND_CAVE"
+      "REGION_WHIRL_ISLAND_NW:NORTH",
+      "REGION_WHIRL_ISLAND_NE:SOUTHWEST",
+      "REGION_WHIRL_ISLAND_B2F:CENTER",
+      "REGION_WHIRL_ISLAND_B1F:SOUTHWEST"
     ],
     "locations": [
-      "WHIRL_ISLAND_B1F_CALCIUM",
       "WHIRL_ISLAND_B1F_CARBOS",
-      "WHIRL_ISLAND_B1F_ESCAPE_ROPE",
       "WHIRL_ISLAND_B1F_FULL_RESTORE",
       "WHIRL_ISLAND_B1F_HIDDEN_FULL_RESTORE",
       "WHIRL_ISLAND_B1F_HIDDEN_RARE_CANDY",
-      "WHIRL_ISLAND_B1F_HIDDEN_ULTRA_BALL",
       "WHIRL_ISLAND_B1F_NUGGET"
     ],
     "events": [],
@@ -8249,18 +8310,111 @@
       "grass": "WHIRL_ISLAND_B1F"
     }
   },
-  "REGION_WHIRL_ISLAND_B2F": {
+  "REGION_WHIRL_ISLAND_B1F:NORTHEAST": {
     "johto": true,
     "exits": [
-      "REGION_WHIRL_ISLAND_B1F",
-      "REGION_WHIRL_ISLAND_LUGIA_CHAMBER",
-      "REGION_WHIRL_ISLAND_SW"
+      "REGION_WHIRL_ISLAND_NE:NORTHWEST",
+      "REGION_WHIRL_ISLAND_B2F:NORTH"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_B1F"
+    }
+  },
+  "REGION_WHIRL_ISLAND_B1F:SOUTHWEST": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_SW:NORTHWEST"
+    ],
+    "locations": [
+      "WHIRL_ISLAND_B1F_ESCAPE_ROPE"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_B1F"
+    }
+  },
+  "REGION_WHIRL_ISLAND_B1F:SOUTHEAST": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_SW:NORTHEAST",
+      "REGION_WHIRL_ISLAND_SE",
+      "REGION_WHIRL_ISLAND_B1F:SOUTHWEST"
+    ],
+    "locations": [
+      "WHIRL_ISLAND_B1F_CALCIUM",
+      "WHIRL_ISLAND_B1F_HIDDEN_ULTRA_BALL"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_B1F"
+    }
+  },
+  "REGION_WHIRL_ISLAND_B1F:LEDGE": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_CAVE",
+      "REGION_WHIRL_ISLAND_B1F:SOUTHWEST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_B1F"
+    }
+  },
+  "REGION_WHIRL_ISLAND_B2F:NORTH": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_B1F:NORTHEAST",
+      "REGION_WHIRL_ISLAND_B2F:SOUTH"
+    ],
+    "locations": [
+      "WHIRL_ISLAND_B2F_MAX_REVIVE"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_B2F",
+      "surfing": "WHIRL_ISLAND_B2F",
+      "fishing": "WhirlIslands"
+    }
+  },
+  "REGION_WHIRL_ISLAND_B2F:CENTER": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_B1F:NORTH"
     ],
     "locations": [
       "WHIRL_ISLAND_B2F_FULL_RESTORE",
-      "WHIRL_ISLAND_B2F_MAX_ELIXER",
-      "WHIRL_ISLAND_B2F_MAX_REVIVE"
+      "WHIRL_ISLAND_B2F_MAX_ELIXER"
     ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_B2F"
+    }
+  },
+  "REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_LUGIA_CHAMBER",
+      "REGION_WHIRL_ISLAND_B2F:SOUTH"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_B2F",
+      "surfing": "WHIRL_ISLAND_B2F",
+      "fishing": "WhirlIslands"
+    }
+  },
+  "REGION_WHIRL_ISLAND_B2F:SOUTH": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_SW:SOUTHEAST",
+      "REGION_WHIRL_ISLAND_B2F:NORTH",
+      "REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE"
+    ],
+    "locations": [],
     "events": [],
     "wild_encounters": {
       "grass": "WHIRL_ISLAND_B2F",
@@ -8271,8 +8425,8 @@
   "REGION_WHIRL_ISLAND_CAVE": {
     "johto": true,
     "exits": [
-      "REGION_WHIRL_ISLAND_B1F",
-      "REGION_WHIRL_ISLAND_NW"
+      "REGION_WHIRL_ISLAND_B1F:LEDGE",
+      "REGION_WHIRL_ISLAND_NW:SOUTH"
     ],
     "locations": [],
     "events": [],
@@ -8283,7 +8437,7 @@
   "REGION_WHIRL_ISLAND_LUGIA_CHAMBER": {
     "johto": true,
     "exits": [
-      "REGION_WHIRL_ISLAND_B2F"
+      "REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE"
     ],
     "statics": [
       "Lugia"
@@ -8298,11 +8452,34 @@
       "fishing": "WhirlIslands"
     }
   },
-  "REGION_WHIRL_ISLAND_NE": {
+  "REGION_WHIRL_ISLAND_NE:WEST": {
     "johto": true,
     "exits": [
       "REGION_ROUTE_41",
-      "REGION_WHIRL_ISLAND_B1F"
+      "REGION_WHIRL_ISLAND_NE:CENTER"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_NE"
+    }
+  },
+  "REGION_WHIRL_ISLAND_NE:CENTER": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_NE:SOUTHWEST",
+      "REGION_WHIRL_ISLAND_NE:NORTHWEST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_NE"
+    }
+  },
+  "REGION_WHIRL_ISLAND_NE:SOUTHWEST": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_B1F:NORTH"
     ],
     "locations": [
       "WHIRL_ISLAND_NE_ULTRA_BALL"
@@ -8312,12 +8489,33 @@
       "grass": "WHIRL_ISLAND_NE"
     }
   },
-  "REGION_WHIRL_ISLAND_NW": {
+  "REGION_WHIRL_ISLAND_NE:NORTHWEST": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_B1F:NORTHEAST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_NE"
+    }
+  },
+  "REGION_WHIRL_ISLAND_NW:NORTH": {
     "johto": true,
     "exits": [
       "REGION_ROUTE_41",
-      "REGION_WHIRL_ISLAND_B1F",
-      "REGION_WHIRL_ISLAND_SW",
+      "REGION_WHIRL_ISLAND_B1F:NORTH"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_NW"
+    }
+  },
+  "REGION_WHIRL_ISLAND_NW:SOUTH": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_SW:SOUTHWEST",
       "REGION_WHIRL_ISLAND_CAVE"
     ],
     "locations": [],
@@ -8330,7 +8528,7 @@
     "johto": true,
     "exits": [
       "REGION_ROUTE_41",
-      "REGION_WHIRL_ISLAND_B1F"
+      "REGION_WHIRL_ISLAND_B1F:SOUTHEAST"
     ],
     "locations": [],
     "events": [],
@@ -8338,17 +8536,58 @@
       "grass": "WHIRL_ISLAND_SE"
     }
   },
-  "REGION_WHIRL_ISLAND_SW": {
+  "REGION_WHIRL_ISLAND_SW:NORTHWEST": {
     "johto": true,
     "exits": [
       "REGION_ROUTE_41",
-      "REGION_WHIRL_ISLAND_B1F",
-      "REGION_WHIRL_ISLAND_NW",
-      "REGION_WHIRL_ISLAND_B2F"
+      "REGION_WHIRL_ISLAND_B1F:SOUTHWEST",
+      "REGION_WHIRL_ISLAND_SW:NORTHEAST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_SW",
+      "surfing": "WHIRL_ISLAND_SW",
+      "fishing": "WhirlIslands"
+    }
+  },
+  "REGION_WHIRL_ISLAND_SW:NORTHEAST": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_B1F:SOUTHEAST",
+      "REGION_WHIRL_ISLAND_SW:NORTHWEST"
     ],
     "locations": [
       "WHIRL_ISLAND_SW_ULTRA_BALL"
     ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_SW",
+      "surfing": "WHIRL_ISLAND_SW",
+      "fishing": "WhirlIslands"
+    }
+  },
+  "REGION_WHIRL_ISLAND_SW:SOUTHWEST": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_NW:SOUTH",
+      "REGION_WHIRL_ISLAND_SW:SOUTHEAST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "WHIRL_ISLAND_SW",
+      "surfing": "WHIRL_ISLAND_SW",
+      "fishing": "WhirlIslands"
+    }
+  },
+  "REGION_WHIRL_ISLAND_SW:SOUTHEAST": {
+    "johto": true,
+    "exits": [
+      "REGION_WHIRL_ISLAND_B2F:SOUTH",
+      "REGION_WHIRL_ISLAND_SW:SOUTHWEST"
+    ],
+    "locations": [],
     "events": [],
     "wild_encounters": {
       "grass": "WHIRL_ISLAND_SW",

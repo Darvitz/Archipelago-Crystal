@@ -9021,9 +9021,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_NW",
-      "exit_region": "REGION_ROUTE_41",
-      "entrance_region": "REGION_WHIRL_ISLAND_NW",
+      "name": "REGION_ROUTE_41:NW_ISLAND -> REGION_WHIRL_ISLAND_NW:NORTH",
+      "exit_region": "REGION_ROUTE_41:NW_ISLAND",
+      "entrance_region": "REGION_WHIRL_ISLAND_NW:NORTH",
       "exit_warps": [
         {
           "map": "Route41",
@@ -9035,12 +9035,12 @@
       "arrival_warp_id": 1,
       "type": "cave",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
-      "name": "REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_NE",
-      "exit_region": "REGION_ROUTE_41",
-      "entrance_region": "REGION_WHIRL_ISLAND_NE",
+      "name": "REGION_ROUTE_41:NE_ISLAND -> REGION_WHIRL_ISLAND_NE:WEST",
+      "exit_region": "REGION_ROUTE_41:NE_ISLAND",
+      "entrance_region": "REGION_WHIRL_ISLAND_NE:WEST",
       "exit_warps": [
         {
           "map": "Route41",
@@ -9052,12 +9052,12 @@
       "arrival_warp_id": 1,
       "type": "cave",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
-      "name": "REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_SW",
-      "exit_region": "REGION_ROUTE_41",
-      "entrance_region": "REGION_WHIRL_ISLAND_SW",
+      "name": "REGION_ROUTE_41:SW_ISLAND -> REGION_WHIRL_ISLAND_SW:NORTHWEST",
+      "exit_region": "REGION_ROUTE_41:SW_ISLAND",
+      "entrance_region": "REGION_WHIRL_ISLAND_SW:NORTHWEST",
       "exit_warps": [
         {
           "map": "Route41",
@@ -9069,11 +9069,11 @@
       "arrival_warp_id": 1,
       "type": "cave",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
-      "name": "REGION_ROUTE_41 -> REGION_WHIRL_ISLAND_SE",
-      "exit_region": "REGION_ROUTE_41",
+      "name": "REGION_ROUTE_41:SE_ISLAND -> REGION_WHIRL_ISLAND_SE",
+      "exit_region": "REGION_ROUTE_41:SE_ISLAND",
       "entrance_region": "REGION_WHIRL_ISLAND_SE",
       "exit_warps": [
         {
@@ -9086,7 +9086,7 @@
       "arrival_warp_id": 1,
       "type": "cave",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
       "name": "REGION_ROUTE_42:WEST -> REGION_ROUTE_42_ECRUTEAK_GATE",
@@ -13455,9 +13455,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_B1F -> REGION_WHIRL_ISLAND_NW",
-      "exit_region": "REGION_WHIRL_ISLAND_B1F",
-      "entrance_region": "REGION_WHIRL_ISLAND_NW",
+      "name": "REGION_WHIRL_ISLAND_B1F:NORTH -> REGION_WHIRL_ISLAND_NW:NORTH",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:NORTH",
+      "entrance_region": "REGION_WHIRL_ISLAND_NW:NORTH",
       "exit_warps": [
         {
           "map": "WhirlIslandB1F",
@@ -13472,17 +13472,30 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_B1F -> REGION_WHIRL_ISLAND_NE",
-      "exit_region": "REGION_WHIRL_ISLAND_B1F",
-      "entrance_region": "REGION_WHIRL_ISLAND_NE",
+      "name": "REGION_WHIRL_ISLAND_B1F:NORTH -> REGION_WHIRL_ISLAND_NE:SOUTHWEST",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:NORTH",
+      "entrance_region": "REGION_WHIRL_ISLAND_NE:SOUTHWEST",
+      "exit_warps": [
+        {
+          "map": "WhirlIslandB1F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "WhirlIslandNE",
+      "arrival_map_const": "WHIRL_ISLAND_NE",
+      "arrival_warp_id": 3,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_WHIRL_ISLAND_B1F:NORTHEAST -> REGION_WHIRL_ISLAND_NE:NORTHWEST",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:NORTHEAST",
+      "entrance_region": "REGION_WHIRL_ISLAND_NE:NORTHWEST",
       "exit_warps": [
         {
           "map": "WhirlIslandB1F",
           "index": 2
-        },
-        {
-          "map": "WhirlIslandB1F",
-          "index": 3
         }
       ],
       "arrival_map": "WhirlIslandNE",
@@ -13493,17 +13506,64 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_B1F -> REGION_WHIRL_ISLAND_SW",
-      "exit_region": "REGION_WHIRL_ISLAND_B1F",
-      "entrance_region": "REGION_WHIRL_ISLAND_SW",
+      "name": "REGION_WHIRL_ISLAND_B1F:NORTH -> REGION_WHIRL_ISLAND_B2F:CENTER",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:NORTH",
+      "entrance_region": "REGION_WHIRL_ISLAND_B2F:CENTER",
+      "exit_warps": [
+        {
+          "map": "WhirlIslandB1F",
+          "index": 8
+        }
+      ],
+      "arrival_map": "WhirlIslandB2F",
+      "arrival_map_const": "WHIRL_ISLAND_B2F",
+      "arrival_warp_id": 2,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_WHIRL_ISLAND_B1F:NORTHEAST -> REGION_WHIRL_ISLAND_B2F:NORTH",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:NORTHEAST",
+      "entrance_region": "REGION_WHIRL_ISLAND_B2F:NORTH",
+      "exit_warps": [
+        {
+          "map": "WhirlIslandB1F",
+          "index": 7
+        }
+      ],
+      "arrival_map": "WhirlIslandB2F",
+      "arrival_map_const": "WHIRL_ISLAND_B2F",
+      "arrival_warp_id": 1,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_WHIRL_ISLAND_B1F:SOUTHWEST -> REGION_WHIRL_ISLAND_SW:NORTHWEST",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:SOUTHWEST",
+      "entrance_region": "REGION_WHIRL_ISLAND_SW:NORTHWEST",
+      "exit_warps": [
+        {
+          "map": "WhirlIslandB1F",
+          "index": 4
+        }
+      ],
+      "arrival_map": "WhirlIslandSW",
+      "arrival_map_const": "WHIRL_ISLAND_SW",
+      "arrival_warp_id": 3,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_WHIRL_ISLAND_B1F:SOUTHEAST -> REGION_WHIRL_ISLAND_SW:NORTHEAST",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:SOUTHEAST",
+      "entrance_region": "REGION_WHIRL_ISLAND_SW:NORTHEAST",
       "exit_warps": [
         {
           "map": "WhirlIslandB1F",
           "index": 5
-        },
-        {
-          "map": "WhirlIslandB1F",
-          "index": 4
         }
       ],
       "arrival_map": "WhirlIslandSW",
@@ -13514,8 +13574,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_B1F -> REGION_WHIRL_ISLAND_SE",
-      "exit_region": "REGION_WHIRL_ISLAND_B1F",
+      "name": "REGION_WHIRL_ISLAND_B1F:SOUTHEAST -> REGION_WHIRL_ISLAND_SE",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:SOUTHEAST",
       "entrance_region": "REGION_WHIRL_ISLAND_SE",
       "exit_warps": [
         {
@@ -13531,29 +13591,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_B1F -> REGION_WHIRL_ISLAND_B2F",
-      "exit_region": "REGION_WHIRL_ISLAND_B1F",
-      "entrance_region": "REGION_WHIRL_ISLAND_B2F",
-      "exit_warps": [
-        {
-          "map": "WhirlIslandB1F",
-          "index": 7
-        },
-        {
-          "map": "WhirlIslandB1F",
-          "index": 8
-        }
-      ],
-      "arrival_map": "WhirlIslandB2F",
-      "arrival_map_const": "WHIRL_ISLAND_B2F",
-      "arrival_warp_id": 1,
-      "type": "cave",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_WHIRL_ISLAND_B1F -> REGION_WHIRL_ISLAND_CAVE",
-      "exit_region": "REGION_WHIRL_ISLAND_B1F",
+      "name": "REGION_WHIRL_ISLAND_B1F:LEDGE -> REGION_WHIRL_ISLAND_CAVE",
+      "exit_region": "REGION_WHIRL_ISLAND_B1F:LEDGE",
       "entrance_region": "REGION_WHIRL_ISLAND_CAVE",
       "exit_warps": [
         {
@@ -13569,17 +13608,13 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_B2F -> REGION_WHIRL_ISLAND_B1F",
-      "exit_region": "REGION_WHIRL_ISLAND_B2F",
-      "entrance_region": "REGION_WHIRL_ISLAND_B1F",
+      "name": "REGION_WHIRL_ISLAND_B2F:NORTH -> REGION_WHIRL_ISLAND_B1F:NORTHEAST",
+      "exit_region": "REGION_WHIRL_ISLAND_B2F:NORTH",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:NORTHEAST",
       "exit_warps": [
         {
           "map": "WhirlIslandB2F",
           "index": 1
-        },
-        {
-          "map": "WhirlIslandB2F",
-          "index": 2
         }
       ],
       "arrival_map": "WhirlIslandB1F",
@@ -13590,8 +13625,25 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_B2F -> REGION_WHIRL_ISLAND_LUGIA_CHAMBER",
-      "exit_region": "REGION_WHIRL_ISLAND_B2F",
+      "name": "REGION_WHIRL_ISLAND_B2F:CENTER -> REGION_WHIRL_ISLAND_B1F:NORTH",
+      "exit_region": "REGION_WHIRL_ISLAND_B2F:CENTER",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:NORTH",
+      "exit_warps": [
+        {
+          "map": "WhirlIslandB2F",
+          "index": 2
+        }
+      ],
+      "arrival_map": "WhirlIslandB1F",
+      "arrival_map_const": "WHIRL_ISLAND_B1F",
+      "arrival_warp_id": 8,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE -> REGION_WHIRL_ISLAND_LUGIA_CHAMBER",
+      "exit_region": "REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE",
       "entrance_region": "REGION_WHIRL_ISLAND_LUGIA_CHAMBER",
       "exit_warps": [
         {
@@ -13607,9 +13659,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_B2F -> REGION_WHIRL_ISLAND_SW",
-      "exit_region": "REGION_WHIRL_ISLAND_B2F",
-      "entrance_region": "REGION_WHIRL_ISLAND_SW",
+      "name": "REGION_WHIRL_ISLAND_B2F:SOUTH -> REGION_WHIRL_ISLAND_SW:SOUTHEAST",
+      "exit_region": "REGION_WHIRL_ISLAND_B2F:SOUTH",
+      "entrance_region": "REGION_WHIRL_ISLAND_SW:SOUTHEAST",
       "exit_warps": [
         {
           "map": "WhirlIslandB2F",
@@ -13624,9 +13676,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_CAVE -> REGION_WHIRL_ISLAND_B1F",
+      "name": "REGION_WHIRL_ISLAND_CAVE -> REGION_WHIRL_ISLAND_B1F:LEDGE",
       "exit_region": "REGION_WHIRL_ISLAND_CAVE",
-      "entrance_region": "REGION_WHIRL_ISLAND_B1F",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:LEDGE",
       "exit_warps": [
         {
           "map": "WhirlIslandCave",
@@ -13641,9 +13693,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_CAVE -> REGION_WHIRL_ISLAND_NW",
+      "name": "REGION_WHIRL_ISLAND_CAVE -> REGION_WHIRL_ISLAND_NW:SOUTH",
       "exit_region": "REGION_WHIRL_ISLAND_CAVE",
-      "entrance_region": "REGION_WHIRL_ISLAND_NW",
+      "entrance_region": "REGION_WHIRL_ISLAND_NW:SOUTH",
       "exit_warps": [
         {
           "map": "WhirlIslandCave",
@@ -13658,9 +13710,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_LUGIA_CHAMBER -> REGION_WHIRL_ISLAND_B2F",
+      "name": "REGION_WHIRL_ISLAND_LUGIA_CHAMBER -> REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE",
       "exit_region": "REGION_WHIRL_ISLAND_LUGIA_CHAMBER",
-      "entrance_region": "REGION_WHIRL_ISLAND_B2F",
+      "entrance_region": "REGION_WHIRL_ISLAND_B2F:LUGIA_CHAMBER_ENTRANCE",
       "exit_warps": [
         {
           "map": "WhirlIslandLugiaChamber",
@@ -13675,8 +13727,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_NE -> REGION_ROUTE_41",
-      "exit_region": "REGION_WHIRL_ISLAND_NE",
+      "name": "REGION_WHIRL_ISLAND_NE:WEST -> REGION_ROUTE_41",
+      "exit_region": "REGION_WHIRL_ISLAND_NE:WEST",
       "entrance_region": "REGION_ROUTE_41",
       "exit_warps": [
         {
@@ -13689,17 +13741,13 @@
       "arrival_warp_id": 2,
       "type": "cave",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
-      "name": "REGION_WHIRL_ISLAND_NE -> REGION_WHIRL_ISLAND_B1F",
-      "exit_region": "REGION_WHIRL_ISLAND_NE",
-      "entrance_region": "REGION_WHIRL_ISLAND_B1F",
+      "name": "REGION_WHIRL_ISLAND_NE:SOUTHWEST -> REGION_WHIRL_ISLAND_B1F:NORTH",
+      "exit_region": "REGION_WHIRL_ISLAND_NE:SOUTHWEST",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:NORTH",
       "exit_warps": [
-        {
-          "map": "WhirlIslandNE",
-          "index": 2
-        },
         {
           "map": "WhirlIslandNE",
           "index": 3
@@ -13707,14 +13755,31 @@
       ],
       "arrival_map": "WhirlIslandB1F",
       "arrival_map_const": "WHIRL_ISLAND_B1F",
+      "arrival_warp_id": 3,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_WHIRL_ISLAND_NE:NORTHWEST -> REGION_WHIRL_ISLAND_B1F:NORTHEAST",
+      "exit_region": "REGION_WHIRL_ISLAND_NE:NORTHWEST",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:NORTHEAST",
+      "exit_warps": [
+        {
+          "map": "WhirlIslandNE",
+          "index": 2
+        }
+      ],
+      "arrival_map": "WhirlIslandB1F",
+      "arrival_map_const": "WHIRL_ISLAND_B1F",
       "arrival_warp_id": 2,
       "type": "cave",
       "area": "johto",
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_NW -> REGION_ROUTE_41",
-      "exit_region": "REGION_WHIRL_ISLAND_NW",
+      "name": "REGION_WHIRL_ISLAND_NW:NORTH -> REGION_ROUTE_41",
+      "exit_region": "REGION_WHIRL_ISLAND_NW:NORTH",
       "entrance_region": "REGION_ROUTE_41",
       "exit_warps": [
         {
@@ -13727,12 +13792,12 @@
       "arrival_warp_id": 1,
       "type": "cave",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
-      "name": "REGION_WHIRL_ISLAND_NW -> REGION_WHIRL_ISLAND_B1F",
-      "exit_region": "REGION_WHIRL_ISLAND_NW",
-      "entrance_region": "REGION_WHIRL_ISLAND_B1F",
+      "name": "REGION_WHIRL_ISLAND_NW:NORTH -> REGION_WHIRL_ISLAND_B1F:NORTH",
+      "exit_region": "REGION_WHIRL_ISLAND_NW:NORTH",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:NORTH",
       "exit_warps": [
         {
           "map": "WhirlIslandNW",
@@ -13747,9 +13812,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_NW -> REGION_WHIRL_ISLAND_SW",
-      "exit_region": "REGION_WHIRL_ISLAND_NW",
-      "entrance_region": "REGION_WHIRL_ISLAND_SW",
+      "name": "REGION_WHIRL_ISLAND_NW:SOUTH -> REGION_WHIRL_ISLAND_SW:SOUTHWEST",
+      "exit_region": "REGION_WHIRL_ISLAND_NW:SOUTH",
+      "entrance_region": "REGION_WHIRL_ISLAND_SW:SOUTHWEST",
       "exit_warps": [
         {
           "map": "WhirlIslandNW",
@@ -13764,8 +13829,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_NW -> REGION_WHIRL_ISLAND_CAVE",
-      "exit_region": "REGION_WHIRL_ISLAND_NW",
+      "name": "REGION_WHIRL_ISLAND_NW:SOUTH -> REGION_WHIRL_ISLAND_CAVE",
+      "exit_region": "REGION_WHIRL_ISLAND_NW:SOUTH",
       "entrance_region": "REGION_WHIRL_ISLAND_CAVE",
       "exit_warps": [
         {
@@ -13795,12 +13860,12 @@
       "arrival_warp_id": 4,
       "type": "cave",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
-      "name": "REGION_WHIRL_ISLAND_SE -> REGION_WHIRL_ISLAND_B1F",
+      "name": "REGION_WHIRL_ISLAND_SE -> REGION_WHIRL_ISLAND_B1F:SOUTHEAST",
       "exit_region": "REGION_WHIRL_ISLAND_SE",
-      "entrance_region": "REGION_WHIRL_ISLAND_B1F",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:SOUTHEAST",
       "exit_warps": [
         {
           "map": "WhirlIslandSE",
@@ -13815,8 +13880,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_SW -> REGION_ROUTE_41",
-      "exit_region": "REGION_WHIRL_ISLAND_SW",
+      "name": "REGION_WHIRL_ISLAND_SW:NORTHWEST -> REGION_ROUTE_41",
+      "exit_region": "REGION_WHIRL_ISLAND_SW:NORTHWEST",
       "entrance_region": "REGION_ROUTE_41",
       "exit_warps": [
         {
@@ -13829,20 +13894,16 @@
       "arrival_warp_id": 3,
       "type": "cave",
       "area": "johto",
-      "one_way": false
+      "one_way": true
     },
     {
-      "name": "REGION_WHIRL_ISLAND_SW -> REGION_WHIRL_ISLAND_B1F",
-      "exit_region": "REGION_WHIRL_ISLAND_SW",
-      "entrance_region": "REGION_WHIRL_ISLAND_B1F",
+      "name": "REGION_WHIRL_ISLAND_SW:NORTHWEST -> REGION_WHIRL_ISLAND_B1F:SOUTHWEST",
+      "exit_region": "REGION_WHIRL_ISLAND_SW:NORTHWEST",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:SOUTHWEST",
       "exit_warps": [
         {
           "map": "WhirlIslandSW",
           "index": 3
-        },
-        {
-          "map": "WhirlIslandSW",
-          "index": 2
         }
       ],
       "arrival_map": "WhirlIslandB1F",
@@ -13853,9 +13914,26 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_SW -> REGION_WHIRL_ISLAND_NW",
-      "exit_region": "REGION_WHIRL_ISLAND_SW",
-      "entrance_region": "REGION_WHIRL_ISLAND_NW",
+      "name": "REGION_WHIRL_ISLAND_SW:NORTHEAST -> REGION_WHIRL_ISLAND_B1F:SOUTHEAST",
+      "exit_region": "REGION_WHIRL_ISLAND_SW:NORTHEAST",
+      "entrance_region": "REGION_WHIRL_ISLAND_B1F:SOUTHEAST",
+      "exit_warps": [
+        {
+          "map": "WhirlIslandSW",
+          "index": 2
+        }
+      ],
+      "arrival_map": "WhirlIslandB1F",
+      "arrival_map_const": "WHIRL_ISLAND_B1F",
+      "arrival_warp_id": 5,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_WHIRL_ISLAND_SW:SOUTHWEST -> REGION_WHIRL_ISLAND_NW:SOUTH",
+      "exit_region": "REGION_WHIRL_ISLAND_SW:SOUTHWEST",
+      "entrance_region": "REGION_WHIRL_ISLAND_NW:SOUTH",
       "exit_warps": [
         {
           "map": "WhirlIslandSW",
@@ -13870,9 +13948,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_WHIRL_ISLAND_SW -> REGION_WHIRL_ISLAND_B2F",
-      "exit_region": "REGION_WHIRL_ISLAND_SW",
-      "entrance_region": "REGION_WHIRL_ISLAND_B2F",
+      "name": "REGION_WHIRL_ISLAND_SW:SOUTHEAST -> REGION_WHIRL_ISLAND_B2F:SOUTH",
+      "exit_region": "REGION_WHIRL_ISLAND_SW:SOUTHEAST",
+      "entrance_region": "REGION_WHIRL_ISLAND_B2F:SOUTH",
       "exit_warps": [
         {
           "map": "WhirlIslandSW",
