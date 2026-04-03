@@ -7312,25 +7312,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROCK_TUNNEL_1F -> REGION_ROUTE_9",
-      "exit_region": "REGION_ROCK_TUNNEL_1F",
-      "entrance_region": "REGION_ROUTE_9",
-      "exit_warps": [
-        {
-          "map": "RockTunnel1F",
-          "index": 1
-        }
-      ],
-      "arrival_map": "Route9",
-      "arrival_map_const": "ROUTE_9",
-      "arrival_warp_id": 1,
-      "type": "cave",
-      "area": "kanto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_ROCK_TUNNEL_1F -> REGION_ROUTE_10_SOUTH",
-      "exit_region": "REGION_ROCK_TUNNEL_1F",
+      "name": "REGION_ROCK_TUNNEL_1F:SOUTH -> REGION_ROUTE_10_SOUTH",
+      "exit_region": "REGION_ROCK_TUNNEL_1F:SOUTH",
       "entrance_region": "REGION_ROUTE_10_SOUTH",
       "exit_warps": [
         {
@@ -7346,25 +7329,13 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROCK_TUNNEL_1F -> REGION_ROCK_TUNNEL_B1F",
-      "exit_region": "REGION_ROCK_TUNNEL_1F",
-      "entrance_region": "REGION_ROCK_TUNNEL_B1F",
+      "name": "REGION_ROCK_TUNNEL_1F:SOUTH -> REGION_ROCK_TUNNEL_B1F:WEST",
+      "exit_region": "REGION_ROCK_TUNNEL_1F:SOUTH",
+      "entrance_region": "REGION_ROCK_TUNNEL_B1F:WEST",
       "exit_warps": [
         {
           "map": "RockTunnel1F",
           "index": 6
-        },
-        {
-          "map": "RockTunnel1F",
-          "index": 4
-        },
-        {
-          "map": "RockTunnel1F",
-          "index": 3
-        },
-        {
-          "map": "RockTunnel1F",
-          "index": 5
         }
       ],
       "arrival_map": "RockTunnelB1F",
@@ -7375,22 +7346,78 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROCK_TUNNEL_B1F -> REGION_ROCK_TUNNEL_1F",
-      "exit_region": "REGION_ROCK_TUNNEL_B1F",
-      "entrance_region": "REGION_ROCK_TUNNEL_1F",
+      "name": "REGION_ROCK_TUNNEL_1F:NORTHEAST -> REGION_ROCK_TUNNEL_B1F:EAST",
+      "exit_region": "REGION_ROCK_TUNNEL_1F:NORTHEAST",
+      "entrance_region": "REGION_ROCK_TUNNEL_B1F:EAST",
       "exit_warps": [
         {
-          "map": "RockTunnelB1F",
+          "map": "RockTunnel1F",
+          "index": 5
+        }
+      ],
+      "arrival_map": "RockTunnelB1F",
+      "arrival_map_const": "ROCK_TUNNEL_B1F",
+      "arrival_warp_id": 4,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROCK_TUNNEL_1F:NORTHWEST -> REGION_ROCK_TUNNEL_B1F:EAST",
+      "exit_region": "REGION_ROCK_TUNNEL_1F:NORTHWEST",
+      "entrance_region": "REGION_ROCK_TUNNEL_B1F:EAST",
+      "exit_warps": [
+        {
+          "map": "RockTunnel1F",
           "index": 3
-        },
+        }
+      ],
+      "arrival_map": "RockTunnelB1F",
+      "arrival_map_const": "ROCK_TUNNEL_B1F",
+      "arrival_warp_id": 3,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROCK_TUNNEL_1F:NORTHWEST -> REGION_ROCK_TUNNEL_B1F:WEST",
+      "exit_region": "REGION_ROCK_TUNNEL_1F:NORTHWEST",
+      "entrance_region": "REGION_ROCK_TUNNEL_B1F:WEST",
+      "exit_warps": [
         {
-          "map": "RockTunnelB1F",
-          "index": 2
-        },
-        {
-          "map": "RockTunnelB1F",
+          "map": "RockTunnel1F",
           "index": 4
-        },
+        }
+      ],
+      "arrival_map": "RockTunnelB1F",
+      "arrival_map_const": "ROCK_TUNNEL_B1F",
+      "arrival_warp_id": 2,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROCK_TUNNEL_1F:NORTHEAST -> REGION_ROUTE_9",
+      "exit_region": "REGION_ROCK_TUNNEL_1F:NORTHEAST",
+      "entrance_region": "REGION_ROUTE_9",
+      "exit_warps": [
+        {
+          "map": "RockTunnel1F",
+          "index": 1
+        }
+      ],
+      "arrival_map": "Route9",
+      "arrival_map_const": "ROUTE_9",
+      "arrival_warp_id": 1,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROCK_TUNNEL_B1F:WEST -> REGION_ROCK_TUNNEL_1F:SOUTH",
+      "exit_region": "REGION_ROCK_TUNNEL_B1F:WEST",
+      "entrance_region": "REGION_ROCK_TUNNEL_1F:SOUTH",
+      "exit_warps": [
         {
           "map": "RockTunnelB1F",
           "index": 1
@@ -7398,7 +7425,58 @@
       ],
       "arrival_map": "RockTunnel1F",
       "arrival_map_const": "ROCK_TUNNEL_1F",
+      "arrival_warp_id": 6,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROCK_TUNNEL_B1F:WEST -> REGION_ROCK_TUNNEL_1F:NORTHWEST",
+      "exit_region": "REGION_ROCK_TUNNEL_B1F:WEST",
+      "entrance_region": "REGION_ROCK_TUNNEL_1F:NORTHWEST",
+      "exit_warps": [
+        {
+          "map": "RockTunnelB1F",
+          "index": 2
+        }
+      ],
+      "arrival_map": "RockTunnel1F",
+      "arrival_map_const": "ROCK_TUNNEL_1F",
+      "arrival_warp_id": 4,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROCK_TUNNEL_B1F:EAST -> REGION_ROCK_TUNNEL_1F:NORTHWEST",
+      "exit_region": "REGION_ROCK_TUNNEL_B1F:EAST",
+      "entrance_region": "REGION_ROCK_TUNNEL_1F:NORTHWEST",
+      "exit_warps": [
+        {
+          "map": "RockTunnelB1F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "RockTunnel1F",
+      "arrival_map_const": "ROCK_TUNNEL_1F",
       "arrival_warp_id": 3,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROCK_TUNNEL_B1F:EAST -> REGION_ROCK_TUNNEL_1F:NORTHEAST",
+      "exit_region": "REGION_ROCK_TUNNEL_B1F:EAST",
+      "entrance_region": "REGION_ROCK_TUNNEL_1F:NORTHEAST",
+      "exit_warps": [
+        {
+          "map": "RockTunnelB1F",
+          "index": 4
+        }
+      ],
+      "arrival_map": "RockTunnel1F",
+      "arrival_map_const": "ROCK_TUNNEL_1F",
+      "arrival_warp_id": 5,
       "type": "cave",
       "area": "kanto",
       "one_way": false
@@ -7459,9 +7537,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_10_SOUTH -> REGION_ROCK_TUNNEL_1F",
+      "name": "REGION_ROUTE_10_SOUTH -> REGION_ROCK_TUNNEL_1F:SOUTH",
       "exit_region": "REGION_ROUTE_10_SOUTH",
-      "entrance_region": "REGION_ROCK_TUNNEL_1F",
+      "entrance_region": "REGION_ROCK_TUNNEL_1F:SOUTH",
       "exit_warps": [
         {
           "map": "Route10South",
@@ -10036,9 +10114,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_9 -> REGION_ROCK_TUNNEL_1F",
+      "name": "REGION_ROUTE_9 -> REGION_ROCK_TUNNEL_1F:NORTHEAST",
       "exit_region": "REGION_ROUTE_9",
-      "entrance_region": "REGION_ROCK_TUNNEL_1F",
+      "entrance_region": "REGION_ROCK_TUNNEL_1F:NORTHEAST",
       "exit_warps": [
         {
           "map": "Route9",

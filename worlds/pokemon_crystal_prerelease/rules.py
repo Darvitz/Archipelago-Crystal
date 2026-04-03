@@ -139,8 +139,11 @@ DARK_AREA_REGIONS: dict[str, list[str]] = {
         "REGION_MOUNT_MOON",
     ],
     "Rock Tunnel": [
-        "REGION_ROCK_TUNNEL_1F",
-        "REGION_ROCK_TUNNEL_B1F",
+        "REGION_ROCK_TUNNEL_1F:SOUTH",
+        "REGION_ROCK_TUNNEL_1F:NORTHEAST",
+        "REGION_ROCK_TUNNEL_1F:NORTHWEST",
+        "REGION_ROCK_TUNNEL_B1F:WEST",
+        "REGION_ROCK_TUNNEL_B1F:EAST",
     ],
 }
 

@@ -4163,16 +4163,14 @@
     "locations": [],
     "events": []
   },
-  "REGION_ROCK_TUNNEL_1F": {
+  "REGION_ROCK_TUNNEL_1F:SOUTH": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_9",
       "REGION_ROUTE_10_SOUTH",
-      "REGION_ROCK_TUNNEL_B1F"
+      "REGION_ROCK_TUNNEL_B1F:WEST"
     ],
     "locations": [
       "ROCK_TUNNEL_1F_ELIXER",
-      "ROCK_TUNNEL_1F_HIDDEN_X_ACCURACY",
       "ROCK_TUNNEL_1F_HIDDEN_X_DEFEND",
       "ROCK_TUNNEL_1F_TM_STEEL_WING"
     ],
@@ -4181,16 +4179,56 @@
       "grass": "ROCK_TUNNEL_1F"
     }
   },
-  "REGION_ROCK_TUNNEL_B1F": {
+  "REGION_ROCK_TUNNEL_1F:NORTHEAST": {
     "johto": false,
     "exits": [
-      "REGION_ROCK_TUNNEL_1F"
+      "REGION_ROUTE_9",
+      "REGION_ROCK_TUNNEL_B1F:EAST"
+    ],
+    "locations": [
+      "ROCK_TUNNEL_1F_HIDDEN_X_ACCURACY"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "ROCK_TUNNEL_1F"
+    }
+  },
+  "REGION_ROCK_TUNNEL_1F:NORTHWEST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROCK_TUNNEL_B1F:EAST",
+      "REGION_ROCK_TUNNEL_B1F:WEST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "ROCK_TUNNEL_1F"
+    }
+  },
+  "REGION_ROCK_TUNNEL_B1F:WEST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROCK_TUNNEL_1F:SOUTH",
+      "REGION_ROCK_TUNNEL_1F:NORTHWEST"
     ],
     "locations": [
       "ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION",
-      "ROCK_TUNNEL_B1F_IRON",
       "ROCK_TUNNEL_B1F_PP_UP",
       "ROCK_TUNNEL_B1F_REVIVE"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "ROCK_TUNNEL_B1F"
+    }
+  },
+  "REGION_ROCK_TUNNEL_B1F:EAST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROCK_TUNNEL_1F:NORTHWEST",
+      "REGION_ROCK_TUNNEL_1F:NORTHEAST"
+    ],
+    "locations": [
+      "ROCK_TUNNEL_B1F_IRON"
     ],
     "events": [],
     "wild_encounters": {
@@ -4262,7 +4300,7 @@
     "johto": false,
     "exits": [
       "REGION_LAVENDER_TOWN",
-      "REGION_ROCK_TUNNEL_1F"
+      "REGION_ROCK_TUNNEL_1F:SOUTH"
     ],
     "trainers": [
       "HIKER_JIM",
@@ -6578,7 +6616,7 @@
     "exits": [
       "REGION_ROUTE_10_NORTH:SURF",
       "REGION_CERULEAN_CITY",
-      "REGION_ROCK_TUNNEL_1F",
+      "REGION_ROCK_TUNNEL_1F:NORTHEAST",
       "REGION_ROUTE_10_NORTH:POKECENTER"
     ],
     "trainers": [
