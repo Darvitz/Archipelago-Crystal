@@ -286,37 +286,54 @@ def _build_reverse_conn_lookup(conns: Mapping[str, EntranceConnection]) -> dict[
     return lookup
 
 
+def _resolve_arrival(conns, map_consts, reverse_lookup, target_name):
+    """Resolve a pairing target to (warp, group, map) arrival data."""
+    if target_name.endswith(" (one-way target)"):
+        conn = conns.get(target_name.removesuffix(" (one-way target)"))
+    else:
+        rev = reverse_lookup.get(target_name)
+        conn = conns.get(rev) if rev else None
+    if conn and conn.arrival_map_const in map_consts:
+        group, map_id = map_consts[conn.arrival_map_const]
+        return conn.arrival_warp_id, group, map_id
+    return None
+
+
 def write_entrance_pairings(world: "PokemonCrystalWorld", write_bytes) -> None:
     conns = data.entrance_connections
     map_consts = data.map_constants
     reverse_lookup = _build_reverse_conn_lookup(conns)
+
+    resolve = lambda tgt: _resolve_arrival(conns, map_consts, reverse_lookup, tgt)
+
+    # Elevfloor entry maps (offset 4) must match the map the player enters from.
+    # For each pairing, record where the source player was standing.
+    target_to_source: dict[str, tuple[int, int, int]] = {}
+    for source_name, target_name in world.er_pairings:
+        source_origin = resolve(source_name)
+        if source_origin:
+            target_to_source[target_name] = source_origin
 
     for source_name, target_name in world.er_pairings:
         source_conn = conns.get(source_name)
         if source_conn is None:
             continue
 
-        if target_name.endswith(" (one-way target)"):
-            original_conn_name = target_name.removesuffix(" (one-way target)")
-            target_conn = conns.get(original_conn_name)
-        else:
-            reverse_target_name = reverse_lookup.get(target_name)
-            target_conn = conns.get(reverse_target_name) if reverse_target_name else None
-        if target_conn is None:
+        arrival = resolve(target_name)
+        if arrival is None:
             continue
-
-        arrival_const = target_conn.arrival_map_const
-        if arrival_const not in map_consts:
-            continue
-        new_group, new_map_id = map_consts[arrival_const]
-        new_warp_id = target_conn.arrival_warp_id
 
         for exit_warp in source_conn.exit_warps:
             label = exit_warp.label or f"AP_Warp_{exit_warp.map_name}_{exit_warp.warp_index}"
             addr = data.rom_addresses.get(label)
             if addr is None:
                 continue
-            write_bytes([new_warp_id, new_group, new_map_id], addr + exit_warp.addr_offset)
+            if exit_warp.addr_offset == 4:
+                reverse_name = reverse_lookup.get(source_name)
+                warp_data = target_to_source.get(reverse_name, arrival)
+            else:
+                warp_data = arrival
+            write_bytes(list(warp_data), addr + exit_warp.addr_offset)
 
 
 def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: PokemonCrystalProcedurePatch) -> None:

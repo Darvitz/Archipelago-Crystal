@@ -2356,6 +2356,23 @@ class EntranceRandomizationGrouping(Choice):
     default = 0
 
 
+class ForceERPairings(OptionList):
+    """
+    Debug option: force specific ER pairings before randomization.
+    Each entry is "exit => entrance" using connection names from entrance_data.json.
+    The exit is the door walked through; the entrance is the connection you arrive at.
+    In coupled mode, the reverse is also forced.
+    Requires entrance_randomization to include the relevant types.
+
+    Example (cafe door leads to the elevator room):
+      force_er_pairings:
+        - "REGION_CELADON_CITY -> REGION_CELADON_CAFE => REGION_CELADON_DEPT_STORE_1F -> REGION_CELADON_DEPT_STORE_ELEVATOR:1F"
+    """
+    display_name = "Force ER Pairings"
+    visibility = Visibility.spoiler
+    default = []
+
+
 @dataclass
 class PokemonCrystalOptions(PerGameCommonOptions):
     goal: Goal
@@ -2529,6 +2546,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     entrance_randomization_coupled: EntranceRandomizationCoupled
     entrance_randomization_one_way: EntranceRandomizationOneWay
     entrance_randomization_grouping: EntranceRandomizationGrouping
+    force_er_pairings: ForceERPairings
 
 
 OPTION_GROUPS = [

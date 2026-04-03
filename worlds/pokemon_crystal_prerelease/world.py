@@ -566,6 +566,7 @@ class PokemonCrystalWorld(World):
                                                preserve_group_order=preserve_group_order)
                 self.logic.guaranteed_hm_access = False
                 self.er_pairings: list[tuple[str, str]] = list(er_state.pairings)
+                self._override_forced_er_pairings()
                 return
             except EntranceRandomizationError as error:
                 if attempt >= self._MAX_ER_ATTEMPTS - 1:
@@ -606,6 +607,50 @@ class PokemonCrystalWorld(World):
                         target.randomization_type = entrance.randomization_type
 
         self.logic.guaranteed_hm_access = False
+
+    def _override_forced_er_pairings(self) -> None:
+        """Override er_pairings for ROM patching (not the region graph)."""
+        forced_specs = self.options.force_er_pairings.value
+        if not forced_specs:
+            return
+
+        from .rom import _build_reverse_conn_lookup
+        from .data import data as crystal_data
+        rl = _build_reverse_conn_lookup(crystal_data.entrance_connections)
+        coupled = bool(self.options.entrance_randomization_coupled)
+
+        overrides: dict[str, str] = {}
+        for spec in forced_specs:
+            exit_name, _, entrance_name = spec.partition(" => ")
+            exit_name, entrance_name = exit_name.strip(), entrance_name.strip()
+            if not entrance_name:
+                logging.warning(f"force_er_pairings: bad format {spec!r}, expected 'exit => entrance'")
+                continue
+            overrides[exit_name] = entrance_name
+            if coupled:
+                for a, b in [(entrance_name, exit_name),
+                             (rl.get(entrance_name), rl.get(exit_name)),
+                             (rl.get(exit_name), rl.get(entrance_name))]:
+                    if a and b:
+                        overrides[a] = b
+
+        new_targets = {src: rl.get(ent, ent) for src, ent in overrides.items()}
+
+        # Displaced: if we claim a target someone else had, give them our old one.
+        old_target = {src: tgt for src, tgt in self.er_pairings if src in new_targets}
+        owner_of = {tgt: src for src, tgt in self.er_pairings}
+        displaced: dict[str, str] = {}
+        for src, new_tgt in new_targets.items():
+            prev_owner = owner_of.get(new_tgt)
+            if prev_owner and prev_owner not in new_targets and src in old_target:
+                displaced[prev_owner] = old_target[src]
+
+        self.er_pairings = [
+            (src, new_targets[src]) if src in new_targets
+            else (src, displaced[src]) if src in displaced
+            else (src, tgt)
+            for src, tgt in self.er_pairings
+        ]
 
     def _reconnect_ut_entrances(self):
         """Reconnect ER entrances from slot data for Universal Tracker."""
