@@ -10570,6 +10570,40 @@
       "one_way": false
     },
     {
+      "name": "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:UNION_LEDGE -> REGION_UNION_CAVE_B1F:STRENGTH",
+      "exit_region": "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:UNION_LEDGE",
+      "entrance_region": "REGION_UNION_CAVE_B1F:STRENGTH",
+      "exit_warps": [
+        {
+          "map": "RuinsOfAlphOutside",
+          "index": 8
+        }
+      ],
+      "arrival_map": "UnionCaveB1F",
+      "arrival_map_const": "UNION_CAVE_B1F",
+      "arrival_warp_id": 2,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_RUINS_OF_ALPH_OUTSIDE:TRAINER -> REGION_UNION_CAVE_B1F:NORTH",
+      "exit_region": "REGION_RUINS_OF_ALPH_OUTSIDE:TRAINER",
+      "entrance_region": "REGION_UNION_CAVE_B1F:NORTH",
+      "exit_warps": [
+        {
+          "map": "RuinsOfAlphOutside",
+          "index": 7
+        }
+      ],
+      "arrival_map": "UnionCaveB1F",
+      "arrival_map_const": "UNION_CAVE_B1F",
+      "arrival_warp_id": 1,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
       "name": "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:OMANYTE_LEDGE -> REGION_RUINS_OF_ALPH_OMANYTE_CHAMBER",
       "exit_region": "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:OMANYTE_LEDGE",
       "entrance_region": "REGION_RUINS_OF_ALPH_OMANYTE_CHAMBER",
@@ -10583,27 +10617,6 @@
       "arrival_map_const": "RUINS_OF_ALPH_OMANYTE_CHAMBER",
       "arrival_warp_id": 1,
       "type": "interior",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_RUINS_OF_ALPH_OUTSIDE:TRAINER -> REGION_UNION_CAVE_B1F:NORTH",
-      "exit_region": "REGION_RUINS_OF_ALPH_OUTSIDE:TRAINER",
-      "entrance_region": "REGION_UNION_CAVE_B1F:NORTH",
-      "exit_warps": [
-        {
-          "map": "RuinsOfAlphOutside",
-          "index": 7
-        },
-        {
-          "map": "RuinsOfAlphOutside",
-          "index": 8
-        }
-      ],
-      "arrival_map": "UnionCaveB1F",
-      "arrival_map_const": "UNION_CAVE_B1F",
-      "arrival_warp_id": 1,
-      "type": "cave",
       "area": "johto",
       "one_way": false
     },
@@ -12402,9 +12415,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_UNION_CAVE_1F -> REGION_UNION_CAVE_B1F:SOUTH",
+      "name": "REGION_UNION_CAVE_1F -> REGION_UNION_CAVE_B1F:CENTER",
       "exit_region": "REGION_UNION_CAVE_1F",
-      "entrance_region": "REGION_UNION_CAVE_B1F:SOUTH",
+      "entrance_region": "REGION_UNION_CAVE_B1F:CENTER",
       "exit_warps": [
         {
           "map": "UnionCave1F",
@@ -12416,12 +12429,12 @@
       "arrival_warp_id": 3,
       "type": "cave",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
-      "name": "REGION_UNION_CAVE_1F -> REGION_UNION_CAVE_B1F",
-      "exit_region": "REGION_UNION_CAVE_1F",
-      "entrance_region": "REGION_UNION_CAVE_B1F",
+      "name": "REGION_UNION_CAVE_1F:SOUTH -> REGION_UNION_CAVE_B1F:SOUTHWEST",
+      "exit_region": "REGION_UNION_CAVE_1F:SOUTH",
+      "entrance_region": "REGION_UNION_CAVE_B1F:SOUTHWEST",
       "exit_warps": [
         {
           "map": "UnionCave1F",
@@ -12470,40 +12483,6 @@
       "one_way": false
     },
     {
-      "name": "REGION_UNION_CAVE_B1F -> REGION_UNION_CAVE_1F",
-      "exit_region": "REGION_UNION_CAVE_B1F",
-      "entrance_region": "REGION_UNION_CAVE_1F",
-      "exit_warps": [
-        {
-          "map": "UnionCaveB1F",
-          "index": 3
-        }
-      ],
-      "arrival_map": "UnionCave1F",
-      "arrival_map_const": "UNION_CAVE_1F",
-      "arrival_warp_id": 1,
-      "type": "cave",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_UNION_CAVE_B1F:NORTH -> REGION_UNION_CAVE_1F",
-      "exit_region": "REGION_UNION_CAVE_B1F:NORTH",
-      "entrance_region": "REGION_UNION_CAVE_1F",
-      "exit_warps": [
-        {
-          "map": "UnionCaveB1F",
-          "index": 4
-        }
-      ],
-      "arrival_map": "UnionCave1F",
-      "arrival_map_const": "UNION_CAVE_1F",
-      "arrival_warp_id": 2,
-      "type": "cave",
-      "area": "johto",
-      "one_way": true
-    },
-    {
       "name": "REGION_UNION_CAVE_B1F:NORTH -> REGION_RUINS_OF_ALPH_OUTSIDE:TRAINER",
       "exit_region": "REGION_UNION_CAVE_B1F:NORTH",
       "entrance_region": "REGION_RUINS_OF_ALPH_OUTSIDE:TRAINER",
@@ -12521,8 +12500,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_UNION_CAVE_B1F:NORTH -> REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:UNION_LEDGE",
-      "exit_region": "REGION_UNION_CAVE_B1F:NORTH",
+      "name": "REGION_UNION_CAVE_B1F:STRENGTH -> REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:UNION_LEDGE",
+      "exit_region": "REGION_UNION_CAVE_B1F:STRENGTH",
       "entrance_region": "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:UNION_LEDGE",
       "exit_warps": [
         {
@@ -12535,12 +12514,46 @@
       "arrival_warp_id": 8,
       "type": "cave",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
-      "name": "REGION_UNION_CAVE_B1F:SOUTH -> REGION_UNION_CAVE_B2F",
-      "exit_region": "REGION_UNION_CAVE_B1F:SOUTH",
-      "entrance_region": "REGION_UNION_CAVE_B2F",
+      "name": "REGION_UNION_CAVE_B1F:CENTER -> REGION_UNION_CAVE_1F",
+      "exit_region": "REGION_UNION_CAVE_B1F:CENTER",
+      "entrance_region": "REGION_UNION_CAVE_1F",
+      "exit_warps": [
+        {
+          "map": "UnionCaveB1F",
+          "index": 3
+        }
+      ],
+      "arrival_map": "UnionCave1F",
+      "arrival_map_const": "UNION_CAVE_1F",
+      "arrival_warp_id": 1,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_UNION_CAVE_B1F:SOUTHWEST -> REGION_UNION_CAVE_1F:SOUTH",
+      "exit_region": "REGION_UNION_CAVE_B1F:SOUTHWEST",
+      "entrance_region": "REGION_UNION_CAVE_1F:SOUTH",
+      "exit_warps": [
+        {
+          "map": "UnionCaveB1F",
+          "index": 4
+        }
+      ],
+      "arrival_map": "UnionCave1F",
+      "arrival_map_const": "UNION_CAVE_1F",
+      "arrival_warp_id": 2,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_UNION_CAVE_B1F:SOUTHEAST -> REGION_UNION_CAVE_B2F:NORTH",
+      "exit_region": "REGION_UNION_CAVE_B1F:SOUTHEAST",
+      "entrance_region": "REGION_UNION_CAVE_B2F:NORTH",
       "exit_warps": [
         {
           "map": "UnionCaveB1F",
@@ -12552,12 +12565,12 @@
       "arrival_warp_id": 1,
       "type": "cave",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
-      "name": "REGION_UNION_CAVE_B2F -> REGION_UNION_CAVE_B1F",
-      "exit_region": "REGION_UNION_CAVE_B2F",
-      "entrance_region": "REGION_UNION_CAVE_B1F",
+      "name": "REGION_UNION_CAVE_B2F:NORTH -> REGION_UNION_CAVE_B1F:SOUTHEAST",
+      "exit_region": "REGION_UNION_CAVE_B2F:NORTH",
+      "entrance_region": "REGION_UNION_CAVE_B1F:SOUTHEAST",
       "exit_warps": [
         {
           "map": "UnionCaveB2F",
@@ -12569,7 +12582,7 @@
       "arrival_warp_id": 5,
       "type": "cave",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_VERMILION_CITY -> REGION_VERMILION_FISHING_SPEECH_HOUSE",

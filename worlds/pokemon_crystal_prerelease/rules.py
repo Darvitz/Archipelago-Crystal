@@ -31,10 +31,14 @@ DARK_AREA_REGIONS: dict[str, list[str]] = {
     ],
     "Union Cave": [
         "REGION_UNION_CAVE_1F",
-        "REGION_UNION_CAVE_B1F",
+        "REGION_UNION_CAVE_1F:SOUTH",
         "REGION_UNION_CAVE_B1F:NORTH",
-        "REGION_UNION_CAVE_B1F:SOUTH",
-        "REGION_UNION_CAVE_B2F",
+        "REGION_UNION_CAVE_B1F:STRENGTH",
+        "REGION_UNION_CAVE_B1F:CENTER",
+        "REGION_UNION_CAVE_B1F:SOUTHWEST",
+        "REGION_UNION_CAVE_B1F:SOUTHEAST",
+        "REGION_UNION_CAVE_B2F:NORTH",
+        "REGION_UNION_CAVE_B2F:SURF",
     ],
     "Slowpoke Well": [
         "REGION_SLOWPOKE_WELL_B1F",
@@ -830,11 +834,19 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                                        lambda state: state.has("EVENT_RESTORED_POWER_TO_KANTO", world.player))
 
     # Union Cave
-    set_rule(get_entrance("REGION_UNION_CAVE_1F -> REGION_UNION_CAVE_B1F:SOUTH"), can_surf)
-    set_rule(get_entrance("REGION_UNION_CAVE_B1F -> REGION_UNION_CAVE_B1F:NORTH"), can_surf)
-    set_rule(get_entrance("REGION_UNION_CAVE_B1F:NORTH -> REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:UNION_LEDGE"),
-             can_strength)
-    set_rule(get_entrance("REGION_UNION_CAVE_B1F:SOUTH -> REGION_UNION_CAVE_B2F"), can_surf)
+    # 1F internal
+    set_rule(get_entrance("REGION_UNION_CAVE_1F -> REGION_UNION_CAVE_1F:SOUTH"), can_surf)
+    set_rule(get_entrance("REGION_UNION_CAVE_1F:SOUTH -> REGION_UNION_CAVE_1F"), can_surf)
+    # B1F internal
+    set_rule(get_entrance("REGION_UNION_CAVE_B1F:NORTH -> REGION_UNION_CAVE_B1F:STRENGTH"), can_strength)
+    set_rule(get_entrance("REGION_UNION_CAVE_B1F:STRENGTH -> REGION_UNION_CAVE_B1F:NORTH"), can_strength)
+    set_rule(get_entrance("REGION_UNION_CAVE_B1F:NORTH -> REGION_UNION_CAVE_B1F:CENTER"), can_surf)
+    set_rule(get_entrance("REGION_UNION_CAVE_B1F:CENTER -> REGION_UNION_CAVE_B1F:NORTH"), can_surf)
+    set_rule(get_entrance("REGION_UNION_CAVE_B1F:SOUTHWEST -> REGION_UNION_CAVE_B1F:SOUTHEAST"), can_surf)
+    set_rule(get_entrance("REGION_UNION_CAVE_B1F:SOUTHEAST -> REGION_UNION_CAVE_B1F:SOUTHWEST"), can_surf)
+    # B2F internal
+    set_rule(get_entrance("REGION_UNION_CAVE_B2F:NORTH -> REGION_UNION_CAVE_B2F:SURF"), can_surf)
+    set_rule(get_entrance("REGION_UNION_CAVE_B2F:SURF -> REGION_UNION_CAVE_B2F:NORTH"), can_surf)
 
     # Route 33
     if rematchsanity():

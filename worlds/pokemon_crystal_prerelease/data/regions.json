@@ -6672,7 +6672,8 @@
     "johto": true,
     "exits": [
       "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH",
-      "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:OMANYTE_LEDGE"
+      "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:OMANYTE_LEDGE",
+      "REGION_UNION_CAVE_B1F:STRENGTH"
     ],
     "locations": [],
     "events": []
@@ -7656,8 +7657,8 @@
   "REGION_UNION_CAVE_1F": {
     "johto": true,
     "exits": [
-      "REGION_UNION_CAVE_B1F:SOUTH",
-      "REGION_UNION_CAVE_B1F",
+      "REGION_UNION_CAVE_1F:SOUTH",
+      "REGION_UNION_CAVE_B1F:CENTER",
       "REGION_ROUTE_33",
       "REGION_ROUTE_32:SOUTH"
     ],
@@ -7686,29 +7687,26 @@
       "fishing": "Lake"
     }
   },
-  "REGION_UNION_CAVE_B1F": {
+  "REGION_UNION_CAVE_1F:SOUTH": {
     "johto": true,
     "exits": [
-      "REGION_UNION_CAVE_B1F:NORTH",
-      "REGION_UNION_CAVE_1F"
+      "REGION_UNION_CAVE_1F",
+      "REGION_UNION_CAVE_B1F:SOUTHWEST"
     ],
-    "locations": [
-      "UNION_CAVE_B1F_TM_SWIFT",
-      "UNION_CAVE_B1F_X_DEFEND"
-    ],
+    "locations": [],
     "events": [],
     "wild_encounters": {
-      "grass": "UNION_CAVE_B1F",
-      "surfing": "UNION_CAVE_B1F",
+      "grass": "UNION_CAVE_1F",
+      "surfing": "UNION_CAVE_1F",
       "fishing": "Lake"
     }
   },
   "REGION_UNION_CAVE_B1F:NORTH": {
     "johto": true,
     "exits": [
-      "REGION_RUINS_OF_ALPH_OUTSIDE:TRAINER",
-      "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:UNION_LEDGE",
-      "REGION_UNION_CAVE_1F"
+      "REGION_UNION_CAVE_B1F:STRENGTH",
+      "REGION_UNION_CAVE_B1F:CENTER",
+      "REGION_RUINS_OF_ALPH_OUTSIDE:TRAINER"
     ],
     "trainers": [
       "HIKER_PHILLIP",
@@ -7725,18 +7723,64 @@
       "fishing": "Lake"
     }
   },
-  "REGION_UNION_CAVE_B1F:SOUTH": {
+  "REGION_UNION_CAVE_B1F:STRENGTH": {
     "johto": true,
     "exits": [
-      "REGION_UNION_CAVE_1F",
-      "REGION_UNION_CAVE_B2F"
+      "REGION_UNION_CAVE_B1F:NORTH",
+      "REGION_RUINS_OF_ALPH_OUTSIDE:SOUTH:UNION_LEDGE"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "UNION_CAVE_B1F"
+    }
+  },
+  "REGION_UNION_CAVE_B1F:CENTER": {
+    "johto": true,
+    "exits": [
+      "REGION_UNION_CAVE_B1F:NORTH",
+      "REGION_UNION_CAVE_1F"
+    ],
+    "locations": [
+      "UNION_CAVE_B1F_TM_SWIFT",
+      "UNION_CAVE_B1F_X_DEFEND"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "UNION_CAVE_B1F",
+      "surfing": "UNION_CAVE_B1F",
+      "fishing": "Lake"
+    }
+  },
+  "REGION_UNION_CAVE_B1F:SOUTHWEST": {
+    "johto": true,
+    "exits": [
+      "REGION_UNION_CAVE_B1F:SOUTHEAST",
+      "REGION_UNION_CAVE_1F:SOUTH"
     ],
     "trainers": [
-      "POKEMANIAC_ANDREW",
+      "POKEMANIAC_ANDREW"
+    ],
+    "locations": [
+      "ITEM_FROM_POKEMANIAC_ANDREW"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "UNION_CAVE_B1F",
+      "surfing": "UNION_CAVE_B1F",
+      "fishing": "Lake"
+    }
+  },
+  "REGION_UNION_CAVE_B1F:SOUTHEAST": {
+    "johto": true,
+    "exits": [
+      "REGION_UNION_CAVE_B1F:SOUTHWEST",
+      "REGION_UNION_CAVE_B2F:NORTH"
+    ],
+    "trainers": [
       "POKEMANIAC_CALVIN"
     ],
     "locations": [
-      "ITEM_FROM_POKEMANIAC_ANDREW",
       "ITEM_FROM_POKEMANIAC_CALVIN"
     ],
     "events": [],
@@ -7746,10 +7790,22 @@
       "fishing": "Lake"
     }
   },
-  "REGION_UNION_CAVE_B2F": {
+  "REGION_UNION_CAVE_B2F:NORTH": {
     "johto": true,
     "exits": [
-      "REGION_UNION_CAVE_B1F"
+      "REGION_UNION_CAVE_B2F:SURF",
+      "REGION_UNION_CAVE_B1F:SOUTHEAST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "UNION_CAVE_B2F"
+    }
+  },
+  "REGION_UNION_CAVE_B2F:SURF": {
+    "johto": true,
+    "exits": [
+      "REGION_UNION_CAVE_B2F:NORTH"
     ],
     "trainers": [
       "COOLTRAINERM_NICK",
