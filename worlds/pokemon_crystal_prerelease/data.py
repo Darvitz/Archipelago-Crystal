@@ -891,7 +891,7 @@ def _init() -> None:
         FlyRegion(21, "Olivine City", "OLIVINE", "REGION_OLIVINE_CITY", "REGION_OLIVINE_CITY", True),
         FlyRegion(22, "Ecruteak City", "ECRUTEAK", "REGION_ECRUTEAK_CITY", "REGION_ECRUTEAK_CITY", True),
         FlyRegion(23, "Mahogany Town", "MAHOGANY", "REGION_MAHOGANY_TOWN:FLY", "REGION_MAHOGANY_TOWN", True),
-        FlyRegion(24, "Lake of Rage", "LAKE_OF_RAGE", "REGION_LAKE_OF_RAGE", "REGION_LAKE_OF_RAGE", True),
+        FlyRegion(24, "Lake of Rage", "LAKE_OF_RAGE", "REGION_LAKE_OF_RAGE:FLY", "REGION_LAKE_OF_RAGE", True),
         FlyRegion(25, "Blackthorn City", "BLACKTHORN", "REGION_BLACKTHORN_CITY", "REGION_BLACKTHORN_CITY", True),
         FlyRegion(26, "Silver Cave", "MT_SILVER", "REGION_SILVER_CAVE_OUTSIDE", "REGION_SILVER_CAVE_OUTSIDE", True)
     ]

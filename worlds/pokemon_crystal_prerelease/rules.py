@@ -1426,6 +1426,9 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
     set_rule(get_entrance("REGION_LAKE_OF_RAGE -> REGION_LAKE_OF_RAGE:CUT"), can_cut)
 
+    set_rule(get_entrance("REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE -> REGION_LAKE_OF_RAGE:CUT"), can_cut)
+    set_rule(get_entrance("REGION_LAKE_OF_RAGE:CUT -> REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE"), can_cut)
+
     if world.options.randomize_pokemon_requests:
         set_rule(get_location("Lake of Rage - Magikarp Prize"),
                  lambda state: state.has("MAGIKARP", world.player)

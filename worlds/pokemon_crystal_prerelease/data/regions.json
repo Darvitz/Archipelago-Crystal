@@ -2643,7 +2643,8 @@
       "REGION_ROUTE_43",
       "REGION_LAKE_OF_RAGE:CUT",
       "REGION_LAKE_OF_RAGE_MAGIKARP_HOUSE",
-      "REGION_LAKE_OF_RAGE:WATER"
+      "REGION_LAKE_OF_RAGE:WATER",
+      "REGION_LAKE_OF_RAGE:FLY"
     ],
     "trainers": [
       "FISHER_ANDRE",
@@ -2657,9 +2658,7 @@
       "ITEM_FROM_FISHER_RAYMOND",
       "ITEM_FROM_COOLTRAINERF_LOIS"
     ],
-    "events": [
-      "ENGINE_FLYPOINT_LAKE_OF_RAGE"
-    ],
+    "events": [],
     "signs": [
       "LakeOfRage",
       "MagikarpHouse"
@@ -2685,11 +2684,30 @@
       "headbutt": "Lake"
     }
   },
+  "REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE": {
+    "johto": true,
+    "exits": [
+      "REGION_LAKE_OF_RAGE:CUT",
+      "REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE",
+      "REGION_LAKE_OF_RAGE:FLY"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "headbutt": "Lake"
+    }
+  },
+  "REGION_LAKE_OF_RAGE:FLY": {
+    "johto": true,
+    "exits": [],
+    "locations": [],
+    "events": []
+  },
   "REGION_LAKE_OF_RAGE:CUT": {
     "johto": true,
     "exits": [
       "REGION_LAKE_OF_RAGE",
-      "REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE"
+      "REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE"
     ],
     "trainers": [
       "COOLTRAINERM_AARON"
@@ -2709,7 +2727,7 @@
   "REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE": {
     "johto": true,
     "exits": [
-      "REGION_LAKE_OF_RAGE"
+      "REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE"
     ],
     "locations": [
       "TM10_HIDDEN_POWER"

@@ -4689,8 +4689,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_LAKE_OF_RAGE:CUT -> REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE",
-      "exit_region": "REGION_LAKE_OF_RAGE:CUT",
+      "name": "REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE -> REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE",
+      "exit_region": "REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE",
       "entrance_region": "REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE",
       "exit_warps": [
         {
@@ -4703,12 +4703,12 @@
       "arrival_warp_id": 1,
       "type": "building",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
-      "name": "REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE -> REGION_LAKE_OF_RAGE",
+      "name": "REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE -> REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE",
       "exit_region": "REGION_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE",
-      "entrance_region": "REGION_LAKE_OF_RAGE",
+      "entrance_region": "REGION_LAKE_OF_RAGE:HIDDEN_POWER_HOUSE",
       "exit_warps": [
         {
           "map": "LakeOfRageHiddenPowerHouse",
@@ -4724,7 +4724,7 @@
       "arrival_warp_id": 1,
       "type": "building",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_LAKE_OF_RAGE_MAGIKARP_HOUSE -> REGION_LAKE_OF_RAGE",
