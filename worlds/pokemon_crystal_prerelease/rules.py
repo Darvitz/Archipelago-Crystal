@@ -1178,6 +1178,8 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     # Ecruteak City
     set_rule(get_entrance("REGION_ECRUTEAK_GYM -> REGION_ECRUTEAK_GYM:INTERIOR"),
              lambda state: state.has("EVENT_BURNED_TOWER_MORTY", world.player))
+    set_rule(get_entrance("REGION_ECRUTEAK_GYM -> REGION_ECRUTEAK_CITY"),
+             lambda state: state.has("EVENT_BURNED_TOWER_MORTY", world.player))
 
     set_rule(get_location("Burned Tower 1F - Item"), can_rock_smash)
     set_rule(get_location("Burned Tower B1F - Item"), can_strength)
