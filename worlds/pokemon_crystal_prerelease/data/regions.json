@@ -7623,7 +7623,10 @@
       "REGION_TIN_TOWER_4F"
     ],
     "locations": [],
-    "events": []
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_5F"
+    }
   },
   "REGION_TIN_TOWER_5F:SOUTHWEST": {
     "johto": true,
@@ -7632,16 +7635,21 @@
       "REGION_TIN_TOWER_4F"
     ],
     "locations": [],
-    "events": []
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_5F"
+    }
   },
   "REGION_TIN_TOWER_5F:SOUTHEAST": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_5F",
       "REGION_TIN_TOWER_4F"
     ],
     "locations": [],
-    "events": []
+    "events": [],
+    "wild_encounters": {
+      "grass": "TIN_TOWER_5F"
+    }
   },
   "REGION_TIN_TOWER_5F": {
     "johto": true,
