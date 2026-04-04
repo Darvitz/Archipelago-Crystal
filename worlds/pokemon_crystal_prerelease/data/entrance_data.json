@@ -2461,8 +2461,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_DRAGON_SHRINE -> REGION_DRAGONS_DEN_B1F:SOUTH",
-      "exit_region": "REGION_DRAGON_SHRINE",
+      "name": "REGION_DRAGON_SHRINE:ENTRANCE -> REGION_DRAGONS_DEN_B1F:SOUTH",
+      "exit_region": "REGION_DRAGON_SHRINE:ENTRANCE",
       "entrance_region": "REGION_DRAGONS_DEN_B1F:SOUTH",
       "exit_warps": [
         {
@@ -2567,9 +2567,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_DRAGONS_DEN_B1F:SOUTH -> REGION_DRAGON_SHRINE",
+      "name": "REGION_DRAGONS_DEN_B1F:SOUTH -> REGION_DRAGON_SHRINE:ENTRANCE",
       "exit_region": "REGION_DRAGONS_DEN_B1F:SOUTH",
-      "entrance_region": "REGION_DRAGON_SHRINE",
+      "entrance_region": "REGION_DRAGON_SHRINE:ENTRANCE",
       "exit_warps": [
         {
           "map": "DragonsDenB1F",

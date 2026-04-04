@@ -1361,11 +1361,19 @@
       "grass": "DIGLETTS_CAVE"
     }
   },
-  "REGION_DRAGON_SHRINE": {
+  "REGION_DRAGON_SHRINE:ENTRANCE": {
     "johto": true,
     "exits": [
-      "REGION_DRAGONS_DEN_B1F:SOUTH"
+      "REGION_DRAGONS_DEN_B1F:SOUTH",
+      "REGION_DRAGON_SHRINE"
     ],
+    "statics": [],
+    "locations": [],
+    "events": []
+  },
+  "REGION_DRAGON_SHRINE": {
+    "johto": true,
+    "exits": [],
     "statics": [
       "Dratini"
     ],
@@ -1461,7 +1469,7 @@
     "exits": [
       "REGION_DRAGONS_DEN_B1F:WEST",
       "REGION_DRAGONS_DEN_B1F:SOUTHEAST",
-      "REGION_DRAGON_SHRINE"
+      "REGION_DRAGON_SHRINE:ENTRANCE"
     ],
     "locations": [],
     "events": [],

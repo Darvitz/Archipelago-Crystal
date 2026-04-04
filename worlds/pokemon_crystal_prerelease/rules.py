@@ -1560,10 +1560,8 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
     # Dragon Shrine - elder kicks you out if you haven't beaten Clair
     beaten_clair = lambda state: world.logic.has_beaten_gym(state, "clair")
-    if world.options.vanilla_clair:
-        safe_set_location_rule("Dragon Shrine - Rising Badge from Clair", beaten_clair)
-        safe_set_location_rule("Dragon's Den - TM24 from Clair", beaten_clair)
-    set_static_rule("Dratini", beaten_clair)
+    set_rule(get_entrance("REGION_DRAGON_SHRINE:ENTRANCE -> REGION_DRAGONS_DEN_B1F:SOUTH"), beaten_clair)
+    set_rule(get_entrance("REGION_DRAGON_SHRINE:ENTRANCE -> REGION_DRAGON_SHRINE"), beaten_clair)
 
     # Route 45
     if hidden():
