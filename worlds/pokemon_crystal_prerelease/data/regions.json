@@ -3629,6 +3629,7 @@
     "exits": [
       "REGION_OLIVINE_LIGHTHOUSE_1F",
       "REGION_OLIVINE_LIGHTHOUSE_2F:POWER",
+      "REGION_OLIVINE_LIGHTHOUSE_2F:HOLE",
       "REGION_OLIVINE_LIGHTHOUSE_3F"
     ],
     "trainers": [
@@ -3653,42 +3654,10 @@
     ],
     "events": []
   },
-  "REGION_OLIVINE_LIGHTHOUSE_2F:HOLES": {
-    "johto": false,
+  "REGION_OLIVINE_LIGHTHOUSE_2F:HOLE": {
+    "johto": true,
     "exits": [
-      "REGION_OLIVINE_LIGHTHOUSE_2F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_OLIVINE_LIGHTHOUSE_3F:HOLES_1": {
-    "johto": false,
-    "exits": [
-      "REGION_OLIVINE_LIGHTHOUSE_3F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_OLIVINE_LIGHTHOUSE_3F:HOLES_2": {
-    "johto": false,
-    "exits": [
-      "REGION_OLIVINE_LIGHTHOUSE_3F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_OLIVINE_LIGHTHOUSE_4F:HOLES": {
-    "johto": false,
-    "exits": [
-      "REGION_OLIVINE_LIGHTHOUSE_4F"
-    ],
-    "locations": [],
-    "events": []
-  },
-  "REGION_OLIVINE_LIGHTHOUSE_5F:HOLES": {
-    "johto": false,
-    "exits": [
-      "REGION_OLIVINE_LIGHTHOUSE_5F"
+      "REGION_OLIVINE_LIGHTHOUSE_1F"
     ],
     "locations": [],
     "events": []
@@ -3698,19 +3667,38 @@
     "exits": [
       "REGION_OLIVINE_LIGHTHOUSE_4F",
       "REGION_OLIVINE_LIGHTHOUSE_2F",
-      "REGION_OLIVINE_LIGHTHOUSE_2F:HOLES"
+      "REGION_OLIVINE_LIGHTHOUSE_3F:HOLE"
     ],
     "trainers": [
       "BIRD_KEEPER_THEO",
-      "GENTLEMAN_PRESTON",
+      "GENTLEMAN_PRESTON"
+    ],
+    "locations": [
+      "ITEM_FROM_BIRD_KEEPER_THEO",
+      "ITEM_FROM_GENTLEMAN_PRESTON"
+    ],
+    "events": []
+  },
+  "REGION_OLIVINE_LIGHTHOUSE_3F:NORTH": {
+    "johto": true,
+    "exits": [
+      "REGION_OLIVINE_LIGHTHOUSE_4F:CENTER"
+    ],
+    "trainers": [
       "SAILOR_TERRELL"
     ],
     "locations": [
       "OLIVINE_LIGHTHOUSE_3F_ETHER",
-      "ITEM_FROM_BIRD_KEEPER_THEO",
-      "ITEM_FROM_GENTLEMAN_PRESTON",
       "ITEM_FROM_SAILOR_TERRELL"
     ],
+    "events": []
+  },
+  "REGION_OLIVINE_LIGHTHOUSE_3F:HOLE": {
+    "johto": true,
+    "exits": [
+      "REGION_OLIVINE_LIGHTHOUSE_2F"
+    ],
+    "locations": [],
     "events": []
   },
   "REGION_OLIVINE_LIGHTHOUSE_4F": {
@@ -3718,8 +3706,8 @@
     "exits": [
       "REGION_OLIVINE_LIGHTHOUSE_3F",
       "REGION_OLIVINE_LIGHTHOUSE_5F",
-      "REGION_OLIVINE_LIGHTHOUSE_3F:HOLES_1",
-      "REGION_OLIVINE_LIGHTHOUSE_3F:HOLES_2"
+      "REGION_OLIVINE_LIGHTHOUSE_4F:HOLE",
+      "REGION_OLIVINE_LIGHTHOUSE_4F:NORTH_HOLE"
     ],
     "trainers": [
       "LASS_CONNIE",
@@ -3731,32 +3719,77 @@
     ],
     "events": []
   },
+  "REGION_OLIVINE_LIGHTHOUSE_4F:CENTER": {
+    "johto": true,
+    "exits": [
+      "REGION_OLIVINE_LIGHTHOUSE_5F:CENTER",
+      "REGION_OLIVINE_LIGHTHOUSE_3F:NORTH",
+      "REGION_OLIVINE_LIGHTHOUSE_4F:NORTH_HOLE"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_OLIVINE_LIGHTHOUSE_4F:NORTH_HOLE": {
+    "johto": true,
+    "exits": [
+      "REGION_OLIVINE_LIGHTHOUSE_3F:NORTH"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_OLIVINE_LIGHTHOUSE_4F:HOLE": {
+    "johto": true,
+    "exits": [
+      "REGION_OLIVINE_LIGHTHOUSE_3F"
+    ],
+    "locations": [],
+    "events": []
+  },
   "REGION_OLIVINE_LIGHTHOUSE_5F": {
     "johto": true,
     "exits": [
-      "REGION_OLIVINE_LIGHTHOUSE_6F",
       "REGION_OLIVINE_LIGHTHOUSE_4F",
-      "REGION_OLIVINE_LIGHTHOUSE_4F:HOLES"
+      "REGION_OLIVINE_LIGHTHOUSE_5F:HOLE"
     ],
     "trainers": [
-      "SAILOR_ERNEST",
       "BIRD_KEEPER_DENIS"
     ],
     "locations": [
       "OLIVINE_LIGHTHOUSE_5F_RARE_CANDY",
-      "OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL",
       "OLIVINE_LIGHTHOUSE_5F_TM_SWAGGER",
       "OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION",
-      "ITEM_FROM_SAILOR_ERNEST",
       "ITEM_FROM_BIRD_KEEPER_DENIS"
     ],
+    "events": []
+  },
+  "REGION_OLIVINE_LIGHTHOUSE_5F:CENTER": {
+    "johto": true,
+    "exits": [
+      "REGION_OLIVINE_LIGHTHOUSE_6F",
+      "REGION_OLIVINE_LIGHTHOUSE_4F:CENTER"
+    ],
+    "trainers": [
+      "SAILOR_ERNEST"
+    ],
+    "locations": [
+      "OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL",
+      "ITEM_FROM_SAILOR_ERNEST"
+    ],
+    "events": []
+  },
+  "REGION_OLIVINE_LIGHTHOUSE_5F:HOLE": {
+    "johto": true,
+    "exits": [
+      "REGION_OLIVINE_LIGHTHOUSE_4F"
+    ],
+    "locations": [],
     "events": []
   },
   "REGION_OLIVINE_LIGHTHOUSE_6F": {
     "johto": true,
     "exits": [
-      "REGION_OLIVINE_LIGHTHOUSE_5F",
-      "REGION_OLIVINE_LIGHTHOUSE_5F:HOLES"
+      "REGION_OLIVINE_LIGHTHOUSE_5F:CENTER",
+      "REGION_OLIVINE_LIGHTHOUSE_5F"
     ],
     "locations": [
       "OLIVINE_LIGHTHOUSE_6F_SUPER_POTION"
