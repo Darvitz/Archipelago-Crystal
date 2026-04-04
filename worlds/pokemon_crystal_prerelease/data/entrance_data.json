@@ -2427,8 +2427,76 @@
       "one_way": false
     },
     {
-      "name": "REGION_DIGLETTS_CAVE -> REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE",
+      "name": "REGION_DIGLETTS_CAVE -> REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
       "exit_region": "REGION_DIGLETTS_CAVE",
+      "entrance_region": "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
+      "exit_warps": [
+        {
+          "map": "DiglettsCave",
+          "index": 5
+        }
+      ],
+      "arrival_map": "DiglettsCave",
+      "arrival_map_const": "DIGLETTS_CAVE",
+      "arrival_warp_id": 2,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_DIGLETTS_CAVE -> REGION_DIGLETTS_CAVE:NORTH_ENTRANCE",
+      "exit_region": "REGION_DIGLETTS_CAVE",
+      "entrance_region": "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE",
+      "exit_warps": [
+        {
+          "map": "DiglettsCave",
+          "index": 6
+        }
+      ],
+      "arrival_map": "DiglettsCave",
+      "arrival_map_const": "DIGLETTS_CAVE",
+      "arrival_warp_id": 4,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE -> REGION_DIGLETTS_CAVE",
+      "exit_region": "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
+      "entrance_region": "REGION_DIGLETTS_CAVE",
+      "exit_warps": [
+        {
+          "map": "DiglettsCave",
+          "index": 2
+        }
+      ],
+      "arrival_map": "DiglettsCave",
+      "arrival_map_const": "DIGLETTS_CAVE",
+      "arrival_warp_id": 5,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE -> REGION_DIGLETTS_CAVE",
+      "exit_region": "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE",
+      "entrance_region": "REGION_DIGLETTS_CAVE",
+      "exit_warps": [
+        {
+          "map": "DiglettsCave",
+          "index": 4
+        }
+      ],
+      "arrival_map": "DiglettsCave",
+      "arrival_map_const": "DIGLETTS_CAVE",
+      "arrival_warp_id": 6,
+      "type": "cave",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE -> REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE",
+      "exit_region": "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
       "entrance_region": "REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE",
       "exit_warps": [
         {
@@ -2444,8 +2512,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_DIGLETTS_CAVE -> REGION_ROUTE_2:NORTHEAST",
-      "exit_region": "REGION_DIGLETTS_CAVE",
+      "name": "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE -> REGION_ROUTE_2:NORTHEAST",
+      "exit_region": "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE",
       "entrance_region": "REGION_ROUTE_2:NORTHEAST",
       "exit_warps": [
         {
@@ -3886,23 +3954,6 @@
       "arrival_map": "GoldenrodCity",
       "arrival_map_const": "GOLDENROD_CITY",
       "arrival_warp_id": 15,
-      "type": "pokecenter",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_GOLDENROD_POKECENTER_1F -> REGION_POKECOM_CENTER_ADMIN_OFFICE_MOBILE",
-      "exit_region": "REGION_GOLDENROD_POKECENTER_1F",
-      "entrance_region": "REGION_POKECOM_CENTER_ADMIN_OFFICE_MOBILE",
-      "exit_warps": [
-        {
-          "map": "GoldenrodPokecenter1F",
-          "index": 3
-        }
-      ],
-      "arrival_map": "PokecomCenterAdminOfficeMobile",
-      "arrival_map_const": "POKECOM_CENTER_ADMIN_OFFICE_MOBILE",
-      "arrival_warp_id": 1,
       "type": "pokecenter",
       "area": "johto",
       "one_way": false
@@ -5972,30 +6023,13 @@
       "one_way": false
     },
     {
-      "name": "REGION_OLIVINE_CITY -> REGION_OLIVINE_HOUSE_BETA",
-      "exit_region": "REGION_OLIVINE_CITY",
-      "entrance_region": "REGION_OLIVINE_HOUSE_BETA",
-      "exit_warps": [
-        {
-          "map": "OlivineCity",
-          "index": 4
-        }
-      ],
-      "arrival_map": "OlivineHouseBeta",
-      "arrival_map_const": "OLIVINE_HOUSE_BETA",
-      "arrival_warp_id": 1,
-      "type": "building",
-      "area": "johto",
-      "one_way": false
-    },
-    {
       "name": "REGION_OLIVINE_CITY -> REGION_OLIVINE_PUNISHMENT_SPEECH_HOUSE",
       "exit_region": "REGION_OLIVINE_CITY",
       "entrance_region": "REGION_OLIVINE_PUNISHMENT_SPEECH_HOUSE",
       "exit_warps": [
         {
           "map": "OlivineCity",
-          "index": 5
+          "index": 4
         }
       ],
       "arrival_map": "OlivinePunishmentSpeechHouse",
@@ -6012,7 +6046,7 @@
       "exit_warps": [
         {
           "map": "OlivineCity",
-          "index": 6
+          "index": 5
         }
       ],
       "arrival_map": "OlivineGoodRodHouse",
@@ -6029,7 +6063,7 @@
       "exit_warps": [
         {
           "map": "OlivineCity",
-          "index": 7
+          "index": 6
         }
       ],
       "arrival_map": "OlivineCafe",
@@ -6046,7 +6080,7 @@
       "exit_warps": [
         {
           "map": "OlivineCity",
-          "index": 8
+          "index": 7
         }
       ],
       "arrival_map": "OlivineMart",
@@ -6063,7 +6097,7 @@
       "exit_warps": [
         {
           "map": "OlivineCity",
-          "index": 9
+          "index": 8
         }
       ],
       "arrival_map": "OlivineLighthouse1F",
@@ -6080,11 +6114,11 @@
       "exit_warps": [
         {
           "map": "OlivineCity",
-          "index": 10
+          "index": 9
         },
         {
           "map": "OlivineCity",
-          "index": 11
+          "index": 10
         }
       ],
       "arrival_map": "OlivinePortPassage",
@@ -6133,27 +6167,6 @@
       "arrival_map_const": "OLIVINE_CITY",
       "arrival_warp_id": 2,
       "type": "gym",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_OLIVINE_HOUSE_BETA -> REGION_OLIVINE_CITY",
-      "exit_region": "REGION_OLIVINE_HOUSE_BETA",
-      "entrance_region": "REGION_OLIVINE_CITY",
-      "exit_warps": [
-        {
-          "map": "OlivineHouseBeta",
-          "index": 1
-        },
-        {
-          "map": "OlivineHouseBeta",
-          "index": 2
-        }
-      ],
-      "arrival_map": "OlivineCity",
-      "arrival_map_const": "OLIVINE_CITY",
-      "arrival_warp_id": 4,
-      "type": "building",
       "area": "johto",
       "one_way": false
     },
@@ -6999,27 +7012,6 @@
       "arrival_map_const": "CIANWOOD_CITY",
       "arrival_warp_id": 7,
       "type": "building",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_POKECOM_CENTER_ADMIN_OFFICE_MOBILE -> REGION_GOLDENROD_POKECENTER_1F",
-      "exit_region": "REGION_POKECOM_CENTER_ADMIN_OFFICE_MOBILE",
-      "entrance_region": "REGION_GOLDENROD_POKECENTER_1F",
-      "exit_warps": [
-        {
-          "map": "PokecomCenterAdminOfficeMobile",
-          "index": 1
-        },
-        {
-          "map": "PokecomCenterAdminOfficeMobile",
-          "index": 2
-        }
-      ],
-      "arrival_map": "GoldenrodPokecenter1F",
-      "arrival_map_const": "GOLDENROD_POKECENTER_1F",
-      "arrival_warp_id": 3,
-      "type": "pokecenter",
       "area": "johto",
       "one_way": false
     },
@@ -7971,9 +7963,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_2:NORTHEAST -> REGION_DIGLETTS_CAVE",
+      "name": "REGION_ROUTE_2:NORTHEAST -> REGION_DIGLETTS_CAVE:NORTH_ENTRANCE",
       "exit_region": "REGION_ROUTE_2:NORTHEAST",
-      "entrance_region": "REGION_DIGLETTS_CAVE",
+      "entrance_region": "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE",
       "exit_warps": [
         {
           "map": "Route2",
@@ -12915,9 +12907,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE -> REGION_DIGLETTS_CAVE",
+      "name": "REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE -> REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
       "exit_region": "REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE",
-      "entrance_region": "REGION_DIGLETTS_CAVE",
+      "entrance_region": "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
       "exit_warps": [
         {
           "map": "VermilionCity",

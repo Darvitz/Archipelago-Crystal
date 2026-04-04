@@ -1350,12 +1350,36 @@
   "REGION_DIGLETTS_CAVE": {
     "johto": false,
     "exits": [
-      "REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE",
-      "REGION_ROUTE_2:NORTHEAST"
+      "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
+      "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE"
     ],
     "locations": [
       "DIGLETTS_CAVE_HIDDEN_MAX_REVIVE"
     ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "DIGLETTS_CAVE"
+    }
+  },
+  "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE": {
+    "johto": false,
+    "exits": [
+      "REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE",
+      "REGION_DIGLETTS_CAVE"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "DIGLETTS_CAVE"
+    }
+  },
+  "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_2:NORTHEAST",
+      "REGION_DIGLETTS_CAVE"
+    ],
+    "locations": [],
     "events": [],
     "wild_encounters": {
       "grass": "DIGLETTS_CAVE"
@@ -3519,7 +3543,6 @@
       "REGION_OLIVINE_POKECENTER_1F",
       "REGION_OLIVINE_GYM",
       "REGION_OLIVINE_TIMS_HOUSE",
-      "REGION_OLIVINE_HOUSE_BETA",
       "REGION_OLIVINE_PUNISHMENT_SPEECH_HOUSE",
       "REGION_OLIVINE_GOOD_ROD_HOUSE",
       "REGION_OLIVINE_CAFE",
@@ -3583,14 +3606,6 @@
       "EVENT_MINERAL_BADGE_FROM_JASMINE",
       "EVENT_BEAT_JASMINE"
     ]
-  },
-  "REGION_OLIVINE_HOUSE_BETA": {
-    "johto": true,
-    "exits": [
-      "REGION_OLIVINE_CITY"
-    ],
-    "locations": [],
-    "events": []
   },
   "REGION_OLIVINE_LIGHTHOUSE_1F": {
     "johto": true,
@@ -4803,7 +4818,7 @@
     "johto": false,
     "exits": [
       "REGION_ROUTE_2_NUGGET_HOUSE",
-      "REGION_DIGLETTS_CAVE",
+      "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE",
       "REGION_ROUTE_2:CENTEREAST",
       "REGION_ROUTE_2:WEST"
     ],
@@ -8075,7 +8090,7 @@
   "REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE": {
     "johto": false,
     "exits": [
-      "REGION_DIGLETTS_CAVE",
+      "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
       "REGION_VERMILION_CITY"
     ],
     "locations": [],

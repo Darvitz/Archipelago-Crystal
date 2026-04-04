@@ -137,6 +137,8 @@ DARK_AREA_REGIONS: dict[str, list[str]] = {
     ],
     "Digletts Cave": [
         "REGION_DIGLETTS_CAVE",
+        "REGION_DIGLETTS_CAVE:SOUTH_ENTRANCE",
+        "REGION_DIGLETTS_CAVE:NORTH_ENTRANCE",
     ],
     "Mount Moon": [
         "REGION_MOUNT_MOON",
