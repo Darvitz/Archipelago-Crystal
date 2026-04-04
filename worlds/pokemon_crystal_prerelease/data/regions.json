@@ -4079,14 +4079,11 @@
     "johto": true,
     "exits": [
       "REGION_GOLDENROD_CITY",
-      "REGION_RADIO_TOWER_2F"
-    ],
-    "trainers": [
-      "GRUNTM_3"
+      "REGION_RADIO_TOWER_2F",
+      "REGION_RADIO_TOWER_1F:TAKEOVER"
     ],
     "locations": [
-      "RADIO_CARD",
-      "ITEM_FROM_ROCKET_GRUNTM_3"
+      "RADIO_CARD"
     ],
     "events": [
       "EVENT_GOT_RADIO_CARD"
@@ -4096,11 +4093,23 @@
       "RadioTower1FLuckyChannelSign"
     ]
   },
+  "REGION_RADIO_TOWER_1F:TAKEOVER": {
+    "johto": true,
+    "exits": [],
+    "trainers": [
+      "GRUNTM_3"
+    ],
+    "locations": [
+      "ITEM_FROM_ROCKET_GRUNTM_3"
+    ],
+    "events": []
+  },
   "REGION_RADIO_TOWER_2F": {
     "johto": true,
     "exits": [
-      "REGION_RADIO_TOWER_2F:TAKEOVER",
-      "REGION_RADIO_TOWER_1F"
+      "REGION_RADIO_TOWER_1F",
+      "REGION_RADIO_TOWER_3F",
+      "REGION_RADIO_TOWER_2F:TAKEOVER"
     ],
     "locations": [
       "BUENA_BLUE_CARD"
@@ -4117,10 +4126,7 @@
   },
   "REGION_RADIO_TOWER_2F:TAKEOVER": {
     "johto": true,
-    "exits": [
-      "REGION_RADIO_TOWER_3F:NOCARDKEY",
-      "REGION_RADIO_TOWER_2F"
-    ],
+    "exits": [],
     "trainers": [
       "GRUNTM_4",
       "GRUNTM_5",
@@ -4135,36 +4141,53 @@
     ],
     "events": []
   },
-  "REGION_RADIO_TOWER_3F:NOCARDKEY": {
+  "REGION_RADIO_TOWER_3F": {
     "johto": true,
     "exits": [
-      "REGION_RADIO_TOWER_2F:TAKEOVER",
-      "REGION_RADIO_TOWER_3F:CARDKEY",
-      "REGION_RADIO_TOWER_4F:NOCARDKEY"
-    ],
-    "trainers": [
-      "GRUNTM_8",
-      "GRUNTM_7",
-      "SCIENTIST_MARC"
+      "REGION_RADIO_TOWER_2F",
+      "REGION_RADIO_TOWER_4F:WEST",
+      "REGION_RADIO_TOWER_3F:EAST",
+      "REGION_RADIO_TOWER_3F:TAKEOVER"
     ],
     "locations": [
-      "SUNNY_DAY_FROM_RADIO_TOWER",
-      "ITEM_FROM_ROCKET_GRUNTM_7",
-      "ITEM_FROM_ROCKET_GRUNTM_8",
-      "ITEM_FROM_SCIENTIST_MARC"
+      "SUNNY_DAY_FROM_RADIO_TOWER"
     ],
-    "events": [],
+    "events": [
+      "EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER"
+    ],
     "signs": [
       "RadioTower3FPersonnelSign",
       "RadioTower3FPokemonMusicSign"
     ]
   },
-  "REGION_RADIO_TOWER_3F:CARDKEY": {
+  "REGION_RADIO_TOWER_3F:EAST": {
     "johto": true,
     "exits": [
-      "REGION_RADIO_TOWER_3F:NOCARDKEY",
-      "REGION_RADIO_TOWER_4F:CARDKEY"
+      "REGION_RADIO_TOWER_4F:EAST",
+      "REGION_RADIO_TOWER_3F",
+      "REGION_RADIO_TOWER_3F:EAST:TAKEOVER"
     ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_RADIO_TOWER_3F:TAKEOVER": {
+    "johto": true,
+    "exits": [],
+    "trainers": [
+      "GRUNTM_7",
+      "GRUNTM_8",
+      "SCIENTIST_MARC"
+    ],
+    "locations": [
+      "ITEM_FROM_ROCKET_GRUNTM_7",
+      "ITEM_FROM_ROCKET_GRUNTM_8",
+      "ITEM_FROM_SCIENTIST_MARC"
+    ],
+    "events": []
+  },
+  "REGION_RADIO_TOWER_3F:EAST:TAKEOVER": {
+    "johto": true,
+    "exits": [],
     "trainers": [
       "GRUNTM_9"
     ],
@@ -4173,12 +4196,37 @@
     ],
     "events": []
   },
-  "REGION_RADIO_TOWER_4F:NOCARDKEY": {
+  "REGION_RADIO_TOWER_4F:WEST": {
     "johto": true,
     "exits": [
-      "REGION_RADIO_TOWER_5F:NOCARDKEY",
-      "REGION_RADIO_TOWER_3F:NOCARDKEY"
+      "REGION_RADIO_TOWER_5F:WEST",
+      "REGION_RADIO_TOWER_3F",
+      "REGION_RADIO_TOWER_4F:WEST:TAKEOVER"
     ],
+    "locations": [],
+    "events": [],
+    "signs": [
+      "RadioTower4FProductionSign"
+    ]
+  },
+  "REGION_RADIO_TOWER_4F:EAST": {
+    "johto": true,
+    "exits": [
+      "REGION_RADIO_TOWER_5F:EAST",
+      "REGION_RADIO_TOWER_3F:EAST",
+      "REGION_RADIO_TOWER_4F:EAST:TAKEOVER"
+    ],
+    "locations": [
+      "PINK_BOW_FROM_MARY"
+    ],
+    "events": [],
+    "signs": [
+      "RadioTower4FStudio2Sign"
+    ]
+  },
+  "REGION_RADIO_TOWER_4F:WEST:TAKEOVER": {
+    "johto": true,
+    "exits": [],
     "trainers": [
       "GRUNTM_10",
       "SCIENTIST_RICH"
@@ -4187,36 +4235,49 @@
       "ITEM_FROM_ROCKET_GRUNTM_10",
       "ITEM_FROM_SCIENTIST_RICH"
     ],
-    "events": [],
-    "signs": [
-      "RadioTower4FProductionSign"
-    ]
+    "events": []
   },
-  "REGION_RADIO_TOWER_4F:CARDKEY": {
+  "REGION_RADIO_TOWER_4F:EAST:TAKEOVER": {
     "johto": true,
-    "exits": [
-      "REGION_RADIO_TOWER_5F:CARDKEY",
-      "REGION_RADIO_TOWER_3F:CARDKEY"
-    ],
+    "exits": [],
     "trainers": [
       "EXECUTIVEM_RADIO_4F",
       "GRUNTF_4"
     ],
     "locations": [
-      "PINK_BOW_FROM_MARY",
       "ITEM_FROM_ROCKET_EXECUTIVEM_2",
       "ITEM_FROM_ROCKET_GRUNTF_4"
     ],
-    "events": [],
-    "signs": [
-      "RadioTower4FStudio2Sign"
-    ]
+    "events": []
   },
-  "REGION_RADIO_TOWER_5F:NOCARDKEY": {
+  "REGION_RADIO_TOWER_5F:WEST": {
     "johto": true,
     "exits": [
-      "REGION_RADIO_TOWER_4F:NOCARDKEY"
+      "REGION_RADIO_TOWER_4F:WEST",
+      "REGION_RADIO_TOWER_5F:WEST:TAKEOVER"
     ],
+    "locations": [],
+    "events": [],
+    "signs": [
+      "RadioTower5FDirectorsOfficeSign"
+    ]
+  },
+  "REGION_RADIO_TOWER_5F:EAST": {
+    "johto": true,
+    "exits": [
+      "REGION_RADIO_TOWER_4F:EAST",
+      "REGION_RADIO_TOWER_5F:EAST:TAKEOVER"
+    ],
+    "locations": [],
+    "events": [],
+    "signs": [
+      "RadioTower5FStudioLeftSign",
+      "RadioTower5FStudioRightSign"
+    ]
+  },
+  "REGION_RADIO_TOWER_5F:WEST:TAKEOVER": {
+    "johto": true,
+    "exits": [],
     "trainers": [
       "EXECUTIVEM_FALSE_DIRECTOR"
     ],
@@ -4226,16 +4287,11 @@
     ],
     "events": [
       "EVENT_BEAT_ROCKET_EXECUTIVEM_3"
-    ],
-    "signs": [
-      "RadioTower5FDirectorsOfficeSign"
     ]
   },
-  "REGION_RADIO_TOWER_5F:CARDKEY": {
+  "REGION_RADIO_TOWER_5F:EAST:TAKEOVER": {
     "johto": true,
-    "exits": [
-      "REGION_RADIO_TOWER_4F:CARDKEY"
-    ],
+    "exits": [],
     "trainers": [
       "EXECUTIVEF_RADIO",
       "EXECUTIVEM_RADIO_BOSS"
@@ -4248,10 +4304,6 @@
     ],
     "events": [
       "EVENT_CLEARED_RADIO_TOWER"
-    ],
-    "signs": [
-      "RadioTower5FStudioLeftSign",
-      "RadioTower5FStudioRightSign"
     ]
   },
   "REGION_REDS_HOUSE_1F": {
@@ -7112,11 +7164,11 @@
     ],
     "events": []
   },
-  "REGION_SILVER_CAVE_ITEM_ROOMS:ENTRANCE_1": {
+  "REGION_SILVER_CAVE_ITEM_ROOMS:WEST": {
     "johto": false,
     "silver_cave": true,
     "exits": [
-      "REGION_SILVER_CAVE_ROOM_2:ENTRANCE_1"
+      "REGION_SILVER_CAVE_ROOM_2:WEST"
     ],
     "locations": [
       "SILVER_CAVE_ITEM_ROOMS_MAX_REVIVE"
@@ -7126,11 +7178,11 @@
       "grass": "SILVER_CAVE_ITEM_ROOMS"
     }
   },
-  "REGION_SILVER_CAVE_ITEM_ROOMS:ENTRANCE_2": {
+  "REGION_SILVER_CAVE_ITEM_ROOMS:EAST": {
     "johto": false,
     "silver_cave": true,
     "exits": [
-      "REGION_SILVER_CAVE_ROOM_2:ENTRANCE_2"
+      "REGION_SILVER_CAVE_ROOM_2:EAST"
     ],
     "locations": [
       "SILVER_CAVE_ITEM_ROOMS_FULL_RESTORE"
@@ -7209,25 +7261,54 @@
       "grass": "SILVER_CAVE_ROOM_1"
     }
   },
-  "REGION_SILVER_CAVE_ROOM_2:ENTRANCE_1": {
+  "REGION_SILVER_CAVE_ROOM_2:WEST": {
     "johto": false,
     "silver_cave": true,
     "exits": [
       "REGION_SILVER_CAVE_ROOM_2",
-      "REGION_SILVER_CAVE_ITEM_ROOMS:ENTRANCE_1"
+      "REGION_SILVER_CAVE_ROOM_2:WEST_ITEM",
+      "REGION_SILVER_CAVE_ITEM_ROOMS:WEST"
     ],
     "locations": [],
-    "events": []
+    "events": [],
+    "wild_encounters": {
+      "grass": "SILVER_CAVE_ROOM_2",
+      "surfing": "SILVER_CAVE_ROOM_2",
+      "fishing": "Lake"
+    }
   },
-  "REGION_SILVER_CAVE_ROOM_2:ENTRANCE_2": {
+  "REGION_SILVER_CAVE_ROOM_2:WEST_ITEM": {
+    "johto": false,
+    "silver_cave": true,
+    "exits": [
+      "REGION_SILVER_CAVE_ROOM_2:WEST"
+    ],
+    "locations": [
+      "SILVER_CAVE_ROOM_2_PP_UP"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "SILVER_CAVE_ROOM_2",
+      "surfing": "SILVER_CAVE_ROOM_2",
+      "fishing": "Lake"
+    }
+  },
+  "REGION_SILVER_CAVE_ROOM_2:EAST": {
     "johto": false,
     "silver_cave": true,
     "exits": [
       "REGION_SILVER_CAVE_ROOM_2",
-      "REGION_SILVER_CAVE_ITEM_ROOMS:ENTRANCE_2"
+      "REGION_SILVER_CAVE_ITEM_ROOMS:EAST"
     ],
-    "locations": [],
-    "events": []
+    "locations": [
+      "SILVER_CAVE_ROOM_2_CALCIUM"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "SILVER_CAVE_ROOM_2",
+      "surfing": "SILVER_CAVE_ROOM_2",
+      "fishing": "Lake"
+    }
   },
   "REGION_SILVER_CAVE_ROOM_2": {
     "johto": false,
@@ -7235,13 +7316,11 @@
     "exits": [
       "REGION_SILVER_CAVE_ROOM_1",
       "REGION_SILVER_CAVE_ROOM_3",
-      "REGION_SILVER_CAVE_ROOM_2:ENTRANCE_1",
-      "REGION_SILVER_CAVE_ROOM_2:ENTRANCE_2"
+      "REGION_SILVER_CAVE_ROOM_2:WEST",
+      "REGION_SILVER_CAVE_ROOM_2:EAST"
     ],
     "locations": [
-      "SILVER_CAVE_ROOM_2_CALCIUM",
       "SILVER_CAVE_ROOM_2_HIDDEN_MAX_POTION",
-      "SILVER_CAVE_ROOM_2_PP_UP",
       "SILVER_CAVE_ROOM_2_ULTRA_BALL"
     ],
     "events": [],

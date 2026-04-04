@@ -138,10 +138,6 @@ DARK_AREA_REGIONS: dict[str, list[str]] = {
     ],
     "Silver Cave": [
         "REGION_SILVER_CAVE_ROOM_1",
-        "REGION_SILVER_CAVE_ROOM_2",
-        "REGION_SILVER_CAVE_ROOM_3",
-        "REGION_SILVER_CAVE_ITEM_ROOMS:ENTRANCE_1",
-        "REGION_SILVER_CAVE_ITEM_ROOMS:ENTRANCE_2",
     ],
     "Digletts Cave": [
         "REGION_DIGLETTS_CAVE",
@@ -1065,7 +1061,28 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     set_static_rule("GoldenrodGameCorner3", coin_case_rule)
 
     # Radio Tower
+    set_rule(get_entrance("REGION_RADIO_TOWER_1F -> REGION_RADIO_TOWER_1F:TAKEOVER"), has_rockets_requirement)
     set_rule(get_entrance("REGION_RADIO_TOWER_2F -> REGION_RADIO_TOWER_2F:TAKEOVER"), has_rockets_requirement)
+    set_rule(get_entrance("REGION_RADIO_TOWER_2F -> REGION_RADIO_TOWER_3F"), has_rockets_requirement)
+    set_rule(get_entrance("REGION_RADIO_TOWER_3F -> REGION_RADIO_TOWER_3F:TAKEOVER"), has_rockets_requirement)
+    set_rule(get_entrance("REGION_RADIO_TOWER_3F -> REGION_RADIO_TOWER_3F:EAST"),
+             lambda state: state.has("Card Key", world.player))
+    set_rule(get_entrance("REGION_RADIO_TOWER_3F:EAST -> REGION_RADIO_TOWER_3F"),
+             lambda state: state.has("EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER", world.player))
+    set_rule(get_entrance("REGION_RADIO_TOWER_3F:EAST -> REGION_RADIO_TOWER_3F:EAST:TAKEOVER"), has_rockets_requirement)
+    set_rule(get_entrance("REGION_RADIO_TOWER_4F:WEST -> REGION_RADIO_TOWER_4F:WEST:TAKEOVER"), has_rockets_requirement)
+    set_rule(get_entrance("REGION_RADIO_TOWER_4F:EAST -> REGION_RADIO_TOWER_4F:EAST:TAKEOVER"), has_rockets_requirement)
+    set_rule(get_entrance("REGION_RADIO_TOWER_5F:WEST -> REGION_RADIO_TOWER_5F:WEST:TAKEOVER"), has_rockets_requirement)
+    set_rule(get_entrance("REGION_RADIO_TOWER_5F:EAST -> REGION_RADIO_TOWER_5F:EAST:TAKEOVER"), has_rockets_requirement)
+
+    set_rule(get_location("Radio Tower 3F - TM11 from Woman"),
+             lambda state: state.has("EVENT_CLEARED_RADIO_TOWER", world.player))
+
+    set_rule(get_location("Radio Tower 4F - Pink Bow from Mary"),
+             lambda state: state.has("EVENT_CLEARED_RADIO_TOWER", world.player))
+
+    set_rule(get_location("EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER"),
+             lambda state: state.has("Card Key", world.player))
 
     if Shopsanity.blue_card in world.options.shopsanity.value:
         set_rule(get_entrance("REGION_RADIO_TOWER_2F -> REGION_MART_BLUE_CARD"),
@@ -1077,20 +1094,6 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
             slot_name = get_mart_slot_location_name("MART_BLUE_CARD", i)
             set_rule(get_location(f"Radio Tower 2F - Blue Card Shop - {slot_name}"),
                      lambda state, num_points=points: state.has("Blue Card Point", world.player, count=num_points))
-
-    set_rule(get_entrance("REGION_RADIO_TOWER_3F:NOCARDKEY -> REGION_RADIO_TOWER_3F:CARDKEY"),
-             lambda state: state.has("Card Key", world.player))
-
-    set_rule(get_location("Radio Tower 3F - TM11 from Woman"),
-             lambda state: state.has("EVENT_CLEARED_RADIO_TOWER", world.player))
-
-    set_rule(get_location("Radio Tower 4F - Pink Bow from Mary"),
-             lambda state: state.has("EVENT_CLEARED_RADIO_TOWER", world.player))
-
-    if world.options.level_scaling:
-        set_rule(get_location("GRUNTM_3"), has_rockets_requirement)
-
-    safe_set_location_rule("Radio Tower 1F - Grunt", has_rockets_requirement)
 
     # Route 35
     set_rule(get_location("Route 35 - HP Up after delivering Kenya"),
@@ -1690,13 +1693,12 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         set_rule(get_entrance("REGION_SILVER_CAVE_OUTSIDE -> REGION_SILVER_CAVE_OUTSIDE:SURF"), can_surf)
         set_rule(get_entrance("REGION_SILVER_CAVE_OUTSIDE:SURF -> REGION_SILVER_CAVE_OUTSIDE"), can_surf)
 
-        set_rule(get_location("Silver Cave 2F - Northeast Item"), can_surf_and_waterfall)
-        set_rule(get_location("Silver Cave 2F - West Item"), can_surf_and_waterfall)
-
-        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2 -> REGION_SILVER_CAVE_ROOM_2:ENTRANCE_1"), can_surf_and_waterfall)
-        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2 -> REGION_SILVER_CAVE_ROOM_2:ENTRANCE_2"), can_surf_and_waterfall)
-        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2:ENTRANCE_1 -> REGION_SILVER_CAVE_ROOM_2"), can_surf_and_waterfall)
-        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2:ENTRANCE_2 -> REGION_SILVER_CAVE_ROOM_2"), can_surf_and_waterfall)
+        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2 -> REGION_SILVER_CAVE_ROOM_2:WEST"), can_surf_and_waterfall)
+        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2 -> REGION_SILVER_CAVE_ROOM_2:EAST"), can_surf_and_waterfall)
+        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2:WEST -> REGION_SILVER_CAVE_ROOM_2"), can_surf)
+        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2:EAST -> REGION_SILVER_CAVE_ROOM_2"), can_surf)
+        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2:WEST -> REGION_SILVER_CAVE_ROOM_2:WEST_ITEM"), can_surf)
+        set_rule(get_entrance("REGION_SILVER_CAVE_ROOM_2:WEST_ITEM -> REGION_SILVER_CAVE_ROOM_2:WEST"), can_surf)
 
     if not johto_only():
 
