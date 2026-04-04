@@ -476,7 +476,8 @@
       "REGION_CELADON_CITY:GYM_ENTRANCE",
       "REGION_CELADON_CAFE",
       "REGION_ROUTE_16",
-      "REGION_ROUTE_7"
+      "REGION_ROUTE_7",
+      "REGION_CELADON_CITY:FLY"
     ],
     "locations": [
       "CELADON_CITY_HIDDEN_PP_UP"
@@ -494,11 +495,18 @@
       "surfing": "CELADON_CITY"
     }
   },
+  "REGION_CELADON_CITY:FLY": {
+    "johto": false,
+    "exits": [],
+    "locations": [],
+    "events": []
+  },
   "REGION_CELADON_CITY:GYM_ENTRANCE": {
     "johto": false,
     "exits": [
       "REGION_CELADON_GYM",
-      "REGION_CELADON_CITY"
+      "REGION_CELADON_CITY",
+      "REGION_CELADON_CITY:FLY"
     ],
     "locations": [],
     "events": [],

@@ -875,7 +875,7 @@ def _init() -> None:
         FlyRegion(7, "Vermilion City", "VERMILION", "REGION_VERMILION_CITY:FLY", "REGION_VERMILION_CITY", False),
         FlyRegion(8, "Lavender Town", "LAVENDER", "REGION_LAVENDER_TOWN", "REGION_LAVENDER_TOWN", False),
         FlyRegion(9, "Saffron City", "SAFFRON", "REGION_SAFFRON_CITY", "REGION_SAFFRON_CITY", False),
-        FlyRegion(10, "Celadon City", "CELADON", "REGION_CELADON_CITY", "REGION_CELADON_CITY", False),
+        FlyRegion(10, "Celadon City", "CELADON", "REGION_CELADON_CITY:FLY", "REGION_CELADON_CITY", False),
         FlyRegion(11, "Fuchsia City", "FUCHSIA", "REGION_FUCHSIA_CITY", "REGION_FUCHSIA_CITY", False),
         FlyRegion(12, "Cinnabar Island", "CINNABAR", "REGION_CINNABAR_ISLAND", "REGION_CINNABAR_ISLAND", False),
 
