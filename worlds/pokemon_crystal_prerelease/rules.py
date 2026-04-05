@@ -1262,6 +1262,11 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                                                         and state.has(request, world.player)
                                                         and has_pokedex(state))
 
+    # Route 39 Moomoo Farm - items require healing Miltank in the barn first
+    healed_moomoo_rule = lambda state: state.has("EVENT_HEALED_MOOMOO", world.player)
+    set_rule(get_location("Moomoo Farm - Moomoo Milk after feeding Moomoo"), healed_moomoo_rule)
+    set_rule(get_location("Moomoo Farm - TM13 after feeding Moomoo"), healed_moomoo_rule)
+
     # Olivine City
     set_rule(get_location("EVENT_JASMINE_RETURNED_TO_GYM"), lambda state: state.has("Secretpotion", world.player))
 
