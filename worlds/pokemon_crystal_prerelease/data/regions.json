@@ -4693,23 +4693,23 @@
     "johto": false,
     "exits": [
       "REGION_CELADON_CITY",
-      "REGION_ROUTE_16:CUT",
-      "REGION_ROUTE_16_GATE"
+      "REGION_ROUTE_16:NORTH",
+      "REGION_ROUTE_16_GATE:EAST"
     ],
     "locations": [],
     "events": []
   },
-  "REGION_ROUTE_16:WEST": {
+  "REGION_ROUTE_16:CYCLING_ROAD": {
     "johto": false,
     "exits": [
       "REGION_ROUTE_17",
-      "REGION_ROUTE_16_GATE:WEST"
+      "REGION_ROUTE_16_GATE:WEST",
+      "REGION_ROUTE_16:SIGN"
     ],
-
     "locations": [],
     "events": []
   },
-  "REGION_ROUTE_16:CUT": {
+  "REGION_ROUTE_16:NORTH": {
     "johto": false,
     "exits": [
       "REGION_ROUTE_16",
@@ -4734,12 +4734,21 @@
   "REGION_ROUTE_16_FUCHSIA_SPEECH_HOUSE": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_16:CUT"
+      "REGION_ROUTE_16:NORTH"
     ],
     "locations": [],
     "events": []
   },
-  "REGION_ROUTE_16_GATE": {
+  "REGION_ROUTE_16_GATE:WEST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_16:CYCLING_ROAD",
+      "REGION_ROUTE_16_GATE:EAST"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_16_GATE:EAST": {
     "johto": false,
     "exits": [
       "REGION_ROUTE_16",
@@ -4748,21 +4757,10 @@
     "locations": [],
     "events": []
   },
-  "REGION_ROUTE_16_GATE:WEST": {
-    "johto": false,
-    "exits": [
-      "REGION_ROUTE_16:WEST",
-      "REGION_ROUTE_16_GATE"
-    ],
-
-    "locations": [],
-    "events": []
-  },
   "REGION_ROUTE_17": {
     "johto": false,
     "exits": [
-      "REGION_ROUTE_16:WEST",
-      "REGION_ROUTE_16:SIGN",
+      "REGION_ROUTE_16:CYCLING_ROAD",
       "REGION_ROUTE_17_ROUTE_18_GATE:WEST"
     ],
     "trainers": [
@@ -4784,7 +4782,16 @@
       "grass": "ROUTE_17"
     }
   },
-  "REGION_ROUTE_17_ROUTE_18_GATE": {
+  "REGION_ROUTE_17_ROUTE_18_GATE:WEST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_17",
+      "REGION_ROUTE_17_ROUTE_18_GATE:EAST"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_17_ROUTE_18_GATE:EAST": {
     "johto": false,
     "exits": [
       "REGION_ROUTE_18",
@@ -4793,21 +4800,11 @@
     "locations": [],
     "events": []
   },
-  "REGION_ROUTE_17_ROUTE_18_GATE:WEST": {
-    "johto": false,
-    "exits": [
-      "REGION_ROUTE_17",
-      "REGION_ROUTE_17_ROUTE_18_GATE"
-    ],
-
-    "locations": [],
-    "events": []
-  },
   "REGION_ROUTE_18": {
     "johto": false,
     "exits": [
       "REGION_FUCHSIA_CITY",
-      "REGION_ROUTE_17_ROUTE_18_GATE"
+      "REGION_ROUTE_17_ROUTE_18_GATE:EAST"
     ],
     "trainers": [
       "BIRD_KEEPER_BORIS",

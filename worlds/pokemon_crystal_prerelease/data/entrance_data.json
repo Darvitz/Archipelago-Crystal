@@ -7736,30 +7736,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_16 -> REGION_ROUTE_16_GATE",
+      "name": "REGION_ROUTE_16 -> REGION_ROUTE_16_GATE:EAST",
       "exit_region": "REGION_ROUTE_16",
-      "entrance_region": "REGION_ROUTE_16_GATE",
-      "exit_warps": [
-        {
-          "map": "Route16",
-          "index": 4
-        },
-        {
-          "map": "Route16",
-          "index": 5
-        }
-      ],
-      "arrival_map": "Route16Gate",
-      "arrival_map_const": "ROUTE_16_GATE",
-      "arrival_warp_id": 1,
-      "type": "gate",
-      "area": "kanto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_ROUTE_16:WEST -> REGION_ROUTE_16_GATE:WEST",
-      "exit_region": "REGION_ROUTE_16:WEST",
-      "entrance_region": "REGION_ROUTE_16_GATE:WEST",
+      "entrance_region": "REGION_ROUTE_16_GATE:EAST",
       "exit_warps": [
         {
           "map": "Route16",
@@ -7778,8 +7757,29 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_16:CUT -> REGION_ROUTE_16_FUCHSIA_SPEECH_HOUSE",
-      "exit_region": "REGION_ROUTE_16:CUT",
+      "name": "REGION_ROUTE_16:CYCLING_ROAD -> REGION_ROUTE_16_GATE:WEST",
+      "exit_region": "REGION_ROUTE_16:CYCLING_ROAD",
+      "entrance_region": "REGION_ROUTE_16_GATE:WEST",
+      "exit_warps": [
+        {
+          "map": "Route16",
+          "index": 4
+        },
+        {
+          "map": "Route16",
+          "index": 5
+        }
+      ],
+      "arrival_map": "Route16Gate",
+      "arrival_map_const": "ROUTE_16_GATE",
+      "arrival_warp_id": 1,
+      "type": "gate",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_16:NORTH -> REGION_ROUTE_16_FUCHSIA_SPEECH_HOUSE",
+      "exit_region": "REGION_ROUTE_16:NORTH",
       "entrance_region": "REGION_ROUTE_16_FUCHSIA_SPEECH_HOUSE",
       "exit_warps": [
         {
@@ -7795,9 +7795,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_16_FUCHSIA_SPEECH_HOUSE -> REGION_ROUTE_16:CUT",
+      "name": "REGION_ROUTE_16_FUCHSIA_SPEECH_HOUSE -> REGION_ROUTE_16:NORTH",
       "exit_region": "REGION_ROUTE_16_FUCHSIA_SPEECH_HOUSE",
-      "entrance_region": "REGION_ROUTE_16:CUT",
+      "entrance_region": "REGION_ROUTE_16:NORTH",
       "exit_warps": [
         {
           "map": "Route16FuchsiaSpeechHouse",
@@ -7816,9 +7816,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_16_GATE -> REGION_ROUTE_16",
-      "exit_region": "REGION_ROUTE_16_GATE",
-      "entrance_region": "REGION_ROUTE_16",
+      "name": "REGION_ROUTE_16_GATE:WEST -> REGION_ROUTE_16:CYCLING_ROAD",
+      "exit_region": "REGION_ROUTE_16_GATE:WEST",
+      "entrance_region": "REGION_ROUTE_16:CYCLING_ROAD",
       "exit_warps": [
         {
           "map": "Route16Gate",
@@ -7837,9 +7837,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_16_GATE:WEST -> REGION_ROUTE_16:WEST",
-      "exit_region": "REGION_ROUTE_16_GATE:WEST",
-      "entrance_region": "REGION_ROUTE_16:WEST",
+      "name": "REGION_ROUTE_16_GATE:EAST -> REGION_ROUTE_16",
+      "exit_region": "REGION_ROUTE_16_GATE:EAST",
+      "entrance_region": "REGION_ROUTE_16",
       "exit_warps": [
         {
           "map": "Route16Gate",
@@ -7879,27 +7879,6 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_17_ROUTE_18_GATE -> REGION_ROUTE_18",
-      "exit_region": "REGION_ROUTE_17_ROUTE_18_GATE",
-      "entrance_region": "REGION_ROUTE_18",
-      "exit_warps": [
-        {
-          "map": "Route17Route18Gate",
-          "index": 3
-        },
-        {
-          "map": "Route17Route18Gate",
-          "index": 4
-        }
-      ],
-      "arrival_map": "Route18",
-      "arrival_map_const": "ROUTE_18",
-      "arrival_warp_id": 1,
-      "type": "gate",
-      "area": "kanto",
-      "one_way": false
-    },
-    {
       "name": "REGION_ROUTE_17_ROUTE_18_GATE:WEST -> REGION_ROUTE_17",
       "exit_region": "REGION_ROUTE_17_ROUTE_18_GATE:WEST",
       "entrance_region": "REGION_ROUTE_17",
@@ -7921,9 +7900,30 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_18 -> REGION_ROUTE_17_ROUTE_18_GATE",
+      "name": "REGION_ROUTE_17_ROUTE_18_GATE:EAST -> REGION_ROUTE_18",
+      "exit_region": "REGION_ROUTE_17_ROUTE_18_GATE:EAST",
+      "entrance_region": "REGION_ROUTE_18",
+      "exit_warps": [
+        {
+          "map": "Route17Route18Gate",
+          "index": 3
+        },
+        {
+          "map": "Route17Route18Gate",
+          "index": 4
+        }
+      ],
+      "arrival_map": "Route18",
+      "arrival_map_const": "ROUTE_18",
+      "arrival_warp_id": 1,
+      "type": "gate",
+      "area": "kanto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_ROUTE_18 -> REGION_ROUTE_17_ROUTE_18_GATE:EAST",
       "exit_region": "REGION_ROUTE_18",
-      "entrance_region": "REGION_ROUTE_17_ROUTE_18_GATE",
+      "entrance_region": "REGION_ROUTE_17_ROUTE_18_GATE:EAST",
       "exit_warps": [
         {
           "map": "Route18",

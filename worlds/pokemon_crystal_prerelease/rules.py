@@ -158,6 +158,11 @@ DARK_AREA_REGIONS: dict[str, list[str]] = {
 
 KANTO_DARK_AREAS = {"Digletts Cave", "Mount Moon", "Rock Tunnel"}
 
+CYCLING_ROAD_REGIONS: list[str] = [
+    "REGION_ROUTE_16:CYCLING_ROAD",
+    "REGION_ROUTE_17",
+]
+
 
 class PokemonCrystalLogic:
     available_pokemon: set[str]
@@ -1932,13 +1937,17 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                  lambda state: world.logic.has_n_pokemon(state, diploma_count))
 
         # Route 16
-        set_rule(get_entrance("REGION_ROUTE_16 -> REGION_ROUTE_16:CUT"), can_cut_kanto)
-        set_rule(get_entrance("REGION_ROUTE_16:CUT -> REGION_ROUTE_16"), can_cut_kanto)
+        set_rule(get_entrance("REGION_ROUTE_16 -> REGION_ROUTE_16:NORTH"), can_cut_kanto)
+        set_rule(get_entrance("REGION_ROUTE_16:NORTH -> REGION_ROUTE_16"), can_cut_kanto)
 
-        # Cycling Road - bike required to go west (onto cycling road) inside gatehouses
-        set_rule(get_entrance("REGION_ROUTE_16_GATE -> REGION_ROUTE_16_GATE:WEST"),
+        # Cycling Road - bike required to traverse gatehouses
+        set_rule(get_entrance("REGION_ROUTE_16_GATE:EAST -> REGION_ROUTE_16_GATE:WEST"),
                  lambda state: state.has("Bicycle", world.player))
-        set_rule(get_entrance("REGION_ROUTE_17_ROUTE_18_GATE -> REGION_ROUTE_17_ROUTE_18_GATE:WEST"),
+        set_rule(get_entrance("REGION_ROUTE_16_GATE:WEST -> REGION_ROUTE_16_GATE:EAST"),
+                 lambda state: state.has("Bicycle", world.player))
+        set_rule(get_entrance("REGION_ROUTE_17_ROUTE_18_GATE:EAST -> REGION_ROUTE_17_ROUTE_18_GATE:WEST"),
+                 lambda state: state.has("Bicycle", world.player))
+        set_rule(get_entrance("REGION_ROUTE_17_ROUTE_18_GATE:WEST -> REGION_ROUTE_17_ROUTE_18_GATE:EAST"),
                  lambda state: state.has("Bicycle", world.player))
 
         # Route 15
@@ -2168,6 +2177,16 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                 add_rule(exit_, flash_fn)
             for location in region.locations:
                 add_rule(location, flash_fn)
+
+    for region_name in CYCLING_ROAD_REGIONS:
+        try:
+            region = world.get_region(region_name)
+        except KeyError:
+            continue
+        for exit_ in region.exits:
+            add_rule(exit_, lambda state: state.has("Bicycle", world.player))
+        for location in region.locations:
+            add_rule(location, lambda state: state.has("Bicycle", world.player))
 
 
 def verify_hm_accessibility(world: "PokemonCrystalWorld") -> None:

@@ -623,28 +623,45 @@ class PokemonCrystalWorld(World):
         coupled = bool(self.options.entrance_randomization_coupled)
 
         overrides: dict[str, str] = {}
+        def _add_override(src: str, dst: str, spec: str) -> None:
+            if src in overrides:
+                from Options import OptionError
+                raise OptionError(
+                    f"force_er_pairings: exit {src!r} is used by multiple pairings "
+                    f"(check for conflicts with coupled-mode reverse pairings): {spec!r}"
+                )
+            overrides[src] = dst
+
         for spec in forced_specs:
             exit_name, _, entrance_name = spec.partition(" => ")
             exit_name, entrance_name = exit_name.strip(), entrance_name.strip()
             if not entrance_name:
                 logging.warning(f"force_er_pairings: bad format {spec!r}, expected 'exit => entrance'")
                 continue
-            overrides[exit_name] = entrance_name
+            _add_override(exit_name, entrance_name, spec)
             if coupled:
                 for a, b in [(entrance_name, exit_name),
                              (rl.get(entrance_name), rl.get(exit_name)),
                              (rl.get(exit_name), rl.get(entrance_name))]:
                     if a and b:
-                        overrides[a] = b
+                        _add_override(a, b, spec)
 
         # Resolve target names: the ER target name is the reverse connection name,
         # with a one-way suffix if applicable
         resolved: dict[str, str] = {}
+        seen_targets: dict[str, str] = {}
         for src, ent in overrides.items():
             target_name = rl.get(ent, ent)
             conn = crystal_data.entrance_connections.get(target_name)
             if conn and conn.one_way:
                 target_name = f"{target_name} (one-way target)"
+            if target_name in seen_targets:
+                from Options import OptionError
+                raise OptionError(
+                    f"force_er_pairings: target {target_name!r} is used by multiple pairings "
+                    f"(exits {seen_targets[target_name]!r} and {src!r})"
+                )
+            seen_targets[target_name] = src
             resolved[src] = target_name
 
         # Build lookups of disconnected exits and parentless targets
