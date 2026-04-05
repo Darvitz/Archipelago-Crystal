@@ -7415,7 +7415,6 @@
   "REGION_SPROUT_TOWER_1F:OUTER": {
     "johto": true,
     "exits": [
-      "REGION_SPROUT_TOWER_1F",
       "REGION_SPROUT_TOWER_2F:OUTER",
       "REGION_SPROUT_TOWER_2F"
     ],
@@ -7432,8 +7431,7 @@
     "johto": true,
     "exits": [
       "REGION_VIOLET_CITY",
-      "REGION_SPROUT_TOWER_2F",
-      "REGION_SPROUT_TOWER_1F:OUTER"
+      "REGION_SPROUT_TOWER_2F"
     ],
     "locations": [],
     "events": []
@@ -7441,7 +7439,6 @@
   "REGION_SPROUT_TOWER_2F:OUTER": {
     "johto": true,
     "exits": [
-      "REGION_SPROUT_TOWER_2F",
       "REGION_SPROUT_TOWER_1F:OUTER",
       "REGION_SPROUT_TOWER_3F"
     ],
@@ -7461,8 +7458,7 @@
     "johto": true,
     "exits": [
       "REGION_SPROUT_TOWER_1F",
-      "REGION_SPROUT_TOWER_1F:OUTER",
-      "REGION_SPROUT_TOWER_2F:OUTER"
+      "REGION_SPROUT_TOWER_1F:OUTER"
     ],
     "trainers": [
       "SAGE_NICO"
