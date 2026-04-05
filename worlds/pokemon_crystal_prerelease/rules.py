@@ -2163,7 +2163,9 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         return False
 
     if world.options.breeding_methods_required or world.is_universal_tracker:
-        set_rule(get_entrance("Menu -> Breeding"), lambda state: state.has("EVENT_UNLOCKED_DAY_CARE", world.player))
+        set_rule(get_entrance("Menu -> Breeding"),
+                 lambda state: state.has_all(("EVENT_UNLOCKED_DAY_CARE", "EVENT_UNLOCKED_DAY_CARE_YARD"),
+                                             world.player))
 
         if world.options.breeding_methods_required == BreedingMethodsRequired.option_with_ditto:
             add_rule(get_entrance("Menu -> Breeding"),

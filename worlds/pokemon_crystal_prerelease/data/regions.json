@@ -1336,7 +1336,9 @@
       "REGION_DAY_CARE"
     ],
     "locations": [],
-    "events": []
+    "events": [
+      "EVENT_UNLOCKED_DAY_CARE_YARD"
+    ]
   },
   "REGION_DAY_CARE": {
     "johto": true,
@@ -1344,8 +1346,13 @@
       "REGION_ROUTE_34",
       "REGION_ROUTE_34:DAY_CARE_YARD"
     ],
+    "statics": [
+      "OddEgg"
+    ],
     "locations": [],
-    "events": []
+    "events": [
+      "EVENT_UNLOCKED_DAY_CARE"
+    ]
   },
   "REGION_DAY_OF_WEEK_SIBLINGS_HOUSE": {
     "johto": true,
@@ -5644,9 +5651,7 @@
       "ITEM_FROM_OFFICER_KEITH",
       "LEAF_STONE_FROM_GINA"
     ],
-    "events": [
-      "EVENT_UNLOCKED_DAY_CARE"
-    ],
+    "events": [],
     "signs": [
       "Route34",
       "Route34TrainerTips",
