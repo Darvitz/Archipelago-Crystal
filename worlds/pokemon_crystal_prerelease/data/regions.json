@@ -5043,7 +5043,7 @@
     "johto": false,
     "exits": [
       "REGION_VIRIDIAN_CITY",
-      "REGION_VICTORY_ROAD_GATE"
+      "REGION_VICTORY_ROAD_GATE:EAST"
     ],
     "locations": [],
     "events": [],
@@ -5060,7 +5060,7 @@
     "johto": true,
     "exits": [
       "REGION_INDIGO_PLATEAU_POKECENTER_1F",
-      "REGION_VICTORY_ROAD"
+      "REGION_VICTORY_ROAD:1F_NORTH"
     ],
     "locations": [],
     "events": [],
@@ -5289,7 +5289,7 @@
     "exits": [
       "REGION_SILVER_CAVE_OUTSIDE",
       "REGION_ROUTE_28_STEEL_WING_HOUSE",
-      "REGION_VICTORY_ROAD_GATE"
+      "REGION_VICTORY_ROAD_GATE:WEST"
     ],
     "locations": [
       "ROUTE_28_HIDDEN_RARE_CANDY"
@@ -8421,11 +8421,10 @@
     "locations": [],
     "events": []
   },
-  "REGION_VICTORY_ROAD:ENTRANCE": {
+  "REGION_VICTORY_ROAD:1F_SOUTH:ENTRANCE": {
     "johto": true,
     "exits": [
-      "REGION_VICTORY_ROAD",
-      "REGION_VICTORY_ROAD_GATE"
+      "REGION_VICTORY_ROAD:1F_SOUTH"
     ],
     "locations": [
       "VICTORY_ROAD_HIDDEN_FULL_HEAL"
@@ -8437,10 +8436,69 @@
       "grass": "VICTORY_ROAD"
     }
   },
-  "REGION_VICTORY_ROAD": {
+  "REGION_VICTORY_ROAD:1F_SOUTH": {
     "johto": true,
     "exits": [
-      "REGION_VICTORY_ROAD:ENTRANCE",
+      "REGION_VICTORY_ROAD:1F_SOUTH:ENTRANCE",
+      "REGION_VICTORY_ROAD:B1F"
+    ],
+    "locations": [
+      "VICTORY_ROAD_FULL_HEAL",
+      "VICTORY_ROAD_MAX_REVIVE"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "VICTORY_ROAD"
+    }
+  },
+  "REGION_VICTORY_ROAD:B1F": {
+    "johto": true,
+    "exits": [
+      "REGION_VICTORY_ROAD:1F_SOUTH",
+      "REGION_VICTORY_ROAD:1F_NORTH"
+    ],
+    "locations": [
+      "VICTORY_ROAD_HP_UP"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "VICTORY_ROAD"
+    }
+  },
+  "REGION_VICTORY_ROAD:B1F:NORTHEAST": {
+    "johto": true,
+    "exits": [
+      "REGION_VICTORY_ROAD:1F_NORTH:SOUTHEAST",
+      "REGION_VICTORY_ROAD:B1F"
+    ],
+    "locations": [
+      "VICTORY_ROAD_FULL_RESTORE"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "VICTORY_ROAD"
+    }
+  },
+  "REGION_VICTORY_ROAD:B1F:NORTHWEST": {
+    "johto": true,
+    "exits": [
+      "REGION_VICTORY_ROAD:B1F"
+    ],
+    "locations": [
+      "VICTORY_ROAD_HIDDEN_MAX_POTION",
+      "VICTORY_ROAD_TM_EARTHQUAKE"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "VICTORY_ROAD"
+    }
+  },
+  "REGION_VICTORY_ROAD:1F_NORTH": {
+    "johto": true,
+    "exits": [
+      "REGION_VICTORY_ROAD:B1F",
+      "REGION_VICTORY_ROAD:B1F:NORTHWEST",
+      "REGION_VICTORY_ROAD:1F_NORTH:SOUTHEAST",
       "REGION_ROUTE_23"
     ],
     "trainers": [
@@ -8449,12 +8507,6 @@
       "RIVAL_FERALIGATR_VROAD"
     ],
     "locations": [
-      "VICTORY_ROAD_FULL_HEAL",
-      "VICTORY_ROAD_FULL_RESTORE",
-      "VICTORY_ROAD_HIDDEN_MAX_POTION",
-      "VICTORY_ROAD_HP_UP",
-      "VICTORY_ROAD_MAX_REVIVE",
-      "VICTORY_ROAD_TM_EARTHQUAKE",
       "ITEM_FROM_RIVAL_5"
     ],
     "events": [
@@ -8465,18 +8517,59 @@
       "grass": "VICTORY_ROAD"
     }
   },
+  "REGION_VICTORY_ROAD:1F_NORTH:SOUTHEAST": {
+    "johto": true,
+    "exits": [
+      "REGION_VICTORY_ROAD:B1F:NORTHEAST"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "VICTORY_ROAD"
+    }
+  },
   "REGION_VICTORY_ROAD_GATE": {
     "johto": true,
     "exits": [
-      "REGION_ROUTE_22",
-      "REGION_ROUTE_26",
-      "REGION_VICTORY_ROAD:ENTRANCE",
-      "REGION_ROUTE_28"
+      "REGION_VICTORY_ROAD_GATE:EAST",
+      "REGION_VICTORY_ROAD_GATE:WEST",
+      "REGION_VICTORY_ROAD_GATE:NORTH",
+      "REGION_ROUTE_26"
     ],
     "locations": [],
     "events": [
       "EVENT_OPENED_MT_SILVER"
     ]
+  },
+  "REGION_VICTORY_ROAD_GATE:EAST": {
+    "johto": true,
+    "exits": [
+      "REGION_VICTORY_ROAD_GATE",
+      "REGION_ROUTE_22"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {}
+  },
+  "REGION_VICTORY_ROAD_GATE:WEST": {
+    "johto": true,
+    "exits": [
+      "REGION_VICTORY_ROAD_GATE",
+      "REGION_ROUTE_28"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {}
+  },
+  "REGION_VICTORY_ROAD_GATE:NORTH": {
+    "johto": true,
+    "exits": [
+      "REGION_VICTORY_ROAD_GATE",
+      "REGION_VICTORY_ROAD:1F_SOUTH:ENTRANCE"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {}
   },
   "REGION_VIOLET_CITY": {
     "johto": true,

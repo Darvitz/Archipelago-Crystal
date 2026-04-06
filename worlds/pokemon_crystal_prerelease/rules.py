@@ -133,8 +133,13 @@ DARK_AREA_REGIONS: dict[str, list[str]] = {
         "REGION_TOHJO_FALLS:EAST",
     ],
     "Victory Road": [
-        "REGION_VICTORY_ROAD:ENTRANCE",
-        "REGION_VICTORY_ROAD",
+        "REGION_VICTORY_ROAD:1F_SOUTH:ENTRANCE",
+        "REGION_VICTORY_ROAD:1F_SOUTH",
+        "REGION_VICTORY_ROAD:B1F",
+        "REGION_VICTORY_ROAD:B1F:NORTHEAST",
+        "REGION_VICTORY_ROAD:B1F:NORTHWEST",
+        "REGION_VICTORY_ROAD:1F_NORTH",
+        "REGION_VICTORY_ROAD:1F_NORTH:SOUTHEAST",
     ],
     "Silver Cave": [
         "REGION_SILVER_CAVE_ROOM_1",
@@ -1688,17 +1693,19 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     set_rule(get_entrance("REGION_TOHJO_FALLS:WEST -> REGION_TOHJO_FALLS:EAST"), can_surf_and_waterfall)
     set_rule(get_entrance("REGION_TOHJO_FALLS:EAST -> REGION_TOHJO_FALLS:WEST"), can_surf_and_waterfall)
 
-    # Victory Road
+    # Victory Road Gate
     has_e4_requirement = world.logic.has_elite_four_requirement()
-    set_rule(get_entrance("REGION_VICTORY_ROAD_GATE -> REGION_VICTORY_ROAD:ENTRANCE"), has_e4_requirement)
+    set_rule(get_entrance("REGION_VICTORY_ROAD_GATE -> REGION_VICTORY_ROAD_GATE:NORTH"), has_e4_requirement)
+    set_rule(get_entrance("REGION_VICTORY_ROAD_GATE:NORTH -> REGION_VICTORY_ROAD_GATE"), has_e4_requirement)
 
+    # Victory Road
     if world.options.victory_road_access:
-        set_rule(get_entrance("REGION_VICTORY_ROAD:ENTRANCE -> REGION_VICTORY_ROAD"), can_strength)
+        set_rule(get_entrance("REGION_VICTORY_ROAD:1F_SOUTH:ENTRANCE -> REGION_VICTORY_ROAD:1F_SOUTH"), can_strength)
 
     if johto_only() != JohtoOnly.option_on:
         has_mt_silver_requirement = world.logic.has_mt_silver_requirement()
-        set_rule(get_entrance("REGION_ROUTE_28 -> REGION_VICTORY_ROAD_GATE"), has_mt_silver_requirement)
-        set_rule(get_entrance("REGION_VICTORY_ROAD_GATE -> REGION_ROUTE_28"), has_mt_silver_requirement)
+        set_rule(get_entrance("REGION_VICTORY_ROAD_GATE -> REGION_VICTORY_ROAD_GATE:WEST"), has_mt_silver_requirement)
+        set_rule(get_entrance("REGION_VICTORY_ROAD_GATE:WEST -> REGION_VICTORY_ROAD_GATE"), has_mt_silver_requirement)
         set_rule(get_location("EVENT_OPENED_MT_SILVER"), has_mt_silver_requirement)
 
         set_rule(get_location("EVENT_BEAT_RED"), world.logic.has_red_requirement())
@@ -1727,8 +1734,8 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     if not johto_only():
 
         has_kanto_access_requirement = world.logic.has_kanto_access_requirement()
-        set_rule(get_entrance("REGION_ROUTE_22 -> REGION_VICTORY_ROAD_GATE"), has_kanto_access_requirement)
-        set_rule(get_entrance("REGION_VICTORY_ROAD_GATE -> REGION_ROUTE_22"), has_kanto_access_requirement)
+        set_rule(get_entrance("REGION_VICTORY_ROAD_GATE -> REGION_VICTORY_ROAD_GATE:EAST"), has_kanto_access_requirement)
+        set_rule(get_entrance("REGION_VICTORY_ROAD_GATE:EAST -> REGION_VICTORY_ROAD_GATE"), has_kanto_access_requirement)
 
         set_rule(get_entrance("REGION_INDIGO_PLATEAU_POKECENTER_1F -> REGION_INDIGO_PLATEAU_POKECENTER_1F:RIVAL"),
                  lambda state: state.has("EVENT_BEAT_RIVAL_IN_MT_MOON", world.player))

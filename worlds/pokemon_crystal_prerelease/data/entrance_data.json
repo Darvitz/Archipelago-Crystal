@@ -8153,9 +8153,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_22 -> REGION_VICTORY_ROAD_GATE",
+      "name": "REGION_ROUTE_22 -> REGION_VICTORY_ROAD_GATE:EAST",
       "exit_region": "REGION_ROUTE_22",
-      "entrance_region": "REGION_VICTORY_ROAD_GATE",
+      "entrance_region": "REGION_VICTORY_ROAD_GATE:EAST",
       "exit_warps": [
         {
           "map": "Route22",
@@ -8191,9 +8191,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_23 -> REGION_VICTORY_ROAD",
+      "name": "REGION_ROUTE_23 -> REGION_VICTORY_ROAD:1F_NORTH",
       "exit_region": "REGION_ROUTE_23",
-      "entrance_region": "REGION_VICTORY_ROAD",
+      "entrance_region": "REGION_VICTORY_ROAD:1F_NORTH",
       "exit_warps": [
         {
           "map": "Route23",
@@ -8390,9 +8390,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_28 -> REGION_VICTORY_ROAD_GATE",
+      "name": "REGION_ROUTE_28 -> REGION_VICTORY_ROAD_GATE:WEST",
       "exit_region": "REGION_ROUTE_28",
-      "entrance_region": "REGION_VICTORY_ROAD_GATE",
+      "entrance_region": "REGION_VICTORY_ROAD_GATE:WEST",
       "exit_warps": [
         {
           "map": "Route28",
@@ -9672,9 +9672,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_5 -> REGION_ROUTE_5_SAFFRON_GATE",
+      "name": "REGION_ROUTE_5 -> REGION_ROUTE_5_SAFFRON_GATE:NORTH",
       "exit_region": "REGION_ROUTE_5",
-      "entrance_region": "REGION_ROUTE_5_SAFFRON_GATE",
+      "entrance_region": "REGION_ROUTE_5_SAFFRON_GATE:NORTH",
       "exit_warps": [
         {
           "map": "Route5",
@@ -9731,8 +9731,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_5_SAFFRON_GATE -> REGION_ROUTE_5",
-      "exit_region": "REGION_ROUTE_5_SAFFRON_GATE",
+      "name": "REGION_ROUTE_5_SAFFRON_GATE:NORTH -> REGION_ROUTE_5",
+      "exit_region": "REGION_ROUTE_5_SAFFRON_GATE:NORTH",
       "entrance_region": "REGION_ROUTE_5",
       "exit_warps": [
         {
@@ -9752,8 +9752,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_5_SAFFRON_GATE -> REGION_SAFFRON_CITY",
-      "exit_region": "REGION_ROUTE_5_SAFFRON_GATE",
+      "name": "REGION_ROUTE_5_SAFFRON_GATE:SOUTH -> REGION_SAFFRON_CITY",
+      "exit_region": "REGION_ROUTE_5_SAFFRON_GATE:SOUTH",
       "entrance_region": "REGION_SAFFRON_CITY",
       "exit_warps": [
         {
@@ -9828,9 +9828,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_6 -> REGION_ROUTE_6_SAFFRON_GATE",
+      "name": "REGION_ROUTE_6 -> REGION_ROUTE_6_SAFFRON_GATE:SOUTH",
       "exit_region": "REGION_ROUTE_6",
-      "entrance_region": "REGION_ROUTE_6_SAFFRON_GATE",
+      "entrance_region": "REGION_ROUTE_6_SAFFRON_GATE:SOUTH",
       "exit_warps": [
         {
           "map": "Route6",
@@ -9845,8 +9845,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_6_SAFFRON_GATE -> REGION_SAFFRON_CITY",
-      "exit_region": "REGION_ROUTE_6_SAFFRON_GATE",
+      "name": "REGION_ROUTE_6_SAFFRON_GATE:NORTH -> REGION_SAFFRON_CITY",
+      "exit_region": "REGION_ROUTE_6_SAFFRON_GATE:NORTH",
       "entrance_region": "REGION_SAFFRON_CITY",
       "exit_warps": [
         {
@@ -9866,8 +9866,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_6_SAFFRON_GATE -> REGION_ROUTE_6",
-      "exit_region": "REGION_ROUTE_6_SAFFRON_GATE",
+      "name": "REGION_ROUTE_6_SAFFRON_GATE:SOUTH -> REGION_ROUTE_6",
+      "exit_region": "REGION_ROUTE_6_SAFFRON_GATE:SOUTH",
       "entrance_region": "REGION_ROUTE_6",
       "exit_warps": [
         {
@@ -10035,9 +10035,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_7 -> REGION_ROUTE_7_SAFFRON_GATE",
+      "name": "REGION_ROUTE_7 -> REGION_ROUTE_7_SAFFRON_GATE:WEST",
       "exit_region": "REGION_ROUTE_7",
-      "entrance_region": "REGION_ROUTE_7_SAFFRON_GATE",
+      "entrance_region": "REGION_ROUTE_7_SAFFRON_GATE:WEST",
       "exit_warps": [
         {
           "map": "Route7",
@@ -10073,8 +10073,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_7_SAFFRON_GATE -> REGION_ROUTE_7",
-      "exit_region": "REGION_ROUTE_7_SAFFRON_GATE",
+      "name": "REGION_ROUTE_7_SAFFRON_GATE:WEST -> REGION_ROUTE_7",
+      "exit_region": "REGION_ROUTE_7_SAFFRON_GATE:WEST",
       "entrance_region": "REGION_ROUTE_7",
       "exit_warps": [
         {
@@ -10094,8 +10094,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_7_SAFFRON_GATE -> REGION_SAFFRON_CITY",
-      "exit_region": "REGION_ROUTE_7_SAFFRON_GATE",
+      "name": "REGION_ROUTE_7_SAFFRON_GATE:EAST -> REGION_SAFFRON_CITY",
+      "exit_region": "REGION_ROUTE_7_SAFFRON_GATE:EAST",
       "entrance_region": "REGION_SAFFRON_CITY",
       "exit_warps": [
         {
@@ -10115,9 +10115,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_8 -> REGION_ROUTE_8_SAFFRON_GATE",
+      "name": "REGION_ROUTE_8 -> REGION_ROUTE_8_SAFFRON_GATE:EAST",
       "exit_region": "REGION_ROUTE_8",
-      "entrance_region": "REGION_ROUTE_8_SAFFRON_GATE",
+      "entrance_region": "REGION_ROUTE_8_SAFFRON_GATE:EAST",
       "exit_warps": [
         {
           "map": "Route8",
@@ -10153,8 +10153,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_8_SAFFRON_GATE -> REGION_SAFFRON_CITY",
-      "exit_region": "REGION_ROUTE_8_SAFFRON_GATE",
+      "name": "REGION_ROUTE_8_SAFFRON_GATE:WEST -> REGION_SAFFRON_CITY",
+      "exit_region": "REGION_ROUTE_8_SAFFRON_GATE:WEST",
       "entrance_region": "REGION_SAFFRON_CITY",
       "exit_warps": [
         {
@@ -10174,8 +10174,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_8_SAFFRON_GATE -> REGION_ROUTE_8",
-      "exit_region": "REGION_ROUTE_8_SAFFRON_GATE",
+      "name": "REGION_ROUTE_8_SAFFRON_GATE:EAST -> REGION_ROUTE_8",
+      "exit_region": "REGION_ROUTE_8_SAFFRON_GATE:EAST",
       "entrance_region": "REGION_ROUTE_8",
       "exit_warps": [
         {
@@ -11074,9 +11074,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SAFFRON_CITY -> REGION_ROUTE_5_SAFFRON_GATE",
+      "name": "REGION_SAFFRON_CITY -> REGION_ROUTE_5_SAFFRON_GATE:SOUTH",
       "exit_region": "REGION_SAFFRON_CITY",
-      "entrance_region": "REGION_ROUTE_5_SAFFRON_GATE",
+      "entrance_region": "REGION_ROUTE_5_SAFFRON_GATE:SOUTH",
       "exit_warps": [
         {
           "map": "SaffronCity",
@@ -11091,9 +11091,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SAFFRON_CITY -> REGION_ROUTE_7_SAFFRON_GATE",
+      "name": "REGION_SAFFRON_CITY -> REGION_ROUTE_7_SAFFRON_GATE:EAST",
       "exit_region": "REGION_SAFFRON_CITY",
-      "entrance_region": "REGION_ROUTE_7_SAFFRON_GATE",
+      "entrance_region": "REGION_ROUTE_7_SAFFRON_GATE:EAST",
       "exit_warps": [
         {
           "map": "SaffronCity",
@@ -11112,9 +11112,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SAFFRON_CITY -> REGION_ROUTE_6_SAFFRON_GATE",
+      "name": "REGION_SAFFRON_CITY -> REGION_ROUTE_6_SAFFRON_GATE:NORTH",
       "exit_region": "REGION_SAFFRON_CITY",
-      "entrance_region": "REGION_ROUTE_6_SAFFRON_GATE",
+      "entrance_region": "REGION_ROUTE_6_SAFFRON_GATE:NORTH",
       "exit_warps": [
         {
           "map": "SaffronCity",
@@ -11133,9 +11133,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_SAFFRON_CITY -> REGION_ROUTE_8_SAFFRON_GATE",
+      "name": "REGION_SAFFRON_CITY -> REGION_ROUTE_8_SAFFRON_GATE:WEST",
       "exit_region": "REGION_SAFFRON_CITY",
-      "entrance_region": "REGION_ROUTE_8_SAFFRON_GATE",
+      "entrance_region": "REGION_ROUTE_8_SAFFRON_GATE:WEST",
       "exit_warps": [
         {
           "map": "SaffronCity",
@@ -13202,25 +13202,127 @@
       "one_way": false
     },
     {
-      "name": "REGION_VICTORY_ROAD:ENTRANCE -> REGION_VICTORY_ROAD_GATE",
-      "exit_region": "REGION_VICTORY_ROAD:ENTRANCE",
-      "entrance_region": "REGION_VICTORY_ROAD_GATE",
+      "name": "REGION_VICTORY_ROAD:1F_SOUTH -> REGION_VICTORY_ROAD:B1F",
+      "exit_region": "REGION_VICTORY_ROAD:1F_SOUTH",
+      "entrance_region": "REGION_VICTORY_ROAD:B1F",
       "exit_warps": [
         {
           "map": "VictoryRoad",
-          "index": 1
+          "index": 2
         }
       ],
-      "arrival_map": "VictoryRoadGate",
-      "arrival_map_const": "VICTORY_ROAD_GATE",
+      "arrival_map": "VictoryRoad",
+      "arrival_map_const": "VICTORY_ROAD",
+      "arrival_warp_id": 3,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_VICTORY_ROAD:B1F -> REGION_VICTORY_ROAD:1F_SOUTH",
+      "exit_region": "REGION_VICTORY_ROAD:B1F",
+      "entrance_region": "REGION_VICTORY_ROAD:1F_SOUTH",
+      "exit_warps": [
+        {
+          "map": "VictoryRoad",
+          "index": 3
+        }
+      ],
+      "arrival_map": "VictoryRoad",
+      "arrival_map_const": "VICTORY_ROAD",
+      "arrival_warp_id": 2,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_VICTORY_ROAD:B1F -> REGION_VICTORY_ROAD:1F_NORTH",
+      "exit_region": "REGION_VICTORY_ROAD:B1F",
+      "entrance_region": "REGION_VICTORY_ROAD:1F_NORTH",
+      "exit_warps": [
+        {
+          "map": "VictoryRoad",
+          "index": 4
+        }
+      ],
+      "arrival_map": "VictoryRoad",
+      "arrival_map_const": "VICTORY_ROAD",
       "arrival_warp_id": 5,
       "type": "cave",
       "area": "johto",
       "one_way": false
     },
     {
-      "name": "REGION_VICTORY_ROAD -> REGION_ROUTE_23",
-      "exit_region": "REGION_VICTORY_ROAD",
+      "name": "REGION_VICTORY_ROAD:B1F:NORTHEAST -> REGION_VICTORY_ROAD:1F_NORTH:SOUTHEAST",
+      "exit_region": "REGION_VICTORY_ROAD:B1F:NORTHEAST",
+      "entrance_region": "REGION_VICTORY_ROAD:1F_NORTH:SOUTHEAST",
+      "exit_warps": [
+        {
+          "map": "VictoryRoad",
+          "index": 6
+        }
+      ],
+      "arrival_map": "VictoryRoad",
+      "arrival_map_const": "VICTORY_ROAD",
+      "arrival_warp_id": 7,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_VICTORY_ROAD:1F_NORTH -> REGION_VICTORY_ROAD:B1F",
+      "exit_region": "REGION_VICTORY_ROAD:1F_NORTH",
+      "entrance_region": "REGION_VICTORY_ROAD:B1F",
+      "exit_warps": [
+        {
+          "map": "VictoryRoad",
+          "index": 5
+        }
+      ],
+      "arrival_map": "VictoryRoad",
+      "arrival_map_const": "VICTORY_ROAD",
+      "arrival_warp_id": 4,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_VICTORY_ROAD:1F_NORTH -> REGION_VICTORY_ROAD:B1F:NORTHWEST",
+      "exit_region": "REGION_VICTORY_ROAD:1F_NORTH",
+      "entrance_region": "REGION_VICTORY_ROAD:B1F:NORTHWEST",
+      "exit_warps": [
+        {
+          "map": "VictoryRoad",
+          "index": 8
+        }
+      ],
+      "arrival_map": "VictoryRoad",
+      "arrival_map_const": "VICTORY_ROAD",
+      "arrival_warp_id": 9,
+      "type": "cave",
+      "area": "johto",
+      "one_way": true
+    },
+    {
+      "name": "REGION_VICTORY_ROAD:1F_NORTH:SOUTHEAST -> REGION_VICTORY_ROAD:B1F:NORTHEAST",
+      "exit_region": "REGION_VICTORY_ROAD:1F_NORTH:SOUTHEAST",
+      "entrance_region": "REGION_VICTORY_ROAD:B1F:NORTHEAST",
+      "exit_warps": [
+        {
+          "map": "VictoryRoad",
+          "index": 7
+        }
+      ],
+      "arrival_map": "VictoryRoad",
+      "arrival_map_const": "VICTORY_ROAD",
+      "arrival_warp_id": 6,
+      "type": "cave",
+      "area": "johto",
+      "one_way": false
+    },
+    {
+      "name": "REGION_VICTORY_ROAD:1F_NORTH -> REGION_ROUTE_23",
+      "exit_region": "REGION_VICTORY_ROAD:1F_NORTH",
       "entrance_region": "REGION_ROUTE_23",
       "exit_warps": [
         {
@@ -13232,27 +13334,6 @@
       "arrival_map_const": "ROUTE_23",
       "arrival_warp_id": 3,
       "type": "cave",
-      "area": "johto",
-      "one_way": false
-    },
-    {
-      "name": "REGION_VICTORY_ROAD_GATE -> REGION_ROUTE_22",
-      "exit_region": "REGION_VICTORY_ROAD_GATE",
-      "entrance_region": "REGION_ROUTE_22",
-      "exit_warps": [
-        {
-          "map": "VictoryRoadGate",
-          "index": 1
-        },
-        {
-          "map": "VictoryRoadGate",
-          "index": 2
-        }
-      ],
-      "arrival_map": "Route22",
-      "arrival_map_const": "ROUTE_22",
-      "arrival_warp_id": 1,
-      "type": "gate",
       "area": "johto",
       "one_way": false
     },
@@ -13278,29 +13359,29 @@
       "one_way": false
     },
     {
-      "name": "REGION_VICTORY_ROAD_GATE -> REGION_VICTORY_ROAD:ENTRANCE",
-      "exit_region": "REGION_VICTORY_ROAD_GATE",
-      "entrance_region": "REGION_VICTORY_ROAD:ENTRANCE",
+      "name": "REGION_VICTORY_ROAD_GATE:EAST -> REGION_ROUTE_22",
+      "exit_region": "REGION_VICTORY_ROAD_GATE:EAST",
+      "entrance_region": "REGION_ROUTE_22",
       "exit_warps": [
         {
           "map": "VictoryRoadGate",
-          "index": 5
+          "index": 1
         },
         {
           "map": "VictoryRoadGate",
-          "index": 6
+          "index": 2
         }
       ],
-      "arrival_map": "VictoryRoad",
-      "arrival_map_const": "VICTORY_ROAD",
+      "arrival_map": "Route22",
+      "arrival_map_const": "ROUTE_22",
       "arrival_warp_id": 1,
-      "type": "cave",
+      "type": "gate",
       "area": "johto",
       "one_way": false
     },
     {
-      "name": "REGION_VICTORY_ROAD_GATE -> REGION_ROUTE_28",
-      "exit_region": "REGION_VICTORY_ROAD_GATE",
+      "name": "REGION_VICTORY_ROAD_GATE:WEST -> REGION_ROUTE_28",
+      "exit_region": "REGION_VICTORY_ROAD_GATE:WEST",
       "entrance_region": "REGION_ROUTE_28",
       "exit_warps": [
         {
@@ -13318,6 +13399,27 @@
       "type": "gate",
       "area": "johto",
       "one_way": false
+    },
+    {
+      "name": "REGION_VICTORY_ROAD_GATE:NORTH -> REGION_VICTORY_ROAD:1F_SOUTH:ENTRANCE",
+      "exit_region": "REGION_VICTORY_ROAD_GATE:NORTH",
+      "entrance_region": "REGION_VICTORY_ROAD:1F_SOUTH:ENTRANCE",
+      "exit_warps": [
+        {
+          "map": "VictoryRoadGate",
+          "index": 5
+        },
+        {
+          "map": "VictoryRoadGate",
+          "index": 6
+        }
+      ],
+      "arrival_map": "VictoryRoad",
+      "arrival_map_const": "VICTORY_ROAD",
+      "arrival_warp_id": 1,
+      "type": "cave",
+      "area": "johto",
+      "one_way": true
     },
     {
       "name": "REGION_VIOLET_CITY -> REGION_VIOLET_MART",
