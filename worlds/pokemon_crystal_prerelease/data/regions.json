@@ -6591,7 +6591,7 @@
     "exits": [
       "REGION_CERULEAN_CITY",
       "REGION_ROUTE_5_UNDERGROUND_PATH_ENTRANCE",
-      "REGION_ROUTE_5_SAFFRON_GATE",
+      "REGION_ROUTE_5_SAFFRON_GATE:NORTH",
       "REGION_ROUTE_5_CLEANSE_TAG_HOUSE"
     ],
     "locations": [],
@@ -6614,11 +6614,20 @@
     ],
     "events": []
   },
-  "REGION_ROUTE_5_SAFFRON_GATE": {
+  "REGION_ROUTE_5_SAFFRON_GATE:NORTH": {
     "johto": false,
     "exits": [
       "REGION_ROUTE_5",
-      "REGION_SAFFRON_CITY"
+      "REGION_ROUTE_5_SAFFRON_GATE:SOUTH"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_5_SAFFRON_GATE:SOUTH": {
+    "johto": false,
+    "exits": [
+      "REGION_SAFFRON_CITY",
+      "REGION_ROUTE_5_SAFFRON_GATE:NORTH"
     ],
     "locations": [],
     "events": []
@@ -6637,7 +6646,7 @@
     "exits": [
       "REGION_VERMILION_CITY",
       "REGION_ROUTE_6_UNDERGROUND_PATH_ENTRANCE",
-      "REGION_ROUTE_6_SAFFRON_GATE"
+      "REGION_ROUTE_6_SAFFRON_GATE:SOUTH"
     ],
     "trainers": [
       "POKEFANM_REX",
@@ -6654,11 +6663,20 @@
       "fishing": "Pond"
     }
   },
-  "REGION_ROUTE_6_SAFFRON_GATE": {
+  "REGION_ROUTE_6_SAFFRON_GATE:NORTH": {
     "johto": false,
     "exits": [
       "REGION_SAFFRON_CITY",
-      "REGION_ROUTE_6"
+      "REGION_ROUTE_6_SAFFRON_GATE:SOUTH"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_6_SAFFRON_GATE:SOUTH": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_6",
+      "REGION_ROUTE_6_SAFFRON_GATE:NORTH"
     ],
     "locations": [],
     "events": []
@@ -6706,7 +6724,7 @@
     "johto": false,
     "exits": [
       "REGION_CELADON_CITY",
-      "REGION_ROUTE_7_SAFFRON_GATE",
+      "REGION_ROUTE_7_SAFFRON_GATE:WEST",
       "REGION_ROUTE_7_UNDERGROUND_PATH_ENTRANCE"
     ],
     "locations": [],
@@ -6718,11 +6736,20 @@
       "grass": "ROUTE_7"
     }
   },
-  "REGION_ROUTE_7_SAFFRON_GATE": {
+  "REGION_ROUTE_7_SAFFRON_GATE:WEST": {
     "johto": false,
     "exits": [
       "REGION_ROUTE_7",
-      "REGION_SAFFRON_CITY"
+      "REGION_ROUTE_7_SAFFRON_GATE:EAST"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_7_SAFFRON_GATE:EAST": {
+    "johto": false,
+    "exits": [
+      "REGION_SAFFRON_CITY",
+      "REGION_ROUTE_7_SAFFRON_GATE:WEST"
     ],
     "locations": [],
     "events": []
@@ -6731,7 +6758,7 @@
     "johto": false,
     "exits": [
       "REGION_LAVENDER_TOWN",
-      "REGION_ROUTE_8_SAFFRON_GATE",
+      "REGION_ROUTE_8_SAFFRON_GATE:EAST",
       "REGION_ROUTE_8:CUT",
       "REGION_ROUTE_8_UNDERGROUND_PATH_ENTRANCE"
     ],
@@ -6766,11 +6793,20 @@
       "grass": "ROUTE_8"
     }
   },
-  "REGION_ROUTE_8_SAFFRON_GATE": {
+  "REGION_ROUTE_8_SAFFRON_GATE:WEST": {
     "johto": false,
     "exits": [
       "REGION_SAFFRON_CITY",
-      "REGION_ROUTE_8"
+      "REGION_ROUTE_8_SAFFRON_GATE:EAST"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_ROUTE_8_SAFFRON_GATE:EAST": {
+    "johto": false,
+    "exits": [
+      "REGION_ROUTE_8",
+      "REGION_ROUTE_8_SAFFRON_GATE:WEST"
     ],
     "locations": [],
     "events": []
@@ -7065,10 +7101,10 @@
       "REGION_SAFFRON_MAGNET_TRAIN_STATION",
       "REGION_SILPH_CO_1F",
       "REGION_COPYCATS_HOUSE_1F",
-      "REGION_ROUTE_5_SAFFRON_GATE",
-      "REGION_ROUTE_7_SAFFRON_GATE",
-      "REGION_ROUTE_6_SAFFRON_GATE",
-      "REGION_ROUTE_8_SAFFRON_GATE"
+      "REGION_ROUTE_5_SAFFRON_GATE:SOUTH",
+      "REGION_ROUTE_7_SAFFRON_GATE:EAST",
+      "REGION_ROUTE_6_SAFFRON_GATE:NORTH",
+      "REGION_ROUTE_8_SAFFRON_GATE:WEST"
     ],
     "locations": [],
     "events": [],
