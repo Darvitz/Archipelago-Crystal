@@ -2117,6 +2117,7 @@ class GameOptions(OptionDict):
     low_hp_beep: on/off - Sets whether the low HP beep is played in battle
     menu_account: on/off - Sets whether extra information is shown on the Start menu
     more_uncaught_encounters: on/off - Sets whether wild encounters of Pokemon you have not caught are more likely
+    music: on/off - Sets whether music will play
     poison_flicker: on/off - Sets whether the overworld poison flash effect is played
     rods_always_work: off/on - Sets whether the fishing rods always succeed
     short_fanfares: off/on - Sets whether item receive fanfares are shortened
@@ -2171,7 +2172,8 @@ class GameOptions(OptionDict):
         "hms_require_teaching": "on",
         "item_notification": "popup",
         "tracker_slot": 0,
-        "fast_surf": "off"
+        "fast_surf": "off",
+        "music": "on",
     }
 
     @override
