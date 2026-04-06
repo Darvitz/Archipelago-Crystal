@@ -1149,8 +1149,8 @@ def _init() -> None:
         "menu_account": PokemonCrystalGameSetting(0, 7, 1, ON_OFF, 1),
 
         "text_frame": PokemonCrystalGameSetting(1, 0, 4, dict([(f"{x + 1}", x) for x in range(8)]), 0),
-        "bike_music": PokemonCrystalGameSetting(1, 4, 1, INVERTED_ON_OFF, 1),
-        "surf_music": PokemonCrystalGameSetting(1, 5, 1, INVERTED_ON_OFF, 1),
+        "bike_music": PokemonCrystalGameSetting(1, 4, 1, INVERTED_ON_OFF, 0),
+        "surf_music": PokemonCrystalGameSetting(1, 5, 1, INVERTED_ON_OFF, 0),
         "skip_nicknames": PokemonCrystalGameSetting(1, 6, 1, ON_OFF, 0),
         "auto_run": PokemonCrystalGameSetting(1, 7, 1, ON_OFF, 0),
 
@@ -1182,7 +1182,7 @@ def _init() -> None:
         "_trap_link": PokemonCrystalGameSetting(5, 3, 1, ON_OFF, 0),
         "spinners": PokemonCrystalGameSetting(5, 4, 2, {"normal": 0, "rotators": 1, "heck": 2, "hell": 3}, 0),
         "fast_surf": PokemonCrystalGameSetting(5, 6, 1, ON_OFF, 0),
-        "music": PokemonCrystalGameSetting(5, 7, 1, INVERTED_ON_OFF, 1),
+        "music": PokemonCrystalGameSetting(5, 7, 1, INVERTED_ON_OFF, 0),
     }
 
     phone_scripts = []
