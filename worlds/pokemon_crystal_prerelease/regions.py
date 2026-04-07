@@ -413,8 +413,8 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
 
 
     if world.options.blackthorn_dark_cave_access == BlackthornDarkCaveAccess.option_waterfall:
-        regions["REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST"].connect(
-            regions["REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_WEST"])
+        regions["REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST"].connect(
+            regions["REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHWEST"])
 
     if world.options.route_42_access != Route42Access.option_blocked:
         regions["REGION_ROUTE_42:WEST"].connect(regions["REGION_ROUTE_42:CENTER"])

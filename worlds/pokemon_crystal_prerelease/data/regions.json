@@ -1221,12 +1221,11 @@
       "EVENT_BEAT_KIMONO_GIRL_MIKI"
     ]
   },
-  "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST": {
+  "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST": {
     "johto": true,
     "exits": [
       "REGION_ROUTE_45",
-      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_EAST",
-      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_WEST"
+      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHEAST"
     ],
     "locations": [],
     "events": [],
@@ -1236,38 +1235,12 @@
       "fishing": "Lake"
     }
   },
-  "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_WEST": {
+  "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHEAST": {
     "johto": true,
     "exits": [
-      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST",
-      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST"
-    ],
-    "locations": [
-      "BLACKGLASSES_IN_DARK_CAVE"
-    ],
-    "events": [],
-    "wild_encounters": {
-      "grass": "DARK_CAVE_BLACKTHORN_ENTRANCE",
-      "surfing": "DARK_CAVE_BLACKTHORN_ENTRANCE",
-      "fishing": "Lake"
-    }
-  },
-  "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST": {
-    "johto": true,
-    "exits": [
-      "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST"
-    ],
-    "locations": [],
-    "events": [],
-    "wild_encounters": {
-      "grass": "DARK_CAVE_BLACKTHORN_ENTRANCE"
-    }
-  },
-  "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_EAST": {
-    "johto": true,
-    "exits": [
-      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST",
-      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST"
+      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST",
+      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHWEST",
+      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST"
     ],
     "locations": [
       "DARK_CAVE_BLACKTHORN_ENTRANCE_REVIVE",
@@ -1280,12 +1253,39 @@
       "fishing": "Lake"
     }
   },
+  "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHWEST": {
+    "johto": true,
+    "exits": [
+      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHEAST",
+      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST"
+    ],
+    "locations": [
+      "BLACKGLASSES_IN_DARK_CAVE"
+    ],
+    "events": [],
+    "wild_encounters": {
+      "grass": "DARK_CAVE_BLACKTHORN_ENTRANCE",
+      "surfing": "DARK_CAVE_BLACKTHORN_ENTRANCE",
+      "fishing": "Lake"
+    }
+  },
+  "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST": {
+    "johto": true,
+    "exits": [
+      "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "grass": "DARK_CAVE_BLACKTHORN_ENTRANCE"
+    }
+  },
   "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST": {
     "johto": true,
     "exits": [
       "REGION_ROUTE_31",
-      "REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST",
-      "REGION_DARK_CAVE_VIOLET_ENTRANCE:WATER"
+      "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTHEAST",
+      "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH"
     ],
     "locations": [
       "DARK_CAVE_VIOLET_ENTRANCE_POTION"
@@ -1298,11 +1298,11 @@
       "fishing": "Lake"
     }
   },
-  "REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST": {
+  "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTHEAST": {
     "johto": true,
     "exits": [
-      "REGION_ROUTE_46:NORTH",
-      "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST"
+      "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST",
+      "REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST"
     ],
     "locations": [
       "DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT",
@@ -1316,11 +1316,24 @@
       "grass": "DARK_CAVE_VIOLET_ENTRANCE"
     }
   },
-  "REGION_DARK_CAVE_VIOLET_ENTRANCE:WATER": {
+  "REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST": {
     "johto": true,
     "exits": [
-      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST",
-      "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST"
+      "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTHEAST",
+      "REGION_ROUTE_46:NORTH"
+    ],
+    "locations": [],
+    "events": [],
+    "wild_encounters": {
+      "rock_smash": true,
+      "grass": "DARK_CAVE_VIOLET_ENTRANCE"
+    }
+  },
+  "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH": {
+    "johto": true,
+    "exits": [
+      "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST",
+      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST"
     ],
     "locations": [],
     "events": [],
@@ -6509,7 +6522,7 @@
       "REGION_BLACKTHORN_CITY",
       "REGION_ROUTE_46:NORTH",
       "REGION_ROUTE_45:POWER",
-      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST"
+      "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST"
     ],
     "trainers": [
       "BLACKBELT_KENJI",
@@ -6562,7 +6575,7 @@
     "johto": true,
     "exits": [
       "REGION_ROUTE_46:SOUTH",
-      "REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST",
+      "REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST",
       "REGION_ROUTE_46:POWER"
     ],
     "trainers": [

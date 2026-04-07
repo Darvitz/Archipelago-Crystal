@@ -2241,8 +2241,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST -> REGION_ROUTE_45",
-      "exit_region": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST",
+      "name": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST -> REGION_ROUTE_45",
+      "exit_region": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST",
       "entrance_region": "REGION_ROUTE_45",
       "exit_warps": [
         {
@@ -2258,9 +2258,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST",
-      "exit_region": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST",
-      "entrance_region": "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST",
+      "name": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH",
+      "exit_region": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST",
+      "entrance_region": "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH",
       "exit_warps": [
         {
           "map": "DarkCaveBlackthornEntrance",
@@ -2272,7 +2272,7 @@
       "arrival_warp_id": 2,
       "type": "cave",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST -> REGION_ROUTE_31",
@@ -2292,8 +2292,8 @@
       "one_way": false
     },
     {
-      "name": "REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST -> REGION_ROUTE_46:NORTH",
-      "exit_region": "REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST",
+      "name": "REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST -> REGION_ROUTE_46:NORTH",
+      "exit_region": "REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST",
       "entrance_region": "REGION_ROUTE_46:NORTH",
       "exit_warps": [
         {
@@ -2309,9 +2309,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_DARK_CAVE_VIOLET_ENTRANCE:WATER -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST",
-      "exit_region": "REGION_DARK_CAVE_VIOLET_ENTRANCE:WATER",
-      "entrance_region": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST",
+      "name": "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST",
+      "exit_region": "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH",
+      "entrance_region": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST",
       "exit_warps": [
         {
           "map": "DarkCaveVioletEntrance",
@@ -2323,7 +2323,7 @@
       "arrival_warp_id": 2,
       "type": "cave",
       "area": "johto",
-      "one_way": true
+      "one_way": false
     },
     {
       "name": "REGION_ROUTE_34:DAY_CARE_YARD -> REGION_DAY_CARE",
@@ -9668,9 +9668,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_45 -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST",
+      "name": "REGION_ROUTE_45 -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST",
       "exit_region": "REGION_ROUTE_45",
-      "entrance_region": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST",
+      "entrance_region": "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST",
       "exit_warps": [
         {
           "map": "Route45",
@@ -9685,9 +9685,9 @@
       "one_way": false
     },
     {
-      "name": "REGION_ROUTE_46:NORTH -> REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST",
+      "name": "REGION_ROUTE_46:NORTH -> REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST",
       "exit_region": "REGION_ROUTE_46:NORTH",
-      "entrance_region": "REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST",
+      "entrance_region": "REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST",
       "exit_warps": [
         {
           "map": "Route46",

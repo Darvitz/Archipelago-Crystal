@@ -22,12 +22,13 @@ if TYPE_CHECKING:
 DARK_AREA_REGIONS: dict[str, list[str]] = {
     "Dark Cave": [
         "REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST",
-        "REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST",
-        "REGION_DARK_CAVE_VIOLET_ENTRANCE:WATER",
-        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST",
-        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_WEST",
-        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_WEST",
-        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_EAST",
+        "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTHEAST",
+        "REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST",
+        "REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH",
+        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST",
+        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHEAST",
+        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHWEST",
+        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHWEST",
     ],
     "Union Cave": [
         "REGION_UNION_CAVE_1F",
@@ -765,34 +766,32 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     if world.options.randomize_phone_call_items:
         set_rule(get_location("Route 31 - Berry from Wade"), can_phone_call)
 
-    set_rule(get_location("Dark Cave Violet Entrance - Southeast Item (Left)"), can_rock_smash)
-    set_rule(get_location("Dark Cave Violet Entrance - Southeast Item (Right)"), can_rock_smash)
-    set_rule(get_location("Dark Cave Violet Entrance - Northeast Item"), can_rock_smash)
-    if hidden():
-        set_rule(get_location("Dark Cave Violet Entrance - Hidden Item"), can_rock_smash)
-
-    set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST"),
+    set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTHEAST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST"),
              can_rock_smash)
-    set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:EAST"),
+    set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTHEAST"),
+             can_rock_smash)
+    set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTHEAST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST"),
+             can_rock_smash)
+    set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:SOUTHEAST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTHEAST"),
              can_rock_smash)
 
-    set_rule(get_entrance(
-        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_EAST"), can_surf)
-    set_rule(get_entrance(
-        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTH_EAST -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST"), can_surf)
-    set_rule(get_entrance(
-        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_WEST"), can_surf)
-    set_rule(get_entrance(
-        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_WEST -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTH_EAST"), can_surf)
-
-    set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:WATER -> REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST"), can_surf)
+    set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH -> REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST"), can_surf)
 
     if world.options.blackthorn_dark_cave_access.value == BlackthornDarkCaveAccess.option_waterfall:
-        set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:WATER"),
+        set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH"),
                  can_surf_and_waterfall)
     else:
-        set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:WATER"),
+        set_rule(get_entrance("REGION_DARK_CAVE_VIOLET_ENTRANCE:WEST -> REGION_DARK_CAVE_VIOLET_ENTRANCE:NORTH"),
                  can_surf)
+
+    set_rule(get_entrance(
+        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHEAST"), can_surf)
+    set_rule(get_entrance(
+        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHEAST -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHEAST"), can_surf)
+    set_rule(get_entrance(
+        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHEAST -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHWEST"), can_surf)
+    set_rule(get_entrance(
+        "REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:NORTHWEST -> REGION_DARK_CAVE_BLACKTHORN_ENTRANCE:SOUTHEAST"), can_surf)
 
     # Violet City
     if hidden():
