@@ -569,7 +569,11 @@ class PokemonCrystalWorld(World):
                 er_state = randomize_entrances(self, coupled=coupled, target_group_lookup=target_group_lookup,
                                                preserve_group_order=preserve_group_order)
                 self.logic.guaranteed_hm_access = False
-                self.er_pairings = forced_pairings + list(er_state.pairings)
+                forced_targets = {tgt for _, tgt in forced_pairings}
+                self.er_pairings = forced_pairings + [
+                    (src, tgt) for src, tgt in er_state.pairings
+                    if tgt not in forced_targets
+                ]
                 return
             except EntranceRandomizationError as error:
                 if attempt >= self._MAX_ER_ATTEMPTS - 1:
@@ -689,6 +693,16 @@ class PokemonCrystalWorld(World):
             target_region = target_entrance.connected_region
             target_region.entrances.remove(target_entrance)
             source_exit.connect(target_region)
+
+            # In uncoupled mode, connecting this exit leaves an orphan target with the
+            # same name in the source's parent region (created by disconnect_entrance_for_randomization
+            # for TWO_WAY entrances).  The matching exit no longer needs a target, so remove it.
+            if not coupled:
+                src_parent = source_exit.parent_region
+                for ent in src_parent.entrances:
+                    if ent.name == src_name and not ent.parent_region:
+                        src_parent.entrances.remove(ent)
+                        break
 
             self.er_pairings.append((src_name, tgt_name))
             connected_exit_names.add(src_name)
