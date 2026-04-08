@@ -7,7 +7,8 @@ from schema import Schema, And, Optional, Use, Or
 
 from BaseClasses import PlandoOptions, ItemClassification
 from Options import Toggle, Choice, DefaultOnToggle, Range, PerGameCommonOptions, NamedRange, OptionSet, \
-    StartInventoryPool, OptionDict, Visibility, DeathLink, OptionGroup, OptionList, FreeText, OptionError, OptionCounter
+    StartInventoryPool, OptionDict, Visibility, DeathLink, OptionGroup, OptionList, FreeText, OptionError, \
+    OptionCounter, PlandoConnections
 from Utils import is_iterable_except_str
 from .data import data, MapPalette, MiscOption
 from .maps import FLASH_MAP_GROUPS
@@ -2369,21 +2370,22 @@ class EntranceRandomizationGrouping(Choice):
     default = 0
 
 
-class ForceERPairings(OptionList):
+class CrystalPlandoConnections(PlandoConnections):
     """
-    Debug option: force specific ER pairings before randomization.
-    Each entry is "exit => entrance" using connection names from entrance_data.json.
-    The exit is the door walked through; the entrance is the connection you arrive at.
-    In coupled mode, the reverse is also forced.
+    Force specific entrance randomization pairings before randomization.
+    Uses connection names from entrance_data.json.
+    The "entrance" is the door walked through (source); the "exit" is where you arrive (destination).
+    Direction "both" forces the reverse pairing too; "entrance" forces only one direction.
     Requires entrance_randomization to include the relevant types.
 
     Example (cafe door leads to the elevator room):
-      force_er_pairings:
-        - "REGION_CELADON_CITY -> REGION_CELADON_CAFE => REGION_CELADON_DEPT_STORE_1F -> REGION_CELADON_DEPT_STORE_ELEVATOR:1F"
+      plando_connections:
+        - entrance: "REGION_CELADON_CITY -> REGION_CELADON_CAFE"
+          exit: "REGION_CELADON_DEPT_STORE_1F -> REGION_CELADON_DEPT_STORE_ELEVATOR:1F"
+          direction: both
     """
-    display_name = "Force ER Pairings"
-    visibility = Visibility.spoiler
-    default = []
+    entrances = set(data.entrance_connections.keys())
+    exits = set(data.entrance_connections.keys())
 
 
 @dataclass
@@ -2559,7 +2561,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     entrance_randomization_coupled: EntranceRandomizationCoupled
     entrance_randomization_one_way: EntranceRandomizationOneWay
     entrance_randomization_grouping: EntranceRandomizationGrouping
-    force_er_pairings: ForceERPairings
+    plando_connections: CrystalPlandoConnections
 
 
 OPTION_GROUPS = [

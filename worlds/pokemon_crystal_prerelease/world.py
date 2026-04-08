@@ -547,6 +547,10 @@ class PokemonCrystalWorld(World):
 
     def connect_entrances(self) -> None:
         if not self.options.entrance_randomization:
+            if self.options.plando_connections:
+                logging.warning(f"plando_connections for {self.player_name} ignored because "
+                                f"entrance_randomization is not enabled.")
+                self.options.plando_connections.value = []
             return
 
         if self.is_universal_tracker:
@@ -561,7 +565,7 @@ class PokemonCrystalWorld(World):
         target_group_lookup, preserve_group_order = _build_er_group_lookup(er_types, grouping)
 
         self.er_pairings: list[tuple[str, str]] = []
-        self._apply_forced_er_pairings()
+        self._apply_plando_connections()
         forced_pairings = list(self.er_pairings)
 
         for attempt in range(self._MAX_ER_ATTEMPTS):
@@ -615,10 +619,9 @@ class PokemonCrystalWorld(World):
 
         self.logic.guaranteed_hm_access = False
 
-    def _apply_forced_er_pairings(self) -> None:
-        """Pre-connect forced ER pairings in the region graph and remove them from the ER pool."""
-        forced_specs = self.options.force_er_pairings.value
-        if not forced_specs:
+    def _apply_plando_connections(self) -> None:
+        """Pre-connect plando connections in the region graph and remove them from the ER pool."""
+        if not self.options.plando_connections:
             return
 
         from .rom import _build_reverse_conn_lookup
@@ -627,27 +630,28 @@ class PokemonCrystalWorld(World):
         coupled = bool(self.options.entrance_randomization_coupled)
 
         overrides: dict[str, str] = {}
-        def _add_override(src: str, dst: str, spec: str) -> None:
+        def _add_override(src: str, dst: str, desc: str) -> None:
             if src in overrides:
                 from Options import OptionError
                 raise OptionError(
-                    f"force_er_pairings: exit {src!r} is used by multiple pairings "
-                    f"(check for conflicts with coupled-mode reverse pairings): {spec!r}"
+                    f"plando_connections: exit {src!r} is used by multiple pairings "
+                    f"(check for conflicts with direction 'both' reverse pairings): {desc!r}"
                 )
             overrides[src] = dst
 
-        for spec in forced_specs:
-            exit_name, _, entrance_name = spec.partition(" => ")
-            exit_name, entrance_name = exit_name.strip(), entrance_name.strip()
-            if not entrance_name:
-                logging.warning(f"force_er_pairings: bad format {spec!r}, expected 'exit => entrance'")
-                continue
-            _add_override(exit_name, entrance_name, spec)
-            if coupled:
-                rev_entrance = rl.get(entrance_name)
-                rev_exit = rl.get(exit_name)
+        for conn in self.options.plando_connections:
+            source_name = conn.entrance  # door walked through
+            dest_name = conn.exit        # where you arrive
+            direction = conn.direction
+            desc = f"{source_name} => {dest_name}"
+
+            if direction in ("entrance", "both"):
+                _add_override(source_name, dest_name, desc)
+            if direction in ("exit", "both"):
+                rev_entrance = rl.get(dest_name)
+                rev_exit = rl.get(source_name)
                 if rev_entrance and rev_exit:
-                    _add_override(rev_entrance, rev_exit, spec)
+                    _add_override(rev_entrance, rev_exit, desc)
 
         # Resolve target names: the ER target name is the reverse connection name,
         # with a one-way suffix if applicable
@@ -661,7 +665,7 @@ class PokemonCrystalWorld(World):
             if target_name in seen_targets:
                 from Options import OptionError
                 raise OptionError(
-                    f"force_er_pairings: target {target_name!r} is used by multiple pairings "
+                    f"plando_connections: target {target_name!r} is used by multiple pairings "
                     f"(exits {seen_targets[target_name]!r} and {src!r})"
                 )
             seen_targets[target_name] = src
@@ -684,10 +688,10 @@ class PokemonCrystalWorld(World):
             source_exit = all_exits.get(src_name)
             target_entrance = all_targets.get(tgt_name)
             if not source_exit:
-                logging.warning(f"force_er_pairings: exit {src_name!r} not found in ER pool")
+                logging.warning(f"plando_connections: exit {src_name!r} not found in ER pool")
                 continue
             if not target_entrance:
-                logging.warning(f"force_er_pairings: target {tgt_name!r} not found in ER pool")
+                logging.warning(f"plando_connections: target {tgt_name!r} not found in ER pool")
                 continue
 
             target_region = target_entrance.connected_region
