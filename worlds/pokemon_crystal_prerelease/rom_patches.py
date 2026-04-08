@@ -59,4 +59,23 @@ ROM_PATCHES: list[RomPatch] = [
             0xC3, 0x6D, 0x58,  # jp 586D (continue to flee item check)
         ]),
     ]),
+    # Script_ExplosionTrap.asm_FaintFirstAliveMon zeros HP but doesn't clear MON_STATUS,
+    # so a poisoned/burned/sleeping mon fainted by an explosion trap keeps its status.
+    # Fix: replace "ld [hl], a; ld a, PARTY_LENGTH" with a call to a trampoline that
+    # also clears status by decrementing hl past Unused to the Status byte.
+    RomPatch("Fix explosion trap not clearing fainted mon status", [
+        # Replace "ld [hl], a; ld a, PARTY_LENGTH" (77 3E 06) with call to trampoline
+        RomPatchEntry(bank=0x7D, address=0x725E, data=[
+            0xCD, 0x80, 0x72,        # call $7280
+        ]),
+        # Trampoline in free space after .ExplosionTrapText
+        RomPatchEntry(bank=0x7D, address=0x7280, data=[
+            0x77,                    # ld [hl], a         ; HP high = 0
+            0x2B,                    # dec hl             ; -> Unused
+            0x2B,                    # dec hl             ; -> Status
+            0x77,                    # ld [hl], a         ; Status = 0
+            0x3E, 0x06,              # ld a, PARTY_LENGTH
+            0xC9,                    # ret                ; -> 7261 (sub b)
+        ]),
+    ]),
 ]

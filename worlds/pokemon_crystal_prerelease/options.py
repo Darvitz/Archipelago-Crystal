@@ -1296,8 +1296,8 @@ class RandomizeMoves(EnhancedOptionSet):
     - Accuracy: Randomizes the accuracy of each move. Accuracy has a 70% chance to be 100% for each move,
       otherwise it is linearly distributed in the range 30-100.
     - Type: Randomizes the type of each move.
-    - _All includes all options
-    - _Random has a 50% chance to include each option that is not already included
+    - _All includes all options.
+    - _Random has a 50% chance to include each option that is not already included.
 
     Full options override Restricted options.
     """
