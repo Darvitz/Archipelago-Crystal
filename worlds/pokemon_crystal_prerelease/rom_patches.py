@@ -78,4 +78,44 @@ ROM_PATCHES: list[RomPatch] = [
             0xC9,                    # ret                ; -> 7261 (sub b)
         ]),
     ]),
+    # ChooseWildEncounter_BugContest doesn't check MORE_UNCAUGHT_ENCOUNTERS, so bug catching
+    # contest Pokemon ignore the "more uncaught encounters" option. Fix: redirect the function
+    # entry and return through a trampoline in free space that initializes wEncounterTryCount,
+    # checks the option, and retries up to MAX_ENCOUNTER_RETRIES times if the species is caught.
+    RomPatch("Fix bug catching contest ignoring more uncaught encounters", [
+        # Redirect entry: replace "call Random" with "jp trampoline_init"
+        RomPatchEntry(bank=0x25, address=0x7E64, data=[
+            0xC3, 0x9C, 0x7F,  # jp trampoline_init
+        ]),
+        # Redirect return: replace "ld [wCurPartyLevel], a" with "jp trampoline_check"
+        RomPatchEntry(bank=0x25, address=0x7E92, data=[
+            0xC3, 0xA6, 0x7F,  # jp trampoline_check
+        ]),
+        # Trampoline in free space at 25:7F9C
+        RomPatchEntry(bank=0x25, address=0x7F9C, data=[
+            # trampoline_init: initialize retry counter then do original call Random
+            0xAF,  # xor a
+            0xEA, 0xD1, 0xC2,  # ld [wEncounterTryCount], a
+            # contest_retry: (retry target at 25:7FA0)
+            0xCD, 0x58, 0x2F,  # call Random
+            0xC3, 0x67, 0x7E,  # jp 7E67  (continue after original call Random)
+            # trampoline_check: store level then check uncaught option (at 25:7FA6)
+            0xEA, 0x4A, 0xD1,  # ld [wCurPartyLevel], a
+            0xFA, 0xCD, 0xCF,  # ld a, [MORE_UNCAUGHT_ENCOUNTERS address]
+            0xCB, 0x77,  # bit 6, a  (MORE_UNCAUGHT_ENCOUNTERS bit)
+            0x28, 0x14,  # jr z, .done  (option off -> return normally)
+            0xFA, 0xD1, 0xC2,  # ld a, [wEncounterTryCount]
+            0xFE, 0x04,  # cp MAX_ENCOUNTER_RETRIES
+            0x28, 0x0D,  # jr z, .done  (max retries -> return normally)
+            0x3C,  # inc a
+            0xEA, 0xD1, 0xC2,  # ld [wEncounterTryCount], a
+            0xFA, 0x35, 0xD2,  # ld a, [wTempWildMonSpecies]
+            0x3D,  # dec a  (CheckCaughtMon expects 0-indexed)
+            0xCD, 0xD2, 0x32,  # call CheckCaughtMon
+            0x20, 0xDC,  # jr nz, contest_retry  (caught -> retry)
+            # .done:
+            0xAF,  # xor a
+            0xC9,  # ret
+        ]),
+    ]),
 ]
