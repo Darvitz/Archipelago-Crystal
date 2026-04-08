@@ -1220,6 +1220,15 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
     set_rule(get_entrance("REGION_ECRUTEAK_TIN_TOWER_ENTRANCE -> REGION_ECRUTEAK_TIN_TOWER_ENTRANCE:BEHIND_SAGE"),
              lambda state: state.has("Clear Bell", world.player))
+
+    # Clear Bell gate on Tin Tower 1F itself (sage blocks entry in ER)
+    has_clear_bell = lambda state: state.has("Clear Bell", world.player)
+    tin_tower_1f = world.get_region("REGION_TIN_TOWER_1F")
+    for exit_ in tin_tower_1f.exits:
+        add_rule(exit_, has_clear_bell)
+    for location in tin_tower_1f.locations:
+        add_rule(location, has_clear_bell)
+
     set_rule(get_entrance("REGION_TIN_TOWER_1F -> REGION_TIN_TOWER_2F"),
              lambda state: state.has("Rainbow Wing", world.player))
 
