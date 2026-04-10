@@ -1068,6 +1068,17 @@ class GrassTimeOfDayEncounters(Toggle):
     display_name = "Grass Time of Day Encounters"
 
 
+class UnlockableTimeOfDay(Toggle):
+    """
+    When enabled, the player must find Morn, Day, and Nite items to access
+    grass encounters for those time periods. The player starts with one
+    of these items at random.
+
+    Requires Grass Time of Day Encounters to be enabled.
+    """
+    display_name = "Unlockable Time of Day"
+
+
 class EncounterSlotDistribution(Choice):
     """
     Sets how the Pokemon encounter slots in an area are distributed.
@@ -2476,6 +2487,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     wild_encounter_blocklist: WildEncounterBlocklist
     encounter_grouping: EncounterGrouping
     grass_time_of_day_encounters: GrassTimeOfDayEncounters
+    unlockable_time_of_day: UnlockableTimeOfDay
     force_fully_evolved: ForceFullyEvolved
     encounter_slot_distribution: EncounterSlotDistribution
     randomize_static_pokemon: RandomizeStaticPokemon

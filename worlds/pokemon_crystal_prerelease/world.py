@@ -227,6 +227,11 @@ class PokemonCrystalWorld(World):
         randomize_mischief(self)
         self.logic = PokemonCrystalLogic(self)
 
+        if self.options.unlockable_time_of_day and self.options.grass_time_of_day_encounters:
+            tod_items = ["MORN_ITEM", "DAY_ITEM", "NITE_ITEM"]
+            start_item = self.random.choice(tod_items)
+            self.push_precollected(self.create_item_by_const_name(start_item))
+
         if not self.is_universal_tracker:
             if self.options.early_fly:
                 self.multiworld.local_early_items[self.player]["HM02 Fly"] = 1
@@ -389,6 +394,13 @@ class PokemonCrystalWorld(World):
             self.itempool.extend(
                 self.create_item_by_const_name("GRASS_ITEM")
                 for _ in [loc for loc in self.multiworld.get_locations(self.player) if "grass" in loc.tags])
+
+        if self.options.unlockable_time_of_day and self.options.grass_time_of_day_encounters:
+            precollected_names = {item.name for item in self.multiworld.precollected_items[self.player]}
+            for const_name in ["MORN_ITEM", "DAY_ITEM", "NITE_ITEM"]:
+                item = self.create_item_by_const_name(const_name)
+                if item.name not in precollected_names:
+                    add_items.append(const_name)
 
         if self.options.johto_only.value != JohtoOnly.option_off:
             # Replace the S.S. Ticket with the Silver Wing for Johto only seeds
@@ -807,6 +819,7 @@ class PokemonCrystalWorld(World):
             "shopsanity",
             "wild_encounter_methods_required",
             "grass_time_of_day_encounters",
+            "unlockable_time_of_day",
             "evolution_methods_required",
             "remove_badge_requirement",
             "johto_trainersanity",

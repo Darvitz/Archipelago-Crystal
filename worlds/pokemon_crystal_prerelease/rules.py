@@ -3,7 +3,8 @@ from typing import TYPE_CHECKING
 
 from BaseClasses import CollectionState
 from worlds.generic.Rules import add_rule, set_rule, CollectionRule
-from .data import data, EvolutionType, EvolutionData, FishingRodType, EncounterKey, LogicalAccess, EncounterType
+from .data import data, EvolutionType, EvolutionData, FishingRodType, EncounterKey, LogicalAccess, EncounterType, \
+    GrassTimeOfDay
 from .evolution import evolution_location_name
 from .items import PokemonCrystalGlitchedToken
 from .options import Goal, JohtoOnly, Route32Condition, UndergroundsRequirePower, Route2Access, \
@@ -2125,6 +2126,12 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
             if rule:
                 set_rule(location, rule)
+
+            if (world.options.unlockable_time_of_day
+                    and encounter_key.encounter_type is EncounterType.Grass
+                    and encounter_key.time_of_day is not None):
+                tod_item = encounter_key.time_of_day.name
+                add_rule(location, lambda state, item=tod_item: state.has(item, world.player))
 
             if encounter.pokemon == "UNOWN":
                 add_rule(location, lambda state: state.has_any(unown_unlocks, world.player))
