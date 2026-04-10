@@ -8,7 +8,7 @@ from .evolution import get_random_pokemon_evolution
 from .items import get_random_filler_item
 from .moves import get_tmhm_compatibility, randomize_learnset, moves_convert_friendly_to_ids
 from .options import RandomizeTypes, RandomizePalettes, RandomizeBaseStats, RandomizeStarters, RandomizeTrades, \
-    DexsanityStarters, EncounterGrouping, RandomizePokemonRequests, Goal, ExpCurves
+    DexsanityStarters, EncounterGrouping, RandomizePokemonRequests, Goal, ExpCurves, WildEncounterMethodsRequired
 from .pokemon_data import ALL_UNOWN, LEGENDARY_POKEMON, NON_LEGENDARY_POKEMON
 from .utils import should_include_region
 
@@ -308,7 +308,7 @@ def fill_wild_encounter_locations(world: "PokemonCrystalWorld"):
             location = world.get_location(f"{region_key.region_name()}_1")
             location.place_locked_item((world.create_event(static.pokemon)))
 
-    if "Bug Catching Contest" in world.options.wild_encounter_methods_required or world.is_universal_tracker:
+    if WildEncounterMethodsRequired.BUG_CATCHING_CONTEST in world.options.wild_encounter_methods_required or world.is_universal_tracker:
         for i, slot in enumerate(world.generated_contest):
             location = world.get_location(f"Bug Catching Contest Slot {i + 1}")
             location.place_locked_item(world.create_event(slot.pokemon))

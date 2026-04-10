@@ -21,7 +21,8 @@ from .options import UndergroundsRequirePower, RequireItemfinder, Goal, Route2Ac
     BlackthornDarkCaveAccess, NationalParkAccess, Route3Access, EncounterSlotDistribution, KantoAccessRequirement, \
     FreeFlyLocation, HMBadgeRequirements, ShopsanityPrices, WildEncounterMethodsRequired, FlyCheese, Shopsanity, \
     RequireFlash, FieldMoveMenuOrder, RedGyaradosAccess, TrainerPalette, PokemonCrystalOptions, RandomizeBadges, \
-    RandomizePokegear, BreedingMethodsRequired, RandomizePokedex, Route30Access, SouthKantoAccess, SouthKantoCondition
+    RandomizePokegear, BreedingMethodsRequired, RandomizePokedex, Route30Access, SouthKantoAccess, SouthKantoCondition, \
+    RemoveBadgeRequirement, SaffronGatehouseTea
 from .phone_data import done_cmd
 from .pokemon_data import ALL_UNOWN
 from .rom_patches import ROM_PATCHES
@@ -513,26 +514,26 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
     write_bytes([0xFF], item_name_table_adr + item_name_table_length - 1)
     write_bytes([0xFF], shopsanity_name_table_adr + shopsanity_name_table_length - 1)
 
-    if Shopsanity.johto_marts in world.options.shopsanity.value:
+    if Shopsanity.JOHTO_MARTS in world.options.shopsanity.value:
         write_bytes([1], data.rom_addresses["AP_Setting_JohtoShopsanityEnabled"] + 2)
         # the dw at +11 is the event flag.
         write_bytes([0xFF, 0xFF], data.rom_addresses["AP_Setting_Shopsanity_MahoganyMart_1"] + 11)
         write_bytes([0xFF, 0xFF], data.rom_addresses["AP_Setting_Shopsanity_MahoganyMart_2"] + 11)
 
-    if Shopsanity.kanto_marts in world.options.shopsanity.value:
+    if Shopsanity.KANTO_MARTS in world.options.shopsanity.value:
         write_bytes([1], data.rom_addresses["AP_Setting_KantoShopsanityEnabled"] + 2)
 
-    if Shopsanity.blue_card in world.options.shopsanity.value:
+    if Shopsanity.BLUE_CARD in world.options.shopsanity.value:
         write_bytes([1], data.rom_addresses["AP_Setting_BlueCardShopsanityEnabled"] + 2)
 
-    if Shopsanity.game_corners in world.options.shopsanity.value:
+    if Shopsanity.GAME_CORNERS in world.options.shopsanity.value:
         write_bytes([1], data.rom_addresses["AP_Setting_GameCornerShopsanityEnabled"] + 2)
 
-    if Shopsanity.apricorns in world.options.shopsanity.value:
+    if Shopsanity.APRICORNS in world.options.shopsanity.value:
         write_bytes([1], data.rom_addresses["AP_Setting_ApricornShopsanityEnabled"] + 2)
 
     for mart, mart_data in data.marts.items():
-        if mart_data.category in ("Johto Marts", "Kanto Marts"):
+        if mart_data.category in (Shopsanity.JOHTO_MARTS, Shopsanity.KANTO_MARTS):
             for item in mart_data.items:
                 item_id = item_const_name_to_id(item.item)
                 price = world.generated_item_values.get(item_id, item.price)
@@ -1039,7 +1040,7 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
         requirement = world.options.hm_badge_requirements.value
         if hm in world.options.remove_badge_requirement:
             requirement = HMBadgeRequirements.option_no_badges
-        if requirement == HMBadgeRequirements.option_regional and hm == "Fly":
+        if requirement == HMBadgeRequirements.option_regional and hm == RemoveBadgeRequirement.FLY:
             requirement = HMBadgeRequirements.option_add_kanto
         write_bytes([requirement], hm_address)
 
@@ -1180,13 +1181,13 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
     write_bytes([route_32_flag], data.rom_addresses["AP_Setting_Route32_Condition_2"] + 1)
     write_bytes([route_32_flag], data.rom_addresses["AP_Setting_Route32_Condition_3"] + 1)
 
-    if "North" in world.options.saffron_gatehouse_tea.value:
+    if SaffronGatehouseTea.NORTH in world.options.saffron_gatehouse_tea.value:
         write_bytes([1], data.rom_addresses["AP_Setting_SaffronRoute5Blocked"] + 2)
-    if "East" in world.options.saffron_gatehouse_tea.value:
+    if SaffronGatehouseTea.EAST in world.options.saffron_gatehouse_tea.value:
         write_bytes([1], data.rom_addresses["AP_Setting_SaffronRoute8Blocked"] + 2)
-    if "South" in world.options.saffron_gatehouse_tea.value:
+    if SaffronGatehouseTea.SOUTH in world.options.saffron_gatehouse_tea.value:
         write_bytes([1], data.rom_addresses["AP_Setting_SaffronRoute6Blocked"] + 2)
-    if "West" in world.options.saffron_gatehouse_tea.value:
+    if SaffronGatehouseTea.WEST in world.options.saffron_gatehouse_tea.value:
         write_bytes([1], data.rom_addresses["AP_Setting_SaffronRoute7Blocked"] + 2)
 
     if world.options.saffron_gatehouse_tea.value:
@@ -1321,7 +1322,7 @@ def generate_output(world: "PokemonCrystalWorld", output_directory: str, patch: 
         write_bytes([1], data.rom_addresses["AP_Setting_FlyUnlocksShuffled"] + 2)
 
     if world.options.enforce_wild_encounter_methods_logic:
-        valid_methods = [key for key in WildEncounterMethodsRequired.valid_keys if key != "Bug Catching Contest" and not key.startswith("_")]
+        valid_methods = [key for key in WildEncounterMethodsRequired.valid_keys if key != WildEncounterMethodsRequired.BUG_CATCHING_CONTEST and not key.startswith("_")]
         assert len(valid_methods) == 5
         methods = [method in world.options.wild_encounter_methods_required.value for method in valid_methods]
 

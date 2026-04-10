@@ -8,7 +8,8 @@ from .data import data, RegionData, EncounterMon, StaticPokemon, LogicalAccess, 
     TreeRarity, EncounterType
 from .items import PokemonCrystalItem
 from .locations import PokemonCrystalLocation
-from .options import FreeFlyLocation, JohtoOnly, BlackthornDarkCaveAccess, Goal, FlyCheese, Route42Access, LevelCurve
+from .options import FreeFlyLocation, JohtoOnly, BlackthornDarkCaveAccess, Goal, FlyCheese, Route42Access, LevelCurve, \
+    WildEncounterMethodsRequired
 from .utils import get_fly_regions, should_include_region
 
 if TYPE_CHECKING:
@@ -202,7 +203,7 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
                 grass_keys = grass_keys_by_region[grass_name]
                 for encounter_key in grass_keys:
                     create_scaling_location(parent_region, encounter_key)
-                    if "Land" in world.options.wild_encounter_methods_required:
+                    if WildEncounterMethodsRequired.LAND in world.options.wild_encounter_methods_required:
                         world.logic.wild_regions[encounter_key] = LogicalAccess.InLogic
                         create_wild_region(parent_region, encounter_key, world.generated_wild[encounter_key])
                     else:
@@ -214,7 +215,7 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
             if wild_region_data.wild_encounters.surfing:
                 encounter_key = EncounterKey.water(wild_region_data.wild_encounters.surfing)
                 create_scaling_location(parent_region, encounter_key)
-                if "Surfing" in world.options.wild_encounter_methods_required:
+                if WildEncounterMethodsRequired.SURFING in world.options.wild_encounter_methods_required:
                     world.logic.wild_regions[encounter_key] = LogicalAccess.InLogic
                     create_wild_region(parent_region, encounter_key, world.generated_wild[encounter_key])
                 else:
@@ -224,7 +225,7 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
                         create_wild_region(parent_region, encounter_key, world.generated_wild[encounter_key])
 
             if wild_region_data.wild_encounters.fishing:
-                if "Fishing" in world.options.wild_encounter_methods_required:
+                if WildEncounterMethodsRequired.FISHING in world.options.wild_encounter_methods_required:
                     for fishing_rod in (FishingRodType.Old, FishingRodType.Good, FishingRodType.Super):
                         encounter_key = EncounterKey.fish(wild_region_data.wild_encounters.fishing, fishing_rod)
                         world.logic.wild_regions[encounter_key] = LogicalAccess.InLogic
@@ -238,7 +239,7 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
                             create_wild_region(parent_region, encounter_key, world.generated_wild[encounter_key])
 
             if wild_region_data.wild_encounters.headbutt:
-                if "Headbutt" in world.options.wild_encounter_methods_required:
+                if WildEncounterMethodsRequired.HEADBUTT in world.options.wild_encounter_methods_required:
                     for rarity in (TreeRarity.Common, TreeRarity.Rare):
                         encounter_key = EncounterKey.tree(wild_region_data.wild_encounters.headbutt, rarity)
                         world.logic.wild_regions[encounter_key] = LogicalAccess.InLogic
@@ -253,7 +254,7 @@ def create_regions(world: "PokemonCrystalWorld") -> dict[str, Region]:
 
             if wild_region_data.wild_encounters.rock_smash:
                 encounter_key = EncounterKey.rock_smash()
-                if "Rock Smash" in world.options.wild_encounter_methods_required:
+                if WildEncounterMethodsRequired.ROCK_SMASH in world.options.wild_encounter_methods_required:
                     world.logic.wild_regions[encounter_key] = LogicalAccess.InLogic
                     create_wild_region(parent_region, encounter_key, world.generated_wild[encounter_key])
                 else:

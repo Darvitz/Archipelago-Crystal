@@ -138,12 +138,12 @@ def get_random_ball(random: Random):
 def adjust_item_classifications(world: "PokemonCrystalWorld"):
     all_items = world.itempool + world.pre_fill_items + world.multiworld.precollected_items[world.player]
 
-    if Shopsanity.blue_card not in world.options.shopsanity.value:
+    if Shopsanity.BLUE_CARD not in world.options.shopsanity.value:
         for item in all_items:
             if item.name == "Blue Card":
                 item.classification = ItemClassification.useful
 
-    if Shopsanity.apricorns not in world.options.shopsanity.value:
+    if Shopsanity.APRICORNS not in world.options.shopsanity.value:
         for item in all_items:
             if "Apricorn" in item.tags:
                 item.classification = ItemClassification.filler

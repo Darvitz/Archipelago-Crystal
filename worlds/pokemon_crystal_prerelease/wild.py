@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 from .data import EncounterMon, LogicalAccess, EncounterKey, EncounterType, GrassTimeOfDay
 from .options import RandomizeWilds, EncounterGrouping, RandomizePokemonRequests, \
-    RandomizeTrades, EncounterSlotDistribution, Goal
+    RandomizeTrades, EncounterSlotDistribution, Goal, WildEncounterMethodsRequired
 from .pokemon import get_random_pokemon, get_priority_dexsanity
 
 if TYPE_CHECKING:
@@ -280,7 +280,7 @@ def get_logically_available_wilds(world: "PokemonCrystalWorld") -> set[str]:
         if access is LogicalAccess.InLogic:
             logical_pokemon.update(wild.pokemon for wild in wilds)
 
-    if "Bug Catching Contest" in world.options.wild_encounter_methods_required:
+    if WildEncounterMethodsRequired.BUG_CATCHING_CONTEST in world.options.wild_encounter_methods_required:
         logical_pokemon.update(slot.pokemon for slot in world.generated_contest)
 
     if Goal.UNOWN_HUNT in world.options.goal:

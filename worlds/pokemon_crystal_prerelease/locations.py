@@ -6,7 +6,7 @@ from .data import data, LogicalAccess, GrassTile
 from .evolution import evolution_location_name
 from .item_data import POKEDEX_OFFSET, POKEDEX_COUNT_OFFSET, GRASS_OFFSET, FLAG_ITEM_OFFSET
 from .items import item_const_name_to_id
-from .options import Goal, DexsanityStarters, Grasssanity, RandomizeBugCatchingContest
+from .options import Goal, DexsanityStarters, Grasssanity, RandomizeBugCatchingContest, WildEncounterMethodsRequired
 from .pokemon import get_priority_dexsanity, get_excluded_dexsanity
 from .utils import get_fly_regions, get_mart_slot_location_name
 
@@ -356,7 +356,7 @@ def create_locations(world: "PokemonCrystalWorld", regions: dict[str, Region]) -
         locs_to_remove = len(trainer_locations) - world.options.kanto_trainersanity.value
         remove_excess_trainersanity(trainer_locations, locs_to_remove)
 
-    if "Bug Catching Contest" in world.options.wild_encounter_methods_required or world.is_universal_tracker:
+    if WildEncounterMethodsRequired.BUG_CATCHING_CONTEST in world.options.wild_encounter_methods_required or world.is_universal_tracker:
         region = regions["REGION_NATIONAL_PARK:CONTEST"]
 
         for i in range(len(world.generated_contest)):

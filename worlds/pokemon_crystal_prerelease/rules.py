@@ -12,7 +12,7 @@ from .options import Goal, JohtoOnly, Route32Condition, UndergroundsRequirePower
     MtSilverRequirement, FreeFlyLocation, HMBadgeRequirements, EliteFourRequirement, RedRequirement, \
     Route44AccessRequirement, RandomizeBadges, RadioTowerRequirement, PokemonCrystalOptions, Shopsanity, FlyCheese, \
     RequireFlash, RequireItemfinder, Route42Access, RedGyaradosAccess, RandomizePhoneCalls, Route30Access, \
-    SouthKantoCondition, SouthKantoAccess
+    SouthKantoCondition, SouthKantoAccess, RemoveBadgeRequirement, WildEncounterMethodsRequired, SaffronGatehouseTea
 from .pokemon import add_hm_compatibility, get_chamber_event_for_unown
 from .pokemon_data import ALL_UNOWN
 from .utils import get_fly_regions, get_mart_slot_location_name
@@ -275,7 +275,7 @@ class PokemonCrystalLogic:
         }
 
         if world.options.hm_badge_requirements != HMBadgeRequirements.option_no_badges:
-            if "Cut" not in world.options.remove_badge_requirement:
+            if RemoveBadgeRequirement.CUT not in world.options.remove_badge_requirement:
                 if world.options.hm_badge_requirements == HMBadgeRequirements.option_vanilla:
                     self.hm_badge_requirements_johto["CUT"] = ("hive",)
                     self.hm_badge_requirements_kanto["CUT"] = ("hive",)
@@ -286,7 +286,7 @@ class PokemonCrystalLogic:
                     self.hm_badge_requirements_johto["CUT"] = ("hive",)
                     self.hm_badge_requirements_kanto["CUT"] = ("cascade",)
 
-            if "Fly" not in world.options.remove_badge_requirement:
+            if RemoveBadgeRequirement.FLY not in world.options.remove_badge_requirement:
                 if world.options.hm_badge_requirements == HMBadgeRequirements.option_vanilla:
                     self.hm_badge_requirements_johto["FLY"] = ("storm",)
                     self.hm_badge_requirements_kanto["FLY"] = ("storm",)
@@ -294,7 +294,7 @@ class PokemonCrystalLogic:
                     self.hm_badge_requirements_johto["FLY"] = ("storm", "thunder")
                     self.hm_badge_requirements_kanto["FLY"] = ("storm", "thunder")
 
-            if "Surf" not in world.options.remove_badge_requirement:
+            if RemoveBadgeRequirement.SURF not in world.options.remove_badge_requirement:
                 if world.options.hm_badge_requirements == HMBadgeRequirements.option_vanilla:
                     self.hm_badge_requirements_johto["SURF"] = ("fog",)
                     self.hm_badge_requirements_kanto["SURF"] = ("fog",)
@@ -305,7 +305,7 @@ class PokemonCrystalLogic:
                     self.hm_badge_requirements_johto["SURF"] = ("fog",)
                     self.hm_badge_requirements_kanto["SURF"] = ("soul",)
 
-            if "Strength" not in world.options.remove_badge_requirement:
+            if RemoveBadgeRequirement.STRENGTH not in world.options.remove_badge_requirement:
                 if world.options.hm_badge_requirements == HMBadgeRequirements.option_vanilla:
                     self.hm_badge_requirements_johto["STRENGTH"] = ("plain",)
                     self.hm_badge_requirements_kanto["STRENGTH"] = ("plain",)
@@ -316,7 +316,7 @@ class PokemonCrystalLogic:
                     self.hm_badge_requirements_johto["STRENGTH"] = ("plain",)
                     self.hm_badge_requirements_kanto["STRENGTH"] = ("rainbow",)
 
-            if "Flash" not in world.options.remove_badge_requirement:
+            if RemoveBadgeRequirement.FLASH not in world.options.remove_badge_requirement:
                 if world.options.hm_badge_requirements == HMBadgeRequirements.option_vanilla:
                     self.hm_badge_requirements_johto["FLASH"] = ("zephyr",)
                     self.hm_badge_requirements_kanto["FLASH"] = ("zephyr",)
@@ -327,7 +327,7 @@ class PokemonCrystalLogic:
                     self.hm_badge_requirements_johto["FLASH"] = ("zephyr",)
                     self.hm_badge_requirements_kanto["FLASH"] = ("boulder",)
 
-            if "Whirlpool" not in world.options.remove_badge_requirement:
+            if RemoveBadgeRequirement.WHIRLPOOL not in world.options.remove_badge_requirement:
                 if world.options.hm_badge_requirements == HMBadgeRequirements.option_vanilla:
                     self.hm_badge_requirements_johto["WHIRLPOOL"] = ("glacier",)
                     self.hm_badge_requirements_kanto["WHIRLPOOL"] = ("glacier",)
@@ -338,7 +338,7 @@ class PokemonCrystalLogic:
                     self.hm_badge_requirements_johto["WHIRLPOOL"] = ("glacier",)
                     self.hm_badge_requirements_kanto["WHIRLPOOL"] = ("volcano",)
 
-            if "Waterfall" not in world.options.remove_badge_requirement:
+            if RemoveBadgeRequirement.WATERFALL not in world.options.remove_badge_requirement:
                 if world.options.hm_badge_requirements == HMBadgeRequirements.option_vanilla:
                     self.hm_badge_requirements_johto["WATERFALL"] = ("rising",)
                     self.hm_badge_requirements_kanto["WATERFALL"] = ("rising",)
@@ -937,7 +937,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     set_rule(get_location("Azalea Town - Lure Ball from Kurt"),
              lambda state: state.has("EVENT_CLEARED_SLOWPOKE_WELL", world.player))
 
-    if Shopsanity.apricorns in world.options.shopsanity.value:
+    if Shopsanity.APRICORNS in world.options.shopsanity.value:
         set_rule(get_entrance("REGION_KURTS_HOUSE -> REGION_MART_KURTS_BALLS"),
                  lambda state: state.has("EVENT_CLEARED_SLOWPOKE_WELL", world.player))
 
@@ -1034,7 +1034,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
              lambda state: state.has("EVENT_BEAT_ELITE_FOUR", world.player))
     set_static_rule("Eevee", lambda state: state.has("EVENT_MET_BILL", world.player))
 
-    if Shopsanity.johto_marts in world.options.shopsanity.value:
+    if Shopsanity.JOHTO_MARTS in world.options.shopsanity.value:
         set_rule(get_entrance("REGION_GOLDENROD_DEPT_STORE_ROOF -> REGION_MART_ROOFTOP_SALE"),
                  lambda state: state.has("EVENT_BEAT_ELITE_FOUR", world.player))
 
@@ -1070,7 +1070,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         "REGION_GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES -> REGION_GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES:TAKEOVER"),
         has_rockets_requirement)
 
-    if Shopsanity.game_corners in world.options.shopsanity.value:
+    if Shopsanity.GAME_CORNERS in world.options.shopsanity.value:
         set_rule(get_entrance("REGION_GOLDENROD_GAME_CORNER -> REGION_MART_GOLDENROD_GAME_CORNER"),
                  lambda state: state.has("Coin Case", world.player))
 
@@ -1103,7 +1103,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
     set_rule(get_location("EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER"),
              lambda state: state.has("Card Key", world.player))
 
-    if Shopsanity.blue_card in world.options.shopsanity.value:
+    if Shopsanity.BLUE_CARD in world.options.shopsanity.value:
         set_rule(get_entrance("REGION_RADIO_TOWER_2F -> REGION_MART_BLUE_CARD"),
                  lambda state: state.has("Blue Card", world.player))
 
@@ -1150,7 +1150,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                                                         and state.has(request, world.player)
                                                         and has_pokedex(state))
 
-    if "Bug Catching Contest" not in world.options.wild_encounter_methods_required and world.is_universal_tracker:
+    if WildEncounterMethodsRequired.BUG_CATCHING_CONTEST not in world.options.wild_encounter_methods_required and world.is_universal_tracker:
         for i in range(len(world.generated_contest)):
             set_rule(get_location(f"Bug Catching Contest Slot {i + 1}"),
                      lambda state: state.has(PokemonCrystalGlitchedToken.TOKEN_NAME, world.player))
@@ -1461,7 +1461,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
              lambda state: can_strength(state) and can_surf(state))
 
     # Mahogany Town
-    if Shopsanity.johto_marts in world.options.shopsanity.value:
+    if Shopsanity.JOHTO_MARTS in world.options.shopsanity.value:
         set_rule(get_entrance("REGION_MAHOGANY_MART_1F -> REGION_MART_MAHOGANY_2"),
                  lambda state: state.has("EVENT_CLEARED_RADIO_TOWER", world.player))
 
@@ -1906,19 +1906,19 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
 
         has_tea = world.logic.has_tea()
 
-        if "North" in world.options.saffron_gatehouse_tea.value:
+        if SaffronGatehouseTea.NORTH in world.options.saffron_gatehouse_tea.value:
             set_rule(get_entrance("REGION_ROUTE_5_SAFFRON_GATE:NORTH -> REGION_ROUTE_5_SAFFRON_GATE:SOUTH"), has_tea)
             set_rule(get_entrance("REGION_ROUTE_5_SAFFRON_GATE:SOUTH -> REGION_ROUTE_5_SAFFRON_GATE:NORTH"), has_tea)
 
-        if "East" in world.options.saffron_gatehouse_tea.value:
+        if SaffronGatehouseTea.EAST in world.options.saffron_gatehouse_tea.value:
             set_rule(get_entrance("REGION_ROUTE_8_SAFFRON_GATE:WEST -> REGION_ROUTE_8_SAFFRON_GATE:EAST"), has_tea)
             set_rule(get_entrance("REGION_ROUTE_8_SAFFRON_GATE:EAST -> REGION_ROUTE_8_SAFFRON_GATE:WEST"), has_tea)
 
-        if "South" in world.options.saffron_gatehouse_tea.value:
+        if SaffronGatehouseTea.SOUTH in world.options.saffron_gatehouse_tea.value:
             set_rule(get_entrance("REGION_ROUTE_6_SAFFRON_GATE:NORTH -> REGION_ROUTE_6_SAFFRON_GATE:SOUTH"), has_tea)
             set_rule(get_entrance("REGION_ROUTE_6_SAFFRON_GATE:SOUTH -> REGION_ROUTE_6_SAFFRON_GATE:NORTH"), has_tea)
 
-        if "West" in world.options.saffron_gatehouse_tea.value:
+        if SaffronGatehouseTea.WEST in world.options.saffron_gatehouse_tea.value:
             set_rule(get_entrance("REGION_ROUTE_7_SAFFRON_GATE:WEST -> REGION_ROUTE_7_SAFFRON_GATE:EAST"), has_tea)
             set_rule(get_entrance("REGION_ROUTE_7_SAFFRON_GATE:EAST -> REGION_ROUTE_7_SAFFRON_GATE:WEST"), has_tea)
 
@@ -1952,7 +1952,7 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         if world.options.lock_kanto_gyms:
             set_rule(get_entrance("REGION_CELADON_CITY:GYM_ENTRANCE -> REGION_CELADON_GYM"), kanto_gyms_access)
 
-        if Shopsanity.game_corners in world.options.shopsanity.value:
+        if Shopsanity.GAME_CORNERS in world.options.shopsanity.value:
             set_rule(
                 get_entrance("REGION_CELADON_GAME_CORNER_PRIZE_ROOM -> REGION_MART_CELADON_GAME_CORNER_PRIZE_ROOM"),
                 lambda state: state.has("Coin Case", world.player))

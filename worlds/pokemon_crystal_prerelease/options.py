@@ -700,8 +700,16 @@ class WildEncounterMethodsRequired(EnhancedOptionSet):
     Swarms and roamers are NEVER in logic
     """
     display_name = "Wild Encounter Methods Required"
-    valid_keys = ["Land", "Surfing", "Fishing", "Headbutt", "Rock Smash", "Bug Catching Contest"]
-    default = ["Land", "Surfing", "Fishing", "Headbutt", "Rock Smash", "Bug Catching Contest"]
+
+    LAND = "Land"
+    SURFING = "Surfing"
+    FISHING = "Fishing"
+    HEADBUTT = "Headbutt"
+    ROCK_SMASH = "Rock Smash"
+    BUG_CATCHING_CONTEST = "Bug Catching Contest"
+
+    valid_keys = [LAND, SURFING, FISHING, HEADBUTT, ROCK_SMASH, BUG_CATCHING_CONTEST]
+    default = [LAND, SURFING, FISHING, HEADBUTT, ROCK_SMASH, BUG_CATCHING_CONTEST]
 
 
 class EnforceWildEncounterMethodsLogic(Toggle):
@@ -722,8 +730,14 @@ class EvolutionMethodsRequired(EnhancedOptionSet):
     _All will include all types
     """
     display_name = "Evolution Methods Required"
-    valid_keys = ["Level", "Level Tyrogue", "Use Item", "Happiness"]
-    default = ["Level", "Level Tyrogue", "Use Item", "Happiness"]
+
+    LEVEL = "Level"
+    LEVEL_TYROGUE = "Level Tyrogue"
+    USE_ITEM = "Use Item"
+    HAPPINESS = "Happiness"
+
+    valid_keys = [LEVEL, LEVEL_TYROGUE, USE_ITEM, HAPPINESS]
+    default = [LEVEL, LEVEL_TYROGUE, USE_ITEM, HAPPINESS]
 
 
 class StaticPokemonRequired(DefaultOnToggle):
@@ -789,13 +803,13 @@ class Shopsanity(EnhancedOptionSet):
     display_name = "Shopsanity"
     default = []
 
-    johto_marts = "Johto Marts"
-    kanto_marts = "Kanto Marts"
-    blue_card = "Blue Card"
-    apricorns = "Apricorns"
-    game_corners = "Game Corners"
+    JOHTO_MARTS = "Johto Marts"
+    KANTO_MARTS = "Kanto Marts"
+    BLUE_CARD = "Blue Card"
+    APRICORNS = "Apricorns"
+    GAME_CORNERS = "Game Corners"
 
-    valid_keys = [johto_marts, kanto_marts, blue_card, apricorns, game_corners]
+    valid_keys = [JOHTO_MARTS, KANTO_MARTS, BLUE_CARD, APRICORNS, GAME_CORNERS]
 
 
 class ShopsanityPrices(Choice):
@@ -1332,14 +1346,14 @@ class RandomizeMoves(EnhancedOptionSet):
     display_name = "Randomize Moves"
     default = []
 
-    power_restricted = "Power Restricted"
-    power_full = "Power Full"
-    pp_restricted = "PP Restricted"
-    pp_full = "PP Full"
-    accuracy = "Accuracy"
-    type = "Type"
+    POWER_RESTRICTED = "Power Restricted"
+    POWER_FULL = "Power Full"
+    PP_RESTRICTED = "PP Restricted"
+    PP_FULL = "PP Full"
+    ACCURACY = "Accuracy"
+    TYPE = "Type"
 
-    valid_keys = [power_restricted, power_full, pp_restricted, pp_full, accuracy, type]
+    valid_keys = [POWER_RESTRICTED, POWER_FULL, PP_RESTRICTED, PP_FULL, ACCURACY, TYPE]
 
     @classmethod
     def from_any(cls, data: Any):
@@ -1355,11 +1369,11 @@ class RandomizeMoves(EnhancedOptionSet):
         if text in ("vanilla", "0"):
             return cls([])
         elif text in ("restricted", "1"):
-            return cls(["Power Restricted", "PP Restricted"])
+            return cls([cls.POWER_RESTRICTED, cls.PP_RESTRICTED])
         elif text in ("full_exclude_accuracy", "2"):
-            return cls(["Power Full", "PP Full"])
+            return cls([cls.POWER_FULL, cls.PP_FULL])
         elif text in ("full", "3"):
-            return cls(["Power Full", "PP Full", "Accuracy"])
+            return cls([cls.POWER_FULL, cls.PP_FULL, cls.ACCURACY])
         return super().from_text(text)
 
 
@@ -1771,7 +1785,16 @@ class RemoveBadgeRequirement(EnhancedOptionSet):
     HMs should be provided in the form: "Fly".
     """
     display_name = "Remove Badge Requirement"
-    valid_keys = ["Cut", "Fly", "Surf", "Strength", "Flash", "Whirlpool", "Waterfall"]
+
+    CUT = "Cut"
+    FLY = "Fly"
+    SURF = "Surf"
+    STRENGTH = "Strength"
+    FLASH = "Flash"
+    WHIRLPOOL = "Whirlpool"
+    WATERFALL = "Waterfall"
+
+    valid_keys = [CUT, FLY, SURF, STRENGTH, FLASH, WHIRLPOOL, WATERFALL]
 
 
 class RequireFlash(Choice):
@@ -1805,7 +1828,13 @@ class SaffronGatehouseTea(EnhancedOptionSet):
     _All is shorthand for all valid options except _Random of course.
     """
     display_name = "Saffron Gatehouse Tea"
-    valid_keys = ["North", "East", "South", "West"]
+
+    NORTH = "North"
+    EAST = "East"
+    SOUTH = "South"
+    WEST = "West"
+
+    valid_keys = [NORTH, EAST, SOUTH, WEST]
 
 
 class EastWestUnderground(Toggle):
