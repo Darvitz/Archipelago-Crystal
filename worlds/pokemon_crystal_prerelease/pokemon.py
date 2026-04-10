@@ -3,12 +3,12 @@ from dataclasses import replace
 from typing import TYPE_CHECKING
 
 from BaseClasses import ItemClassification, CollectionState
-from .data import data as crystal_data, LogicalAccess, EncounterType, MiscOption, EncounterMon
+from .data import data as crystal_data, LogicalAccess, EncounterType, MiscOption, EncounterMon, GrowthRate
 from .evolution import get_random_pokemon_evolution
 from .items import get_random_filler_item
 from .moves import get_tmhm_compatibility, randomize_learnset, moves_convert_friendly_to_ids
 from .options import RandomizeTypes, RandomizePalettes, RandomizeBaseStats, RandomizeStarters, RandomizeTrades, \
-    DexsanityStarters, EncounterGrouping, RandomizePokemonRequests, Goal
+    DexsanityStarters, EncounterGrouping, RandomizePokemonRequests, Goal, ExpCurves
 from .pokemon_data import ALL_UNOWN, LEGENDARY_POKEMON, NON_LEGENDARY_POKEMON
 from .utils import should_include_region
 
@@ -17,6 +17,12 @@ if TYPE_CHECKING:
 
 
 def randomize_pokemon_data(world: "PokemonCrystalWorld"):
+    if world.options.exp_curves == ExpCurves.option_normalized:
+        for pkmn_name, pkmn_data in world.generated_pokemon.items():
+            new_rate = GrowthRate.Slow if pkmn_data.friendly_name in LEGENDARY_POKEMON else GrowthRate.MediumFast
+            if pkmn_data.growth_rate != new_rate:
+                world.generated_pokemon[pkmn_name] = replace(pkmn_data, growth_rate=new_rate)
+
     # follow_evolutions can change types after the pokemon has already been randomized,
     # so we randomize types before all else
     if world.options.randomize_types.value:
