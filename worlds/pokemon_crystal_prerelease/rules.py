@@ -2092,6 +2092,26 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
                         if item.name in ("Morn", "Day", "Nite")}
     pokegear_name = "Pokegear" if world.options.randomize_pokegear else "EVENT_GOT_POKEGEAR"
 
+    for location in world.multiworld.get_locations(world.player):
+        if "wilds scaling" not in location.tags:
+            continue
+        encounter_key = location.encounter_key
+
+        if encounter_key.encounter_type is EncounterType.Water:
+            region_data = data.regions[location.parent_region.name]
+            rule = can_surf if (region_data.johto or region_data.silver_cave) else can_surf_kanto
+            add_rule(location, rule)
+
+        if (world.options.unlockable_time_of_day
+                and encounter_key.encounter_type is EncounterType.Grass
+                and encounter_key.time_of_day is not None):
+            tod_item = encounter_key.time_of_day.name
+            if tod_item in precollected_tod:
+                add_rule(location, lambda state, item=tod_item: state.has(item, world.player))
+            else:
+                add_rule(location, lambda state, item=tod_item, gear=pokegear_name:
+                         state.has(item, world.player) and state.has(gear, world.player))
+
     for encounter_key, encounter_access in world.logic.wild_regions.items():
 
         if encounter_access is LogicalAccess.Inaccessible: continue
