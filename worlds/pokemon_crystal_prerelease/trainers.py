@@ -80,8 +80,18 @@ def randomize_trainers(world: "PokemonCrystalWorld"):
                     new_pokemon = get_last_evolution(world, new_pokemon)
             else:
                 match_types = None
-                if world.options.randomize_trainer_parties == RandomizeTrainerParties.option_match_types:
+                if world.options.randomize_trainer_parties in (
+                    RandomizeTrainerParties.option_match_types,
+                    RandomizeTrainerParties.option_match_types_and_base_stats,
+                ):
                     match_types = crystal_data.pokemon[pkmn_data.pokemon].types
+
+                match_bst = None
+                if world.options.randomize_trainer_parties in (
+                    RandomizeTrainerParties.option_match_base_stats,
+                    RandomizeTrainerParties.option_match_types_and_base_stats,
+                ):
+                    match_bst = crystal_data.pokemon[pkmn_data.pokemon].bst
 
                 if "LASS_ALICE" in trainer_name:
                     new_pokemon = get_random_nezumi(world.random)
@@ -91,7 +101,8 @@ def randomize_trainers(world: "PokemonCrystalWorld"):
                         types=match_types,
                         force_fully_evolved_at=world.options.force_fully_evolved,
                         current_level=pkmn_data.level,
-                        blocklist=trainer_party_blocklist
+                        blocklist=trainer_party_blocklist,
+                        match_bst=match_bst,
                     )
             if pkmn_data.item is not None:
                 # If this trainer has items, add an item

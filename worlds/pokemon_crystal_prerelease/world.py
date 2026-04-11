@@ -33,7 +33,7 @@ from .phone import generate_phone_traps
 from .phone_data import PhoneScript
 from .pokemon import randomize_pokemon_data, randomize_starters, fill_wild_encounter_locations, fill_trade_locations, \
     randomize_unown_signs, randomize_trade_received_pokemon, randomize_trade_requested_pokemon, \
-    get_logically_available_trade_pokemon, randomize_request_pokemon
+    get_logically_available_trade_pokemon, randomize_request_pokemon, build_pokemon_pool_index
 from .pokemon_data import VANILLA_STARTERS
 from .regions import create_regions, setup_free_fly_regions
 from .rom import generate_output, PokemonCrystalProcedurePatch
@@ -268,6 +268,8 @@ class PokemonCrystalWorld(World):
                     self.generated_pokemon[pkmn_name] = replace(pkmn_data, evolutions=new_evolutions)
 
         randomize_breeding(self, preevolutions)
+
+        build_pokemon_pool_index(self)
 
         randomize_starters(self)
         randomize_wild_pokemon(self)

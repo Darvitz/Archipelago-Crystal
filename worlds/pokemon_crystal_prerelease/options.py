@@ -1158,12 +1158,19 @@ class RandomizeTrades(Choice):
 class RandomizeTrainerParties(Choice):
     """
     Randomizes Pokemon in enemy trainer parties
+
+    Match Types: Pokemon are replaced with Pokemon of the same type
+    Match Base Stats: Pokemon are replaced with Pokemon of similar base stat totals
+    Match Types and Base Stats: Pokemon are replaced with Pokemon of the same type and similar base stat totals
+    Completely Random: Pokemon are replaced with completely random Pokemon
     """
     display_name = "Randomize Trainer Parties"
     default = 0
     option_vanilla = 0
     option_match_types = 1
     option_completely_random = 2
+    option_match_base_stats = 3
+    option_match_types_and_base_stats = 4
 
 
 class TrainerPartyBlocklist(PokemonSet):
