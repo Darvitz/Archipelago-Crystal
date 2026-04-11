@@ -1995,6 +1995,21 @@ class ExpModifier(NamedRange):
     }
 
 
+class ExpShareType(Choice):
+    """
+    Sets which experience-sharing item is placed in the multiworld.
+
+    Exp Share: The vanilla Exp Share.
+
+    Exp All: A key item that toggles on/off. When on, all non-participating party Pokemon earn
+    experience.
+    """
+    display_name = "Exp Share Type"
+    option_exp_share = 0
+    option_exp_all = 1
+    default = 0
+
+
 class StartingMoney(NamedRange):
     """
     Sets your starting money.
@@ -2229,9 +2244,9 @@ class GameOptions(OptionDict):
     catch_exp: off/on - Sets whether or not you get EXP for catching a Pokemon
     dex_area_beep: off/on - Sets whether the Pokedex beeps for land and Surf encounters in the current area
     exp_distribution: gen2/gen6/gen8/no_exp - Sets the EXP distribution method:
-        gen2: EXP is split evenly among battle participants, EXP Share splits evenly between participants and non-participants
-        gen6: Participants earn 100% of EXP, non-participants earn 50% of EXP when EXP Share is enabled
-        gen8: Participants earn 100% of EXP, non-participants earn 100% of EXP when EXP Share is enabled
+        gen2: EXP is split evenly among battle participants, Exp All splits evenly between participants and non-participants
+        gen6: Participants earn 100% of EXP, non-participants earn 50% of EXP when Exp All is enabled
+        gen8: Participants earn 100% of EXP, non-participants earn 100% of EXP when Exp All is enabled
         no_exp: EXP is disabled
     fast_egg_hatch: off/on - Sets whether eggs take a single cycle to hatch
     fast_egg_make: off/on - Sets whether eggs are guaranteed after one cycle at the day care
@@ -2640,6 +2655,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     build_a_mart: BuildAMart
     growth_rates: GrowthRates
     experience_modifier: ExpModifier
+    exp_share_type: ExpShareType
     starting_money: StartingMoney
     all_pokemon_seen: AllPokemonSeen
     filler_trap_percentage: TrapWeight
@@ -2858,6 +2874,7 @@ OPTION_GROUPS = [
          BuildAMart,
          GrowthRates,
          ExpModifier,
+         ExpShareType,
          SkipEliteFour,
          MinimumCatchRate,
          AlwaysUnlockFly,
