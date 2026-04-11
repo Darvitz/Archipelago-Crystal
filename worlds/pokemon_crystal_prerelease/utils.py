@@ -366,13 +366,6 @@ def __adjust_options_mischief_bounds(world: "PokemonCrystalWorld"):
 
 
 def __adjust_options_backwards_compat(world: "PokemonCrystalWorld"):
-    for trap in world.options.trap_weights:
-        snake_case_trap_name = trap.replace(" ", "_").lower()
-        option_name = f"{snake_case_trap_name}_weight"
-        if hasattr(world.options, option_name):
-            option = getattr(world.options, option_name)
-            if option: world.options.trap_weights.value[trap] = option.value
-
     if world.options.randomize_move_types:
         world.options.randomize_moves.value.add(RandomizeMoves.TYPE)
 
