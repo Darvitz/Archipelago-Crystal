@@ -2813,6 +2813,7 @@ OPTION_GROUPS = [
          BreedingBlocklist,
          RandomizeTrades,
          EncounterGrouping,
+         UnlockableTimeOfDay,
          EncounterSlotDistribution]
     ),
     OptionGroup(
@@ -2858,7 +2859,8 @@ OPTION_GROUPS = [
     OptionGroup(
         "Trainersanity",
         [JohtoTrainersanity,
-         KantoTrainersanity]
+         KantoTrainersanity,
+         Rematchsanity]
     ),
     OptionGroup(
         "Pokemon Logic",
