@@ -2076,6 +2076,7 @@ class TrapWeights(OptionCounter):
     - Explosion Traps faint a party member in the overworld or use Explosion in battle
     - Sandstorm Traps slow you in the overworld for 20-40 steps or activate Sandstorm for 99 turns in battle
     - Metronome Traps trigger a random other move trap in the overworld or use Metronome in battle
+    - Shuffle Traps randomize the order of items in your Items and Balls pockets
     """
     min = _trap_weight_min
     max = _trap_weight_max
