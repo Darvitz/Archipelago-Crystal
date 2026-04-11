@@ -1042,6 +1042,32 @@ class WildEncounterBlocklist(PokemonSet):
     display_name = "Wild Encounter Blocklist"
 
 
+class WildMatchMode(Choice):
+    """
+    Controls how randomized wild Pokemon are matched to the vanilla encounters they replace.
+
+    Match Types: Wild Pokemon are replaced with Pokemon of the same type
+    Match Base Stats: Wild Pokemon are replaced with Pokemon of similar base stat totals
+    Match Types and Base Stats: Wild Pokemon are replaced with Pokemon of the same type and similar base stat totals
+
+    This setting has no effect if wild Pokemon are not randomized.
+    """
+    display_name = "Wild Match Mode"
+    default = 0
+    option_vanilla = 0
+    option_match_types = 1
+    option_match_base_stats = 2
+    option_match_types_and_base_stats = 3
+
+    @property
+    def matches_types(self) -> bool:
+        return self.value in (self.option_match_types, self.option_match_types_and_base_stats)
+
+    @property
+    def matches_base_stats(self) -> bool:
+        return self.value in (self.option_match_base_stats, self.option_match_types_and_base_stats)
+
+
 class EncounterGrouping(Choice):
     """
     Determines how randomized wild Pokemon are grouped in encounter tables.
@@ -1144,6 +1170,14 @@ class RandomizeStaticPokemon(Choice):
     option_match_base_stats = 3
     option_match_types_and_base_stats = 4
 
+    @property
+    def matches_types(self) -> bool:
+        return self.value in (self.option_match_types, self.option_match_types_and_base_stats)
+
+    @property
+    def matches_base_stats(self) -> bool:
+        return self.value in (self.option_match_base_stats, self.option_match_types_and_base_stats)
+
 
 class StaticBlocklist(PokemonSet):
     """
@@ -1182,6 +1216,14 @@ class RandomizeTrainerParties(Choice):
     option_completely_random = 2
     option_match_base_stats = 3
     option_match_types_and_base_stats = 4
+
+    @property
+    def matches_types(self) -> bool:
+        return self.value in (self.option_match_types, self.option_match_types_and_base_stats)
+
+    @property
+    def matches_base_stats(self) -> bool:
+        return self.value in (self.option_match_base_stats, self.option_match_types_and_base_stats)
 
 
 class TrainerPartyBlocklist(PokemonSet):
@@ -2535,6 +2577,7 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     starter_blocklist: StarterBlocklist
     starters_bst_average: StarterBST
     wild_encounter_blocklist: WildEncounterBlocklist
+    wild_match_mode: WildMatchMode
     encounter_grouping: EncounterGrouping
     land_time_of_day_encounters: LandTimeOfDayEncounters
     unlockable_time_of_day: UnlockableTimeOfDay
@@ -2721,6 +2764,7 @@ OPTION_GROUPS = [
         "Pokemon",
         [RandomizeWilds,
          WildEncounterBlocklist,
+         WildMatchMode,
          LandTimeOfDayEncounters,
          RandomizeStaticPokemon,
          StaticBlocklist,
