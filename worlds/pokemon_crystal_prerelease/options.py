@@ -1124,14 +1124,25 @@ class EncounterSlotDistribution(Choice):
     option_equal = 3
 
 
-class RandomizeStaticPokemon(Toggle):
+class RandomizeStaticPokemon(Choice):
     """
     Randomizes species of static Pokemon encounters
     This includes overworld Pokemon, gift Pokemon and gift egg Pokemon
 
+    Match Types: Pokemon are replaced with Pokemon of the same type
+    Match Base Stats: Pokemon are replaced with Pokemon of similar base stat totals
+    Match Types and Base Stats: Pokemon are replaced with Pokemon of the same type and similar base stat totals
+    Completely Random: Pokemon are replaced with completely random Pokemon
+
     NOTE: If this setting is disabled, the Odd Egg will still be fixed to a single possible Pokemon
     """
     display_name = "Randomize Static Pokemon"
+    default = 0
+    option_vanilla = 0
+    option_completely_random = 1
+    option_match_types = 2
+    option_match_base_stats = 3
+    option_match_types_and_base_stats = 4
 
 
 class StaticBlocklist(PokemonSet):

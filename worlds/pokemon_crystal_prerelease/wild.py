@@ -2,9 +2,9 @@ from collections import defaultdict
 from dataclasses import replace
 from typing import TYPE_CHECKING
 
-from .data import EncounterMon, LogicalAccess, EncounterKey, EncounterType, GrassTimeOfDay
+from .data import EncounterMon, LogicalAccess, EncounterKey, EncounterType, GrassTimeOfDay, data as crystal_data
 from .options import RandomizeWilds, EncounterGrouping, RandomizePokemonRequests, \
-    RandomizeTrades, EncounterSlotDistribution, Goal, WildEncounterMethodsRequired
+    RandomizeTrades, EncounterSlotDistribution, Goal, WildEncounterMethodsRequired, RandomizeStaticPokemon
 from .pokemon import get_random_pokemon, get_priority_dexsanity
 
 if TYPE_CHECKING:
@@ -255,11 +255,27 @@ def randomize_static_pokemon(world: "PokemonCrystalWorld"):
             priority_pokemon = get_priority_dexsanity(world) - logically_available_wilds
             blocklist = world.options.static_blocklist.get_ids(world)
             for static_name, pkmn_data in world.generated_static.items():
+                match_types = None
+                if world.options.randomize_static_pokemon in (
+                    RandomizeStaticPokemon.option_match_types,
+                    RandomizeStaticPokemon.option_match_types_and_base_stats,
+                ):
+                    match_types = crystal_data.pokemon[pkmn_data.pokemon].types
+
+                match_bst = None
+                if world.options.randomize_static_pokemon in (
+                    RandomizeStaticPokemon.option_match_base_stats,
+                    RandomizeStaticPokemon.option_match_types_and_base_stats,
+                ):
+                    match_bst = crystal_data.pokemon[pkmn_data.pokemon].bst
+
                 pokemon = get_random_pokemon(world,
                                              exclude_unown=True,
                                              base_only=pkmn_data.level_type == "giveegg",
                                              priority_pokemon=priority_pokemon,
-                                             blocklist=blocklist)
+                                             blocklist=blocklist,
+                                             types=match_types,
+                                             match_bst=match_bst)
                 world.generated_static[static_name] = replace(
                     world.generated_static[static_name],
                     pokemon=pokemon,
