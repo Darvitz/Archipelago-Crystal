@@ -1720,8 +1720,8 @@
   "REGION_FAST_SHIP_1F": {
     "johto": false,
     "exits": [
-      "REGION_VERMILION_PORT",
-      "REGION_OLIVINE_PORT",
+      "REGION_VERMILION_PORT:TICKET",
+      "REGION_OLIVINE_PORT:TICKET",
       "REGION_FAST_SHIP_CABINS_NNW_NNE_NE",
       "REGION_FAST_SHIP_CABINS_SW_SSW_NW",
       "REGION_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN",
@@ -3857,9 +3857,18 @@
     "events": []
   },
   "REGION_OLIVINE_PORT": {
-    "johto": false,
+    "johto": true,
     "exits": [
       "REGION_OLIVINE_PORT_PASSAGE:TUNNEL",
+      "REGION_OLIVINE_PORT:TICKET"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_OLIVINE_PORT:TICKET": {
+    "johto": false,
+    "exits": [
+      "REGION_OLIVINE_PORT",
       "REGION_FAST_SHIP_1F"
     ],
     "locations": [
@@ -8457,6 +8466,15 @@
     "johto": false,
     "exits": [
       "REGION_VERMILION_PORT_PASSAGE:TUNNEL",
+      "REGION_VERMILION_PORT:TICKET"
+    ],
+    "locations": [],
+    "events": []
+  },
+  "REGION_VERMILION_PORT:TICKET": {
+    "johto": false,
+    "exits": [
+      "REGION_VERMILION_PORT",
       "REGION_FAST_SHIP_1F"
     ],
     "locations": [

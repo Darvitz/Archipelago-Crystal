@@ -1291,14 +1291,14 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         else:
             ship_rule = lambda state: state.has("S.S. Ticket", world.player)
 
-        set_rule(get_entrance("REGION_OLIVINE_PORT -> REGION_FAST_SHIP_1F"), ship_rule)
+        set_rule(get_entrance("REGION_OLIVINE_PORT -> REGION_OLIVINE_PORT:TICKET"), ship_rule)
 
-        set_rule(get_entrance("REGION_FAST_SHIP_1F -> REGION_OLIVINE_PORT"),
+        set_rule(get_entrance("REGION_FAST_SHIP_1F -> REGION_OLIVINE_PORT:TICKET"),
                  lambda state: state.has("EVENT_FAST_SHIP_LAZY_SAILOR", world.player))
 
         if hidden():
             set_rule(get_location("Olivine Port - Hidden Item in Buoy"),
-                     lambda state: ship_rule(state) and can_surf(state))
+                     lambda state: can_surf(state))
 
     set_rule(get_entrance("REGION_OLIVINE_GYM -> REGION_OLIVINE_GYM:JASMINE"),
              lambda state: state.has("EVENT_JASMINE_RETURNED_TO_GYM", world.player))
@@ -1870,13 +1870,13 @@ def set_rules(world: "PokemonCrystalWorld") -> None:
         set_rule(get_entrance("REGION_VERMILION_CITY:DIGLETTS_CAVE_ENTRANCE -> REGION_VERMILION_CITY"),
                  has_expn)
         set_rule(get_entrance("REGION_ROUTE_11 -> REGION_VERMILION_CITY"), has_expn)
-        set_rule(get_entrance("REGION_VERMILION_PORT -> REGION_FAST_SHIP_1F"), ship_rule)
+        set_rule(get_entrance("REGION_VERMILION_PORT -> REGION_VERMILION_PORT:TICKET"), ship_rule)
 
         if hidden():
             set_rule(get_location("Vermilion Port - Hidden Item in Buoy"),
-                     lambda state: ship_rule(state) and can_surf_kanto(state))
+                     lambda state: can_surf_kanto(state))
 
-        set_rule(get_entrance("REGION_FAST_SHIP_1F -> REGION_VERMILION_PORT"),
+        set_rule(get_entrance("REGION_FAST_SHIP_1F -> REGION_VERMILION_PORT:TICKET"),
                  lambda state: state.has("EVENT_FAST_SHIP_LAZY_SAILOR", world.player))
 
         # Saffron
