@@ -7860,7 +7860,6 @@
   "REGION_TIN_TOWER_5F:SOUTHWEST": {
     "johto": true,
     "exits": [
-      "REGION_TIN_TOWER_5F",
       "REGION_TIN_TOWER_4F"
     ],
     "locations": [],
